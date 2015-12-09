@@ -1,2 +1,2 @@
-# Che
-Netty / Erlang Framework
+# che
+Netty / Hazelcast/ Erlang Framework
