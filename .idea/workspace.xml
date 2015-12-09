@@ -1,54 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1da809bf-b5cd-41ef-846a-b237902f929e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/adapter/AllianceThread.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/adapter/CoreThread.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/adapter/GridThread.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/adapter/PackageThread.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/handler/AllianceMessageHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/handler/ChannelHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/handler/CoreMessageHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/handler/GridMessageHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/handler/JsonFrameDecoder.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/handler/JsonHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/handler/PackageMessageHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/core/NettyChannelInitializer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/core/NettyServer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/message/in/CoreMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/message/in/InAllianceMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/message/in/InGridMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/message/in/InImageMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/message/in/InPackageMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/message/out/Acknowledge.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/message/out/Message.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/message/out/MessageInterface.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/message/out/OutAllianceMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/message/out/OutGridMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/message/out/OutPackageMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/model/Alliance.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/model/Grid.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/model/Package.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/model/Player.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/store/AllianceStore.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/store/ChannelStore.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/store/GridStore.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/store/HazelcastManager.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/store/ManagerInterface.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/store/PackageStore.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/util/Configuration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/util/Reduce.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/util/StoreKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/util/UTM.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/util/UTMConvert.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/util/UUIDGenerator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/test/java/messages/in/MessageTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/test/java/messages/out/MessageTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/test/java/model/ModelTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/test/java/store/StoreTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/test/java/stub/StubChannel.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/test/java/util/UtilTest.java" afterPath="" />
-    </list>
+    <list default="true" id="1da809bf-b5cd-41ef-846a-b237902f929e" name="Default" comment="" />
     <ignored path="Che.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
