@@ -35,6 +35,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Che" target="1.5" />
+      <module name="che" target="1.5" />
       <module name="hazelcast" target="1.5" />
       <module name="netty" target="1.8" />
       <module name="schema" target="1.5" />
