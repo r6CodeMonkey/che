@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/netty/pom.xml" />
         <option value="$PROJECT_DIR$/hazelcast/pom.xml" />
+        <option value="$PROJECT_DIR$/schema/pom.xml" />
       </list>
     </option>
   </component>

@@ -30,12 +30,14 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="hazelcast" />
+        <module name="schema" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Che" target="1.5" />
       <module name="hazelcast" target="1.5" />
       <module name="netty" target="1.8" />
+      <module name="schema" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
