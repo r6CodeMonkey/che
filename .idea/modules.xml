@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Che.iml" filepath="$PROJECT_DIR$/.idea/Che.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hazelcast/hazelcast.iml" filepath="$PROJECT_DIR$/hazelcast/hazelcast.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netty/netty.iml" filepath="$PROJECT_DIR$/netty/netty.iml" />
     </modules>
   </component>
 </project>

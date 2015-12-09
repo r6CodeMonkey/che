@@ -5,15 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>groupId</groupId>
-    <artifactId>Che</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>hazelcast</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <modules>
-        <module>netty</module>
-        <module>hazelcast</module>
-    </modules>
-
-
-
+    
 </project>

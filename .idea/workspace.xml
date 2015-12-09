@@ -2,74 +2,113 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1da809bf-b5cd-41ef-846a-b237902f929e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/out/Acknowledge.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/model/Alliance.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/handler/AllianceMessageHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/store/AllianceStore.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/adapter/AllianceThread.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/handler/ChannelHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/store/ChannelStore.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/Che.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/util/Configuration.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/in/CoreMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/handler/CoreMessageHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/adapter/CoreThread.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/model/Grid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/handler/GridMessageHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/store/GridStore.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/adapter/GridThread.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/store/HazelcastManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/in/InAllianceMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/in/InGridMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/in/InImageMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/in/InPackageMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/handler/JsonFrameDecoder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/handler/JsonHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/store/ManagerInterface.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_eclipsesource_minimal_json_minimal_json_0_9_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_hazelcast_hazelcast_3_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_hazelcast_hazelcast_code_generator_3_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_all_5_0_0_Alpha2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sourceforge_findbugs_annotations_1_3_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_freemarker_freemarker_2_3_22.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_json_json_20090211.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/out/Message.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/out/MessageInterface.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/messages/in/MessageTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/messages/out/MessageTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/model/ModelTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/core/NettyChannelInitializer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/core/NettyServer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/out/OutAllianceMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/out/OutGridMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/out/OutPackageMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/model/Package.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/handler/PackageMessageHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/store/PackageStore.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/adapter/PackageThread.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/model/Player.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/util/Reduce.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/util/StoreKey.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/store/StoreTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/stub/StubChannel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/util/UTM.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/util/UTMConvert.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/util/UUIDGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/util/UtilTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hazelcast/hazelcast.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/netty/netty.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hazelcast/pom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/netty/pom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/channel/adapter/AllianceThread.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/channel/adapter/CoreThread.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/channel/adapter/GridThread.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/channel/adapter/PackageThread.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/channel/handler/AllianceMessageHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/channel/handler/ChannelHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/channel/handler/CoreMessageHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/channel/handler/GridMessageHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/channel/handler/JsonFrameDecoder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/channel/handler/JsonHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/channel/handler/PackageMessageHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/core/NettyChannelInitializer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/core/NettyServer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/message/in/CoreMessage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/message/in/InAllianceMessage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/message/in/InGridMessage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/message/in/InImageMessage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/message/in/InPackageMessage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/message/out/Acknowledge.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/message/out/Message.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/message/out/MessageInterface.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/message/out/OutAllianceMessage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/message/out/OutGridMessage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/message/out/OutPackageMessage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/model/Alliance.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/model/Grid.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/model/Package.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/model/Player.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/store/AllianceStore.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/store/ChannelStore.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/store/GridStore.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/store/HazelcastManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/store/ManagerInterface.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/store/PackageStore.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/util/Configuration.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/util/Reduce$Person.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/util/Reduce.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/util/StoreKey.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/util/UTM.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/util/UTMConvert$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/util/UTMConvert.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/oddymobstar/server/netty/util/UUIDGenerator.class" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/adapter/AllianceThread.java" afterPath="$PROJECT_DIR$/netty/src/main/java/channel/adapter/AllianceThread.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/adapter/CoreThread.java" afterPath="$PROJECT_DIR$/netty/src/main/java/channel/adapter/CoreThread.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/adapter/GridThread.java" afterPath="$PROJECT_DIR$/netty/src/main/java/channel/adapter/GridThread.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/adapter/PackageThread.java" afterPath="$PROJECT_DIR$/netty/src/main/java/channel/adapter/PackageThread.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/handler/AllianceMessageHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/channel/handler/AllianceMessageHandler.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/handler/ChannelHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/channel/handler/ChannelHandler.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/handler/CoreMessageHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/channel/handler/CoreMessageHandler.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/handler/GridMessageHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/channel/handler/GridMessageHandler.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/handler/JsonFrameDecoder.java" afterPath="$PROJECT_DIR$/netty/src/main/java/channel/handler/JsonFrameDecoder.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/handler/JsonHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/channel/handler/JsonHandler.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/channel/handler/PackageMessageHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/channel/handler/PackageMessageHandler.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/core/NettyChannelInitializer.java" afterPath="$PROJECT_DIR$/netty/src/main/java/core/NettyChannelInitializer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/core/NettyServer.java" afterPath="$PROJECT_DIR$/netty/src/main/java/core/NettyServer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/in/CoreMessage.java" afterPath="$PROJECT_DIR$/netty/src/main/java/message/in/CoreMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/in/InAllianceMessage.java" afterPath="$PROJECT_DIR$/netty/src/main/java/message/in/InAllianceMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/in/InGridMessage.java" afterPath="$PROJECT_DIR$/netty/src/main/java/message/in/InGridMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/in/InImageMessage.java" afterPath="$PROJECT_DIR$/netty/src/main/java/message/in/InImageMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/in/InPackageMessage.java" afterPath="$PROJECT_DIR$/netty/src/main/java/message/in/InPackageMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/out/Acknowledge.java" afterPath="$PROJECT_DIR$/netty/src/main/java/message/out/Acknowledge.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/out/Message.java" afterPath="$PROJECT_DIR$/netty/src/main/java/message/out/Message.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/out/MessageInterface.java" afterPath="$PROJECT_DIR$/netty/src/main/java/message/out/MessageInterface.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/out/OutAllianceMessage.java" afterPath="$PROJECT_DIR$/netty/src/main/java/message/out/OutAllianceMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/out/OutGridMessage.java" afterPath="$PROJECT_DIR$/netty/src/main/java/message/out/OutGridMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/message/out/OutPackageMessage.java" afterPath="$PROJECT_DIR$/netty/src/main/java/message/out/OutPackageMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/model/Alliance.java" afterPath="$PROJECT_DIR$/netty/src/main/java/model/Alliance.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/model/Grid.java" afterPath="$PROJECT_DIR$/netty/src/main/java/model/Grid.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/model/Package.java" afterPath="$PROJECT_DIR$/netty/src/main/java/model/Package.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/model/Player.java" afterPath="$PROJECT_DIR$/netty/src/main/java/model/Player.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/store/AllianceStore.java" afterPath="$PROJECT_DIR$/netty/src/main/java/store/AllianceStore.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/store/ChannelStore.java" afterPath="$PROJECT_DIR$/netty/src/main/java/store/ChannelStore.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/store/GridStore.java" afterPath="$PROJECT_DIR$/netty/src/main/java/store/GridStore.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/store/HazelcastManager.java" afterPath="$PROJECT_DIR$/netty/src/main/java/store/HazelcastManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/store/ManagerInterface.java" afterPath="$PROJECT_DIR$/netty/src/main/java/store/ManagerInterface.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/store/PackageStore.java" afterPath="$PROJECT_DIR$/netty/src/main/java/store/PackageStore.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/util/Configuration.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/Configuration.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/util/Reduce.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/Reduce.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/util/StoreKey.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/StoreKey.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/util/UTM.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/UTM.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/util/UTMConvert.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/UTMConvert.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/util/UUIDGenerator.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/UUIDGenerator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterPath="$PROJECT_DIR$/netty/src/main/resources/log4j.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/messages/in/MessageTest.java" afterPath="$PROJECT_DIR$/netty/src/test/java/messages/in/MessageTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/messages/out/MessageTest.java" afterPath="$PROJECT_DIR$/netty/src/test/java/messages/out/MessageTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/model/ModelTest.java" afterPath="$PROJECT_DIR$/netty/src/test/java/model/ModelTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/store/StoreTest.java" afterPath="$PROJECT_DIR$/netty/src/test/java/store/StoreTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/stub/StubChannel.java" afterPath="$PROJECT_DIR$/netty/src/test/java/stub/StubChannel.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/util/UtilTest.java" afterPath="$PROJECT_DIR$/netty/src/test/java/util/UtilTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Che.iml" afterPath="$PROJECT_DIR$/.idea/Che.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Che.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/netty/target/" />
+    <ignored path="$PROJECT_DIR$/hazelcast/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -87,22 +126,114 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="NettyServer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/netty/src/main/java/core/NettyServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NettyServer.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/core/NettyServer.java">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hazelcast/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27166882">
-              <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.32416502">
+              <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/netty/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OutAllianceMessage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/netty/src/main/java/message/out/OutAllianceMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OutGridMessage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/netty/src/main/java/message/out/OutGridMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AllianceStore.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/netty/src/main/java/store/AllianceStore.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChannelStore.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/netty/src/main/java/store/ChannelStore.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HazelcastManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/netty/src/main/java/store/HazelcastManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="94" column="11" selection-start-line="94" selection-start-column="11" selection-end-line="94" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PackageStore.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/netty/src/main/java/store/PackageStore.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,7 +251,35 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/netty/src/main/java/com/oddymobstar/server/netty/channel/adapter/GridThread.java" />
+        <option value="$PROJECT_DIR$/netty/pom.xml" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/util/UTMConvert.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/channel/handler/JsonHandler.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/core/NettyChannelInitializer.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/store/GridStore.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/store/ManagerInterface.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/channel/handler/ChannelHandler.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/message/in/InGridMessage.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/message/in/CoreMessage.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/model/Player.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/model/Alliance.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/model/Package.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/channel/handler/CoreMessageHandler.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/channel/handler/PackageMessageHandler.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/channel/adapter/AllianceThread.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/channel/adapter/CoreThread.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/channel/adapter/GridThread.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/channel/handler/AllianceMessageHandler.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/channel/handler/GridMessageHandler.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/core/NettyServer.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/message/out/OutAllianceMessage.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/message/out/OutGridMessage.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/store/AllianceStore.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/store/ChannelStore.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/store/HazelcastManager.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/store/PackageStore.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/hazelcast/pom.xml" />
       </list>
     </option>
   </component>
@@ -191,50 +350,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Che" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Che" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Che" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Che" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="netty" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -249,23 +364,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="netty" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
+              <option name="myItemId" value="hazelcast" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -282,13 +381,40 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="recentsLimit" value="5" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/netty/src/main/java" />
+      <recent name="$PROJECT_DIR$/netty/src" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/netty/src" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.NettyServer">
+    <configuration default="false" name="NettyServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="core.NettyServer" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="netty" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -479,6 +605,14 @@
       <listeners />
       <method />
     </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Application.NettyServer" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Application.NettyServer" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
@@ -505,21 +639,21 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32876712" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24945454" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -534,18 +668,254 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/util/UTMConvert.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <caret line="13" column="15" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/oddymobstar/server/netty/core/NettyServer.java">
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/channel/handler/JsonHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27166882">
-          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/core/NettyChannelInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/store/GridStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/store/ManagerInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/channel/handler/ChannelHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/message/in/InGridMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="15" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/message/in/CoreMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/model/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/model/Alliance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/model/Package.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/channel/handler/CoreMessageHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/channel/handler/PackageMessageHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/channel/adapter/AllianceThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/channel/adapter/CoreThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/channel/adapter/GridThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/channel/handler/AllianceMessageHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.2295082">
+          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/channel/handler/GridMessageHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/message/out/OutAllianceMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/message/out/OutGridMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/store/AllianceStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/store/ChannelStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/store/HazelcastManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="94" column="11" selection-start-line="94" selection-start-column="11" selection-end-line="94" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/store/PackageStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/core/NettyServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hazelcast/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32416502">
+          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
           <folding />
         </state>
       </provider>
