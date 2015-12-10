@@ -7,11 +7,14 @@ import org.json.JSONObject;
  * Created by timmytime on 09/12/15.
  */
 public class Generic implements MessageInterface {
+
+    private model.generic.Generic generic;
+
     public JSONObject get() throws JSONException {
-        return null;
+        return generic;
     }
 
-    public void create(JSONObject message) throws JSONException {
-
+    public void create(String message) throws JSONException {
+        generic = new model.generic.Generic(message);
     }
 }

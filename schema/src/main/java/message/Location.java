@@ -7,11 +7,14 @@ import org.json.JSONObject;
  * Created by timmytime on 09/12/15.
  */
 public class Location implements MessageInterface {
+
+    private model.Location location;
+
     public JSONObject get() throws JSONException {
-        return null;
+        return location;
     }
 
-    public void create(JSONObject message) throws JSONException {
-
+    public void create(String message) throws JSONException {
+        location = new model.Location(message);
     }
 }

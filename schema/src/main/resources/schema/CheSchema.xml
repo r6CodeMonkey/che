@@ -1,0 +1,11 @@
+{
+  "id": "need to sort this out",
+        "$schema": "http://json-schema.org/draft-04/schema#",
+   "description": "core che schema",
+   "type": "object",
+   "required": ["generic", "
+
+//need to think about this later on....is ok for now.
+
+
+}

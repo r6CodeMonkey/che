@@ -30,6 +30,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="hazelcast" />
+      </profile>
+      <profile default="false" name="Annotation profile for schema" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
         <module name="schema" />
       </profile>
     </annotationProcessing>
@@ -38,7 +44,7 @@
       <module name="che" target="1.5" />
       <module name="hazelcast" target="1.5" />
       <module name="netty" target="1.8" />
-      <module name="schema" target="1.5" />
+      <module name="schema" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
