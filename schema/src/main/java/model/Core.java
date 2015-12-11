@@ -1,6 +1,6 @@
 package model;
 
-import model.generic.Generic;
+import model.generic.GenericModel;
 import org.json.JSONException;
 import org.json.JSONObject;
 import util.Tags;
@@ -27,8 +27,8 @@ public class Core extends JSONObject {
         return new Location(this.getJSONObject(Tags.LOCATION_OBJECT));
     }
 
-    public Generic getGeneric() throws JSONException {
-        return new Generic(this.getJSONObject(Tags.GENERIC_OBJECT));
+    public GenericModel getGeneric() throws JSONException {
+        return new GenericModel(this.getJSONObject(Tags.GENERIC_OBJECT));
     }
 
     public Acknowledge getAcknowledge() throws JSONException {

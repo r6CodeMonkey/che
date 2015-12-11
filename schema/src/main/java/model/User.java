@@ -13,6 +13,7 @@ public class User extends JSONObject {
 
     public User(String user) throws JSONException {
         super(user);
+        setUid(this.getString(Tags.UID));
     }
 
     public User(JSONObject user) throws JSONException {

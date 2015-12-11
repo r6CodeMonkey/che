@@ -1,20 +1,23 @@
 package message;
 
+import model.generic.GenericModel;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
  * Created by timmytime on 09/12/15.
+ *
+ * Any specific message
  */
-public class Generic implements MessageInterface {
+public class GenericMessage implements MessageInterface {
 
-    private model.generic.Generic generic;
+    private GenericModel genericModel;
 
     public JSONObject get() throws JSONException {
-        return generic;
+        return genericModel;
     }
 
     public void create(String message) throws JSONException {
-        generic = new model.generic.Generic(message);
+        genericModel = new GenericModel(message);
     }
 }

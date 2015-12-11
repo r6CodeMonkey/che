@@ -15,13 +15,19 @@ public class Acknowledge extends JSONObject {
 
     public Acknowledge(String acknowledge) throws JSONException {
         super(acknowledge);
-        setAckId(this.getString(Tags.ACK_ID));
-        setInfo(this.getString(Tags.INFO));
-        setState(this.getString(Tags.STATE));
+        setAll();
     }
 
     public Acknowledge(JSONObject acknowledge) throws JSONException {
         super(acknowledge);
+        setAll();
+    }
+
+    private void setAll(){
+        setAckId(this.getString(Tags.ACK_ID));
+        setInfo(this.getString(Tags.INFO));
+        setState(this.getString(Tags.STATE));
+
     }
 
     public String getAckId() {

@@ -14,16 +14,22 @@ public class Location extends JSONObject {
 
     public Location(String location) throws JSONException {
         super(location);
+        setAll();
     }
 
     public Location(JSONObject location) throws JSONException {
         super(location);
+        setAll();
+    }
+
+    private void setAll(){
         setUtm(this.getString(Tags.UTM));
         setSubUtm(this.getString(Tags.SUB_UTM));
         setLatitude(this.getDouble(Tags.LATITUTDE));
         setLongitude(this.getDouble(Tags.LONGITUDE));
         setSpeed(this.getDouble(Tags.SPEED));
         setAltitude(this.getDouble(Tags.ALTITUDE));
+
     }
 
     public String getUtm() {
