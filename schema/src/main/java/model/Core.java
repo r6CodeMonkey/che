@@ -15,8 +15,8 @@ public class Core extends JSONObject {
         super(core);
     }
 
-    public String getUid() throws JSONException {
-        return this.getString(Tags.UID);
+    public String getAckId() throws JSONException {
+        return this.getString(Tags.ACK_ID);
     }
 
     public User getUser() throws JSONException {

@@ -6,7 +6,6 @@ package util;
 public class Tags {
 
     //object tags
-    public static final String CORE_OBJECT = "core";
     public static final String LOCATION_OBJECT = "location";
     public static final String GENERIC_OBJECT = "generic";
     public static final String ACKNOWLEDGE_OBJECT = "acknowledge";

@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 public class ModelTest {
 
     public static final String ACKNOWLEDGE_TEST = "{" + Tags.ACK_ID + ":'1', " + Tags.INFO + ":'info'," + Tags.STATE + ":'state'}";
-    public static final String CORE_TEST = "{" + Tags.UID + ":'1'}";
+    public static final String CORE_TEST = "{" + Tags.ACK_ID + ":'1'}";
     public static final String LOCATION_TEST = "{" + Tags.ALTITUDE + ":1.0," + Tags.SPEED + ":2.0," + Tags.LATITUTDE + ":3.0," + Tags.LONGITUDE + ":4.0," + Tags.UTM + ":'UTM'," + Tags.SUB_UTM + ":'SUB'}";
     public static final String USER_TEST = "{" + Tags.UID + ":'1'}";
     public static final String GENERIC_TEST = "{" + Tags.UID + ":'1'," + Tags.TYPE + ":'generic'," + Tags.VALUE + ":'value'," + Tags.STATE + ":'state'}";
@@ -22,7 +22,6 @@ public class ModelTest {
     public void testAcknowledge() {
         Acknowledge acknowledge = new Acknowledge(ACKNOWLEDGE_TEST);
 
-        assertEquals("1", acknowledge.getAckId());
         assertEquals("info", acknowledge.getInfo());
         assertEquals("state", acknowledge.getState());
 
@@ -32,7 +31,7 @@ public class ModelTest {
     public void testCore() {
         Core core = new Core(CORE_TEST);
 
-        assertEquals("1", core.getUid());
+        assertEquals("1", core.getAckId());
 
     }
 

@@ -24,18 +24,8 @@ public class Acknowledge extends JSONObject {
     }
 
     private void setAll(){
-        setAckId(this.getString(Tags.ACK_ID));
         setInfo(this.getString(Tags.INFO));
         setState(this.getString(Tags.STATE));
-
-    }
-
-    public String getAckId() {
-        return ackId;
-    }
-
-    public void setAckId(String ackId) {
-        this.ackId = ackId;
     }
 
     public String getState() {
