@@ -5,10 +5,13 @@ package model.generic;
  */
 public interface GenericInterface {
 
-    public void getId();
+    public String getType();
 
-    public void getValue(String value);
+    public String getId();
 
-    public void getStatus(String status);
+    public String getValue();
+
+    public String getState();
+
 
 }

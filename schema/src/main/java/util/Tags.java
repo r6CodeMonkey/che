@@ -17,7 +17,6 @@ public class Tags {
     public static final String ACK_ID = "ackid";
 
     //int tags
-    public static final String TYPE = "type";
     public static final String LONGITUDE = "long";
     public static final String LATITUTDE = "lat";
     public static final String SPEED = "speed";
@@ -28,6 +27,11 @@ public class Tags {
     public static final String INFO = "info";
     public static final String UTM = "utm";
     public static final String SUB_UTM = "subutm";
+
+    //generics
+    public static final String TYPE = "type";
+    public static final String VALUE = "value";
+
 
     //states
     public final static int ERROR = 0;
