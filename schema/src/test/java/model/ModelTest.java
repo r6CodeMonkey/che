@@ -1,11 +1,8 @@
 package model;
 
-import message.*;
 import model.generic.GenericModel;
 import org.junit.Test;
 import util.Tags;
-
-import javax.swing.text.html.HTML;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,7 +11,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class ModelTest {
 
-    public static final String ACKNOWLEDGE_TEST =  "{" + Tags.ACK_ID + ":'1', " + Tags.INFO + ":'info'," + Tags.STATE + ":'state'}";
+    public static final String ACKNOWLEDGE_TEST = "{" + Tags.ACK_ID + ":'1', " + Tags.INFO + ":'info'," + Tags.STATE + ":'state'}";
     public static final String CORE_TEST = "{" + Tags.UID + ":'1'}";
     public static final String LOCATION_TEST = "{" + Tags.ALTITUDE + ":1.0," + Tags.SPEED + ":2.0," + Tags.LATITUTDE + ":3.0," + Tags.LONGITUDE + ":4.0," + Tags.UTM + ":'UTM'," + Tags.SUB_UTM + ":'SUB'}";
     public static final String USER_TEST = "{" + Tags.UID + ":'1'}";

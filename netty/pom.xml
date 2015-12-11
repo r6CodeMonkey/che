@@ -17,11 +17,6 @@
         <scope>compile</scope>
     </dependency>
 
-    <dependency>
-        <groupId>com.hazelcast</groupId>
-        <artifactId>hazelcast</artifactId>
-        <version>3.5</version>
-    </dependency>
 
     <dependency>
         <groupId>org.json</groupId>
