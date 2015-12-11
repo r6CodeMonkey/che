@@ -2,38 +2,37 @@ import core.HazelcastManager;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import util.NettyChannelHandler;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by timmytime on 11/12/15.
  */
 public class HazelcastManagerTest {
 
-    private static HazelcastManager hazelcastManager;
+    private static Object object;
 
     @BeforeClass
     public static void init(){
-        hazelcastManager = new HazelcastManager();
+        HazelcastManager.start();
+        object = new String("tim");
     }
 
     @Test
     public void testTopic(){
-
-        hazelcastManager.createTopic("test");
-
+        HazelcastManager.createTopic("test");
     }
 
     @Test
     public void testMap(){
-
-        hazelcastManager.createMap("map");
-
+        HazelcastManager.createMap("map");
     }
-
 
 
     @AfterClass
     public static void destroy(){
-        hazelcastManager.stop();
+        HazelcastManager.stop();
     }
 
 }

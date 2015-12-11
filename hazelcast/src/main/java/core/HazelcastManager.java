@@ -2,9 +2,7 @@ package core;
 
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
-import util.ChannelHandler;
-
-import java.util.Map;
+import util.NettyChannelHandler;
 
 /**
  * Created by timmytime on 11/12/15.
@@ -12,10 +10,6 @@ import java.util.Map;
 public class HazelcastManager {
 
     private static HazelcastInstance hazelcastInstance;
-
-    public HazelcastManager(){
-        start();
-    }
 
     public static void start(){
         hazelcastInstance = Hazelcast.newHazelcastInstance();
@@ -30,12 +24,16 @@ public class HazelcastManager {
         hazelcastInstance.getTopic(topic);
     }
 
-    public static String subscribe(String topic, ChannelHandler user ){
+    public static String subscribe(String topic, NettyChannelHandler user ){
        return hazelcastInstance.getTopic(topic).addMessageListener(user);
     }
 
     public static void unSubscribe(String topic, String regId){
         hazelcastInstance.getTopic(topic).removeMessageListener(regId);
+    }
+
+    public static void publish(String topic, Object message){
+        hazelcastInstance.getTopic(topic).publish(message);
     }
 
     public static void createMap(String map){
