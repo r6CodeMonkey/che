@@ -12,6 +12,7 @@
     <modules>
         <module>netty</module>
         <module>hazelcast</module>
+        <module>schema</module>
     </modules>
 
 

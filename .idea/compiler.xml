@@ -24,13 +24,6 @@
         <processorPath useClasspath="true" />
         <module name="netty" />
       </profile>
-      <profile default="false" name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-        <module name="hazelcast" />
-      </profile>
       <profile default="false" name="Annotation profile for schema" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -38,11 +31,18 @@
         <processorPath useClasspath="true" />
         <module name="schema" />
       </profile>
+      <profile default="false" name="Annotation profile for hazelcast" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="hazelcast" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Che" target="1.5" />
       <module name="che" target="1.5" />
-      <module name="hazelcast" target="1.5" />
+      <module name="hazelcast" target="1.8" />
       <module name="netty" target="1.8" />
       <module name="schema" target="1.8" />
     </bytecodeTargetLevel>

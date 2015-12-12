@@ -12,6 +12,8 @@ import java.util.List;
  */
 public class JsonFrameDecoder extends ByteToMessageDecoder {
 
+    public static final char OBJECT_START = '{';
+    public static final char OBJECT_END = '}';
 
     @Override
     protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf in, List<Object> out) throws Exception {
@@ -28,10 +30,10 @@ public class JsonFrameDecoder extends ByteToMessageDecoder {
 
 
         for (int i = 0; i < buffer.length && !messageBuffered; i++) {
-            if (buffer[i] == '{') {
+            if (buffer[i] == OBJECT_START) {
                 openBracket++;
             }
-            else if (buffer[i] == '}') {
+            else if (buffer[i] == OBJECT_END) {
                 closeBracket++;
             }
 
@@ -48,7 +50,6 @@ public class JsonFrameDecoder extends ByteToMessageDecoder {
             in.readBytes(message.getBytes().length); //as every new message has a count in front?
             out.add(message);
         }
-
 
     }
 }

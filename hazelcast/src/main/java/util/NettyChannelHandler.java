@@ -3,6 +3,7 @@ package util;
 import com.hazelcast.core.MessageListener;
 
 import io.netty.channel.Channel;
+import com.hazelcast.core.Message;
 
 /**
  * Created by timmytime on 11/12/15.
@@ -10,6 +11,7 @@ import io.netty.channel.Channel;
 public class NettyChannelHandler implements MessageListener {
 
     private Channel channel;
+    private Message lastMessage;
 
     public NettyChannelHandler(Channel channel){
         setChannel(channel);
@@ -27,8 +29,11 @@ public class NettyChannelHandler implements MessageListener {
         return channel.isOpen();
     }
 
-    public void onMessage(com.hazelcast.core.Message message) {
-      //more to do here.
+    public Message getLastMessage(){return lastMessage;}
+
+    public void onMessage(Message message) {
+        //more to do here.
+        lastMessage = message;
         channel.writeAndFlush(message);
     }
 }
