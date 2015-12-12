@@ -22,7 +22,7 @@ public class Location extends JSONObject {
         setAll();
     }
 
-    private void setAll(){
+    private void setAll() {
         setUtm(this.getString(Tags.UTM));
         setSubUtm(this.getString(Tags.SUB_UTM));
         setLatitude(this.getDouble(Tags.LATITUTDE));

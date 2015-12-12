@@ -1,4 +1,4 @@
-package channel.handler;
+package channel;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -32,8 +32,7 @@ public class JsonFrameDecoder extends ByteToMessageDecoder {
         for (int i = 0; i < buffer.length && !messageBuffered; i++) {
             if (buffer[i] == OBJECT_START) {
                 openBracket++;
-            }
-            else if (buffer[i] == OBJECT_END) {
+            } else if (buffer[i] == OBJECT_END) {
                 closeBracket++;
             }
 

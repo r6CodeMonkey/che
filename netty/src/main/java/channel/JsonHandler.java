@@ -1,12 +1,9 @@
-package channel.handler;
+package channel;
 
 import factory.MessageFactory;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import model.Acknowledge;
 import model.Core;
-import org.json.JSONException;
-import org.json.JSONObject;
 import util.Configuration;
 import util.Tags;
 
@@ -34,20 +31,13 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
     @Override
     protected void messageReceived(ChannelHandlerContext ctx, Object msg) throws Exception {
 
-        Core core = (Core)MessageFactory.getMessage(MessageFactory.CORE, msg.toString());
-
+        Core core = (Core) MessageFactory.getMessage(MessageFactory.CORE, msg.toString());
         //does the message contain what is required.
         if (core.getAckId().trim().isEmpty()) {
             ctx.channel().writeAndFlush(MessageFactory.createAcknowledge("", Tags.ERROR, "ackid not set"));
         } else {
-            /** fire it up the pipeline  need to think about this,
-             *
-             *  we now have a valid object.  do we need one more level, or should the message simply be handed off now to
-             *  camel / controller to actually manage everything else.
-             */
-           // ctx.fireChannelRead(coreMessage);
+            ctx.fireChannelRead(core);
         }
-
     }
 
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {

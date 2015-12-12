@@ -1,14 +1,7 @@
 package factory;
 
 import message.*;
-import message.Acknowledge;
-import message.Core;
-import message.Location;
-import message.User;
-import model.*;
 import org.json.JSONObject;
-
-import java.util.Map;
 
 /**
  * Created by timmytime on 11/12/15.
@@ -22,14 +15,14 @@ public class MessageFactory {
     public static final int GENERIC = 4;
 
 
-    public static String createAcknowledge(String ackId, String state, String info){
+    public static String createAcknowledge(String ackId, String state, String info) {
         return model.Acknowledge.create(ackId, state, info).toString();
     }
 
 
-    public static JSONObject getMessage(int type, String message){
+    public static JSONObject getMessage(int type, String message) {
 
-        switch(type){
+        switch (type) {
             case ACKNOWLEDGE:
                 Acknowledge acknowledge = new Acknowledge();
                 acknowledge.create(message);

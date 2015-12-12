@@ -6,10 +6,7 @@ import org.junit.Test;
 import util.NettyChannelHandler;
 import util.TopicSubscriptions;
 
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 
 
@@ -21,13 +18,18 @@ public class HazelcastManagerTest {
     private static Object object;
 
     @BeforeClass
-    public static void init(){
+    public static void init() {
         HazelcastManager.start();
         object = new String("tim");
     }
 
+    @AfterClass
+    public static void destroy() {
+        HazelcastManager.stop();
+    }
+
     @Test
-    public void testTopic(){
+    public void testTopic() {
         HazelcastManager.createTopic("test");
 
         NettyChannelHandler nettyChannelHandler = new NettyChannelHandler(mock(Channel.class));
@@ -39,7 +41,7 @@ public class HazelcastManagerTest {
         try {
             this.wait(1000);
             assertEquals("test message", nettyChannelHandler.getLastMessage().getMessageObject().toString());
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
@@ -51,14 +53,14 @@ public class HazelcastManagerTest {
         try {
             this.wait(1000);
             assertNotEquals("test message 2", nettyChannelHandler.getLastMessage().getMessageObject().toString());
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
     }
 
     @Test
-    public void testMap(){
+    public void testMap() {
         HazelcastManager.createMap("map");
         HazelcastManager.put("map", "object", object);
         assertEquals("tim", HazelcastManager.get("map", "object"));
@@ -68,12 +70,6 @@ public class HazelcastManagerTest {
         HazelcastManager.put("map", "object2", object);
         HazelcastManager.removeAll("map");
         assertEquals(0, HazelcastManager.get("map").size());
-    }
-
-
-    @AfterClass
-    public static void destroy(){
-        HazelcastManager.stop();
     }
 
 }

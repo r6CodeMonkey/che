@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/netty/pom.xml" />
         <option value="$PROJECT_DIR$/hazelcast/pom.xml" />
         <option value="$PROJECT_DIR$/schema/pom.xml" />
+        <option value="$PROJECT_DIR$/cheController/pom.xml" />
       </list>
     </option>
   </component>

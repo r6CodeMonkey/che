@@ -4,8 +4,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import util.Tags;
 
-import javax.swing.text.html.HTML;
-
 /**
  * Created by timmytime on 10/12/15.
  */
@@ -13,16 +11,7 @@ public class Acknowledge extends JSONObject {
 
     private String ackId, state, info;
 
-    public static JSONObject create(String ackId, String state, String info){
-        Acknowledge ack = new Acknowledge();
-        ack.put(Tags.ACK_ID, ackId);
-        ack.put(Tags.INFO, info);
-        ack.put(Tags.STATE, state);
-
-        return ack;
-    }
-
-    public Acknowledge(){
+    public Acknowledge() {
 
     }
 
@@ -36,7 +25,16 @@ public class Acknowledge extends JSONObject {
         setAll();
     }
 
-    private void setAll(){
+    public static JSONObject create(String ackId, String state, String info) {
+        Acknowledge ack = new Acknowledge();
+        ack.put(Tags.ACK_ID, ackId);
+        ack.put(Tags.INFO, info);
+        ack.put(Tags.STATE, state);
+
+        return ack;
+    }
+
+    private void setAll() {
         setInfo(this.getString(Tags.INFO));
         setState(this.getString(Tags.STATE));
         setAckId(this.getString(Tags.ACK_ID));
@@ -58,9 +56,11 @@ public class Acknowledge extends JSONObject {
         this.info = info;
     }
 
-    public String getAckId(){ return ackId;}
+    public String getAckId() {
+        return ackId;
+    }
 
-    public void setAckId(String ackId){
+    public void setAckId(String ackId) {
         this.ackId = ackId;
     }
 

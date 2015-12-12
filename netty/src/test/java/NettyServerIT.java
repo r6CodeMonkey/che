@@ -14,7 +14,7 @@ public class NettyServerIT {
     }
 
     @AfterClass
-    public static void destroy(){
+    public static void destroy() {
 
     }
 

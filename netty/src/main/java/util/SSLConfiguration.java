@@ -16,18 +16,18 @@ import java.security.cert.CertificateException;
  */
 public class SSLConfiguration {
 
-    private static KeyStore loadKeyStore(String format, String path, char[] password) throws CertificateException, KeyStoreException,NoSuchAlgorithmException,  FileNotFoundException, IOException {
+    private static KeyStore loadKeyStore(String format, String path, char[] password) throws CertificateException, KeyStoreException, NoSuchAlgorithmException, FileNotFoundException, IOException {
 
-       KeyStore keyStore = KeyStore.getInstance(format);
+        KeyStore keyStore = KeyStore.getInstance(format);
 
-       try(InputStream inputStream =  new FileInputStream(path)){
-           keyStore.load(inputStream, password);
-       }
+        try (InputStream inputStream = new FileInputStream(path)) {
+            keyStore.load(inputStream, password);
+        }
 
         return keyStore;
     }
 
-    public static SSLContext configure(Configuration configuration) throws CertificateException, KeyStoreException,NoSuchAlgorithmException,  FileNotFoundException, IOException, UnrecoverableKeyException, KeyManagementException {
+    public static SSLContext configure(Configuration configuration) throws CertificateException, KeyStoreException, NoSuchAlgorithmException, FileNotFoundException, IOException, UnrecoverableKeyException, KeyManagementException {
 
         SSLContext context = null;
         TrustManager[] managers = null;

@@ -10,19 +10,19 @@ public class TopicSubscriptions {
 
     private final Map<String, String> subscriptions;
 
-    public TopicSubscriptions(){
+    public TopicSubscriptions() {
         subscriptions = new HashMap<>();
     }
 
-    public String getSubscription(String topic){
+    public String getSubscription(String topic) {
         return subscriptions.get(topic);
     }
 
-    public void addSubscription(String topic, String subscription){
+    public void addSubscription(String topic, String subscription) {
         subscriptions.put(topic, subscription);
     }
 
-    public void removeSubscription(String topic){
+    public void removeSubscription(String topic) {
         subscriptions.remove(topic);
     }
 
