@@ -31,10 +31,13 @@ public class Tags {
     public static final String TYPE = "type";
     public static final String VALUE = "value";
 
-
     //states
-    public final static int ERROR = 0;
-    public final static int SUCCESS = 1;
-    public final static int ACCEPT = 2;
+    public final static String ERROR = "ERROR";
+    public final static String SUCCESS = "SUCCESS";
+    public final static String ACCEPT = "ACCEPT";
+
+    //general
+    public final static String ACTIVE = "ACTIVE";
+
 
 }

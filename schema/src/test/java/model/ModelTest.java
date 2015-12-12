@@ -24,6 +24,7 @@ public class ModelTest {
 
         assertEquals("info", acknowledge.getInfo());
         assertEquals("state", acknowledge.getState());
+        assertEquals("1", acknowledge.getAckId());
 
     }
 
