@@ -3,7 +3,9 @@ package channel;
 import factory.MessageFactory;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import model.CheControllerObject;
 import model.Core;
+import org.json.JSONException;
 import util.Configuration;
 import util.Tags;
 
@@ -23,17 +25,19 @@ public class CheHandler extends SimpleChannelInboundHandler<Core> {
     protected void messageReceived(ChannelHandlerContext ctx, Core msg) throws Exception {
 
         this.core = msg;
-
-        //simple going to establish a socket to che server, send and close.
-        //che controller should be able to use the socket passed through, rather than use this one.
-        //ideally this is where camel comes in.  ie pass to that to end point..
+        //we can send the object to the cheController netty server.
+        CheControllerObject cheControllerObject = new CheControllerObject(core, ctx.channel());
 
         ctx.channel().writeAndFlush(MessageFactory.createAcknowledge(core.getAckId(), Tags.SUCCESS, "Received"));
 
     }
 
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-        ctx.channel().writeAndFlush(MessageFactory.createAcknowledge(core.getAckId(), Tags.ERROR, cause.toString()));
-        configuration.getLogger().error(cause.getMessage());
+     try {
+         ctx.channel().writeAndFlush(MessageFactory.createAcknowledge(core.getAckId(), Tags.ERROR, cause.toString()));
+          configuration.getLogger().error(cause.getMessage());
+     }catch (Exception e){
+         configuration.getLogger().error(e.getMessage());
+     }
     }
 }

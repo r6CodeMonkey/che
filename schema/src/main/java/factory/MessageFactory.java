@@ -15,11 +15,17 @@ public class MessageFactory {
     public static final int GENERIC = 4;
 
 
+    /*
+      helper to make an acknowledge.  sent from server, should not be used from clients.
+     */
     public static String createAcknowledge(String ackId, String state, String info) {
         return model.Acknowledge.create(ackId, state, info).toString();
     }
 
 
+    /*
+      not of huge use, as all messages will be in core anyway.  primarily for testing purposes (when type != CORE)
+     */
     public static JSONObject getMessage(int type, String message) {
 
         switch (type) {

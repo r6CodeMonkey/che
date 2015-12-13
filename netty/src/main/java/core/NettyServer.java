@@ -23,15 +23,12 @@ public class NettyServer {
 
     //this is entry point
     public static void main(String[] args) throws Exception {
-
         //need to load actually configuration at some point.
         Configuration config = new Configuration();
-
         new NettyServer(config).run();
     }
 
     public void run() throws Exception {
-
 
         EventLoopGroup bossGroup = new NioEventLoopGroup(configuration.getBossThreads());
         EventLoopGroup workerGroup = new NioEventLoopGroup(configuration.getWorkerThreads());
@@ -53,15 +50,12 @@ public class NettyServer {
 
             ChannelFuture f = b.bind(configuration.getPort()).sync();
 
-
             f.channel().closeFuture().sync();
-
 
         } finally {
             workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();
             channelInitializer.stop();
         }
-
     }
 }
