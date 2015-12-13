@@ -24,7 +24,9 @@ public class CheHandler extends SimpleChannelInboundHandler<Core> {
 
         this.core = msg;
 
-        //we now need to connect to the CheController server and send the Core msg object, and the users channel.
+        //simple going to establish a socket to che server, send and close.
+        //che controller should be able to use the socket passed through, rather than use this one.
+        //ideally this is where camel comes in.  ie pass to that to end point..
 
         ctx.channel().writeAndFlush(MessageFactory.createAcknowledge(core.getAckId(), Tags.SUCCESS, "Received"));
 

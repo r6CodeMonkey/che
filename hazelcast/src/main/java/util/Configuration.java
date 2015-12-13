@@ -9,11 +9,9 @@ public class Configuration {
     private String url = "//localhost/HazelcastServer";
 
     public Configuration(){
-
     }
 
     public Configuration(String path){
-
     }
 
     public int getPort(){
