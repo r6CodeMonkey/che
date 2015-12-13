@@ -10,17 +10,6 @@ public class UTMConvert {
 
 
     public static final int LONG_ZONES = 60;
-
-    private static final int LAT_DEG = 8;
-    private static final int LONG_DEG = 6;
-
-    private double LAT_SUB_DEG = 0.05;
-    private double LONG_SUB_DEG = 0.1;
-
-    private static final int LAT_OFFSET = 80;
-    private static final int LONG_OFFSET = 180;
-
-
     public static final List<String> latValues = new ArrayList<String>() {{
         add("C");
         add("D");
@@ -43,6 +32,12 @@ public class UTMConvert {
         add("W");
         add("X");
     }};
+    private static final int LAT_DEG = 8;
+    private static final int LONG_DEG = 6;
+    private static final int LAT_OFFSET = 80;
+    private static final int LONG_OFFSET = 180;
+    private double LAT_SUB_DEG = 0.05;
+    private double LONG_SUB_DEG = 0.1;
 
 
     public UTMConvert() {

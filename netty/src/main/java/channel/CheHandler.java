@@ -5,7 +5,6 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import model.CheControllerObject;
 import model.Core;
-import org.json.JSONException;
 import util.Configuration;
 import util.Tags;
 
@@ -17,7 +16,7 @@ public class CheHandler extends SimpleChannelInboundHandler<Core> {
     private Configuration configuration;
     private Core core;
 
-    public CheHandler(Configuration configuration){
+    public CheHandler(Configuration configuration) {
         this.configuration = configuration;
     }
 
@@ -33,11 +32,11 @@ public class CheHandler extends SimpleChannelInboundHandler<Core> {
     }
 
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-     try {
-         ctx.channel().writeAndFlush(MessageFactory.createAcknowledge(core.getAckId(), Tags.ERROR, cause.toString()));
-          configuration.getLogger().error(cause.getMessage());
-     }catch (Exception e){
-         configuration.getLogger().error(e.getMessage());
-     }
+        try {
+            ctx.channel().writeAndFlush(MessageFactory.createAcknowledge(core.getAckId(), Tags.ERROR, cause.toString()));
+            configuration.getLogger().error(cause.getMessage());
+        } catch (Exception e) {
+            configuration.getLogger().error(e.getMessage());
+        }
     }
 }

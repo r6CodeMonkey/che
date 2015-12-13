@@ -16,7 +16,7 @@ public class CheControllerServer {
     private final Configuration configuration;
     private final CheChannelInitializer cheChannelInitializer = new CheChannelInitializer();
 
-    public CheControllerServer(Configuration configuration){
+    public CheControllerServer(Configuration configuration) {
         this.configuration = configuration;
         cheChannelInitializer.init(configuration);
     }

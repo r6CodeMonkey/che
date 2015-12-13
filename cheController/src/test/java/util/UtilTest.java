@@ -14,20 +14,20 @@ public class UtilTest {
         //simple
         UTM utm = new UTM("lat", "lng");
 
-        assertEquals("lat",utm.getUtmLat());
-        assertEquals("lng",utm.getUtmLong());
-        assertEquals("latlng",utm.getUtm());
+        assertEquals("lat", utm.getUtmLat());
+        assertEquals("lng", utm.getUtmLong());
+        assertEquals("latlng", utm.getUtm());
 
     }
 
     @Test
-    public void testUTMConvert(){
+    public void testUTMConvert() {
         //need some strong cases for this when i cba...
         UTMConvert utmConvert = new UTMConvert();
 
         UTM utm = utmConvert.getUTMGrid(40.0, 25.0);
         assertEquals("T35", utm.getUtm());
-        assertEquals("1C10", utmConvert.getUTMSubGrid(utm,40.0,25.0).getUtm());
+        assertEquals("1C10", utmConvert.getUTMSubGrid(utm, 40.0, 25.0).getUtm());
 
         utm = utmConvert.getUTMGrid(-34.0, -34.0);
         assertEquals("H25", utm.getUtm());
@@ -35,7 +35,7 @@ public class UtilTest {
 
         utm = utmConvert.getUTMGrid(0.0, 0.0);
         assertEquals("N31", utm.getUtm());
-        assertEquals("1C0", utmConvert.getUTMSubGrid(utm,0.0,0.0).getUtm());
+        assertEquals("1C0", utmConvert.getUTMSubGrid(utm, 0.0, 0.0).getUtm());
 
     }
 }

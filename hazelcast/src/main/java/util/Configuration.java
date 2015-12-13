@@ -8,17 +8,17 @@ public class Configuration {
     private int port = 1099;
     private String url = "//localhost/HazelcastServer";
 
-    public Configuration(){
+    public Configuration() {
     }
 
-    public Configuration(String path){
+    public Configuration(String path) {
     }
 
-    public int getPort(){
+    public int getPort() {
         return port;
     }
 
-    public String getURL(){
+    public String getURL() {
         return url;
     }
 }

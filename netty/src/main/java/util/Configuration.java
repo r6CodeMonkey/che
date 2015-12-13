@@ -39,7 +39,7 @@ public class Configuration {
     private int soRcvBuf;
     private boolean keepAlive = true;
     private int backlog = 128;
-   private boolean epollMode = false;
+    private boolean epollMode = false;
 
 
     public Configuration() {

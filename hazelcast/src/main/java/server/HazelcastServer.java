@@ -24,6 +24,35 @@ public class HazelcastServer extends UnicastRemoteObject implements HazelcastMan
         HazelcastManager.start();
     }
 
+    public static void stopServer() {
+        HazelcastManager.stop();
+    }
+
+    public static void startServer() throws Exception {
+        Configuration configuration = new Configuration();
+
+        try {
+            LocateRegistry.createRegistry(configuration.getPort());
+        } catch (Exception e) {
+
+        }
+
+        HazelcastServer server = new HazelcastServer();
+        Naming.rebind(configuration.getURL(), server);
+
+        //add a shut down hook.  mainly for testing / local development.
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                HazelcastManager.stop();
+            }
+        });
+    }
+
+    public static void main(String[] args) throws Exception {
+        startServer();
+    }
+
     @Override
     public void createTopic(String topic) {
         hazelcastManager.createTopic(topic);
@@ -72,32 +101,6 @@ public class HazelcastServer extends UnicastRemoteObject implements HazelcastMan
     @Override
     public void remove(String map, String key) {
         hazelcastManager.remove(map, key);
-    }
-
-    public static void stopServer(){
-        HazelcastManager.stop();
-    }
-
-    public static void main(String[] args) throws Exception {
-
-        Configuration configuration = new Configuration();
-
-        try{
-            LocateRegistry.createRegistry(configuration.getPort());
-        }catch(Exception e){
-
-        }
-
-        HazelcastServer server = new HazelcastServer();
-        Naming.rebind(configuration.getURL(), server);
-
-        //add a shut down hook.  mainly for testing / local development.
-        Runtime.getRuntime().addShutdownHook(new Thread(){
-            @Override
-        public void run(){
-                HazelcastManager.stop();
-            }
-        });
     }
 
 }
