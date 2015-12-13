@@ -16,9 +16,11 @@ import static org.mockito.Mockito.mock;
 public class HazelcastManagerTest {
 
     private static Object object;
+    private static HazelcastManager hazelcastManager;
 
     @BeforeClass
     public static void init() {
+        hazelcastManager = new HazelcastManager();
         HazelcastManager.start();
         object = new String("tim");
     }
@@ -30,14 +32,14 @@ public class HazelcastManagerTest {
 
     @Test
     public void testTopic() {
-        HazelcastManager.createTopic("test");
+        hazelcastManager.createTopic("test");
 
         NettyChannelHandler nettyChannelHandler = new NettyChannelHandler(mock(Channel.class));
         TopicSubscriptions topicSubscriptions = new TopicSubscriptions();
 
-        topicSubscriptions.addSubscription("test", HazelcastManager.subscribe("test", nettyChannelHandler));
+        topicSubscriptions.addSubscription("test", hazelcastManager.subscribe("test", nettyChannelHandler));
 
-        HazelcastManager.publish("test", "test message");
+        hazelcastManager.publish("test", "test message");
         try {
             this.wait(1000);
             assertEquals("test message", nettyChannelHandler.getLastMessage().getMessageObject().toString());
@@ -46,10 +48,10 @@ public class HazelcastManagerTest {
         }
 
         //now unsubscribe.
-        HazelcastManager.unSubscribe("topic", topicSubscriptions);
+        hazelcastManager.unSubscribe("topic", topicSubscriptions);
         assertNull(topicSubscriptions.getSubscription("topic"));
 
-        HazelcastManager.publish("test", "test message 2");
+        hazelcastManager.publish("test", "test message 2");
         try {
             this.wait(1000);
             assertNotEquals("test message 2", nettyChannelHandler.getLastMessage().getMessageObject().toString());
@@ -61,15 +63,15 @@ public class HazelcastManagerTest {
 
     @Test
     public void testMap() {
-        HazelcastManager.createMap("map");
-        HazelcastManager.put("map", "object", object);
-        assertEquals("tim", HazelcastManager.get("map", "object"));
-        HazelcastManager.remove("map", "object");
-        assertNull(HazelcastManager.get("map", "object"));
-        HazelcastManager.put("map", "object", object);
-        HazelcastManager.put("map", "object2", object);
-        HazelcastManager.removeAll("map");
-        assertEquals(0, HazelcastManager.get("map").size());
+        hazelcastManager.createMap("map");
+        hazelcastManager.put("map", "object", object);
+        assertEquals("tim", hazelcastManager.get("map", "object"));
+        hazelcastManager.remove("map", "object");
+        assertNull(hazelcastManager.get("map", "object"));
+        hazelcastManager.put("map", "object", object);
+        hazelcastManager.put("map", "object2", object);
+        hazelcastManager.removeAll("map");
+        assertEquals(0, hazelcastManager.get("map").size());
     }
 
 }
