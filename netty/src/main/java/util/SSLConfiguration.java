@@ -29,20 +29,22 @@ public class SSLConfiguration {
 
     public static SSLContext configure(Configuration configuration) throws CertificateException, KeyStoreException, NoSuchAlgorithmException, FileNotFoundException, IOException, UnrecoverableKeyException, KeyManagementException {
 
-        SSLContext context = null;
+
         TrustManager[] managers = null;
 
-        KeyStore trustStore = loadKeyStore(configuration.getTrustStoreFormat(), configuration.getTrustStore(), configuration.getTrustStorePassword().toCharArray());
-        KeyStore keyStore = loadKeyStore(configuration.getKeyStoreFormat(), configuration.getKeyStore(), configuration.getKeyStorePassword().toCharArray());
+        //if we want to use a truststore can correct this
+      //  KeyStore trustStore = loadKeyStore(configuration.getTrustStoreFormat(), configuration.getTrustStore(), configuration.getTrustStorePassword().toCharArray());
 
-        TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-        tmf.init(trustStore);
-        managers = tmf.getTrustManagers();
+     //   TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+     //   tmf.init(trustStore);
+     //   managers = tmf.getTrustManagers();
+
+        KeyStore keyStore = loadKeyStore(configuration.getKeyStoreFormat(), configuration.getKeyStore(), configuration.getKeyStorePassword().toCharArray());
 
         KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
         kmf.init(keyStore, configuration.getKeyStorePassword().toCharArray());
 
-        context = SSLContext.getInstance(configuration.getSslProtocol());
+        SSLContext context = SSLContext.getInstance(configuration.getSslProtocol());
         context.init(kmf.getKeyManagers(), managers, null);
 
         return context;

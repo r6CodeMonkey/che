@@ -24,13 +24,13 @@ public class Configuration {
     private int bossThreads = 1;
     private int workerThreads = 5;
     private int port = 8085;
-    private String keyStore;
+    private String keyStore = "";
     private String keyStorePassword;
-    private String keyStoreFormat;
+    private String keyStoreFormat ="jks";
     private String trustStore;
     private String trustStorePassword;
-    private String trustStoreFormat;
-    private String sslProtocol;
+    private String trustStoreFormat = "jks";
+    private String sslProtocol = "rsa";
     //server options
     private boolean nodeDelay = true;
     private int soLinger = 1000;
