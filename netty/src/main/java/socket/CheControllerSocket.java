@@ -89,10 +89,12 @@ public class CheControllerSocket {
                         }
 
                     }
+
                     //we have a message....so pass it on
                     channel.writeAndFlush(object);
 
                     System.out.println("received a message and it says "+object.toString());
+
 
                    }
 
