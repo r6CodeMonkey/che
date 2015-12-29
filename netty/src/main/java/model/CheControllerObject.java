@@ -10,6 +10,17 @@ import java.io.Serializable;
  */
 public class CheControllerObject implements Serializable {
 
+    /*
+
+     stupid idea to serialize sockets.
+
+     therefore, either bring this back to here...or ???  same issue as before tho.  what if we want to send messages via pub / sub.
+
+     they work as we keep hold of them
+
+     */
+
+
     private Core core;
     private Channel channel;
 

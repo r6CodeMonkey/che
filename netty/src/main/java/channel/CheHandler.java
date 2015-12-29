@@ -12,7 +12,10 @@ import socket.CheControllerSocket;
 import util.Configuration;
 import util.Tags;
 
+<<<<<<< HEAD
 import java.io.DataInputStream;
+=======
+>>>>>>> 90511389490602a2078308186c800e33db3d75bf
 import java.io.DataOutputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -47,6 +50,13 @@ public class CheHandler extends SimpleChannelInboundHandler<Core> {
         DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
         dataOutputStream.writeUTF("this is a test");
 
+        //camel is set up, though in reality, i may as well just send it direct to the socket.  seems pointless to use Camel for this (in this instance),
+      /*  Socket socket = new Socket("localhost", 8086);
+        ObjectOutputStream oOut = new ObjectOutputStream(socket.getOutputStream());
+        oOut.writeObject(cheControllerObject);
+
+        oOut.close();
+*/
         ctx.channel().writeAndFlush(MessageFactory.createAcknowledge(core.getAckId(), Tags.SUCCESS, "Received"));
 
     }

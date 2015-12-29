@@ -17,6 +17,7 @@ public class FactoryTest {
         MessageFactory.getMessage(MessageFactory.USER, ModelTest.USER_TEST);
         MessageFactory.getMessage(MessageFactory.LOCATION, ModelTest.LOCATION_TEST);
         MessageFactory.getMessage(MessageFactory.GENERIC, ModelTest.GENERIC_TEST);
+        MessageFactory.getMessage(MessageFactory.CORE, "{hello: there}");
 
     }
 }

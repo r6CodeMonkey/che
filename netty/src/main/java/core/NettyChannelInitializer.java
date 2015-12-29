@@ -52,7 +52,6 @@ public class NettyChannelInitializer extends ChannelInitializer {
         channel.pipeline().addLast(STRING_ENCODER_HANDLER, new StringEncoder());
         channel.pipeline().addLast(JSON_HANDLER, new JsonHandler(configuration));
         channel.pipeline().addLast(CHE_HANDLER, new CheHandler(configuration));
-
     }
 
     public void stop() {
