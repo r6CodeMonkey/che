@@ -12,12 +12,9 @@ import socket.CheControllerSocket;
 import util.Configuration;
 import util.Tags;
 
-<<<<<<< HEAD
 import java.io.DataInputStream;
-=======
->>>>>>> 90511389490602a2078308186c800e33db3d75bf
 import java.io.DataOutputStream;
-import java.io.ObjectOutputStream;
+
 import java.net.Socket;
 
 /**
