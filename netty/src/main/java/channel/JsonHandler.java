@@ -31,6 +31,8 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
     @Override
     protected void messageReceived(ChannelHandlerContext ctx, Object msg) throws Exception {
 
+        configuration.getLogger().debug(msg.toString());
+
         Core core = (Core) MessageFactory.getMessage(MessageFactory.CORE, msg.toString());
         //does the message contain what is required.
         if (core.getAckId().trim().isEmpty()) {
@@ -41,6 +43,8 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
     }
 
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+
+        configuration.getLogger().error("error of sorts");
 
         ctx.channel().writeAndFlush(MessageFactory.createAcknowledge("", Tags.ERROR, cause.toString()));
 

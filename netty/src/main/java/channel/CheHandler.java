@@ -8,6 +8,10 @@ import model.Core;
 import util.Configuration;
 import util.Tags;
 
+import java.io.DataOutputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+
 /**
  * Created by timmytime on 12/12/15.
  */
@@ -27,6 +31,13 @@ public class CheHandler extends SimpleChannelInboundHandler<Core> {
         //we can send the object to the cheController netty server.
         CheControllerObject cheControllerObject = new CheControllerObject(core, ctx.channel());
 
+        //camel is set up, though in reality, i may as well just send it direct to the socket.  seems pointless to use Camel for this (in this instance),
+      /*  Socket socket = new Socket("localhost", 8086);
+        ObjectOutputStream oOut = new ObjectOutputStream(socket.getOutputStream());
+        oOut.writeObject(cheControllerObject);
+
+        oOut.close();
+*/
         ctx.channel().writeAndFlush(MessageFactory.createAcknowledge(core.getAckId(), Tags.SUCCESS, "Received"));
 
     }
