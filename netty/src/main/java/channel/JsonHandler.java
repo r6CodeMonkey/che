@@ -15,7 +15,7 @@ import java.io.IOException;
 public class JsonHandler extends SimpleChannelInboundHandler<Object> {
 
 
-    private Configuration configuration;
+    private final Configuration configuration;
 
     public JsonHandler(Configuration configuration) {
         this.configuration = configuration;

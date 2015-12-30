@@ -26,18 +26,19 @@ public class NettyChannelInitializer extends ChannelInitializer {
     public static final String JSON_HANDLER = "jsonHandler";
     public static final String CHE_HANDLER = "cheHandler";
 
-    private Configuration configuration;
+    private final Configuration configuration;
     private SSLContext sslContext;
 
-    public void init(Configuration configuration) {
-
+    public NettyChannelInitializer(Configuration configuration) {
         this.configuration = configuration;
+
         try {
             sslContext = SSLConfiguration.configure(configuration);
         } catch (Exception e) {
             configuration.getLogger().error("SSL Context Configuration failed " + e.toString());
         }
     }
+
 
     @Override
     protected void initChannel(Channel channel) throws Exception {

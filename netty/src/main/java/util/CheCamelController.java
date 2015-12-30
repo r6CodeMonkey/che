@@ -2,8 +2,6 @@ package util;
 
 import model.CheControllerObject;
 import org.apache.camel.CamelContext;
-import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
@@ -22,15 +20,15 @@ public class CheCamelController {
             //testing only at present.  seems to work.  so next up is to build this up for proper testing.  ie send a core message then connect.
             @Override
             public void configure() throws Exception {
-              from("netty:tcp://localhost:8089").to("netty:tcp://localhost:8086").process(exchange -> {
-                  //create our object.
-                  CheControllerObject cheControllerObject = (CheControllerObject) exchange.getIn().getBody();
-                  exchange.getOut().setBody(cheControllerObject);
-              });
+                from("netty:tcp://localhost:8089").to("netty:tcp://localhost:8086").process(exchange -> {
+                    //create our object.
+                    CheControllerObject cheControllerObject = (CheControllerObject) exchange.getIn().getBody();
+                    exchange.getOut().setBody(cheControllerObject);
+                });
             }
         });
 
-       template = context.createProducerTemplate();
+        template = context.createProducerTemplate();
 
     }
 
@@ -44,11 +42,11 @@ public class CheCamelController {
     }
 
     //primarily for testing
-    public CamelContext getContext(){
+    public CamelContext getContext() {
         return context;
     }
 
-    public ProducerTemplate getTemplate(){
+    public ProducerTemplate getTemplate() {
         return template;
     }
 

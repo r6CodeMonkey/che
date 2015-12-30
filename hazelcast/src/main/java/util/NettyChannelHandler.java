@@ -16,7 +16,9 @@ public class NettyChannelHandler implements MessageListener {
         setChannel(channel);
     }
 
-    public Channel getChannel() {return channel;}
+    public Channel getChannel() {
+        return channel;
+    }
 
     public void setChannel(Channel channel) {
         this.channel = channel;

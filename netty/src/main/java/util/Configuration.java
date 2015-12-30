@@ -24,9 +24,11 @@ public class Configuration {
     private int bossThreads = 1;
     private int workerThreads = 5;
     private int port = 8085;
+    private int chePort = 8086;
+    private String cheIP = "localhost";
     private String keyStore = "";
     private String keyStorePassword;
-    private String keyStoreFormat ="jks";
+    private String keyStoreFormat = "jks";
     private String trustStore;
     private String trustStorePassword;
     private String trustStoreFormat = "jks";
@@ -58,6 +60,8 @@ public class Configuration {
         Element element = doc.getElementById("config");
 
         setPort(Integer.valueOf(element.getAttribute("port")));
+        setChePort(Integer.valueOf(element.getAttribute("chePort")));
+        setCheIP(element.getAttribute("cheIP"));
         setBossThreads(Integer.valueOf(element.getAttribute("boss")));
         setWorkerThreads(Integer.valueOf(element.getAttribute("worker")));
         setKeyStore(element.getAttribute("keystore"));
@@ -152,6 +156,22 @@ public class Configuration {
 
     public void setBacklog(int backlog) {
         this.backlog = backlog;
+    }
+
+    public int getChePort() {
+        return chePort;
+    }
+
+    public void setChePort(int chePort) {
+        this.chePort = chePort;
+    }
+
+    public String getCheIP() {
+        return cheIP;
+    }
+
+    public void setCheIP(String cheIP) {
+        this.cheIP = cheIP;
     }
 
     public int getPort() {

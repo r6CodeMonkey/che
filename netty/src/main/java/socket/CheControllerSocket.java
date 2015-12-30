@@ -1,9 +1,12 @@
 package socket;
 
 import io.netty.channel.Channel;
+import util.Configuration;
 
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.Socket;
 
 /**
  * Created by timmytime on 29/12/15.
@@ -12,14 +15,20 @@ public class CheControllerSocket {
 
     public static final int BUFFER_SIZE = 2048;
 
+    private final Configuration configuration;
     private final Channel channel;
+    private final Socket socket;
     private final DataInputStream dataInputStream;
+    private final DataOutputStream dataOutputStream;
 
     private Thread read;
 
-    public CheControllerSocket(Channel channel, DataInputStream dataInputStream){
+    public CheControllerSocket(Configuration configuration, Channel channel, Socket socket) throws IOException {
+        this.configuration = configuration;
         this.channel = channel;
-        this.dataInputStream = dataInputStream;
+        this.socket = socket;
+        this.dataInputStream = new DataInputStream(socket.getInputStream());
+        this.dataOutputStream = new DataOutputStream(socket.getOutputStream());
 
         //now start listening to the socket this is ongoing.
         read = new Thread((new Runnable() {
@@ -32,10 +41,18 @@ public class CheControllerSocket {
         read.start();
     }
 
+    public void write(String message) throws IOException {
+        dataOutputStream.write(message.getBytes("UTF-8"));
+    }
 
-    private void listen(){
 
-        try{
+    public Channel getChannel() {
+        return channel;
+    }
+
+    private void listen() {
+
+        try {
 
             byte[] buffer = new byte[BUFFER_SIZE];
             String partialObject = "";
@@ -93,18 +110,36 @@ public class CheControllerSocket {
                     //we have a message....so pass it on
                     channel.writeAndFlush(object);
 
-                    System.out.println("received a message and it says "+object.toString());
 
-
-                   }
-
+                }
 
             }
 
-        }catch (IOException e){
-
+        } catch (IOException e) {
+            configuration.getLogger().debug("Socket is closed / destroy");
+            destroy();
         }
 
+    }
+
+    public void destroy() {
+        try {
+            dataOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            dataInputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        read.interrupt();
+        read = null;
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

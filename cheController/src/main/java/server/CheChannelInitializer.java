@@ -3,9 +3,6 @@ package server;
 import channel.CheHandler;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
-import io.netty.handler.codec.serialization.ClassResolvers;
-import io.netty.handler.codec.serialization.ObjectDecoder;
-import io.netty.handler.codec.serialization.ObjectEncoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import util.Configuration;
@@ -31,8 +28,8 @@ public class CheChannelInitializer extends ChannelInitializer {
 
     @Override
     protected void initChannel(Channel channel) throws Exception {
-     //   channel.pipeline().addLast(OBJECT_ENCODER, new ObjectEncoder());
-     //   channel.pipeline().addLast(OBJECT_DECODER, new ObjectDecoder(ClassResolvers.cacheDisabled(getClass().getClassLoader())));
+        //   channel.pipeline().addLast(OBJECT_ENCODER, new ObjectEncoder());
+        //   channel.pipeline().addLast(OBJECT_DECODER, new ObjectDecoder(ClassResolvers.cacheDisabled(getClass().getClassLoader())));
         channel.pipeline().addLast("decode", new StringDecoder());
         channel.pipeline().addLast("encode", new StringEncoder());
 

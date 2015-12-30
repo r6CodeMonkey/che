@@ -3,7 +3,6 @@ package util;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
-import javax.net.ssl.TrustManagerFactory;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -33,11 +32,11 @@ public class SSLConfiguration {
         TrustManager[] managers = null;
 
         //if we want to use a truststore can correct this
-      //  KeyStore trustStore = loadKeyStore(configuration.getTrustStoreFormat(), configuration.getTrustStore(), configuration.getTrustStorePassword().toCharArray());
+        //  KeyStore trustStore = loadKeyStore(configuration.getTrustStoreFormat(), configuration.getTrustStore(), configuration.getTrustStorePassword().toCharArray());
 
-     //   TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-     //   tmf.init(trustStore);
-     //   managers = tmf.getTrustManagers();
+        //   TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+        //   tmf.init(trustStore);
+        //   managers = tmf.getTrustManagers();
 
         KeyStore keyStore = loadKeyStore(configuration.getKeyStoreFormat(), configuration.getKeyStore(), configuration.getKeyStorePassword().toCharArray());
 

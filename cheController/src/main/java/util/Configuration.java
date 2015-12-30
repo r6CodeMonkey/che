@@ -165,10 +165,11 @@ public class Configuration {
 }
 
 
-/**  public UUIDGenerator getUuidGenerator() {
- return uuidGenerator;
- }
- public UTMConvert getUtmConvert() {
- return utmConvert;
- }
+/**
+ * public UUIDGenerator getUuidGenerator() {
+ * return uuidGenerator;
+ * }
+ * public UTMConvert getUtmConvert() {
+ * return utmConvert;
+ * }
  **/

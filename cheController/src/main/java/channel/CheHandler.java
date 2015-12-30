@@ -1,6 +1,5 @@
 package channel;
 
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -14,22 +13,23 @@ public class CheHandler extends SimpleChannelInboundHandler<String> {
 
     private Configuration configuration;
 
-    public CheHandler(Configuration configuration){
+    public CheHandler(Configuration configuration) {
         this.configuration = configuration;
 
     }
 
     @Override
-    protected void messageReceived(ChannelHandlerContext ctx, String channel) throws Exception{
+    protected void messageReceived(ChannelHandlerContext ctx, String channel) throws Exception {
 
         ctx.writeAndFlush("hello there");
+
+        configuration.getLogger().debug("have called this");
 
     }
 
 
-
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-            configuration.getLogger().error(cause.getMessage());
+        configuration.getLogger().error(cause.getMessage());
     }
 
 }

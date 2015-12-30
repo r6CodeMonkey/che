@@ -1,12 +1,9 @@
 import core.HazelcastManagerInterface;
-import io.netty.channel.Channel;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import server.HazelcastServer;
 import util.Configuration;
-import util.NettyChannelHandler;
-import util.TopicSubscriptions;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -14,7 +11,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
 
 /**
  * Created by timmytime on 13/12/15.

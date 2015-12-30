@@ -14,11 +14,11 @@ import util.Configuration;
 public class NettyServer {
 
     private final Configuration configuration;
-    private final NettyChannelInitializer channelInitializer = new NettyChannelInitializer();
+    private final NettyChannelInitializer channelInitializer;
 
     public NettyServer(Configuration configuration) {
         this.configuration = configuration;
-        channelInitializer.init(configuration);
+        channelInitializer = new NettyChannelInitializer(configuration);
     }
 
     //this is entry point
