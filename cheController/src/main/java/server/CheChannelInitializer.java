@@ -24,7 +24,7 @@ public class CheChannelInitializer extends ChannelInitializer {
     private final CheHandler cheHandler;
     private final Configuration configuration;
 
-    public CheChannelInitializer(Configuration configuration) {
+    public CheChannelInitializer(Configuration configuration) throws Exception {
         this.configuration = configuration;
         cheHandler = new CheHandler(configuration);
     }

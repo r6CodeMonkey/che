@@ -33,6 +33,8 @@ public class Configuration {
     private boolean keepAlive = true;
     private int backlog = 128;
     private boolean epollMode = false;
+    private int hazelcastPort = 1099;
+    private String hazelcastURL = "//localhost/HazelcastServer";
 
     private ChannelMapController channelMapController = new ChannelMapController();
 
@@ -141,6 +143,22 @@ public class Configuration {
         this.backlog = backlog;
     }
 
+    public int getHazelcastPort() {
+        return hazelcastPort;
+    }
+
+    public void setHazelcastPort(int hazelcastPort) {
+        this.hazelcastPort = hazelcastPort;
+    }
+
+    public String getHazelcastURL() {
+        return hazelcastURL;
+    }
+
+    public void setHazelcastURL(String hazelcastURL) {
+        this.hazelcastURL = hazelcastURL;
+    }
+
     public int getPort() {
         return port;
     }
@@ -165,7 +183,9 @@ public class Configuration {
         this.workerThreads = workerThreads;
     }
 
-    public ChannelMapController getChannelMapController(){return channelMapController;}
+    public ChannelMapController getChannelMapController() {
+        return channelMapController;
+    }
 }
 
 
