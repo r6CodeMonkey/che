@@ -10,7 +10,12 @@ import util.Tags;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by timmytime on 12/12/15.
@@ -21,17 +26,25 @@ public class CheHandler extends SimpleChannelInboundHandler<Core> {
     private Core core;
     private Socket socket;
     private CheControllerSocket cheControllerSocket;
+    private boolean socketAvailable = false;
+
+
+    private final List<Core> pendingMessages = new ArrayList<>();
+
 
     public CheHandler(Configuration configuration) {
         this.configuration = configuration;
-        initSocket();
+        socketAvailable = initSocket();
     }
 
-    private void initSocket() {
+
+    private boolean initSocket() {
         try {
             socket = new Socket(configuration.getCheIP(), configuration.getChePort());
+            return true;
         } catch (IOException e) {
             configuration.getLogger().error("Che Port is not Available " + e.getMessage());
+            return false;
         }
     }
 
@@ -41,19 +54,29 @@ public class CheHandler extends SimpleChannelInboundHandler<Core> {
 
         this.core = msg;
 
+        configuration.getLogger().debug("ack id is "+msg.getAckId());
+
+
         if (socket == null || socket.isClosed()) {
-            initSocket();
+            socketAvailable = initSocket();
         }
 
-        if (cheControllerSocket == null || !cheControllerSocket.getChannel().isOpen()) {
-            cheControllerSocket = new CheControllerSocket(configuration, ctx.channel(), socket);
+        if (socketAvailable) {
+
+            if (cheControllerSocket == null || !cheControllerSocket.getChannel().isOpen()) {
+                cheControllerSocket = new CheControllerSocket(configuration, ctx.channel(), socket);
+            }
+
+             cheControllerSocket.write(msg);
+
+            for(Core pending : pendingMessages){
+                cheControllerSocket.write(pending);
+            }
+
+        }else{
+            pendingMessages.add(msg);
         }
 
-
-        //at some point do we want to consider netty?
-        //also need to test what happens when we lose the connection / channel.  2 cases.  case 1 is above, case to need to update channel.
-        DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
-        dataOutputStream.writeUTF("this is a test");
 
         ctx.channel().writeAndFlush(MessageFactory.createAcknowledge(core.getAckId(), Tags.SUCCESS, "Received"));
 

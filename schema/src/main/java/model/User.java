@@ -4,10 +4,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import util.Tags;
 
+import java.io.Serializable;
+
 /**
  * Created by timmytime on 10/12/15.
  */
-public class User extends JSONObject {
+public class User extends JSONObject implements Serializable{
 
     private String uid;
 

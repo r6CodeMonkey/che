@@ -3,13 +3,16 @@ package channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import model.Core;
 import util.Configuration;
+
+import java.util.Map;
 
 /**
  * Created by timmytime on 29/12/15.
  */
 @ChannelHandler.Sharable
-public class CheHandler extends SimpleChannelInboundHandler<String> {
+public class CheHandler extends SimpleChannelInboundHandler<Core> {
 
     private Configuration configuration;
 
@@ -19,11 +22,11 @@ public class CheHandler extends SimpleChannelInboundHandler<String> {
     }
 
     @Override
-    protected void messageReceived(ChannelHandlerContext ctx, String channel) throws Exception {
+    protected void messageReceived(ChannelHandlerContext ctx, Core core) throws Exception {
 
         ctx.writeAndFlush("hello there");
 
-        configuration.getLogger().debug("have called this");
+        configuration.getLogger().debug("have called this "+core.getAckId());
 
     }
 

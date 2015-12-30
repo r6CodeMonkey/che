@@ -1,12 +1,18 @@
 package socket;
 
 import io.netty.channel.Channel;
+import io.netty.handler.codec.serialization.ObjectEncoderOutputStream;
+import model.Core;
 import util.Configuration;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by timmytime on 29/12/15.
@@ -19,7 +25,10 @@ public class CheControllerSocket {
     private final Channel channel;
     private final Socket socket;
     private final DataInputStream dataInputStream;
-    private final DataOutputStream dataOutputStream;
+    private final ObjectEncoderOutputStream objectOutputStream;
+
+    private static final List<String> pendingSendMessages = new ArrayList<>();
+
 
     private Thread read;
 
@@ -28,7 +37,7 @@ public class CheControllerSocket {
         this.channel = channel;
         this.socket = socket;
         this.dataInputStream = new DataInputStream(socket.getInputStream());
-        this.dataOutputStream = new DataOutputStream(socket.getOutputStream());
+        this.objectOutputStream = new ObjectEncoderOutputStream(socket.getOutputStream());
 
         //now start listening to the socket this is ongoing.
         read = new Thread((new Runnable() {
@@ -41,9 +50,26 @@ public class CheControllerSocket {
         read.start();
     }
 
-    public void write(String message) throws IOException {
-        dataOutputStream.write(message.getBytes("UTF-8"));
+    public void write(Core message){
+
+        try {
+             objectOutputStream.writeObject(message);
+        } catch (IOException e) {
+            configuration.getLogger().error("something bad happened "+e.getMessage());
+        }
     }
+
+    private void writeToChannel(String message){
+
+        channel.writeAndFlush(message);
+
+        for(String msg : pendingSendMessages){
+            channel.writeAndFlush(msg);
+        }
+        pendingSendMessages.clear();
+
+    }
+
 
 
     public Channel getChannel() {
@@ -108,7 +134,7 @@ public class CheControllerSocket {
                     }
 
                     //we have a message....so pass it on
-                    channel.writeAndFlush(object);
+                    writeToChannel(object);
 
 
                 }
@@ -124,7 +150,7 @@ public class CheControllerSocket {
 
     public void destroy() {
         try {
-            dataOutputStream.close();
+            objectOutputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

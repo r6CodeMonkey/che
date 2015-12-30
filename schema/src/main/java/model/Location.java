@@ -4,10 +4,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import util.Tags;
 
+import java.io.Serializable;
+
 /**
  * Created by timmytime on 10/12/15.
  */
-public class Location extends JSONObject {
+public class Location extends JSONObject implements Serializable {
 
     private double latitude, longitude, speed, altitude;
     private String utm, subUtm;

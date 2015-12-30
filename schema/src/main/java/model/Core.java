@@ -5,10 +5,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import util.Tags;
 
+import java.io.Serializable;
+
 /**
  * Created by timmytime on 10/12/15.
  */
-public class Core extends JSONObject {
+public class Core extends JSONObject implements Serializable {
 
 
     public Core(String core) throws JSONException {
