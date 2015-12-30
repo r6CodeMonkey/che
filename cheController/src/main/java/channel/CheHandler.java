@@ -1,11 +1,13 @@
 package channel;
 
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import model.Core;
 import util.Configuration;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -14,20 +16,17 @@ import java.util.Map;
 @ChannelHandler.Sharable
 public class CheHandler extends SimpleChannelInboundHandler<Core> {
 
-    private Configuration configuration;
+    private final Configuration configuration;
 
     public CheHandler(Configuration configuration) {
         this.configuration = configuration;
-
     }
 
     @Override
     protected void messageReceived(ChannelHandlerContext ctx, Core core) throws Exception {
-
+        configuration.getChannelMapController().addChannel(core.getUser().getUid(), ctx.channel());
         ctx.writeAndFlush("hello there");
-
-        configuration.getLogger().debug("have called this "+core.getAckId());
-
+        //this can be focal point.  basically we can call a che controller in seperate thread.  simples.
     }
 
 

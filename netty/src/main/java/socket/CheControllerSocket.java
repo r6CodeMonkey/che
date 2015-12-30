@@ -1,18 +1,15 @@
 package socket;
 
 import io.netty.channel.Channel;
-import io.netty.handler.codec.serialization.ObjectEncoderOutputStream;
 import model.Core;
 import util.Configuration;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by timmytime on 29/12/15.
@@ -20,16 +17,12 @@ import java.util.Map;
 public class CheControllerSocket {
 
     public static final int BUFFER_SIZE = 2048;
-
+    private static final List<String> pendingSendMessages = new ArrayList<>();
     private final Configuration configuration;
     private final Channel channel;
     private final Socket socket;
     private final DataInputStream dataInputStream;
-    private final ObjectEncoderOutputStream objectOutputStream;
-
-    private static final List<String> pendingSendMessages = new ArrayList<>();
-
-
+    private final DataOutputStream dataOutputStream;
     private Thread read;
 
     public CheControllerSocket(Configuration configuration, Channel channel, Socket socket) throws IOException {
@@ -37,7 +30,7 @@ public class CheControllerSocket {
         this.channel = channel;
         this.socket = socket;
         this.dataInputStream = new DataInputStream(socket.getInputStream());
-        this.objectOutputStream = new ObjectEncoderOutputStream(socket.getOutputStream());
+        this.dataOutputStream = new DataOutputStream(socket.getOutputStream());
 
         //now start listening to the socket this is ongoing.
         read = new Thread((new Runnable() {
@@ -50,26 +43,25 @@ public class CheControllerSocket {
         read.start();
     }
 
-    public void write(Core message){
+    public void write(Core message) {
 
         try {
-             objectOutputStream.writeObject(message);
+            dataOutputStream.write(message.toString().getBytes("UTF-8"));
         } catch (IOException e) {
-            configuration.getLogger().error("something bad happened "+e.getMessage());
+            configuration.getLogger().error("something bad happened " + e.getMessage());
         }
     }
 
-    private void writeToChannel(String message){
+    private void writeToChannel(String message) {
 
         channel.writeAndFlush(message);
 
-        for(String msg : pendingSendMessages){
+        for (String msg : pendingSendMessages) {
             channel.writeAndFlush(msg);
         }
         pendingSendMessages.clear();
 
     }
-
 
 
     public Channel getChannel() {
@@ -150,7 +142,7 @@ public class CheControllerSocket {
 
     public void destroy() {
         try {
-            objectOutputStream.close();
+            dataOutputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

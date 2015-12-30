@@ -15,17 +15,18 @@ import util.Configuration;
 public class CheControllerServer {
 
     private final Configuration configuration;
-    private final CheChannelInitializer cheChannelInitializer = new CheChannelInitializer();
+    private final CheChannelInitializer cheChannelInitializer;
 
     public CheControllerServer(Configuration configuration) {
         this.configuration = configuration;
-        cheChannelInitializer.init(configuration);
+        cheChannelInitializer = new CheChannelInitializer(configuration);
     }
 
     //this is entry point
     public static void main(String[] args) throws Exception {
         //need to load actually configuration at some point.
         Configuration config = new Configuration();
+
         new CheControllerServer(config).run();
     }
 

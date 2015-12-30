@@ -17,10 +17,8 @@ import java.io.IOException;
 public class Configuration {
 
 
-    /* private UUIDGenerator uuidGenerator = new UUIDGenerator("MD5");
-     private UTMConvert utmConvert = new UTMConvert(SUB_ZONE_LAT, SUB_ZONE_LONG);
- */
     private static Logger logger = Logger.getLogger("che.netty");
+    private UUIDGenerator uuidGenerator = new UUIDGenerator("MD5");
     private int bossThreads = 1;
     private int workerThreads = 5;
     private int port = 8085;
@@ -83,10 +81,8 @@ public class Configuration {
 
         setEpollMode(Boolean.valueOf(element.getAttribute("epollmode")));
 
-    /*    uuidGenerator = new UUIDGenerator(String.valueOf(element.getAttribute("uuidalgo")));
+        uuidGenerator = new UUIDGenerator(String.valueOf(element.getAttribute("uuidalgo")));
 
-        utmConvert = new UTMConvert(Double.valueOf(element.getAttribute("subzonelat")), Double.valueOf(element.getAttribute("subzonelong")));
-*/
 
     }
 
@@ -254,12 +250,9 @@ public class Configuration {
         this.trustStoreFormat = trustStoreFormat;
     }
 
-    /**  public UUIDGenerator getUuidGenerator() {
-     return uuidGenerator;
-     }
+    public UUIDGenerator getUuidGenerator() {
+        return uuidGenerator;
+    }
 
-     public UTMConvert getUtmConvert() {
-     return utmConvert;
-     }
-     **/
+
 }

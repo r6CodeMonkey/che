@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * Created by timmytime on 10/12/15.
  */
-public class Acknowledge extends JSONObject implements Serializable{
+public class Acknowledge extends JSONObject implements Serializable {
 
     private String ackId, state, info;
 
@@ -23,7 +23,7 @@ public class Acknowledge extends JSONObject implements Serializable{
     }
 
     public Acknowledge(JSONObject acknowledge) throws JSONException {
-        super(acknowledge);
+        super(acknowledge.toString());
         setAll();
     }
 

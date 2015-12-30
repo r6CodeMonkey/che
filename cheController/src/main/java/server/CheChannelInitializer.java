@@ -1,14 +1,12 @@
 package server;
 
 import channel.CheHandler;
+import channel.JsonFrameDecoder;
+import channel.JsonHandler;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
-import io.netty.handler.codec.serialization.ClassResolvers;
-import io.netty.handler.codec.serialization.ObjectDecoder;
-import io.netty.handler.codec.serialization.ObjectEncoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
-import model.Core;
 import util.Configuration;
 
 /**
@@ -16,22 +14,30 @@ import util.Configuration;
  */
 public class CheChannelInitializer extends ChannelInitializer {
 
-    public static final String OBJECT_ENCODER = "objectEncoder";
-    public static final String OBJECT_DECODER = "objectDecoder";
+    public static final String JSON_FRAMER_HANDLER = "jsonFramer";
+    public static final String STRING_DECODER_HANDLER = "stringDecoder";
+    public static final String STRING_ENCODER_HANDLER = "stringEncoder";
+    public static final String JSON_HANDLER = "jsonHandler";
     public static final String CHE_HANDLER = "cheHandler";
 
 
-    private CheHandler cheHandler;
+    private final CheHandler cheHandler;
+    private final Configuration configuration;
 
-    public void init(Configuration configuration) {
+    public CheChannelInitializer(Configuration configuration) {
+        this.configuration = configuration;
         cheHandler = new CheHandler(configuration);
     }
 
+
     @Override
     protected void initChannel(Channel channel) throws Exception {
-          channel.pipeline().addLast(OBJECT_ENCODER, new ObjectEncoder());
-          channel.pipeline().addLast(OBJECT_DECODER, new ObjectDecoder(ClassResolvers.cacheDisabled(getClass().getClassLoader())));
-          channel.pipeline().addLast(CHE_HANDLER, cheHandler);
+        //    channel.pipeline().addLast(OBJECT_DECODER, new ObjectDecoder(ClassResolvers.cacheDisabled(getClass().getClassLoader())));
+        channel.pipeline().addLast(JSON_FRAMER_HANDLER, new JsonFrameDecoder());
+        channel.pipeline().addLast(STRING_DECODER_HANDLER, new StringDecoder());
+        channel.pipeline().addLast(STRING_ENCODER_HANDLER, new StringEncoder());
+        channel.pipeline().addLast(JSON_HANDLER, new JsonHandler(configuration));
+        channel.pipeline().addLast(CHE_HANDLER, cheHandler);
     }
 
     public void stop() {

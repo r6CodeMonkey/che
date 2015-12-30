@@ -38,7 +38,6 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
         if (core.getAckId().trim().isEmpty()) {
             ctx.channel().writeAndFlush(MessageFactory.createAcknowledge("", Tags.ERROR, "ackid not set"));
         } else {
-            //should test validity of the model...at some point.
             ctx.fireChannelRead(core);
         }
     }

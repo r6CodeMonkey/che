@@ -8,28 +8,22 @@ import socket.CheControllerSocket;
 import util.Configuration;
 import util.Tags;
 
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by timmytime on 12/12/15.
  */
 public class CheHandler extends SimpleChannelInboundHandler<Core> {
 
-    private Configuration configuration;
+    private final List<Core> pendingMessages = new ArrayList<>();
+    private final Configuration configuration;
     private Core core;
     private Socket socket;
     private CheControllerSocket cheControllerSocket;
     private boolean socketAvailable = false;
-
-
-    private final List<Core> pendingMessages = new ArrayList<>();
 
 
     public CheHandler(Configuration configuration) {
@@ -54,8 +48,12 @@ public class CheHandler extends SimpleChannelInboundHandler<Core> {
 
         this.core = msg;
 
-        configuration.getLogger().debug("ack id is "+msg.getAckId());
-
+        //at this point, if the user has no id, we will create them one, even if the server is down elsewhere.
+        if (core.getUser().getUid().trim().isEmpty()) {
+            configuration.getLogger().debug("new user created " + ctx.channel().remoteAddress().toString());
+            core.updateUserID(configuration.getUuidGenerator().generatePlayerKey());
+            ctx.channel().writeAndFlush(MessageFactory.createAcknowledge(core.getAckId(), Tags.UUID, core.getUser().getUid()));
+        }
 
         if (socket == null || socket.isClosed()) {
             socketAvailable = initSocket();
@@ -67,14 +65,14 @@ public class CheHandler extends SimpleChannelInboundHandler<Core> {
                 cheControllerSocket = new CheControllerSocket(configuration, ctx.channel(), socket);
             }
 
-             cheControllerSocket.write(msg);
+            cheControllerSocket.write(core);
 
-            for(Core pending : pendingMessages){
+            for (Core pending : pendingMessages) {
                 cheControllerSocket.write(pending);
             }
 
-        }else{
-            pendingMessages.add(msg);
+        } else {
+            pendingMessages.add(core);
         }
 
 

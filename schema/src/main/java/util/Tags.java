@@ -35,6 +35,7 @@ public class Tags {
     public final static String ERROR = "ERROR";
     public final static String SUCCESS = "SUCCESS";
     public final static String ACCEPT = "ACCEPT";
+    public final static String UUID = "UUID";
 
     //general
     public final static String ACTIVE = "ACTIVE";

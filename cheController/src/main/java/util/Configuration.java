@@ -34,6 +34,8 @@ public class Configuration {
     private int backlog = 128;
     private boolean epollMode = false;
 
+    private ChannelMapController channelMapController = new ChannelMapController();
+
 
     public Configuration() {
 
@@ -162,6 +164,8 @@ public class Configuration {
     public void setWorkerThreads(int workerThreads) {
         this.workerThreads = workerThreads;
     }
+
+    public ChannelMapController getChannelMapController(){return channelMapController;}
 }
 
 

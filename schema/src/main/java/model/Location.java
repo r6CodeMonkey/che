@@ -20,7 +20,7 @@ public class Location extends JSONObject implements Serializable {
     }
 
     public Location(JSONObject location) throws JSONException {
-        super(location);
+        super(location.toString());
         setAll();
     }
 
