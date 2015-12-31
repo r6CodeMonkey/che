@@ -16,11 +16,11 @@ import java.io.IOException;
  */
 public class Configuration {
 
-
-    /* private UUIDGenerator uuidGenerator = new UUIDGenerator("MD5");
-     private UTMConvert utmConvert = new UTMConvert(SUB_ZONE_LAT, SUB_ZONE_LONG);
- */
     private static Logger logger = Logger.getLogger("che.cheController");
+    private double SUB_ZONE_LAT = 0.05;
+    private double SUB_ZONE_LONG = 0.1;
+    private UUIDGenerator uuidGenerator = new UUIDGenerator("MD5");
+    private UTMConvert utmConvert = new UTMConvert(SUB_ZONE_LAT, SUB_ZONE_LONG);
     private int bossThreads = 1;
     private int workerThreads = 5;
     private int port = 8086;
@@ -69,9 +69,9 @@ public class Configuration {
 
         setEpollMode(Boolean.valueOf(element.getAttribute("epollmode")));
 
-    /*    uuidGenerator = new UUIDGenerator(String.valueOf(element.getAttribute("uuidalgo")));
+        uuidGenerator = new UUIDGenerator(String.valueOf(element.getAttribute("uuidalgo")));
         utmConvert = new UTMConvert(Double.valueOf(element.getAttribute("subzonelat")), Double.valueOf(element.getAttribute("subzonelong")));
-*/
+
 
     }
 
@@ -186,14 +186,13 @@ public class Configuration {
     public ChannelMapController getChannelMapController() {
         return channelMapController;
     }
+
+    public UUIDGenerator getUuidGenerator() {
+        return uuidGenerator;
+    }
+
+    public UTMConvert getUtmConvert() {
+        return utmConvert;
+    }
 }
 
-
-/**
- * public UUIDGenerator getUuidGenerator() {
- * return uuidGenerator;
- * }
- * public UTMConvert getUtmConvert() {
- * return utmConvert;
- * }
- **/

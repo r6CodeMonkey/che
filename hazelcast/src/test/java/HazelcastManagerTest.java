@@ -1,13 +1,11 @@
 import core.HazelcastManager;
-import io.netty.channel.Channel;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import util.NettyChannelHandler;
+import util.SimpleHandler;
 import util.TopicSubscriptions;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
 
 
 /**
@@ -17,6 +15,10 @@ public class HazelcastManagerTest {
 
     private static Object object;
     private static HazelcastManager hazelcastManager;
+
+    /*
+    need to fix these tests...ie need a new listener
+     */
 
     @BeforeClass
     public static void init() {
@@ -34,15 +36,15 @@ public class HazelcastManagerTest {
     public void testTopic() {
         hazelcastManager.createTopic("test");
 
-        NettyChannelHandler nettyChannelHandler = new NettyChannelHandler(mock(Channel.class));
+        SimpleHandler simpleHandler = new SimpleHandler();
         TopicSubscriptions topicSubscriptions = new TopicSubscriptions();
 
-        topicSubscriptions.addSubscription("test", hazelcastManager.subscribe("test", nettyChannelHandler));
+        topicSubscriptions.addSubscription("test", hazelcastManager.subscribe("test", simpleHandler));
 
         hazelcastManager.publish("test", "test message");
         try {
             this.wait(1000);
-            assertEquals("test message", nettyChannelHandler.getLastMessage().getMessageObject().toString());
+            assertEquals("test message", simpleHandler.getLastMessage().getMessageObject().toString());
         } catch (Exception e) {
 
         }
@@ -54,7 +56,7 @@ public class HazelcastManagerTest {
         hazelcastManager.publish("test", "test message 2");
         try {
             this.wait(1000);
-            assertNotEquals("test message 2", nettyChannelHandler.getLastMessage().getMessageObject().toString());
+            assertNotEquals("test message 2", simpleHandler.getLastMessage().getMessageObject().toString());
         } catch (Exception e) {
 
         }

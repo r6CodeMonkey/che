@@ -9,6 +9,10 @@ public class UTM implements Serializable {
     private String utmLat;
     private String utmLong;
 
+    public UTM() {
+        utmLat = "";
+        utmLong = "";
+    }
 
     public UTM(String utmLat, String utmLong) {
         this.utmLat = utmLat;

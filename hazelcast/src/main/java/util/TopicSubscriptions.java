@@ -1,12 +1,13 @@
 package util;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by timmytime on 12/12/15.
  */
-public class TopicSubscriptions {
+public class TopicSubscriptions implements Serializable {
 
     private final Map<String, String> subscriptions;
 

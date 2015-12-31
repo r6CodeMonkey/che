@@ -1,10 +1,10 @@
 package server;
 
 import com.hazelcast.core.IMap;
+import com.hazelcast.core.MessageListener;
 import core.HazelcastManager;
 import core.HazelcastManagerInterface;
 import util.Configuration;
-import util.NettyChannelHandler;
 import util.TopicSubscriptions;
 
 import java.rmi.Naming;
@@ -59,8 +59,8 @@ public class HazelcastServer extends UnicastRemoteObject implements HazelcastMan
     }
 
     @Override
-    public String subscribe(String topic, NettyChannelHandler user) {
-        return hazelcastManager.subscribe(topic, user);
+    public String subscribe(String topic, MessageListener listener) {
+        return hazelcastManager.subscribe(topic, listener);
     }
 
     @Override

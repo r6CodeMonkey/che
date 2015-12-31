@@ -4504,3 +4504,564 @@ java.net.ConnectException: Connection refused
 2015-12-30 19:55:50 DEBUG PlatformDependent:732 - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
 2015-12-30 19:55:50 DEBUG PlatformDependent:811 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
 2015-12-30 19:55:50 DEBUG PlatformDependent:87 - -Dio.netty.noPreferDirect: false
+2015-12-31 15:41:21 DEBUG InternalLoggerFactory:59 - Using Log4J as the default logging framework
+2015-12-31 15:41:21 ERROR netty:38 - SSL Context Configuration failed java.lang.NullPointerException
+2015-12-31 15:41:21 DEBUG MultithreadEventLoopGroup:41 - -Dio.netty.eventLoopThreads: 16
+2015-12-31 15:41:21 DEBUG PlatformDependent0:75 - java.nio.Buffer.address: available
+2015-12-31 15:41:21 DEBUG PlatformDependent0:83 - sun.misc.Unsafe.theUnsafe: available
+2015-12-31 15:41:21 DEBUG PlatformDependent0:92 - sun.misc.Unsafe.copyMemory: available
+2015-12-31 15:41:21 DEBUG PlatformDependent0:132 - java.nio.Bits.unaligned: true
+2015-12-31 15:41:21 DEBUG PlatformDependent:583 - Java version: 8
+2015-12-31 15:41:21 DEBUG PlatformDependent:590 - -Dio.netty.noUnsafe: false
+2015-12-31 15:41:21 DEBUG PlatformDependent:617 - sun.misc.Unsafe: available
+2015-12-31 15:41:21 DEBUG PlatformDependent:700 - -Dio.netty.noJavassist: false
+2015-12-31 15:41:21 DEBUG PlatformDependent:713 - Javassist: unavailable
+2015-12-31 15:41:21 DEBUG PlatformDependent:714 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2015-12-31 15:41:21 DEBUG PlatformDependent:732 - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+2015-12-31 15:41:21 DEBUG PlatformDependent:811 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2015-12-31 15:41:21 DEBUG PlatformDependent:87 - -Dio.netty.noPreferDirect: false
+2015-12-31 15:41:21 DEBUG NioEventLoop:87 - -Dio.netty.noKeySetOptimization: false
+2015-12-31 15:41:21 DEBUG NioEventLoop:88 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2015-12-31 15:41:21 DEBUG DefaultChannelId:90 - -Dio.netty.processId: 10620 (auto-detected)
+2015-12-31 15:41:21 DEBUG DefaultChannelId:110 - -Dio.netty.machineId: 30:85:a9:ff:fe:98:f9:40 (auto-detected)
+2015-12-31 15:41:21 DEBUG ThreadLocalRandom:199 - -Dio.netty.initialSeedUniquifier: 0x1c70450414ed29df (took 10 ms)
+2015-12-31 15:41:21 DEBUG PooledByteBufAllocator:98 - -Dio.netty.allocator.numHeapArenas: 8
+2015-12-31 15:41:21 DEBUG PooledByteBufAllocator:99 - -Dio.netty.allocator.numDirectArenas: 8
+2015-12-31 15:41:21 DEBUG PooledByteBufAllocator:101 - -Dio.netty.allocator.pageSize: 8192
+2015-12-31 15:41:21 DEBUG PooledByteBufAllocator:106 - -Dio.netty.allocator.maxOrder: 11
+2015-12-31 15:41:21 DEBUG PooledByteBufAllocator:110 - -Dio.netty.allocator.chunkSize: 16777216
+2015-12-31 15:41:21 DEBUG PooledByteBufAllocator:111 - -Dio.netty.allocator.tinyCacheSize: 512
+2015-12-31 15:41:21 DEBUG PooledByteBufAllocator:112 - -Dio.netty.allocator.smallCacheSize: 256
+2015-12-31 15:41:21 DEBUG PooledByteBufAllocator:113 - -Dio.netty.allocator.normalCacheSize: 64
+2015-12-31 15:41:21 DEBUG PooledByteBufAllocator:114 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2015-12-31 15:41:21 DEBUG PooledByteBufAllocator:115 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2015-12-31 15:41:21 DEBUG ByteBufUtil:66 - -Dio.netty.allocator.type: pooled
+2015-12-31 15:41:21 DEBUG ByteBufUtil:75 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2015-12-31 15:41:21 DEBUG NetUtil:203 - Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
+2015-12-31 15:41:21 DEBUG NetUtil:241 - /proc/sys/net/core/somaxconn: 128
+2015-12-31 15:41:33 ERROR netty:40 - Che Port is not Available Connection refused
+2015-12-31 15:41:33 DEBUG Recycler:56 - -Dio.netty.recycler.maxCapacity: 262144
+2015-12-31 15:41:33 DEBUG ResourceLeakDetector:79 - -Dio.netty.leakDetectionLevel: simple
+2015-12-31 15:41:37 DEBUG netty:34 - {ackid:1}
+2015-12-31 15:41:37 ERROR netty:86 - JSONObject["user"] not found.
+2015-12-31 15:41:53 DEBUG netty:34 - 
+{ackid:1,user:{uid:""}}
+2015-12-31 15:41:53 DEBUG netty:53 - new user created /127.0.0.1:43469
+2015-12-31 15:41:53 ERROR netty:40 - Che Port is not Available Connection refused
+2015-12-31 15:42:05 DEBUG InternalLoggerFactory:59 - Using Log4J as the default logging framework
+2015-12-31 15:42:05 DEBUG PlatformDependent0:75 - java.nio.Buffer.address: available
+2015-12-31 15:42:05 DEBUG PlatformDependent0:83 - sun.misc.Unsafe.theUnsafe: available
+2015-12-31 15:42:05 DEBUG PlatformDependent0:92 - sun.misc.Unsafe.copyMemory: available
+2015-12-31 15:42:05 DEBUG PlatformDependent0:132 - java.nio.Bits.unaligned: true
+2015-12-31 15:42:05 DEBUG PlatformDependent:583 - Java version: 8
+2015-12-31 15:42:05 DEBUG PlatformDependent:590 - -Dio.netty.noUnsafe: false
+2015-12-31 15:42:05 DEBUG PlatformDependent:617 - sun.misc.Unsafe: available
+2015-12-31 15:42:05 DEBUG PlatformDependent:700 - -Dio.netty.noJavassist: false
+2015-12-31 15:42:05 DEBUG PlatformDependent:713 - Javassist: unavailable
+2015-12-31 15:42:05 DEBUG PlatformDependent:714 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2015-12-31 15:42:05 DEBUG PlatformDependent:732 - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+2015-12-31 15:42:05 DEBUG PlatformDependent:811 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2015-12-31 15:42:05 DEBUG PlatformDependent:87 - -Dio.netty.noPreferDirect: false
+2015-12-31 15:42:05 ERROR cheController:49 - hazelcast server failed Connection refused to host: localhost; nested exception is: 
+	java.net.ConnectException: Connection refused
+2015-12-31 15:42:05 DEBUG MultithreadEventLoopGroup:41 - -Dio.netty.eventLoopThreads: 16
+2015-12-31 15:42:05 DEBUG NioEventLoop:87 - -Dio.netty.noKeySetOptimization: false
+2015-12-31 15:42:05 DEBUG NioEventLoop:88 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2015-12-31 15:42:05 DEBUG DefaultChannelId:90 - -Dio.netty.processId: 10690 (auto-detected)
+2015-12-31 15:42:05 DEBUG DefaultChannelId:110 - -Dio.netty.machineId: 30:85:a9:ff:fe:98:f9:40 (auto-detected)
+2015-12-31 15:42:05 DEBUG ThreadLocalRandom:199 - -Dio.netty.initialSeedUniquifier: 0xcf0e5752bcdd55ce (took 13 ms)
+2015-12-31 15:42:05 DEBUG PooledByteBufAllocator:98 - -Dio.netty.allocator.numHeapArenas: 8
+2015-12-31 15:42:05 DEBUG PooledByteBufAllocator:99 - -Dio.netty.allocator.numDirectArenas: 8
+2015-12-31 15:42:05 DEBUG PooledByteBufAllocator:101 - -Dio.netty.allocator.pageSize: 8192
+2015-12-31 15:42:05 DEBUG PooledByteBufAllocator:106 - -Dio.netty.allocator.maxOrder: 11
+2015-12-31 15:42:05 DEBUG PooledByteBufAllocator:110 - -Dio.netty.allocator.chunkSize: 16777216
+2015-12-31 15:42:05 DEBUG PooledByteBufAllocator:111 - -Dio.netty.allocator.tinyCacheSize: 512
+2015-12-31 15:42:05 DEBUG PooledByteBufAllocator:112 - -Dio.netty.allocator.smallCacheSize: 256
+2015-12-31 15:42:05 DEBUG PooledByteBufAllocator:113 - -Dio.netty.allocator.normalCacheSize: 64
+2015-12-31 15:42:05 DEBUG PooledByteBufAllocator:114 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2015-12-31 15:42:05 DEBUG PooledByteBufAllocator:115 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2015-12-31 15:42:05 DEBUG ByteBufUtil:66 - -Dio.netty.allocator.type: pooled
+2015-12-31 15:42:05 DEBUG ByteBufUtil:75 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2015-12-31 15:42:05 DEBUG NetUtil:203 - Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
+2015-12-31 15:42:05 DEBUG NetUtil:241 - /proc/sys/net/core/somaxconn: 128
+2015-12-31 15:42:35 DEBUG netty:34 - 
+{ackid:1,user:{uid:""}}
+2015-12-31 15:42:35 DEBUG netty:53 - new user created /127.0.0.1:43469
+2015-12-31 15:42:35 DEBUG Recycler:56 - -Dio.netty.recycler.maxCapacity: 262144
+2015-12-31 15:42:35 DEBUG ResourceLeakDetector:79 - -Dio.netty.leakDetectionLevel: simple
+2015-12-31 15:42:35 DEBUG cheController:34 - {"ackid":1,"user":{"uid":"[B@243ae340"}}
+2015-12-31 15:42:35 DEBUG cheController:34 - {"ackid":1,"user":{"uid":"[B@19615ef6"}}
+2015-12-31 15:42:35 ERROR cheController:49 - hazelcast server failed Connection refused to host: localhost; nested exception is: 
+	java.net.ConnectException: Connection refused
+2015-12-31 15:42:35 ERROR cheController:49 - hazelcast server failed Connection refused to host: localhost; nested exception is: 
+	java.net.ConnectException: Connection refused
+2015-12-31 15:44:40 DEBUG InternalLoggerFactory:59 - Using Log4J as the default logging framework
+2015-12-31 15:44:40 ERROR netty:38 - SSL Context Configuration failed java.lang.NullPointerException
+2015-12-31 15:44:40 DEBUG MultithreadEventLoopGroup:41 - -Dio.netty.eventLoopThreads: 16
+2015-12-31 15:44:40 DEBUG PlatformDependent0:75 - java.nio.Buffer.address: available
+2015-12-31 15:44:40 DEBUG PlatformDependent0:83 - sun.misc.Unsafe.theUnsafe: available
+2015-12-31 15:44:40 DEBUG PlatformDependent0:92 - sun.misc.Unsafe.copyMemory: available
+2015-12-31 15:44:40 DEBUG PlatformDependent0:132 - java.nio.Bits.unaligned: true
+2015-12-31 15:44:40 DEBUG PlatformDependent:583 - Java version: 8
+2015-12-31 15:44:40 DEBUG PlatformDependent:590 - -Dio.netty.noUnsafe: false
+2015-12-31 15:44:40 DEBUG PlatformDependent:617 - sun.misc.Unsafe: available
+2015-12-31 15:44:40 DEBUG PlatformDependent:700 - -Dio.netty.noJavassist: false
+2015-12-31 15:44:40 DEBUG PlatformDependent:713 - Javassist: unavailable
+2015-12-31 15:44:40 DEBUG PlatformDependent:714 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2015-12-31 15:44:40 DEBUG PlatformDependent:732 - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+2015-12-31 15:44:40 DEBUG PlatformDependent:811 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2015-12-31 15:44:40 DEBUG PlatformDependent:87 - -Dio.netty.noPreferDirect: false
+2015-12-31 15:44:40 DEBUG NioEventLoop:87 - -Dio.netty.noKeySetOptimization: false
+2015-12-31 15:44:40 DEBUG NioEventLoop:88 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2015-12-31 15:44:40 DEBUG DefaultChannelId:90 - -Dio.netty.processId: 10899 (auto-detected)
+2015-12-31 15:44:40 DEBUG DefaultChannelId:110 - -Dio.netty.machineId: 30:85:a9:ff:fe:98:f9:40 (auto-detected)
+2015-12-31 15:44:40 DEBUG ThreadLocalRandom:199 - -Dio.netty.initialSeedUniquifier: 0x636c71428daebf78 (took 13 ms)
+2015-12-31 15:44:40 DEBUG PooledByteBufAllocator:98 - -Dio.netty.allocator.numHeapArenas: 8
+2015-12-31 15:44:40 DEBUG PooledByteBufAllocator:99 - -Dio.netty.allocator.numDirectArenas: 8
+2015-12-31 15:44:40 DEBUG PooledByteBufAllocator:101 - -Dio.netty.allocator.pageSize: 8192
+2015-12-31 15:44:40 DEBUG PooledByteBufAllocator:106 - -Dio.netty.allocator.maxOrder: 11
+2015-12-31 15:44:40 DEBUG PooledByteBufAllocator:110 - -Dio.netty.allocator.chunkSize: 16777216
+2015-12-31 15:44:40 DEBUG PooledByteBufAllocator:111 - -Dio.netty.allocator.tinyCacheSize: 512
+2015-12-31 15:44:40 DEBUG PooledByteBufAllocator:112 - -Dio.netty.allocator.smallCacheSize: 256
+2015-12-31 15:44:40 DEBUG PooledByteBufAllocator:113 - -Dio.netty.allocator.normalCacheSize: 64
+2015-12-31 15:44:40 DEBUG PooledByteBufAllocator:114 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2015-12-31 15:44:40 DEBUG PooledByteBufAllocator:115 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2015-12-31 15:44:40 DEBUG ByteBufUtil:66 - -Dio.netty.allocator.type: pooled
+2015-12-31 15:44:40 DEBUG ByteBufUtil:75 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2015-12-31 15:44:40 DEBUG NetUtil:203 - Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
+2015-12-31 15:44:40 DEBUG NetUtil:241 - /proc/sys/net/core/somaxconn: 128
+2015-12-31 15:44:47 DEBUG InternalLoggerFactory:59 - Using Log4J as the default logging framework
+2015-12-31 15:44:47 DEBUG PlatformDependent0:75 - java.nio.Buffer.address: available
+2015-12-31 15:44:47 DEBUG PlatformDependent0:83 - sun.misc.Unsafe.theUnsafe: available
+2015-12-31 15:44:47 DEBUG PlatformDependent0:92 - sun.misc.Unsafe.copyMemory: available
+2015-12-31 15:44:47 DEBUG PlatformDependent0:132 - java.nio.Bits.unaligned: true
+2015-12-31 15:44:47 DEBUG PlatformDependent:583 - Java version: 8
+2015-12-31 15:44:47 DEBUG PlatformDependent:590 - -Dio.netty.noUnsafe: false
+2015-12-31 15:44:47 DEBUG PlatformDependent:617 - sun.misc.Unsafe: available
+2015-12-31 15:44:47 DEBUG PlatformDependent:700 - -Dio.netty.noJavassist: false
+2015-12-31 15:44:47 DEBUG PlatformDependent:713 - Javassist: unavailable
+2015-12-31 15:44:47 DEBUG PlatformDependent:714 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2015-12-31 15:44:47 DEBUG PlatformDependent:732 - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+2015-12-31 15:44:47 DEBUG PlatformDependent:811 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2015-12-31 15:44:47 DEBUG PlatformDependent:87 - -Dio.netty.noPreferDirect: false
+2015-12-31 15:47:37 DEBUG InternalLoggerFactory:59 - Using Log4J as the default logging framework
+2015-12-31 15:47:37 DEBUG PlatformDependent0:75 - java.nio.Buffer.address: available
+2015-12-31 15:47:37 DEBUG PlatformDependent0:83 - sun.misc.Unsafe.theUnsafe: available
+2015-12-31 15:47:37 DEBUG PlatformDependent0:92 - sun.misc.Unsafe.copyMemory: available
+2015-12-31 15:47:37 DEBUG PlatformDependent0:132 - java.nio.Bits.unaligned: true
+2015-12-31 15:47:37 DEBUG PlatformDependent:583 - Java version: 8
+2015-12-31 15:47:37 DEBUG PlatformDependent:590 - -Dio.netty.noUnsafe: false
+2015-12-31 15:47:37 DEBUG PlatformDependent:617 - sun.misc.Unsafe: available
+2015-12-31 15:47:37 DEBUG PlatformDependent:700 - -Dio.netty.noJavassist: false
+2015-12-31 15:47:37 DEBUG PlatformDependent:713 - Javassist: unavailable
+2015-12-31 15:47:37 DEBUG PlatformDependent:714 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2015-12-31 15:47:37 DEBUG PlatformDependent:732 - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+2015-12-31 15:47:37 DEBUG PlatformDependent:811 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2015-12-31 15:47:37 DEBUG PlatformDependent:87 - -Dio.netty.noPreferDirect: false
+2015-12-31 15:49:52 DEBUG InternalLoggerFactory:59 - Using Log4J as the default logging framework
+2015-12-31 15:49:52 DEBUG PlatformDependent0:75 - java.nio.Buffer.address: available
+2015-12-31 15:49:52 DEBUG PlatformDependent0:83 - sun.misc.Unsafe.theUnsafe: available
+2015-12-31 15:49:52 DEBUG PlatformDependent0:92 - sun.misc.Unsafe.copyMemory: available
+2015-12-31 15:49:52 DEBUG PlatformDependent0:132 - java.nio.Bits.unaligned: true
+2015-12-31 15:49:52 DEBUG PlatformDependent:583 - Java version: 8
+2015-12-31 15:49:52 DEBUG PlatformDependent:590 - -Dio.netty.noUnsafe: false
+2015-12-31 15:49:52 DEBUG PlatformDependent:617 - sun.misc.Unsafe: available
+2015-12-31 15:49:52 DEBUG PlatformDependent:700 - -Dio.netty.noJavassist: false
+2015-12-31 15:49:52 DEBUG PlatformDependent:713 - Javassist: unavailable
+2015-12-31 15:49:52 DEBUG PlatformDependent:714 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2015-12-31 15:49:52 DEBUG PlatformDependent:732 - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+2015-12-31 15:49:52 DEBUG PlatformDependent:811 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2015-12-31 15:49:52 DEBUG PlatformDependent:87 - -Dio.netty.noPreferDirect: false
+2015-12-31 15:49:52 DEBUG MultithreadEventLoopGroup:41 - -Dio.netty.eventLoopThreads: 16
+2015-12-31 15:49:52 DEBUG NioEventLoop:87 - -Dio.netty.noKeySetOptimization: false
+2015-12-31 15:49:52 DEBUG NioEventLoop:88 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2015-12-31 15:49:52 DEBUG DefaultChannelId:90 - -Dio.netty.processId: 11679 (auto-detected)
+2015-12-31 15:49:52 DEBUG DefaultChannelId:110 - -Dio.netty.machineId: 30:85:a9:ff:fe:98:f9:40 (auto-detected)
+2015-12-31 15:49:52 DEBUG ThreadLocalRandom:199 - -Dio.netty.initialSeedUniquifier: 0x81f032f5345d68bc (took 15 ms)
+2015-12-31 15:49:52 DEBUG PooledByteBufAllocator:98 - -Dio.netty.allocator.numHeapArenas: 8
+2015-12-31 15:49:52 DEBUG PooledByteBufAllocator:99 - -Dio.netty.allocator.numDirectArenas: 8
+2015-12-31 15:49:52 DEBUG PooledByteBufAllocator:101 - -Dio.netty.allocator.pageSize: 8192
+2015-12-31 15:49:52 DEBUG PooledByteBufAllocator:106 - -Dio.netty.allocator.maxOrder: 11
+2015-12-31 15:49:52 DEBUG PooledByteBufAllocator:110 - -Dio.netty.allocator.chunkSize: 16777216
+2015-12-31 15:49:52 DEBUG PooledByteBufAllocator:111 - -Dio.netty.allocator.tinyCacheSize: 512
+2015-12-31 15:49:52 DEBUG PooledByteBufAllocator:112 - -Dio.netty.allocator.smallCacheSize: 256
+2015-12-31 15:49:52 DEBUG PooledByteBufAllocator:113 - -Dio.netty.allocator.normalCacheSize: 64
+2015-12-31 15:49:52 DEBUG PooledByteBufAllocator:114 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2015-12-31 15:49:52 DEBUG PooledByteBufAllocator:115 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2015-12-31 15:49:52 DEBUG ByteBufUtil:66 - -Dio.netty.allocator.type: pooled
+2015-12-31 15:49:52 DEBUG ByteBufUtil:75 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2015-12-31 15:49:52 DEBUG NetUtil:203 - Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
+2015-12-31 15:49:52 DEBUG NetUtil:241 - /proc/sys/net/core/somaxconn: 128
+2015-12-31 15:50:04 DEBUG InternalLoggerFactory:59 - Using Log4J as the default logging framework
+2015-12-31 15:50:04 ERROR netty:38 - SSL Context Configuration failed java.lang.NullPointerException
+2015-12-31 15:50:04 DEBUG MultithreadEventLoopGroup:41 - -Dio.netty.eventLoopThreads: 16
+2015-12-31 15:50:04 DEBUG PlatformDependent0:75 - java.nio.Buffer.address: available
+2015-12-31 15:50:04 DEBUG PlatformDependent0:83 - sun.misc.Unsafe.theUnsafe: available
+2015-12-31 15:50:04 DEBUG PlatformDependent0:92 - sun.misc.Unsafe.copyMemory: available
+2015-12-31 15:50:04 DEBUG PlatformDependent0:132 - java.nio.Bits.unaligned: true
+2015-12-31 15:50:04 DEBUG PlatformDependent:583 - Java version: 8
+2015-12-31 15:50:04 DEBUG PlatformDependent:590 - -Dio.netty.noUnsafe: false
+2015-12-31 15:50:04 DEBUG PlatformDependent:617 - sun.misc.Unsafe: available
+2015-12-31 15:50:04 DEBUG PlatformDependent:700 - -Dio.netty.noJavassist: false
+2015-12-31 15:50:04 DEBUG PlatformDependent:713 - Javassist: unavailable
+2015-12-31 15:50:04 DEBUG PlatformDependent:714 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2015-12-31 15:50:04 DEBUG PlatformDependent:732 - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+2015-12-31 15:50:04 DEBUG PlatformDependent:811 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2015-12-31 15:50:04 DEBUG PlatformDependent:87 - -Dio.netty.noPreferDirect: false
+2015-12-31 15:50:04 DEBUG NioEventLoop:87 - -Dio.netty.noKeySetOptimization: false
+2015-12-31 15:50:04 DEBUG NioEventLoop:88 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2015-12-31 15:50:04 DEBUG DefaultChannelId:90 - -Dio.netty.processId: 11731 (auto-detected)
+2015-12-31 15:50:04 DEBUG DefaultChannelId:110 - -Dio.netty.machineId: 30:85:a9:ff:fe:98:f9:40 (auto-detected)
+2015-12-31 15:50:04 DEBUG ThreadLocalRandom:199 - -Dio.netty.initialSeedUniquifier: 0xa9fc2c986c882cc8 (took 12 ms)
+2015-12-31 15:50:04 DEBUG PooledByteBufAllocator:98 - -Dio.netty.allocator.numHeapArenas: 8
+2015-12-31 15:50:04 DEBUG PooledByteBufAllocator:99 - -Dio.netty.allocator.numDirectArenas: 8
+2015-12-31 15:50:04 DEBUG PooledByteBufAllocator:101 - -Dio.netty.allocator.pageSize: 8192
+2015-12-31 15:50:04 DEBUG PooledByteBufAllocator:106 - -Dio.netty.allocator.maxOrder: 11
+2015-12-31 15:50:04 DEBUG PooledByteBufAllocator:110 - -Dio.netty.allocator.chunkSize: 16777216
+2015-12-31 15:50:04 DEBUG PooledByteBufAllocator:111 - -Dio.netty.allocator.tinyCacheSize: 512
+2015-12-31 15:50:04 DEBUG PooledByteBufAllocator:112 - -Dio.netty.allocator.smallCacheSize: 256
+2015-12-31 15:50:04 DEBUG PooledByteBufAllocator:113 - -Dio.netty.allocator.normalCacheSize: 64
+2015-12-31 15:50:04 DEBUG PooledByteBufAllocator:114 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2015-12-31 15:50:04 DEBUG PooledByteBufAllocator:115 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2015-12-31 15:50:04 DEBUG ByteBufUtil:66 - -Dio.netty.allocator.type: pooled
+2015-12-31 15:50:04 DEBUG ByteBufUtil:75 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2015-12-31 15:50:04 DEBUG NetUtil:203 - Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
+2015-12-31 15:50:04 DEBUG NetUtil:241 - /proc/sys/net/core/somaxconn: 128
+2015-12-31 15:50:08 DEBUG Recycler:56 - -Dio.netty.recycler.maxCapacity: 262144
+2015-12-31 15:50:08 DEBUG ResourceLeakDetector:79 - -Dio.netty.leakDetectionLevel: simple
+2015-12-31 15:50:08 DEBUG Recycler:56 - -Dio.netty.recycler.maxCapacity: 262144
+2015-12-31 15:50:08 DEBUG ResourceLeakDetector:79 - -Dio.netty.leakDetectionLevel: simple
+2015-12-31 15:50:20 DEBUG netty:34 - {ackid:1, user:{uid:""}}
+2015-12-31 15:50:20 DEBUG netty:53 - new user created /127.0.0.1:43548
+2015-12-31 15:50:20 DEBUG cheController:34 - {"ackid":1,"user":{"uid":"[B@11fc980"}}
+2015-12-31 15:50:20 ERROR cheController:33 - failed to call che controller JSONObject["location"] not found.
+2015-12-31 15:52:00 DEBUG netty:34 - 
+{ackid:1,user:{uid:""},location:{utm:"",subutm:"",long:0.0, lat:0.0, speed:0,altitude:1}}
+2015-12-31 15:52:00 DEBUG netty:53 - new user created /127.0.0.1:43548
+2015-12-31 15:52:00 DEBUG cheController:34 - {"ackid":1,"location":{"altitude":1,"subutm":"","long":0,"lat":0,"speed":0,"utm":""},"user":{"uid":"[B@63353764"}}
+2015-12-31 15:52:00 ERROR cheController:33 - failed to call che controller null
+2015-12-31 15:56:01 DEBUG InternalLoggerFactory:59 - Using Log4J as the default logging framework
+2015-12-31 15:56:01 ERROR netty:38 - SSL Context Configuration failed java.lang.NullPointerException
+2015-12-31 15:56:01 DEBUG MultithreadEventLoopGroup:41 - -Dio.netty.eventLoopThreads: 16
+2015-12-31 15:56:01 DEBUG PlatformDependent0:75 - java.nio.Buffer.address: available
+2015-12-31 15:56:01 DEBUG PlatformDependent0:83 - sun.misc.Unsafe.theUnsafe: available
+2015-12-31 15:56:01 DEBUG PlatformDependent0:92 - sun.misc.Unsafe.copyMemory: available
+2015-12-31 15:56:01 DEBUG PlatformDependent0:132 - java.nio.Bits.unaligned: true
+2015-12-31 15:56:01 DEBUG PlatformDependent:583 - Java version: 8
+2015-12-31 15:56:01 DEBUG PlatformDependent:590 - -Dio.netty.noUnsafe: false
+2015-12-31 15:56:01 DEBUG PlatformDependent:617 - sun.misc.Unsafe: available
+2015-12-31 15:56:01 DEBUG PlatformDependent:700 - -Dio.netty.noJavassist: false
+2015-12-31 15:56:01 DEBUG PlatformDependent:713 - Javassist: unavailable
+2015-12-31 15:56:01 DEBUG PlatformDependent:714 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2015-12-31 15:56:01 DEBUG PlatformDependent:732 - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+2015-12-31 15:56:01 DEBUG PlatformDependent:811 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2015-12-31 15:56:01 DEBUG PlatformDependent:87 - -Dio.netty.noPreferDirect: false
+2015-12-31 15:56:01 DEBUG NioEventLoop:87 - -Dio.netty.noKeySetOptimization: false
+2015-12-31 15:56:01 DEBUG NioEventLoop:88 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2015-12-31 15:56:01 DEBUG DefaultChannelId:90 - -Dio.netty.processId: 11980 (auto-detected)
+2015-12-31 15:56:01 DEBUG DefaultChannelId:110 - -Dio.netty.machineId: 30:85:a9:ff:fe:98:f9:40 (auto-detected)
+2015-12-31 15:56:01 DEBUG ThreadLocalRandom:199 - -Dio.netty.initialSeedUniquifier: 0xac7848c77ee0a278 (took 14 ms)
+2015-12-31 15:56:01 DEBUG PooledByteBufAllocator:98 - -Dio.netty.allocator.numHeapArenas: 8
+2015-12-31 15:56:01 DEBUG PooledByteBufAllocator:99 - -Dio.netty.allocator.numDirectArenas: 8
+2015-12-31 15:56:01 DEBUG PooledByteBufAllocator:101 - -Dio.netty.allocator.pageSize: 8192
+2015-12-31 15:56:01 DEBUG PooledByteBufAllocator:106 - -Dio.netty.allocator.maxOrder: 11
+2015-12-31 15:56:01 DEBUG PooledByteBufAllocator:110 - -Dio.netty.allocator.chunkSize: 16777216
+2015-12-31 15:56:01 DEBUG PooledByteBufAllocator:111 - -Dio.netty.allocator.tinyCacheSize: 512
+2015-12-31 15:56:01 DEBUG PooledByteBufAllocator:112 - -Dio.netty.allocator.smallCacheSize: 256
+2015-12-31 15:56:01 DEBUG PooledByteBufAllocator:113 - -Dio.netty.allocator.normalCacheSize: 64
+2015-12-31 15:56:01 DEBUG PooledByteBufAllocator:114 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2015-12-31 15:56:01 DEBUG PooledByteBufAllocator:115 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2015-12-31 15:56:01 DEBUG ByteBufUtil:66 - -Dio.netty.allocator.type: pooled
+2015-12-31 15:56:01 DEBUG ByteBufUtil:75 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2015-12-31 15:56:01 DEBUG NetUtil:203 - Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
+2015-12-31 15:56:01 DEBUG NetUtil:241 - /proc/sys/net/core/somaxconn: 128
+2015-12-31 15:56:09 DEBUG InternalLoggerFactory:59 - Using Log4J as the default logging framework
+2015-12-31 15:56:09 DEBUG PlatformDependent0:75 - java.nio.Buffer.address: available
+2015-12-31 15:56:09 DEBUG PlatformDependent0:83 - sun.misc.Unsafe.theUnsafe: available
+2015-12-31 15:56:09 DEBUG PlatformDependent0:92 - sun.misc.Unsafe.copyMemory: available
+2015-12-31 15:56:09 DEBUG PlatformDependent0:132 - java.nio.Bits.unaligned: true
+2015-12-31 15:56:09 DEBUG PlatformDependent:583 - Java version: 8
+2015-12-31 15:56:09 DEBUG PlatformDependent:590 - -Dio.netty.noUnsafe: false
+2015-12-31 15:56:09 DEBUG PlatformDependent:617 - sun.misc.Unsafe: available
+2015-12-31 15:56:09 DEBUG PlatformDependent:700 - -Dio.netty.noJavassist: false
+2015-12-31 15:56:09 DEBUG PlatformDependent:713 - Javassist: unavailable
+2015-12-31 15:56:09 DEBUG PlatformDependent:714 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2015-12-31 15:56:09 DEBUG PlatformDependent:732 - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+2015-12-31 15:56:09 DEBUG PlatformDependent:811 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2015-12-31 15:56:09 DEBUG PlatformDependent:87 - -Dio.netty.noPreferDirect: false
+2015-12-31 15:56:09 DEBUG MultithreadEventLoopGroup:41 - -Dio.netty.eventLoopThreads: 16
+2015-12-31 15:56:09 DEBUG NioEventLoop:87 - -Dio.netty.noKeySetOptimization: false
+2015-12-31 15:56:09 DEBUG NioEventLoop:88 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2015-12-31 15:56:09 DEBUG DefaultChannelId:90 - -Dio.netty.processId: 12040 (auto-detected)
+2015-12-31 15:56:09 DEBUG DefaultChannelId:110 - -Dio.netty.machineId: 30:85:a9:ff:fe:98:f9:40 (auto-detected)
+2015-12-31 15:56:09 DEBUG ThreadLocalRandom:199 - -Dio.netty.initialSeedUniquifier: 0x91ac175aa563a4f0 (took 11 ms)
+2015-12-31 15:56:09 DEBUG PooledByteBufAllocator:98 - -Dio.netty.allocator.numHeapArenas: 8
+2015-12-31 15:56:09 DEBUG PooledByteBufAllocator:99 - -Dio.netty.allocator.numDirectArenas: 8
+2015-12-31 15:56:09 DEBUG PooledByteBufAllocator:101 - -Dio.netty.allocator.pageSize: 8192
+2015-12-31 15:56:09 DEBUG PooledByteBufAllocator:106 - -Dio.netty.allocator.maxOrder: 11
+2015-12-31 15:56:09 DEBUG PooledByteBufAllocator:110 - -Dio.netty.allocator.chunkSize: 16777216
+2015-12-31 15:56:09 DEBUG PooledByteBufAllocator:111 - -Dio.netty.allocator.tinyCacheSize: 512
+2015-12-31 15:56:09 DEBUG PooledByteBufAllocator:112 - -Dio.netty.allocator.smallCacheSize: 256
+2015-12-31 15:56:09 DEBUG PooledByteBufAllocator:113 - -Dio.netty.allocator.normalCacheSize: 64
+2015-12-31 15:56:09 DEBUG PooledByteBufAllocator:114 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2015-12-31 15:56:09 DEBUG PooledByteBufAllocator:115 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2015-12-31 15:56:09 DEBUG ByteBufUtil:66 - -Dio.netty.allocator.type: pooled
+2015-12-31 15:56:09 DEBUG ByteBufUtil:75 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2015-12-31 15:56:09 DEBUG NetUtil:203 - Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
+2015-12-31 15:56:09 DEBUG NetUtil:241 - /proc/sys/net/core/somaxconn: 128
+2015-12-31 15:56:38 DEBUG Recycler:56 - -Dio.netty.recycler.maxCapacity: 262144
+2015-12-31 15:56:38 DEBUG ResourceLeakDetector:79 - -Dio.netty.leakDetectionLevel: simple
+2015-12-31 15:56:39 DEBUG Recycler:56 - -Dio.netty.recycler.maxCapacity: 262144
+2015-12-31 15:56:39 DEBUG ResourceLeakDetector:79 - -Dio.netty.leakDetectionLevel: simple
+2015-12-31 15:56:44 DEBUG netty:34 - {ackid:1,user:{uid:""},location:{utm:"",subutm:"",long:0.0, lat:0.0, speed:0,altitude:1}}
+2015-12-31 15:56:44 DEBUG netty:53 - new user created /127.0.0.1:43594
+2015-12-31 15:56:44 DEBUG cheController:34 - {"ackid":1,"location":{"altitude":1,"subutm":"","long":0,"lat":0,"speed":0,"utm":""},"user":{"uid":"[B@4a0e5965"}}
+2015-12-31 15:56:44 DEBUG cheController:64 - handle player
+2015-12-31 15:56:44 DEBUG cheController:32 - check change of utm
+2015-12-31 15:56:44 ERROR cheController:33 - failed to call che controller null
+2015-12-31 15:57:48 DEBUG InternalLoggerFactory:59 - Using Log4J as the default logging framework
+2015-12-31 15:57:48 DEBUG PlatformDependent0:75 - java.nio.Buffer.address: available
+2015-12-31 15:57:48 DEBUG PlatformDependent0:83 - sun.misc.Unsafe.theUnsafe: available
+2015-12-31 15:57:48 DEBUG PlatformDependent0:92 - sun.misc.Unsafe.copyMemory: available
+2015-12-31 15:57:48 DEBUG PlatformDependent0:132 - java.nio.Bits.unaligned: true
+2015-12-31 15:57:48 DEBUG PlatformDependent:583 - Java version: 8
+2015-12-31 15:57:48 DEBUG PlatformDependent:590 - -Dio.netty.noUnsafe: false
+2015-12-31 15:57:48 DEBUG PlatformDependent:617 - sun.misc.Unsafe: available
+2015-12-31 15:57:48 DEBUG PlatformDependent:700 - -Dio.netty.noJavassist: false
+2015-12-31 15:57:48 DEBUG PlatformDependent:713 - Javassist: unavailable
+2015-12-31 15:57:48 DEBUG PlatformDependent:714 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2015-12-31 15:57:48 DEBUG PlatformDependent:732 - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+2015-12-31 15:57:48 DEBUG PlatformDependent:811 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2015-12-31 15:57:48 DEBUG PlatformDependent:87 - -Dio.netty.noPreferDirect: false
+2015-12-31 15:57:48 DEBUG MultithreadEventLoopGroup:41 - -Dio.netty.eventLoopThreads: 16
+2015-12-31 15:57:48 DEBUG NioEventLoop:87 - -Dio.netty.noKeySetOptimization: false
+2015-12-31 15:57:48 DEBUG NioEventLoop:88 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2015-12-31 15:57:48 DEBUG DefaultChannelId:90 - -Dio.netty.processId: 12276 (auto-detected)
+2015-12-31 15:57:48 DEBUG DefaultChannelId:110 - -Dio.netty.machineId: 30:85:a9:ff:fe:98:f9:40 (auto-detected)
+2015-12-31 15:57:48 DEBUG ThreadLocalRandom:199 - -Dio.netty.initialSeedUniquifier: 0x01bd4325b78a1037 (took 12 ms)
+2015-12-31 15:57:48 DEBUG PooledByteBufAllocator:98 - -Dio.netty.allocator.numHeapArenas: 8
+2015-12-31 15:57:48 DEBUG PooledByteBufAllocator:99 - -Dio.netty.allocator.numDirectArenas: 8
+2015-12-31 15:57:48 DEBUG PooledByteBufAllocator:101 - -Dio.netty.allocator.pageSize: 8192
+2015-12-31 15:57:48 DEBUG PooledByteBufAllocator:106 - -Dio.netty.allocator.maxOrder: 11
+2015-12-31 15:57:48 DEBUG PooledByteBufAllocator:110 - -Dio.netty.allocator.chunkSize: 16777216
+2015-12-31 15:57:48 DEBUG PooledByteBufAllocator:111 - -Dio.netty.allocator.tinyCacheSize: 512
+2015-12-31 15:57:48 DEBUG PooledByteBufAllocator:112 - -Dio.netty.allocator.smallCacheSize: 256
+2015-12-31 15:57:48 DEBUG PooledByteBufAllocator:113 - -Dio.netty.allocator.normalCacheSize: 64
+2015-12-31 15:57:48 DEBUG PooledByteBufAllocator:114 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2015-12-31 15:57:48 DEBUG PooledByteBufAllocator:115 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2015-12-31 15:57:48 DEBUG ByteBufUtil:66 - -Dio.netty.allocator.type: pooled
+2015-12-31 15:57:48 DEBUG ByteBufUtil:75 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2015-12-31 15:57:48 DEBUG NetUtil:203 - Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
+2015-12-31 15:57:48 DEBUG NetUtil:241 - /proc/sys/net/core/somaxconn: 128
+2015-12-31 15:58:15 DEBUG Recycler:56 - -Dio.netty.recycler.maxCapacity: 262144
+2015-12-31 15:58:15 DEBUG ResourceLeakDetector:79 - -Dio.netty.leakDetectionLevel: simple
+2015-12-31 15:58:22 DEBUG netty:34 - {ackid:1,user:{uid:""},location:{utm:"",subutm:"",long:0.0, lat:0.0, speed:0,altitude:1}}
+2015-12-31 15:58:22 DEBUG netty:53 - new user created /127.0.0.1:43601
+2015-12-31 15:58:22 DEBUG cheController:34 - {"ackid":1,"location":{"altitude":1,"subutm":"","long":0,"lat":0,"speed":0,"utm":""},"user":{"uid":"[B@3ed233d6"}}
+2015-12-31 15:58:22 DEBUG cheController:64 - handle player
+2015-12-31 15:58:22 DEBUG cheController:52 - created a new player
+2015-12-31 15:58:22 DEBUG cheController:32 - check change of utm
+2015-12-31 15:58:22 ERROR cheController:33 - failed to call che controller null
+2015-12-31 16:00:23 DEBUG InternalLoggerFactory:59 - Using Log4J as the default logging framework
+2015-12-31 16:00:23 DEBUG PlatformDependent0:75 - java.nio.Buffer.address: available
+2015-12-31 16:00:23 DEBUG PlatformDependent0:83 - sun.misc.Unsafe.theUnsafe: available
+2015-12-31 16:00:23 DEBUG PlatformDependent0:92 - sun.misc.Unsafe.copyMemory: available
+2015-12-31 16:00:23 DEBUG PlatformDependent0:132 - java.nio.Bits.unaligned: true
+2015-12-31 16:00:23 DEBUG PlatformDependent:583 - Java version: 8
+2015-12-31 16:00:23 DEBUG PlatformDependent:590 - -Dio.netty.noUnsafe: false
+2015-12-31 16:00:23 DEBUG PlatformDependent:617 - sun.misc.Unsafe: available
+2015-12-31 16:00:23 DEBUG PlatformDependent:700 - -Dio.netty.noJavassist: false
+2015-12-31 16:00:23 DEBUG PlatformDependent:713 - Javassist: unavailable
+2015-12-31 16:00:23 DEBUG PlatformDependent:714 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2015-12-31 16:00:23 DEBUG PlatformDependent:732 - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+2015-12-31 16:00:23 DEBUG PlatformDependent:811 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2015-12-31 16:00:23 DEBUG PlatformDependent:87 - -Dio.netty.noPreferDirect: false
+2015-12-31 16:00:23 DEBUG MultithreadEventLoopGroup:41 - -Dio.netty.eventLoopThreads: 16
+2015-12-31 16:00:23 DEBUG NioEventLoop:87 - -Dio.netty.noKeySetOptimization: false
+2015-12-31 16:00:23 DEBUG NioEventLoop:88 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2015-12-31 16:00:23 DEBUG DefaultChannelId:90 - -Dio.netty.processId: 12403 (auto-detected)
+2015-12-31 16:00:23 DEBUG DefaultChannelId:110 - -Dio.netty.machineId: 30:85:a9:ff:fe:98:f9:40 (auto-detected)
+2015-12-31 16:00:23 DEBUG ThreadLocalRandom:199 - -Dio.netty.initialSeedUniquifier: 0x1148aafe4b2a2201 (took 11 ms)
+2015-12-31 16:00:23 DEBUG PooledByteBufAllocator:98 - -Dio.netty.allocator.numHeapArenas: 8
+2015-12-31 16:00:23 DEBUG PooledByteBufAllocator:99 - -Dio.netty.allocator.numDirectArenas: 8
+2015-12-31 16:00:23 DEBUG PooledByteBufAllocator:101 - -Dio.netty.allocator.pageSize: 8192
+2015-12-31 16:00:23 DEBUG PooledByteBufAllocator:106 - -Dio.netty.allocator.maxOrder: 11
+2015-12-31 16:00:23 DEBUG PooledByteBufAllocator:110 - -Dio.netty.allocator.chunkSize: 16777216
+2015-12-31 16:00:23 DEBUG PooledByteBufAllocator:111 - -Dio.netty.allocator.tinyCacheSize: 512
+2015-12-31 16:00:23 DEBUG PooledByteBufAllocator:112 - -Dio.netty.allocator.smallCacheSize: 256
+2015-12-31 16:00:23 DEBUG PooledByteBufAllocator:113 - -Dio.netty.allocator.normalCacheSize: 64
+2015-12-31 16:00:23 DEBUG PooledByteBufAllocator:114 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2015-12-31 16:00:23 DEBUG PooledByteBufAllocator:115 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2015-12-31 16:00:23 DEBUG ByteBufUtil:66 - -Dio.netty.allocator.type: pooled
+2015-12-31 16:00:23 DEBUG ByteBufUtil:75 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2015-12-31 16:00:23 DEBUG NetUtil:203 - Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
+2015-12-31 16:00:23 DEBUG NetUtil:241 - /proc/sys/net/core/somaxconn: 128
+2015-12-31 16:00:34 DEBUG netty:34 - 
+{ackid:1,user:{uid:""},location:{utm:"",subutm:"",long:0.0, lat:0.0, speed:0,altitude:1}}
+2015-12-31 16:00:34 DEBUG netty:53 - new user created /127.0.0.1:43601
+2015-12-31 16:00:54 DEBUG netty:34 - 
+{ackid:1}
+2015-12-31 16:00:54 ERROR netty:86 - JSONObject["user"] not found.
+2015-12-31 16:01:35 DEBUG InternalLoggerFactory:59 - Using Log4J as the default logging framework
+2015-12-31 16:01:35 DEBUG PlatformDependent0:75 - java.nio.Buffer.address: available
+2015-12-31 16:01:35 DEBUG PlatformDependent0:83 - sun.misc.Unsafe.theUnsafe: available
+2015-12-31 16:01:35 DEBUG PlatformDependent0:92 - sun.misc.Unsafe.copyMemory: available
+2015-12-31 16:01:35 DEBUG PlatformDependent0:132 - java.nio.Bits.unaligned: true
+2015-12-31 16:01:35 DEBUG PlatformDependent:583 - Java version: 8
+2015-12-31 16:01:35 DEBUG PlatformDependent:590 - -Dio.netty.noUnsafe: false
+2015-12-31 16:01:35 DEBUG PlatformDependent:617 - sun.misc.Unsafe: available
+2015-12-31 16:01:35 DEBUG PlatformDependent:700 - -Dio.netty.noJavassist: false
+2015-12-31 16:01:35 DEBUG PlatformDependent:713 - Javassist: unavailable
+2015-12-31 16:01:35 DEBUG PlatformDependent:714 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2015-12-31 16:01:35 DEBUG PlatformDependent:732 - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+2015-12-31 16:01:35 DEBUG PlatformDependent:811 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2015-12-31 16:01:35 DEBUG PlatformDependent:87 - -Dio.netty.noPreferDirect: false
+2015-12-31 16:01:35 DEBUG MultithreadEventLoopGroup:41 - -Dio.netty.eventLoopThreads: 16
+2015-12-31 16:01:35 DEBUG NioEventLoop:87 - -Dio.netty.noKeySetOptimization: false
+2015-12-31 16:01:35 DEBUG NioEventLoop:88 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2015-12-31 16:01:35 DEBUG DefaultChannelId:90 - -Dio.netty.processId: 12599 (auto-detected)
+2015-12-31 16:01:35 DEBUG DefaultChannelId:110 - -Dio.netty.machineId: 30:85:a9:ff:fe:98:f9:40 (auto-detected)
+2015-12-31 16:01:35 DEBUG ThreadLocalRandom:199 - -Dio.netty.initialSeedUniquifier: 0x9f96e8c90723d75f (took 11 ms)
+2015-12-31 16:01:35 DEBUG PooledByteBufAllocator:98 - -Dio.netty.allocator.numHeapArenas: 8
+2015-12-31 16:01:35 DEBUG PooledByteBufAllocator:99 - -Dio.netty.allocator.numDirectArenas: 8
+2015-12-31 16:01:35 DEBUG PooledByteBufAllocator:101 - -Dio.netty.allocator.pageSize: 8192
+2015-12-31 16:01:35 DEBUG PooledByteBufAllocator:106 - -Dio.netty.allocator.maxOrder: 11
+2015-12-31 16:01:35 DEBUG PooledByteBufAllocator:110 - -Dio.netty.allocator.chunkSize: 16777216
+2015-12-31 16:01:35 DEBUG PooledByteBufAllocator:111 - -Dio.netty.allocator.tinyCacheSize: 512
+2015-12-31 16:01:35 DEBUG PooledByteBufAllocator:112 - -Dio.netty.allocator.smallCacheSize: 256
+2015-12-31 16:01:35 DEBUG PooledByteBufAllocator:113 - -Dio.netty.allocator.normalCacheSize: 64
+2015-12-31 16:01:35 DEBUG PooledByteBufAllocator:114 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2015-12-31 16:01:35 DEBUG PooledByteBufAllocator:115 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2015-12-31 16:01:35 DEBUG ByteBufUtil:66 - -Dio.netty.allocator.type: pooled
+2015-12-31 16:01:35 DEBUG ByteBufUtil:75 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2015-12-31 16:01:35 DEBUG NetUtil:203 - Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
+2015-12-31 16:01:35 DEBUG NetUtil:241 - /proc/sys/net/core/somaxconn: 128
+2015-12-31 16:01:40 DEBUG InternalLoggerFactory:59 - Using Log4J as the default logging framework
+2015-12-31 16:01:40 ERROR netty:38 - SSL Context Configuration failed java.lang.NullPointerException
+2015-12-31 16:01:40 DEBUG MultithreadEventLoopGroup:41 - -Dio.netty.eventLoopThreads: 16
+2015-12-31 16:01:40 DEBUG PlatformDependent0:75 - java.nio.Buffer.address: available
+2015-12-31 16:01:40 DEBUG PlatformDependent0:83 - sun.misc.Unsafe.theUnsafe: available
+2015-12-31 16:01:40 DEBUG PlatformDependent0:92 - sun.misc.Unsafe.copyMemory: available
+2015-12-31 16:01:40 DEBUG PlatformDependent0:132 - java.nio.Bits.unaligned: true
+2015-12-31 16:01:40 DEBUG PlatformDependent:583 - Java version: 8
+2015-12-31 16:01:40 DEBUG PlatformDependent:590 - -Dio.netty.noUnsafe: false
+2015-12-31 16:01:40 DEBUG PlatformDependent:617 - sun.misc.Unsafe: available
+2015-12-31 16:01:40 DEBUG PlatformDependent:700 - -Dio.netty.noJavassist: false
+2015-12-31 16:01:40 DEBUG PlatformDependent:713 - Javassist: unavailable
+2015-12-31 16:01:40 DEBUG PlatformDependent:714 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2015-12-31 16:01:40 DEBUG PlatformDependent:732 - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+2015-12-31 16:01:40 DEBUG PlatformDependent:811 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2015-12-31 16:01:40 DEBUG PlatformDependent:87 - -Dio.netty.noPreferDirect: false
+2015-12-31 16:01:40 DEBUG NioEventLoop:87 - -Dio.netty.noKeySetOptimization: false
+2015-12-31 16:01:40 DEBUG NioEventLoop:88 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2015-12-31 16:01:40 DEBUG DefaultChannelId:90 - -Dio.netty.processId: 12650 (auto-detected)
+2015-12-31 16:01:40 DEBUG DefaultChannelId:110 - -Dio.netty.machineId: 30:85:a9:ff:fe:98:f9:40 (auto-detected)
+2015-12-31 16:01:40 DEBUG ThreadLocalRandom:199 - -Dio.netty.initialSeedUniquifier: 0x7bb3ce440da51ca5 (took 11 ms)
+2015-12-31 16:01:40 DEBUG PooledByteBufAllocator:98 - -Dio.netty.allocator.numHeapArenas: 8
+2015-12-31 16:01:40 DEBUG PooledByteBufAllocator:99 - -Dio.netty.allocator.numDirectArenas: 8
+2015-12-31 16:01:40 DEBUG PooledByteBufAllocator:101 - -Dio.netty.allocator.pageSize: 8192
+2015-12-31 16:01:40 DEBUG PooledByteBufAllocator:106 - -Dio.netty.allocator.maxOrder: 11
+2015-12-31 16:01:40 DEBUG PooledByteBufAllocator:110 - -Dio.netty.allocator.chunkSize: 16777216
+2015-12-31 16:01:40 DEBUG PooledByteBufAllocator:111 - -Dio.netty.allocator.tinyCacheSize: 512
+2015-12-31 16:01:40 DEBUG PooledByteBufAllocator:112 - -Dio.netty.allocator.smallCacheSize: 256
+2015-12-31 16:01:40 DEBUG PooledByteBufAllocator:113 - -Dio.netty.allocator.normalCacheSize: 64
+2015-12-31 16:01:40 DEBUG PooledByteBufAllocator:114 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2015-12-31 16:01:40 DEBUG PooledByteBufAllocator:115 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2015-12-31 16:01:40 DEBUG ByteBufUtil:66 - -Dio.netty.allocator.type: pooled
+2015-12-31 16:01:40 DEBUG ByteBufUtil:75 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2015-12-31 16:01:40 DEBUG NetUtil:203 - Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
+2015-12-31 16:01:40 DEBUG NetUtil:241 - /proc/sys/net/core/somaxconn: 128
+2015-12-31 16:01:42 DEBUG Recycler:56 - -Dio.netty.recycler.maxCapacity: 262144
+2015-12-31 16:01:42 DEBUG ResourceLeakDetector:79 - -Dio.netty.leakDetectionLevel: simple
+2015-12-31 16:01:42 DEBUG Recycler:56 - -Dio.netty.recycler.maxCapacity: 262144
+2015-12-31 16:01:42 DEBUG ResourceLeakDetector:79 - -Dio.netty.leakDetectionLevel: simple
+2015-12-31 16:01:51 DEBUG netty:34 - {ackid:1,user:{uid:""},location:{utm:"",subutm:"",long:0.0, lat:0.0, speed:0,altitude:1}}
+2015-12-31 16:01:51 DEBUG netty:53 - new user created /127.0.0.1:43620
+2015-12-31 16:01:51 DEBUG cheController:34 - {"ackid":1,"location":{"altitude":1,"subutm":"","long":0,"lat":0,"speed":0,"utm":""},"user":{"uid":"[B@64ae49dc"}}
+2015-12-31 16:01:51 DEBUG cheController:64 - handle player
+2015-12-31 16:01:51 DEBUG cheController:52 - created a new player
+2015-12-31 16:01:51 DEBUG cheController:32 - check change of utm
+2015-12-31 16:01:51 DEBUG cheController:36 - check change of utm
+2015-12-31 16:01:51 ERROR cheController:33 - failed to call che controller error marshalling arguments; nested exception is: 
+	java.io.NotSerializableException: util.TopicSubscriptions
+2015-12-31 16:03:04 DEBUG InternalLoggerFactory:59 - Using Log4J as the default logging framework
+2015-12-31 16:03:04 DEBUG PlatformDependent0:75 - java.nio.Buffer.address: available
+2015-12-31 16:03:04 DEBUG PlatformDependent0:83 - sun.misc.Unsafe.theUnsafe: available
+2015-12-31 16:03:04 DEBUG PlatformDependent0:92 - sun.misc.Unsafe.copyMemory: available
+2015-12-31 16:03:04 DEBUG PlatformDependent0:132 - java.nio.Bits.unaligned: true
+2015-12-31 16:03:04 DEBUG PlatformDependent:583 - Java version: 8
+2015-12-31 16:03:04 DEBUG PlatformDependent:590 - -Dio.netty.noUnsafe: false
+2015-12-31 16:03:04 DEBUG PlatformDependent:617 - sun.misc.Unsafe: available
+2015-12-31 16:03:04 DEBUG PlatformDependent:700 - -Dio.netty.noJavassist: false
+2015-12-31 16:03:04 DEBUG PlatformDependent:713 - Javassist: unavailable
+2015-12-31 16:03:04 DEBUG PlatformDependent:714 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2015-12-31 16:03:04 DEBUG PlatformDependent:732 - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+2015-12-31 16:03:04 DEBUG PlatformDependent:811 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2015-12-31 16:03:04 DEBUG PlatformDependent:87 - -Dio.netty.noPreferDirect: false
+2015-12-31 16:03:04 DEBUG MultithreadEventLoopGroup:41 - -Dio.netty.eventLoopThreads: 16
+2015-12-31 16:03:04 DEBUG NioEventLoop:87 - -Dio.netty.noKeySetOptimization: false
+2015-12-31 16:03:04 DEBUG NioEventLoop:88 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2015-12-31 16:03:04 DEBUG DefaultChannelId:90 - -Dio.netty.processId: 12851 (auto-detected)
+2015-12-31 16:03:04 DEBUG DefaultChannelId:110 - -Dio.netty.machineId: 30:85:a9:ff:fe:98:f9:40 (auto-detected)
+2015-12-31 16:03:04 DEBUG ThreadLocalRandom:199 - -Dio.netty.initialSeedUniquifier: 0x80f060b0795e1314 (took 11 ms)
+2015-12-31 16:03:04 DEBUG PooledByteBufAllocator:98 - -Dio.netty.allocator.numHeapArenas: 8
+2015-12-31 16:03:04 DEBUG PooledByteBufAllocator:99 - -Dio.netty.allocator.numDirectArenas: 8
+2015-12-31 16:03:04 DEBUG PooledByteBufAllocator:101 - -Dio.netty.allocator.pageSize: 8192
+2015-12-31 16:03:04 DEBUG PooledByteBufAllocator:106 - -Dio.netty.allocator.maxOrder: 11
+2015-12-31 16:03:04 DEBUG PooledByteBufAllocator:110 - -Dio.netty.allocator.chunkSize: 16777216
+2015-12-31 16:03:04 DEBUG PooledByteBufAllocator:111 - -Dio.netty.allocator.tinyCacheSize: 512
+2015-12-31 16:03:04 DEBUG PooledByteBufAllocator:112 - -Dio.netty.allocator.smallCacheSize: 256
+2015-12-31 16:03:04 DEBUG PooledByteBufAllocator:113 - -Dio.netty.allocator.normalCacheSize: 64
+2015-12-31 16:03:04 DEBUG PooledByteBufAllocator:114 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2015-12-31 16:03:04 DEBUG PooledByteBufAllocator:115 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2015-12-31 16:03:04 DEBUG ByteBufUtil:66 - -Dio.netty.allocator.type: pooled
+2015-12-31 16:03:04 DEBUG ByteBufUtil:75 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2015-12-31 16:03:04 DEBUG NetUtil:203 - Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
+2015-12-31 16:03:04 DEBUG NetUtil:241 - /proc/sys/net/core/somaxconn: 128
+2015-12-31 16:03:10 DEBUG InternalLoggerFactory:59 - Using Log4J as the default logging framework
+2015-12-31 16:03:10 ERROR netty:38 - SSL Context Configuration failed java.lang.NullPointerException
+2015-12-31 16:03:10 DEBUG MultithreadEventLoopGroup:41 - -Dio.netty.eventLoopThreads: 16
+2015-12-31 16:03:11 DEBUG PlatformDependent0:75 - java.nio.Buffer.address: available
+2015-12-31 16:03:11 DEBUG PlatformDependent0:83 - sun.misc.Unsafe.theUnsafe: available
+2015-12-31 16:03:11 DEBUG PlatformDependent0:92 - sun.misc.Unsafe.copyMemory: available
+2015-12-31 16:03:11 DEBUG PlatformDependent0:132 - java.nio.Bits.unaligned: true
+2015-12-31 16:03:11 DEBUG PlatformDependent:583 - Java version: 8
+2015-12-31 16:03:11 DEBUG PlatformDependent:590 - -Dio.netty.noUnsafe: false
+2015-12-31 16:03:11 DEBUG PlatformDependent:617 - sun.misc.Unsafe: available
+2015-12-31 16:03:11 DEBUG PlatformDependent:700 - -Dio.netty.noJavassist: false
+2015-12-31 16:03:11 DEBUG PlatformDependent:713 - Javassist: unavailable
+2015-12-31 16:03:11 DEBUG PlatformDependent:714 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2015-12-31 16:03:11 DEBUG PlatformDependent:732 - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+2015-12-31 16:03:11 DEBUG PlatformDependent:811 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2015-12-31 16:03:11 DEBUG PlatformDependent:87 - -Dio.netty.noPreferDirect: false
+2015-12-31 16:03:11 DEBUG NioEventLoop:87 - -Dio.netty.noKeySetOptimization: false
+2015-12-31 16:03:11 DEBUG NioEventLoop:88 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2015-12-31 16:03:11 DEBUG DefaultChannelId:90 - -Dio.netty.processId: 12921 (auto-detected)
+2015-12-31 16:03:11 DEBUG DefaultChannelId:110 - -Dio.netty.machineId: 30:85:a9:ff:fe:98:f9:40 (auto-detected)
+2015-12-31 16:03:11 DEBUG ThreadLocalRandom:199 - -Dio.netty.initialSeedUniquifier: 0x2e1f8c90b61ec33d (took 13 ms)
+2015-12-31 16:03:11 DEBUG PooledByteBufAllocator:98 - -Dio.netty.allocator.numHeapArenas: 8
+2015-12-31 16:03:11 DEBUG PooledByteBufAllocator:99 - -Dio.netty.allocator.numDirectArenas: 8
+2015-12-31 16:03:11 DEBUG PooledByteBufAllocator:101 - -Dio.netty.allocator.pageSize: 8192
+2015-12-31 16:03:11 DEBUG PooledByteBufAllocator:106 - -Dio.netty.allocator.maxOrder: 11
+2015-12-31 16:03:11 DEBUG PooledByteBufAllocator:110 - -Dio.netty.allocator.chunkSize: 16777216
+2015-12-31 16:03:11 DEBUG PooledByteBufAllocator:111 - -Dio.netty.allocator.tinyCacheSize: 512
+2015-12-31 16:03:11 DEBUG PooledByteBufAllocator:112 - -Dio.netty.allocator.smallCacheSize: 256
+2015-12-31 16:03:11 DEBUG PooledByteBufAllocator:113 - -Dio.netty.allocator.normalCacheSize: 64
+2015-12-31 16:03:11 DEBUG PooledByteBufAllocator:114 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2015-12-31 16:03:11 DEBUG PooledByteBufAllocator:115 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2015-12-31 16:03:11 DEBUG ByteBufUtil:66 - -Dio.netty.allocator.type: pooled
+2015-12-31 16:03:11 DEBUG ByteBufUtil:75 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2015-12-31 16:03:11 DEBUG NetUtil:203 - Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
+2015-12-31 16:03:11 DEBUG NetUtil:241 - /proc/sys/net/core/somaxconn: 128
+2015-12-31 16:03:14 DEBUG Recycler:56 - -Dio.netty.recycler.maxCapacity: 262144
+2015-12-31 16:03:14 DEBUG ResourceLeakDetector:79 - -Dio.netty.leakDetectionLevel: simple
+2015-12-31 16:03:14 DEBUG Recycler:56 - -Dio.netty.recycler.maxCapacity: 262144
+2015-12-31 16:03:14 DEBUG ResourceLeakDetector:79 - -Dio.netty.leakDetectionLevel: simple
+2015-12-31 16:03:22 DEBUG netty:34 - {ackid:1,user:{uid:""},location:{utm:"",subutm:"",long:0.0, lat:0.0, speed:0,altitude:1}}
+2015-12-31 16:03:22 DEBUG netty:53 - new user created /127.0.0.1:43632
+2015-12-31 16:03:22 DEBUG cheController:34 - {"ackid":1,"location":{"altitude":1,"subutm":"","long":0,"lat":0,"speed":0,"utm":""},"user":{"uid":"[B@51c860f8"}}
+2015-12-31 16:03:22 DEBUG cheController:64 - handle player
+2015-12-31 16:03:22 DEBUG cheController:52 - created a new player
+2015-12-31 16:03:22 DEBUG cheController:32 - check change of utm
+2015-12-31 16:03:22 DEBUG cheController:36 - check change of utm
+2015-12-31 16:03:22 ERROR cheController:33 - failed to call che controller listener can't be null

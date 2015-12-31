@@ -3,7 +3,7 @@ package core;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
-import util.NettyChannelHandler;
+import com.hazelcast.core.MessageListener;
 import util.TopicSubscriptions;
 
 /**
@@ -25,8 +25,8 @@ public class HazelcastManager implements HazelcastManagerInterface {
         hazelcastInstance.getTopic(topic);
     }
 
-    public String subscribe(String topic, NettyChannelHandler user) {
-        return hazelcastInstance.getTopic(topic).addMessageListener(user);
+    public String subscribe(String topic, MessageListener listener) {
+        return hazelcastInstance.getTopic(topic).addMessageListener(listener);
     }
 
     public void unSubscribe(String topic, TopicSubscriptions topicSubscriptions) {

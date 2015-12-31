@@ -1,7 +1,7 @@
 package core;
 
 import com.hazelcast.core.IMap;
-import util.NettyChannelHandler;
+import com.hazelcast.core.MessageListener;
 import util.TopicSubscriptions;
 
 import java.rmi.Remote;
@@ -14,7 +14,7 @@ public interface HazelcastManagerInterface extends Remote {
 
     public void createTopic(String topic) throws RemoteException;
 
-    public String subscribe(String topic, NettyChannelHandler user) throws RemoteException;
+    public String subscribe(String topic, MessageListener listener) throws RemoteException;
 
     public void unSubscribe(String topic, TopicSubscriptions topicSubscriptions) throws RemoteException;
 
