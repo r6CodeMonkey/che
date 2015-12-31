@@ -7,6 +7,8 @@ import model.client.UTM;
 import model.server.Player;
 import model.server.UTMLocation;
 import org.json.JSONException;
+import org.json.JSONObject;
+import message.receive.CheMessage;
 import util.Configuration;
 
 import java.rmi.RemoteException;
@@ -47,6 +49,9 @@ public class PlayerHandler {
             UTM model = new UTM(player.utmLocation.utm.getUtm(), player.utmLocation.subUtm.getUtm());
             configuration.getChannelMapController().getChannel(player.uid).writeAndFlush(model.toString());
         }
+
+        //test
+        hazelcastManagerInterface.publish(player.utmLocation.utm.getUtm(), new CheMessage("fake", new JSONObject("{text: this is a test}")));
 
 
         hazelcastManagerInterface.put(CheController.PLAYER_MAP, player.uid, player);

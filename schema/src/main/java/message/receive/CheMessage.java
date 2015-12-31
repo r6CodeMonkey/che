@@ -1,12 +1,14 @@
-package util;
+package message.receive;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * Created by timmytime on 31/12/15.
  */
-public class CheMessage extends JSONObject {
+public class CheMessage extends JSONObject implements Serializable {
 
     public static final String REMOTE_ADDRESS = "remoteAddress";
     public static final String CHE_OBJECT = "cheObject";

@@ -4,6 +4,8 @@ import com.hazelcast.core.Message;
 import com.hazelcast.core.MessageListener;
 import server.CheCallbackInterface;
 
+import java.io.Serializable;
+
 /**
  * Created by timmytime on 31/12/15.
  */
@@ -22,7 +24,7 @@ public class CheMessageHandler implements MessageListener {
         try {
             cheCallbackInterface.handleCallback(message, playerKey);
         }catch (Exception e){
-
+            e.printStackTrace();
         }
     }
 }

@@ -1,88 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/cheController/src/main/java/controller/handler/PlayerHandler.java" line="46" />
+    <bookmark url="file://$PROJECT_DIR$/cheController/src/main/java/controller/handler/PlayerHandler.java" line="48" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1da809bf-b5cd-41ef-846a-b237902f929e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cheController/src/main/java/rmi/CheCallbackClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hazelcast/src/main/java/server/CheCallbackInterface.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cheController/src/main/java/util/CheMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hazelcast/src/main/java/util/CheMessageHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/schema/src/main/java/message/receive/UTM.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/schema/src/main/java/model/client/UTM.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/controller/CheController$CheLocalCallback.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/model/Player.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/model/UTMLocation.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/src/main/java/rmi/CheCallbackClient.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/rmi/CheCallbackClient.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/util/CheMessage.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/util/CheRemoteCallback.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/util/UTM.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hazelcast/target/classes/util/TopicSubscriptions.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/classes/message/Acknowledge.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/classes/message/Core.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/classes/message/GenericMessage.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/classes/message/Location.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/classes/message/User.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/classes/model/Acknowledge.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/classes/model/Core.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/classes/model/Location.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/classes/model/UTM.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/classes/model/User.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/classes/model/generic/GenericInterface.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/classes/model/generic/GenericModel.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/cheController/src/main/java/model/Player.java" afterPath="$PROJECT_DIR$/schema/src/main/java/model/server/Player.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/cheController/src/main/java/model/UTMLocation.java" afterPath="$PROJECT_DIR$/schema/src/main/java/model/server/UTMLocation.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/cheController/src/main/java/util/UTM.java" afterPath="$PROJECT_DIR$/schema/src/main/java/model/server/UTM.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/hazelcast/src/main/java/util/TopicSubscriptions.java" afterPath="$PROJECT_DIR$/schema/src/main/java/model/server/TopicSubscriptions.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/schema/src/main/java/message/Acknowledge.java" afterPath="$PROJECT_DIR$/schema/src/main/java/message/send/Acknowledge.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/schema/src/main/java/message/Core.java" afterPath="$PROJECT_DIR$/schema/src/main/java/message/send/Core.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/schema/src/main/java/message/GenericMessage.java" afterPath="$PROJECT_DIR$/schema/src/main/java/message/send/GenericMessage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/schema/src/main/java/message/Location.java" afterPath="$PROJECT_DIR$/schema/src/main/java/message/send/Location.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/schema/src/main/java/message/User.java" afterPath="$PROJECT_DIR$/schema/src/main/java/message/send/User.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/schema/src/main/java/model/Acknowledge.java" afterPath="$PROJECT_DIR$/schema/src/main/java/model/client/Acknowledge.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/schema/src/main/java/model/Core.java" afterPath="$PROJECT_DIR$/schema/src/main/java/model/client/Core.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/schema/src/main/java/model/Location.java" afterPath="$PROJECT_DIR$/schema/src/main/java/model/client/Location.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/schema/src/main/java/model/User.java" afterPath="$PROJECT_DIR$/schema/src/main/java/model/client/User.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/schema/src/main/java/model/generic/GenericInterface.java" afterPath="$PROJECT_DIR$/schema/src/main/java/model/client/generic/GenericInterface.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/schema/src/main/java/model/generic/GenericModel.java" afterPath="$PROJECT_DIR$/schema/src/main/java/model/client/generic/GenericModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/message/send/Acknowledge.class" afterPath="$PROJECT_DIR$/schema/target/classes/message/send/Acknowledge.class" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/cheController/src/main/java/util/CheMessage.java" afterPath="$PROJECT_DIR$/schema/src/main/java/message/receive/CheMessage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/target/classes/controller/CheController.class" afterPath="$PROJECT_DIR$/cheController/target/classes/controller/CheController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/target/classes/channel/CheHandler.class" afterPath="$PROJECT_DIR$/cheController/target/classes/channel/CheHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/message/send/Core.class" afterPath="$PROJECT_DIR$/schema/target/classes/message/send/Core.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/message/send/GenericMessage.class" afterPath="$PROJECT_DIR$/schema/target/classes/message/send/GenericMessage.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/target/classes/core/HazelcastManager.class" afterPath="$PROJECT_DIR$/hazelcast/target/classes/core/HazelcastManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/target/classes/core/HazelcastManagerInterface.class" afterPath="$PROJECT_DIR$/hazelcast/target/classes/core/HazelcastManagerInterface.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/target/test-classes/HazelcastManagerTest.class" afterPath="$PROJECT_DIR$/hazelcast/target/test-classes/HazelcastManagerTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/target/classes/server/HazelcastServer.class" afterPath="$PROJECT_DIR$/hazelcast/target/classes/server/HazelcastServer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/message/send/Location.class" afterPath="$PROJECT_DIR$/schema/target/classes/message/send/Location.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/factory/MessageFactory.class" afterPath="$PROJECT_DIR$/schema/target/classes/factory/MessageFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/test-classes/model/ModelTest.class" afterPath="$PROJECT_DIR$/schema/target/test-classes/model/ModelTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/target/classes/controller/handler/PlayerHandler.class" afterPath="$PROJECT_DIR$/cheController/target/classes/controller/handler/PlayerHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/message/receive/UTM.class" afterPath="$PROJECT_DIR$/schema/target/classes/message/receive/UTM.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/target/classes/util/UTMConvert$1.class" afterPath="$PROJECT_DIR$/cheController/target/classes/util/UTMConvert$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/target/classes/util/UTMConvert.class" afterPath="$PROJECT_DIR$/cheController/target/classes/util/UTMConvert.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/target/classes/controller/handler/UTMHandler.class" afterPath="$PROJECT_DIR$/cheController/target/classes/controller/handler/UTMHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/message/send/User.class" afterPath="$PROJECT_DIR$/schema/target/classes/message/send/User.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/C:\log4j-application.log" afterPath="$PROJECT_DIR$/C:\log4j-application.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/src/main/java/controller/CheController.java" afterPath="$PROJECT_DIR$/cheController/src/main/java/controller/CheController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/model/CheControllerObject.java" afterPath="$PROJECT_DIR$/netty/src/main/java/model/CheControllerObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/socket/CheControllerSocket.java" afterPath="$PROJECT_DIR$/netty/src/main/java/socket/CheControllerSocket.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/src/main/java/channel/CheHandler.java" afterPath="$PROJECT_DIR$/cheController/src/main/java/channel/CheHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/CheHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/channel/CheHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java" afterPath="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManagerInterface.java" afterPath="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManagerInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/src/test/java/HazelcastManagerTest.java" afterPath="$PROJECT_DIR$/hazelcast/src/test/java/HazelcastManagerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/src/main/java/server/HazelcastServer.java" afterPath="$PROJECT_DIR$/hazelcast/src/main/java/server/HazelcastServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/src/main/java/channel/JsonHandler.java" afterPath="$PROJECT_DIR$/cheController/src/main/java/channel/JsonHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/JsonHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/channel/JsonHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/factory/MessageFactory.java" afterPath="$PROJECT_DIR$/schema/src/main/java/factory/MessageFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/message/MessageInterface.java" afterPath="$PROJECT_DIR$/schema/src/main/java/message/MessageInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/test/java/model/ModelTest.java" afterPath="$PROJECT_DIR$/schema/src/test/java/model/ModelTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/src/main/java/util/CheMessageHandler.java" afterPath="$PROJECT_DIR$/hazelcast/src/main/java/util/CheMessageHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/PlayerHandler.java" afterPath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/PlayerHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/src/main/java/util/UTMConvert.java" afterPath="$PROJECT_DIR$/cheController/src/main/java/util/UTMConvert.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/UTMHandler.java" afterPath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/UTMHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/hazelcast.iml" afterPath="$PROJECT_DIR$/hazelcast/hazelcast.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/pom.xml" afterPath="$PROJECT_DIR$/hazelcast/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Che.iws" />
@@ -118,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/cheController/src/main/java/controller/handler/PlayerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+              <caret line="31" column="40" selection-start-line="31" selection-start-column="40" selection-end-line="31" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -127,10 +59,10 @@
         </entry>
       </file>
       <file leaf-file-name="CheMessage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cheController/src/main/java/util/CheMessage.java">
+        <entry file="file://$PROJECT_DIR$/schema/src/main/java/message/receive/CheMessage.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -160,11 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UTM.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UTM.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/schema/src/main/java/model/client/UTM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7622821">
-              <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+            <state vertical-scroll-proportion="-8.709678">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#724#725#0" expanded="true" />
@@ -173,28 +105,45 @@
                 <element signature="e#833#834#0" expanded="true" />
                 <element signature="e#862#863#0" expanded="true" />
                 <element signature="e#888#889#0" expanded="true" />
+                <element signature="e#920#921#0" expanded="true" />
                 <element signature="e#949#950#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/schema/src/main/java/model/client/User.java">
+      <file leaf-file-name="HazelcastManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="49" />
-              <folding />
+              <caret line="34" column="52" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Location.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/schema/src/main/java/model/client/Location.java">
+      <file leaf-file-name="CheMessageHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hazelcast/src/main/java/util/CheMessageHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="64" />
-              <folding />
+              <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CheController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cheController/src/main/java/controller/CheController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.29758307">
+              <caret line="83" column="9" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -219,22 +168,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HazelcastServer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hazelcast/src/main/java/server/HazelcastServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1627#1628#0" expanded="true" />
-                <element signature="e#1688#1689#0" expanded="true" />
-                <element signature="e#2729#2730#0" expanded="true" />
-                <element signature="e#2792#2793#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -255,7 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/cheController/src/main/java/util/TestChannel.java" />
         <option value="$PROJECT_DIR$/hazelcast/src/test/java/HazelcastServerTest.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/cheController/src/main/java/util/UTMConvert.java" />
@@ -292,20 +224,21 @@
         <option value="$PROJECT_DIR$/schema/src/main/java/message/MessageInterface.java" />
         <option value="$PROJECT_DIR$/cheController/src/main/java/rmi/CheCallbackClient.java" />
         <option value="$PROJECT_DIR$/cheController/src/main/java/controller/handler/UTMHandler.java" />
-        <option value="$PROJECT_DIR$/cheController/src/main/java/controller/CheController.java" />
         <option value="$PROJECT_DIR$/hazelcast/src/main/java/server/CheCallbackInterface.java" />
-        <option value="$PROJECT_DIR$/hazelcast/src/main/java/util/CheMessageHandler.java" />
         <option value="$PROJECT_DIR$/schema/src/main/java/model/server/UTM.java" />
         <option value="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java" />
         <option value="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManagerInterface.java" />
         <option value="$PROJECT_DIR$/hazelcast/src/main/java/server/HazelcastServer.java" />
         <option value="$PROJECT_DIR$/hazelcast/src/test/java/HazelcastManagerTest.java" />
         <option value="$PROJECT_DIR$/hazelcast/pom.xml" />
-        <option value="$PROJECT_DIR$/cheController/src/main/java/util/CheMessage.java" />
         <option value="$PROJECT_DIR$/schema/src/main/java/message/receive/UTM.java" />
         <option value="$PROJECT_DIR$/schema/src/main/java/factory/MessageFactory.java" />
-        <option value="$PROJECT_DIR$/cheController/src/main/java/controller/handler/PlayerHandler.java" />
         <option value="$PROJECT_DIR$/schema/src/main/java/model/client/UTM.java" />
+        <option value="$PROJECT_DIR$/cheController/src/main/java/controller/handler/PlayerHandler.java" />
+        <option value="$PROJECT_DIR$/cheController/src/main/java/util/CheMessage.java" />
+        <option value="$PROJECT_DIR$/schema/src/main/java/message/receive/CheMessage.java" />
+        <option value="$PROJECT_DIR$/hazelcast/src/main/java/util/CheMessageHandler.java" />
+        <option value="$PROJECT_DIR$/cheController/src/main/java/controller/CheController.java" />
       </list>
     </option>
   </component>
@@ -1191,36 +1124,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rmi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="che" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="che" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cheController" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1975,40 +1878,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cheController/src/main/java/controller/CheController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="48" selection-start-line="44" selection-start-column="48" selection-end-line="44" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cheController/src/main/java/rmi/CheCallbackClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hazelcast/src/main/java/server/CheCallbackInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hazelcast/src/main/java/util/CheMessageHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2030,18 +1903,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="52" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1995#1996#0" expanded="true" />
-            <element signature="e#2056#2057#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2103,16 +1964,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cheController/src/main/java/util/CheMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/schema/src/main/java/model/client/Location.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2155,6 +2006,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/schema/src/main/java/model/client/UTM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.709678">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#724#725#0" expanded="true" />
+            <element signature="e#754#755#0" expanded="true" />
+            <element signature="e#797#798#0" expanded="true" />
+            <element signature="e#833#834#0" expanded="true" />
+            <element signature="e#862#863#0" expanded="true" />
+            <element signature="e#888#889#0" expanded="true" />
+            <element signature="e#920#921#0" expanded="true" />
+            <element signature="e#949#950#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cheController/src/main/java/controller/handler/UTMHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2166,26 +2035,49 @@
     <entry file="file://$PROJECT_DIR$/cheController/src/main/java/controller/handler/PlayerHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+          <caret line="31" column="40" selection-start-line="31" selection-start-column="40" selection-end-line="31" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/schema/src/main/java/model/client/UTM.java">
+    <entry file="file://$PROJECT_DIR$/schema/src/main/java/message/receive/CheMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7622821">
-          <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#724#725#0" expanded="true" />
-            <element signature="e#754#755#0" expanded="true" />
-            <element signature="e#797#798#0" expanded="true" />
-            <element signature="e#833#834#0" expanded="true" />
-            <element signature="e#862#863#0" expanded="true" />
-            <element signature="e#888#889#0" expanded="true" />
-            <element signature="e#949#950#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="52" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hazelcast/src/main/java/util/CheMessageHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cheController/src/main/java/controller/CheController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29758307">
+          <caret line="83" column="9" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
