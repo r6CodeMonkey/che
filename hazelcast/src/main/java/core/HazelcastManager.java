@@ -38,8 +38,6 @@ public class HazelcastManager implements HazelcastManagerInterface {
     }
 
     public void publish(String topic, String message) {
-
-        System.out.print("message to publish is "+message);
         hazelcastInstance.getTopic(topic).publish(message);
     }
 

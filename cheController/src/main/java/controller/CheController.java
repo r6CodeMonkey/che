@@ -1,6 +1,5 @@
 package controller;
 
-import com.hazelcast.core.Message;
 import controller.handler.PlayerHandler;
 import core.HazelcastManagerInterface;
 import io.netty.channel.Channel;
@@ -72,8 +71,6 @@ public class CheController {
 
     private void handleMessage(CheMessage cheMessage, String key) throws JSONException {
 
-        configuration.getLogger().debug("we have handled");
-
         Channel channel = configuration.getChannelMapController().getChannel(key);
 
         if (!cheMessage.getRemoteAddress().equals(channel.remoteAddress().toString())) {
@@ -95,8 +92,6 @@ public class CheController {
 
         @Override
         public void handleCallback(String message, String key) {
-
-            configuration.getLogger().debug("we have received "+message);
 
             try {
                 CheMessage cheMessage = new CheMessage(message);
