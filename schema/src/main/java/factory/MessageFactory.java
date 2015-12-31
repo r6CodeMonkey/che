@@ -1,6 +1,11 @@
 package factory;
 
-import message.*;
+import message.receive.UTM;
+import message.send.*;
+import message.send.Acknowledge;
+import message.send.Core;
+import message.send.Location;
+import message.send.User;
 import org.json.JSONObject;
 
 /**
@@ -13,13 +18,14 @@ public class MessageFactory {
     public static final int LOCATION = 2;
     public static final int CORE = 3;
     public static final int GENERIC = 4;
+    public static final int UTM = 5;
 
 
     /*
       helper to make an acknowledge.  sent from server, should not be used from clients.
      */
     public static String createAcknowledge(String ackId, String state, String info) {
-        return model.Acknowledge.create(ackId, state, info).toString();
+        return model.client.Acknowledge.create(ackId, state, info).toString();
     }
 
 
@@ -49,6 +55,10 @@ public class MessageFactory {
                 GenericMessage genericMessage = new GenericMessage();
                 genericMessage.create(message);
                 return genericMessage.get();
+            case UTM:
+                message.receive.UTM utm = new UTM();
+                utm.create(message);
+                return utm.get();
             default:
                 throw new RuntimeException("Unknown message type");
         }

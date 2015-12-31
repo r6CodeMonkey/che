@@ -4,7 +4,7 @@ import controller.CheController;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import model.Core;
+import model.client.Core;
 import util.Configuration;
 
 

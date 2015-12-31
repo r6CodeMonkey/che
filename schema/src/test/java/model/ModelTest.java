@@ -1,6 +1,10 @@
 package model;
 
-import model.generic.GenericModel;
+import model.client.Acknowledge;
+import model.client.Core;
+import model.client.Location;
+import model.client.User;
+import model.client.generic.GenericModel;
 import org.junit.Test;
 import util.Tags;
 

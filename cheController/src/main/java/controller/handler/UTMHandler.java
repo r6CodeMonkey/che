@@ -1,10 +1,10 @@
 package controller.handler;
 
 import core.HazelcastManagerInterface;
-import model.Location;
-import model.UTMLocation;
+import model.client.Location;
+import model.server.UTMLocation;
 import util.Configuration;
-import util.TopicSubscriptions;
+import model.server.TopicSubscriptions;
 
 import java.rmi.RemoteException;
 
@@ -31,15 +31,15 @@ public class UTMHandler {
         return utmLocation;
     }
 
-    public void handleUTMChange(UTMLocation currentLocation, UTMLocation previousLocation, TopicSubscriptions subscriptions) throws RemoteException {
+    public void handleUTMChange(UTMLocation currentLocation, UTMLocation previousLocation, TopicSubscriptions subscriptions, String uid) throws RemoteException {
         hazelcastManagerInterface.unSubscribe(previousLocation.utm.getUtm(), subscriptions);
-        subscriptions.addSubscription(currentLocation.utm.getUtm(), hazelcastManagerInterface.subscribe(currentLocation.utm.getUtm(), null));
-        handleSubUTMChange(currentLocation, previousLocation, subscriptions);
+        subscriptions.addSubscription(currentLocation.utm.getUtm(), hazelcastManagerInterface.subscribe(currentLocation.utm.getUtm(), uid));
+        handleSubUTMChange(currentLocation, previousLocation, subscriptions, uid);
     }
 
-    public void handleSubUTMChange(UTMLocation currentLocation, UTMLocation previousLocation, TopicSubscriptions subscriptions) throws RemoteException {
+    public void handleSubUTMChange(UTMLocation currentLocation, UTMLocation previousLocation, TopicSubscriptions subscriptions, String uid) throws RemoteException {
         hazelcastManagerInterface.unSubscribe(previousLocation.subUtm.getUtm(), subscriptions);
-        subscriptions.addSubscription(currentLocation.subUtm.getUtm(), hazelcastManagerInterface.subscribe(currentLocation.subUtm.getUtm(), null));
+        subscriptions.addSubscription(currentLocation.subUtm.getUtm(), hazelcastManagerInterface.subscribe(currentLocation.subUtm.getUtm(), uid));
     }
 
 }

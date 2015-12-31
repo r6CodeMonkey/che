@@ -2,9 +2,10 @@ package controller.handler;
 
 import controller.CheController;
 import core.HazelcastManagerInterface;
-import model.Core;
-import model.Player;
-import model.UTMLocation;
+import model.client.Core;
+import model.client.UTM;
+import model.server.Player;
+import model.server.UTMLocation;
 import org.json.JSONException;
 import util.Configuration;
 
@@ -33,13 +34,20 @@ public class PlayerHandler {
         boolean hasSubUTMChanged = player.hasSubUTMChanged(utmLocation);
 
         if (hasUTMChanged) {
-            utmHandler.handleUTMChange(utmLocation, player.utmLocation, player.getTopicSubscriptions());
+            utmHandler.handleUTMChange(utmLocation, player.utmLocation, player.getTopicSubscriptions(), player.uid);
             configuration.getLogger().debug("UTM has changed");
         } else if (hasSubUTMChanged) {
-            utmHandler.handleSubUTMChange(utmLocation, player.utmLocation, player.getTopicSubscriptions());
+            utmHandler.handleSubUTMChange(utmLocation, player.utmLocation, player.getTopicSubscriptions(), player.uid);
             configuration.getLogger().debug("Sub UTM has changed");
         }
+
         player.utmLocation = utmLocation;
+
+        if(hasUTMChanged || hasSubUTMChanged){
+            UTM model = new UTM(player.utmLocation.utm.getUtm(), player.utmLocation.subUtm.getUtm());
+            configuration.getChannelMapController().getChannel(player.uid).writeAndFlush(model.toString());
+        }
+
 
         hazelcastManagerInterface.put(CheController.PLAYER_MAP, player.uid, player);
     }

@@ -1,6 +1,7 @@
 package model;
 
 import io.netty.channel.Channel;
+import model.client.Core;
 
 import java.io.Serializable;
 

@@ -2,8 +2,9 @@ package controller;
 
 import controller.handler.PlayerHandler;
 import core.HazelcastManagerInterface;
-import model.Core;
+import model.client.Core;
 import org.json.JSONException;
+import rmi.CheCallbackClient;
 import util.Configuration;
 
 import java.net.MalformedURLException;
@@ -33,10 +34,13 @@ public class CheController {
 
     }
 
+
+
     private boolean initHazelcastServer() {
         try {
             hazelcastManagerInterface = (HazelcastManagerInterface) Naming.lookup(configuration.getHazelcastURL());
             playerHandler = new PlayerHandler(hazelcastManagerInterface, configuration);
+            hazelcastManagerInterface.addCallback(new CheCallbackClient());
             return true;
         } catch (NotBoundException e) {
             configuration.getLogger().error("hazelcast server failed " + e.getMessage());

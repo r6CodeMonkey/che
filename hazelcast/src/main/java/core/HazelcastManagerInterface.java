@@ -1,8 +1,9 @@
 package core;
 
 import com.hazelcast.core.IMap;
-import com.hazelcast.core.MessageListener;
-import util.TopicSubscriptions;
+import model.server.TopicSubscriptions;
+import server.CheCallbackInterface;
+
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -12,24 +13,26 @@ import java.rmi.RemoteException;
  */
 public interface HazelcastManagerInterface extends Remote {
 
-    public void createTopic(String topic) throws RemoteException;
+     void createTopic(String topic) throws RemoteException;
 
-    public String subscribe(String topic, MessageListener listener) throws RemoteException;
+     String subscribe(String topic, String key) throws RemoteException;
 
-    public void unSubscribe(String topic, TopicSubscriptions topicSubscriptions) throws RemoteException;
+     void unSubscribe(String topic, TopicSubscriptions topicSubscriptions) throws RemoteException;
 
-    public void publish(String topic, Object message) throws RemoteException;
+     void publish(String topic, Object message) throws RemoteException;
 
-    public void createMap(String map) throws RemoteException;
+     void createMap(String map) throws RemoteException;
 
-    public void put(String map, String key, Object object) throws RemoteException;
+     void put(String map, String key, Object object) throws RemoteException;
 
-    public Object get(String map, String key) throws RemoteException;
+     Object get(String map, String key) throws RemoteException;
 
-    public IMap get(String map) throws RemoteException;
+     IMap get(String map) throws RemoteException;
 
-    public void removeAll(String map) throws RemoteException;
+     void removeAll(String map) throws RemoteException;
 
-    public void remove(String map, String key) throws RemoteException;
+     void remove(String map, String key) throws RemoteException;
+
+     void addCallback(CheCallbackInterface callbackInterface) throws RemoteException;
 
 }

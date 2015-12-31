@@ -1,7 +1,7 @@
 package socket;
 
 import io.netty.channel.Channel;
-import model.Core;
+import model.client.Core;
 import util.Configuration;
 
 import java.io.DataInputStream;

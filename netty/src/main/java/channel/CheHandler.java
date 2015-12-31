@@ -3,7 +3,7 @@ package channel;
 import factory.MessageFactory;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import model.Core;
+import model.client.Core;
 import socket.CheControllerSocket;
 import util.Configuration;
 import util.Tags;

@@ -3,8 +3,10 @@ package core;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
-import com.hazelcast.core.MessageListener;
-import util.TopicSubscriptions;
+import model.server.TopicSubscriptions;
+import server.CheCallbackInterface;
+import util.CheMessageHandler;
+
 
 /**
  * Created by timmytime on 11/12/15.
@@ -12,6 +14,7 @@ import util.TopicSubscriptions;
 public class HazelcastManager implements HazelcastManagerInterface {
 
     private static HazelcastInstance hazelcastInstance;
+    private static CheCallbackInterface cheCallbackInterface;
 
     public static void start() {
         hazelcastInstance = Hazelcast.newHazelcastInstance();
@@ -25,8 +28,8 @@ public class HazelcastManager implements HazelcastManagerInterface {
         hazelcastInstance.getTopic(topic);
     }
 
-    public String subscribe(String topic, MessageListener listener) {
-        return hazelcastInstance.getTopic(topic).addMessageListener(listener);
+    public String subscribe(String topic, String key) {
+        return hazelcastInstance.getTopic(topic).addMessageListener(new CheMessageHandler(cheCallbackInterface, key));
     }
 
     public void unSubscribe(String topic, TopicSubscriptions topicSubscriptions) {
@@ -60,6 +63,11 @@ public class HazelcastManager implements HazelcastManagerInterface {
 
     public void remove(String map, String key) {
         hazelcastInstance.getMap(map).remove(key);
+    }
+
+    @Override
+    public void addCallback(CheCallbackInterface callbackInterface) {
+        this.cheCallbackInterface = callbackInterface;
     }
 
 

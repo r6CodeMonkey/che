@@ -1,11 +1,11 @@
 package server;
 
 import com.hazelcast.core.IMap;
-import com.hazelcast.core.MessageListener;
 import core.HazelcastManager;
 import core.HazelcastManagerInterface;
+import model.server.TopicSubscriptions;
 import util.Configuration;
-import util.TopicSubscriptions;
+
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
@@ -59,8 +59,8 @@ public class HazelcastServer extends UnicastRemoteObject implements HazelcastMan
     }
 
     @Override
-    public String subscribe(String topic, MessageListener listener) {
-        return hazelcastManager.subscribe(topic, listener);
+    public String subscribe(String topic, String key) {
+        return hazelcastManager.subscribe(topic, key);
     }
 
     @Override
@@ -101,6 +101,11 @@ public class HazelcastServer extends UnicastRemoteObject implements HazelcastMan
     @Override
     public void remove(String map, String key) {
         hazelcastManager.remove(map, key);
+    }
+
+    @Override
+    public void addCallback(CheCallbackInterface callbackInterface) {
+        hazelcastManager.addCallback(callbackInterface);
     }
 
 }
