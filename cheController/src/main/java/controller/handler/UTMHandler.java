@@ -2,9 +2,9 @@ package controller.handler;
 
 import core.HazelcastManagerInterface;
 import model.client.Location;
+import model.server.TopicSubscriptions;
 import model.server.UTMLocation;
 import util.Configuration;
-import model.server.TopicSubscriptions;
 
 import java.rmi.RemoteException;
 

@@ -6,7 +6,6 @@ import core.HazelcastManagerInterface;
 import model.server.TopicSubscriptions;
 import util.Configuration;
 
-
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -69,7 +68,7 @@ public class HazelcastServer extends UnicastRemoteObject implements HazelcastMan
     }
 
     @Override
-    public void publish(String topic, Object message) {
+    public void publish(String topic, String message) {
         hazelcastManager.publish(topic, message);
     }
 

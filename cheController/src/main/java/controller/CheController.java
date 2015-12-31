@@ -4,13 +4,12 @@ import com.hazelcast.core.Message;
 import controller.handler.PlayerHandler;
 import core.HazelcastManagerInterface;
 import io.netty.channel.Channel;
+import message.receive.CheMessage;
 import model.client.Core;
 import org.json.JSONException;
 import server.CheCallbackInterface;
-import message.receive.CheMessage;
 import util.Configuration;
 
-import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -38,7 +37,6 @@ public class CheController {
         hazelcastServerUp = initHazelcastServer();
 
     }
-
 
 
     private boolean initHazelcastServer() {
@@ -78,7 +76,7 @@ public class CheController {
 
         Channel channel = configuration.getChannelMapController().getChannel(key);
 
-        if(!cheMessage.getRemoteAddress().equals(channel.remoteAddress().toString())){
+        if (!cheMessage.getRemoteAddress().equals(channel.remoteAddress().toString())) {
             configuration.getLogger().debug("we have sent");
             channel.writeAndFlush(cheMessage.getCheObject().toString());
         }
@@ -86,34 +84,25 @@ public class CheController {
 
 
     /*
-      callback handler...local to call main class...note...to stop now but there is this to fix
-
-      java.rmi.MarshalException: error marshalling arguments; nested exception is:
-	java.io.NotSerializableException: com.hazelcast.instance.MemberImpl
-	at sun.rmi.server.UnicastRef.invoke(UnicastRef.java:158)
-	at java.rmi.server.RemoteObjectInvocationHandler.invokeRemoteMethod(RemoteObjectInvocationHandler.java:227)
-	at java.rmi.server.RemoteObjectInvocationHandler.invoke(RemoteObjectInvocationHandler.java:179)
-	at com.sun.proxy.$Proxy1.handleCallback(Unknown Source)
-	at util.CheMessageHandler.onMessage(CheMessageHandler.java:25)
-
+      callback handler requires local access. (working around various issues with decoupling).
      */
     public class CheCallbackClient extends UnicastRemoteObject implements CheCallbackInterface {
 
 
-        public CheCallbackClient() throws RemoteException{
+        public CheCallbackClient() throws RemoteException {
             super();
         }
 
         @Override
-        public void handleCallback(Message message, String key) {
+        public void handleCallback(String message, String key) {
 
-            configuration.getLogger().debug("we have recieved");
+            configuration.getLogger().debug("we have received "+message);
 
             try {
-                CheMessage cheMessage = new CheMessage(message.getMessageObject().toString());
+                CheMessage cheMessage = new CheMessage(message);
                 handleMessage(cheMessage, key);
             } catch (JSONException e) {
-                configuration.getLogger().error("callback failed "+e.getMessage());
+                configuration.getLogger().error("callback failed " + e.getMessage());
             }
 
         }

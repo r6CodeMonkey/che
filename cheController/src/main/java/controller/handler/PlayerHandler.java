@@ -2,13 +2,13 @@ package controller.handler;
 
 import controller.CheController;
 import core.HazelcastManagerInterface;
+import message.receive.CheMessage;
 import model.client.Core;
 import model.client.UTM;
 import model.server.Player;
 import model.server.UTMLocation;
 import org.json.JSONException;
 import org.json.JSONObject;
-import message.receive.CheMessage;
 import util.Configuration;
 
 import java.rmi.RemoteException;
@@ -45,13 +45,14 @@ public class PlayerHandler {
 
         player.utmLocation = utmLocation;
 
-        if(hasUTMChanged || hasSubUTMChanged){
+        if (hasUTMChanged || hasSubUTMChanged) {
             UTM model = new UTM(player.utmLocation.utm.getUtm(), player.utmLocation.subUtm.getUtm());
             configuration.getChannelMapController().getChannel(player.uid).writeAndFlush(model.toString());
         }
 
         //test
-        hazelcastManagerInterface.publish(player.utmLocation.utm.getUtm(), new CheMessage("fake", new JSONObject("{text: this is a test}")));
+
+        hazelcastManagerInterface.publish(player.utmLocation.utm.getUtm(), new CheMessage("fake", new JSONObject("{text:this is a test}")).toString());
 
 
         hazelcastManagerInterface.put(CheController.PLAYER_MAP, player.uid, player);

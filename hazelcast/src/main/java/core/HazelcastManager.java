@@ -37,7 +37,9 @@ public class HazelcastManager implements HazelcastManagerInterface {
         topicSubscriptions.removeSubscription(topic);
     }
 
-    public void publish(String topic, Object message) {
+    public void publish(String topic, String message) {
+
+        System.out.print("message to publish is "+message);
         hazelcastInstance.getTopic(topic).publish(message);
     }
 

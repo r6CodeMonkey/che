@@ -13,7 +13,7 @@ public class UTM extends JSONObject implements Serializable {
 
     private String utm, subUtm;
 
-    public UTM(String utm) throws JSONException{
+    public UTM(String utm) throws JSONException {
         super(utm);
     }
 
@@ -22,26 +22,26 @@ public class UTM extends JSONObject implements Serializable {
         setSubUtm(utm.getString(Tags.SUB_UTM));
     }
 
-    public UTM(String utm, String subUtm) throws JSONException{
+    public UTM(String utm, String subUtm) throws JSONException {
         this.put(Tags.UTM, utm);
         this.put(Tags.SUB_UTM, subUtm);
         setUtm(utm);
         setSubUtm(subUtm);
     }
 
-    public void setUtm(String utm){
-        this.utm = utm;
-    }
-
-    public void setSubUtm(String subUtm){
-        this.subUtm = subUtm;
-    }
-
-    public String getUtm(){
+    public String getUtm() {
         return utm;
     }
 
-    public String getSubUtm(){
+    public void setUtm(String utm) {
+        this.utm = utm;
+    }
+
+    public String getSubUtm() {
         return subUtm;
+    }
+
+    public void setSubUtm(String subUtm) {
+        this.subUtm = subUtm;
     }
 }

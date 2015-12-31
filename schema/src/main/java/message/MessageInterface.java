@@ -8,8 +8,8 @@ import org.json.JSONObject;
  */
 public interface MessageInterface {
 
-     JSONObject get() throws JSONException;
+    JSONObject get() throws JSONException;
 
-     void create(String message) throws JSONException;
+    void create(String message) throws JSONException;
 
 }
