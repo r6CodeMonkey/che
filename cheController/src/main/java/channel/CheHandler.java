@@ -14,14 +14,6 @@ import util.Configuration;
 @ChannelHandler.Sharable
 public class CheHandler extends SimpleChannelInboundHandler<Core> {
 
-    /*
-      need to implement our callback class to pass through to controller...it basically stops us sending to ourselves if we actually sent message.
-
-      simples.  need a message too which have not implemented yet.  see schema object.  need to build our return messages.  yawn.
-
-      upside: this is in a good state.  note it failed to reconnect to netty, if you take this down inbetween.....to review.
-     */
-
 
     private final Configuration configuration;
     private final CheController cheController;

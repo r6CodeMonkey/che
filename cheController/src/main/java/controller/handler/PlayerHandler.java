@@ -2,6 +2,7 @@ package controller.handler;
 
 import controller.CheController;
 import core.HazelcastManagerInterface;
+import message.receive.CheMessage;
 import model.client.Core;
 import model.client.UTM;
 import model.server.Player;
@@ -46,6 +47,8 @@ public class PlayerHandler {
         if (hasUTMChanged || hasSubUTMChanged) {
             UTM model = new UTM(player.utmLocation.utm.getUtm(), player.utmLocation.subUtm.getUtm());
             configuration.getChannelMapController().getChannel(player.uid).writeAndFlush(model.toString());
+            //need to use the proper message type, but it works....ie publishes properly to correct listeners.
+            hazelcastManagerInterface.publish(player.utmLocation.subUtm.getUtm(), "{"+ CheMessage.REMOTE_ADDRESS+":'fake',"+CheMessage.CHE_OBJECT+":{ msg:'player has joined'}}");
         }
 
         hazelcastManagerInterface.put(CheController.PLAYER_MAP, player.uid, player);

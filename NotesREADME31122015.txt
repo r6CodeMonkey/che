@@ -1,0 +1,22 @@
+{ackid:1,user:{uid:"B@14eefb31"},location:{utm:"",subutm:"",long:15.0, lat:-15.0, speed:0,altitude:1}}
+{ackid:1,user:{uid:""},location:{utm:"",subutm:"",long:15.0, lat:-15.0, speed:0,altitude:1}}
+
+/*
+ testing notes
+*/
+
+as i will be doing tango 2016 early
+
+notes for dev / testing
+
+1: need to upgrade testing framwork (all of it)
+2: there is an issue when we restart che.  ie not reconnecting, needs tests for this
+3: where i am at. basically, need to create socket (client) and nexus
+4: need to test message parsing and throughput at high levels
+5: deployment, including my own testing.....
+
+basically, need test framework and fix tests.  otherwise its all good.
+
+
+
+
