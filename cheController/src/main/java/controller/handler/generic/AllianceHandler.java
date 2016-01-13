@@ -2,10 +2,11 @@ package controller.handler.generic;
 
 import controller.CheController;
 import core.HazelcastManagerInterface;
-import model.Alliance;
+import model.server.Alliance;
 import model.client.generic.GenericModel;
 import model.server.Player;
 import util.Configuration;
+import util.Response;
 
 import java.rmi.RemoteException;
 import java.security.NoSuchAlgorithmException;
@@ -24,17 +25,14 @@ public class AllianceHandler {
     }
 
     public void allianceCreate(Player player, GenericModel genericModel) throws RemoteException, NoSuchAlgorithmException {
-        /*
-         create ourselves an alliance and register to topic...and then send the key back
-         */
-        Alliance alliance = new Alliance(genericModel.getValue());
-        alliance.addMember(player.uid);
-        String allianceKey = configuration.getUuidGenerator().generateKey("alliance " + genericModel.getValue());
-        hazelcastManagerInterface.put(CheController.ALLIANCE_MAP, allianceKey, alliance);
 
-        //need to do some subscription, and then send our message back to user...needs a proper format though.
-        //define a type.
-        configuration.getChannelMapController().getChannel(player.uid).writeAndFlush("");
+        Alliance alliance = new Alliance(configuration.getUuidGenerator().generateKey("alliance " + genericModel.getValue()), genericModel.getValue());
+        alliance.addMember(player.uid);
+        player.alliances.add(alliance);
+        hazelcastManagerInterface.put(CheController.ALLIANCE_MAP, alliance.key, alliance);
+
+        player.getTopicSubscriptions().addSubscription(alliance.key, hazelcastManagerInterface.subscribe(alliance.key, player.uid));
+        configuration.getChannelMapController().getChannel(player.uid).writeAndFlush(Response.CREATED_ALLIANCE+"need to add the key here.");
 
     }
 

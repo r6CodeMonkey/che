@@ -51,10 +51,6 @@ public class MessageFactory {
                 GenericMessage genericMessage = new GenericMessage();
                 genericMessage.create(message);
                 return genericMessage.get();
-            case UTM:
-                message.receive.UTM utm = new UTM();
-                utm.create(message);
-                return utm.get();
             default:
                 throw new RuntimeException("Unknown message type");
         }

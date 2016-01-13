@@ -1,4 +1,4 @@
-package model;
+package model.server;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,10 +8,13 @@ import java.util.List;
  */
 public class Alliance {
 
-    private final String name;
+    public final String key;
+    public final String name;
     private List<String> members = new ArrayList<>();
 
-    public Alliance(String name) {
+    public Alliance(String key, String name) {
+
+        this.key = key;
         this.name = name;
     }
 
@@ -23,9 +26,6 @@ public class Alliance {
         members.remove(member);
     }
 
-    public String getName() {
-        return name;
-    }
 
     public List<String> getMembers() {
         return members;

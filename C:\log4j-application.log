@@ -7506,3 +7506,11 @@ java.net.ConnectException: Connection refused
 2016-01-13 20:36:20 DEBUG cheController:39 - UTM has changed
 2016-01-13 20:36:20 DEBUG cheController:74 - something goen wrong {"ackid":1,"location":{"altitude":1,"subutm":"","long":15,"lat":-15,"speed":0,"utm":""},"user":{"uid":"[B@256f665d"},"generic":{"uid":"","state":"","type":"1","value":""}}
 2016-01-13 20:36:20 DEBUG cheController:77 - we have generic object
+2016-01-13 21:36:24 DEBUG netty:34 - {ackid:1,user:{uid:""},location:{utm:"",subutm:"",long:15.0, lat:-15.0, speed:0,altitude:1}, generic:{type:"1",value:"",state:"",uid:""}}
+2016-01-13 21:36:24 DEBUG netty:53 - new user created /127.0.0.1:33898
+2016-01-13 21:36:24 DEBUG netty:68 - {"ackid":1,"location":{"altitude":1,"subutm":"","long":15,"lat":-15,"speed":0,"utm":""},"user":{"uid":"[B@43c213a2"},"generic":{"uid":"","state":"","type":"1","value":""}}
+2016-01-13 21:36:24 DEBUG cheController:34 - {"ackid":1,"location":{"altitude":1,"subutm":"","long":15,"lat":-15,"speed":0,"utm":""},"user":{"uid":"[B@43c213a2"},"generic":{"uid":"","state":"","type":"1","value":""}}
+2016-01-13 21:36:24 DEBUG cheController:64 - created a new player
+2016-01-13 21:36:24 DEBUG cheController:39 - UTM has changed
+2016-01-13 21:36:24 DEBUG cheController:74 - something goen wrong {"ackid":1,"location":{"altitude":1,"subutm":"","long":15,"lat":-15,"speed":0,"utm":""},"user":{"uid":"[B@43c213a2"},"generic":{"uid":"","state":"","type":"1","value":""}}
+2016-01-13 21:36:24 DEBUG cheController:77 - we have generic object

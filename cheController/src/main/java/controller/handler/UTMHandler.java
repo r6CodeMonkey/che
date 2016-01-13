@@ -2,6 +2,7 @@ package controller.handler;
 
 import core.HazelcastManagerInterface;
 import model.client.Location;
+import model.server.Player;
 import model.server.TopicSubscriptions;
 import model.server.UTMLocation;
 import util.Configuration;
@@ -31,15 +32,15 @@ public class UTMHandler {
         return utmLocation;
     }
 
-    public void handleUTMChange(UTMLocation currentLocation, UTMLocation previousLocation, TopicSubscriptions subscriptions, String uid) throws RemoteException {
-        hazelcastManagerInterface.unSubscribe(previousLocation.utm.getUtm(), subscriptions);
-        subscriptions.addSubscription(currentLocation.utm.getUtm(), hazelcastManagerInterface.subscribe(currentLocation.utm.getUtm(), uid));
-        handleSubUTMChange(currentLocation, previousLocation, subscriptions, uid);
+    public void handleUTMChange(UTMLocation currentLocation, Player player) throws RemoteException {
+        hazelcastManagerInterface.unSubscribe(player.utmLocation.utm.getUtm(), player.getTopicSubscriptions());
+        player.getTopicSubscriptions().addSubscription(currentLocation.utm.getUtm(), hazelcastManagerInterface.subscribe(currentLocation.utm.getUtm(), player.uid));
+        handleSubUTMChange(currentLocation,player);
     }
 
-    public void handleSubUTMChange(UTMLocation currentLocation, UTMLocation previousLocation, TopicSubscriptions subscriptions, String uid) throws RemoteException {
-        hazelcastManagerInterface.unSubscribe(previousLocation.subUtm.getUtm(), subscriptions);
-        subscriptions.addSubscription(currentLocation.subUtm.getUtm(), hazelcastManagerInterface.subscribe(currentLocation.subUtm.getUtm(), uid));
+    public void handleSubUTMChange(UTMLocation currentLocation, Player player) throws RemoteException {
+        hazelcastManagerInterface.unSubscribe(player.utmLocation.subUtm.getUtm(), player.getTopicSubscriptions());
+        player.getTopicSubscriptions().addSubscription(currentLocation.subUtm.getUtm(), hazelcastManagerInterface.subscribe(currentLocation.subUtm.getUtm(), player.uid));
     }
 
 }

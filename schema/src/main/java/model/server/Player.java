@@ -1,6 +1,8 @@
 package model.server;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by timmytime on 31/12/15.
@@ -9,6 +11,11 @@ public class Player implements Serializable {
 
     public String uid;
     public UTMLocation utmLocation = new UTMLocation();
+
+    public List<Alliance> alliances = new ArrayList<>();
+    public List<GameObject> gameObjects = new ArrayList<>();
+    public List<Missile> missiles = new ArrayList<>();
+
     //need the topic subscriptions.
     private TopicSubscriptions topicSubscriptions = new TopicSubscriptions();
 

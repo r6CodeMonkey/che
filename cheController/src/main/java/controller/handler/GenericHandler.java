@@ -7,6 +7,7 @@ import core.HazelcastManagerInterface;
 import model.client.generic.GenericModel;
 import model.server.Player;
 import util.Configuration;
+import util.Response;
 import util.Tags;
 
 import java.rmi.RemoteException;
@@ -75,7 +76,7 @@ public class GenericHandler {
                 missileHandler.missileTarget(player, genericModel);
                 break;
             default:
-                configuration.getChannelMapController().getChannel(player.uid).writeAndFlush("The requested action is unavailable on the server");
+                configuration.getChannelMapController().getChannel(player.uid).writeAndFlush(Response.UNKNOWN_GENERIC_TYPE);
                 return;
         }
 
