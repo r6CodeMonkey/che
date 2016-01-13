@@ -12,10 +12,6 @@ public class ChannelMapController {
 
     private final Map<String, Channel> channelMap = new HashMap<>();
 
-    public ChannelMapController() {
-
-    }
-
     public void addChannel(String uid, Channel channel) {
         channelMap.put(uid, channel);
     }

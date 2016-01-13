@@ -40,5 +40,26 @@ public class Tags {
     //general
     public final static String ACTIVE = "ACTIVE";
 
+    /*
+    generic types.  game based message calls
+     */
+    //alliance
+    public final static String ALLIANCE_CREATE = "CREATE_ALLIANCE_CREATE";
+    public final static String ALLIANCE_JOIN = "JOIN_ALLIANCE_JOIN";
+    public final static String ALLIANCE_LEAVE = "LEAVE_ALLIANCE_LEAVE";
+    public final static String ALLIANCE_POST = "ALLIANCE_POST";
+    public final static String ALLIANCE_INVITE = "ALLIANCE_INVITE";
+
+    //objects ie weapons etc
+    public final static String GAME_OBJECT_ADD = "OBJECT_ADD";
+    public final static String GAME_OBJECT_MOVE = "OBJECT_MOVE";
+    public final static String GAME_OBJECT_HIT = "OBJECT_HIT";
+    public final static String GAME_OBJECT_DESTROYED = "OBJECT_DESTROYED";
+
+    //launch commands
+    public final static String MISSILE_TARGET = "MISSILE_TARGET";
+    public final static String MISSILE_FIRE = "MISSILE_FIRE";
+    public final static String MISSILE_CANCEL = "MISSILE_CANCEL";
+
 
 }

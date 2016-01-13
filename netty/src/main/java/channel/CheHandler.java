@@ -65,6 +65,7 @@ public class CheHandler extends SimpleChannelInboundHandler<Core> {
                 cheControllerSocket = new CheControllerSocket(configuration, ctx.channel(), socket);
             }
 
+            configuration.getLogger().debug(core.toString());
             cheControllerSocket.write(core);
 
             for (Core pending : pendingMessages) {

@@ -6,15 +6,18 @@ import core.HazelcastManagerInterface;
 import io.netty.channel.Channel;
 import message.receive.CheMessage;
 import model.client.Core;
+import model.server.Player;
 import org.json.JSONException;
 import server.CheCallbackInterface;
 import util.Configuration;
+import util.Tags;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by timmytime on 30/12/15.
@@ -22,6 +25,9 @@ import java.rmi.server.UnicastRemoteObject;
 public class CheController {
 
     public static final String PLAYER_MAP = "PLAYER_MAP";
+    public static final String ALLIANCE_MAP = "ALLIANCE_MAP";
+    public static final String OBJECT_MAP = "OBJECT_MAP";
+    public static final String MISSILE_MAP = "MISSILE_MAP";
 
     //server
     private static HazelcastManagerInterface hazelcastManagerInterface;
@@ -36,7 +42,6 @@ public class CheController {
     public CheController(Configuration configuration) throws Exception {
         this.configuration = configuration;
         hazelcastServerUp = initHazelcastServer();
-
     }
 
 
@@ -57,21 +62,22 @@ public class CheController {
         return false;
     }
 
-    public void receive(Core message) throws RemoteException, NotBoundException, MalformedURLException, JSONException {
+    public void receive(Core message) throws RemoteException, NotBoundException, MalformedURLException, JSONException, NoSuchAlgorithmException {
 
-        //it maybe that we have rebooted it.  to be fair, if we did, then the rest is irelevant as we need to rebuild everything.
-        //to think about this.  mainly im thinking to not take down hazelcast with this server, rather than other way around (unless i can rebuild server itself).
         if (hazelcastManagerInterface == null) {
             hazelcastServerUp = initHazelcastServer();
         }
 
-
         if (hazelcastServerUp) {
-            configuration.getLogger().debug("handle player");
-            playerHandler.handlePlayer(message);
-          // TODO  genericHandler.handle(message.getGeneric());
-        }
+            Player player = playerHandler.handlePlayer(message);
 
+            configuration.getLogger().debug("something goen wrong " + message.toString());
+
+            if (!message.isNull(Tags.GENERIC_OBJECT)) {
+                configuration.getLogger().debug("we have generic object");
+                genericHandler.handle(player, message.getGeneric());
+            }
+        }
     }
 
     private void handleMessage(CheMessage cheMessage, String key) throws JSONException {
@@ -79,7 +85,6 @@ public class CheController {
         Channel channel = configuration.getChannelMapController().getChannel(key);
 
         if (!cheMessage.getRemoteAddress().equals(channel.remoteAddress().toString())) {
-            configuration.getLogger().debug("we have sent");
             channel.writeAndFlush(cheMessage.getCheObject().toString());
         }
     }
@@ -90,21 +95,18 @@ public class CheController {
      */
     public class CheCallbackClient extends UnicastRemoteObject implements CheCallbackInterface {
 
-
         public CheCallbackClient() throws RemoteException {
             super();
         }
 
         @Override
         public void handleCallback(String message, String key) {
-
             try {
                 CheMessage cheMessage = new CheMessage(message);
                 handleMessage(cheMessage, key);
             } catch (JSONException e) {
                 configuration.getLogger().error("callback failed " + e.getMessage());
             }
-
         }
     }
 

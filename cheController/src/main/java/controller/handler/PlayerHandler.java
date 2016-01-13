@@ -27,7 +27,7 @@ public class PlayerHandler {
         this.utmHandler = new UTMHandler(hazelcastManagerInterface, configuration);
     }
 
-    public void handlePlayer(Core message) throws RemoteException, JSONException {
+    public Player handlePlayer(Core message) throws RemoteException, JSONException {
         Player player = getPlayer(message.getUser().getUid());
         UTMLocation utmLocation = utmHandler.getUTMLocation(message.getLocation());
 
@@ -48,10 +48,12 @@ public class PlayerHandler {
             UTM model = new UTM(player.utmLocation.utm.getUtm(), player.utmLocation.subUtm.getUtm());
             configuration.getChannelMapController().getChannel(player.uid).writeAndFlush(model.toString());
             //need to use the proper message type, but it works....ie publishes properly to correct listeners.
-            hazelcastManagerInterface.publish(player.utmLocation.subUtm.getUtm(), "{"+ CheMessage.REMOTE_ADDRESS+":'fake',"+CheMessage.CHE_OBJECT+":{ msg:'player has joined'}}");
+            hazelcastManagerInterface.publish(player.utmLocation.subUtm.getUtm(), "{" + CheMessage.REMOTE_ADDRESS + ":'fake'," + CheMessage.CHE_OBJECT + ":{ msg:'player has joined'}}");
         }
 
         hazelcastManagerInterface.put(CheController.PLAYER_MAP, player.uid, player);
+
+        return player;
     }
 
     public Player getPlayer(String uid) throws RemoteException {

@@ -32,10 +32,10 @@ public class ModelTest {
 
     }
 
+
     @Test
     public void testCore() {
         Core core = new Core(CORE_TEST);
-
 
         assertEquals("1", core.getAckId());
         assertEquals("1", core.getUser().getUid());
@@ -72,5 +72,11 @@ public class ModelTest {
         assertEquals("value", genericModel.getValue());
 
 
+    }
+
+    //need to test complete message dicj
+    @Test
+    public void testFull(){
+        //todo important
     }
 }

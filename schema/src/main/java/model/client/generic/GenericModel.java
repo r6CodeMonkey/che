@@ -15,8 +15,9 @@ public class GenericModel extends JSONObject implements GenericInterface {
     }
 
     public GenericModel(JSONObject generic) throws JSONException {
-        super(generic);
+        super(generic.toString());
     }
+
 
     public String getType() {
         return this.getString(Tags.TYPE);
