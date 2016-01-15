@@ -3,7 +3,9 @@ package channel;
 import factory.MessageFactory;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import model.client.Core;
+
+import message.CheMessage;
+import model.Acknowledge;
 import util.Configuration;
 import util.Tags;
 
@@ -17,36 +19,40 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
 
     private final Configuration configuration;
 
+    private  model.Acknowledge ack;
+
     public JsonHandler(Configuration configuration) {
         this.configuration = configuration;
     }
 
 
     public void channelActive(ChannelHandlerContext ctx) {
+
+        ack = new Acknowledge("");
+        ack.state =Tags.ACCEPT;
+        ack.value = Tags.ACTIVE;
+
         //client an acknowledge to confirm we are active.  no need to client id
-        ctx.channel().writeAndFlush(MessageFactory.createAcknowledge("", Tags.ACCEPT, Tags.ACTIVE));
+        ctx.channel().writeAndFlush(MessageFactory.getMessage(ack.getMessage()));
     }
 
 
     @Override
     protected void messageReceived(ChannelHandlerContext ctx, Object msg) throws Exception {
 
-        configuration.getLogger().debug(msg.toString());
+        configuration.getLogger().debug(new CheMessage(msg.toString()));
+        ctx.fireChannelRead(new CheMessage(msg.toString()));
 
-        Core core = (Core) MessageFactory.getMessage(MessageFactory.CORE, msg.toString());
-        //does the message contain what is required.
-        if (core.getAckId().trim().isEmpty()) {
-            ctx.channel().writeAndFlush(MessageFactory.createAcknowledge("", Tags.ERROR, "ackid not set"));
-        } else {
-            ctx.fireChannelRead(core);
-        }
     }
 
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
 
         configuration.getLogger().error("error of sorts");
 
-        ctx.channel().writeAndFlush(MessageFactory.createAcknowledge("", Tags.ERROR, cause.toString()));
+        ack.state = Tags.ERROR;
+        ack.value = cause.toString();
+
+        ctx.channel().writeAndFlush(MessageFactory.getMessage(ack.getMessage()));
 
         configuration.getLogger().error(cause.getMessage());
         //really need to implement a logger.  but the base of this works.

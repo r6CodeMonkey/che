@@ -2,9 +2,8 @@ package controller.handler.generic;
 
 import controller.CheController;
 import core.HazelcastManagerInterface;
-import model.client.generic.GenericModel;
-import model.server.Alliance;
-import model.server.Player;
+import model.Alliance;
+import model.Player;
 import util.Configuration;
 import util.Response;
 
@@ -24,7 +23,7 @@ public class AllianceHandler {
         this.configuration = configuration;
     }
 
-    public void allianceCreate(Player player, GenericModel genericModel) throws RemoteException, NoSuchAlgorithmException {
+    public void allianceCreate(Player player, Alliance alliance) throws RemoteException, NoSuchAlgorithmException {
 
         Alliance alliance = new Alliance(configuration.getUuidGenerator().generateKey("alliance " + genericModel.getValue()), genericModel.getValue());
         alliance.addMember(player.uid);
@@ -35,32 +34,32 @@ public class AllianceHandler {
         configuration.getChannelMapController().getChannel(player.uid).writeAndFlush(Response.CREATED_ALLIANCE + "need to add the key here.");
 
     }
-
+/*
     public void allianceInvite(Player player, GenericModel genericModel) {
 
-        /*
+
           the bt one is local, this is to publish to other people sends the alliance key to person.....
-         */
+
     }
 
     public void allianceJoin(Player player, GenericModel genericModel) {
-        /*
+
           add a player to alliance and register to topic
-         */
+
 
     }
 
     public void allianceLeave(Player player, GenericModel genericModel) {
 
-        /*
+
          remove player from alliance and remove from topic
-         */
+
     }
 
     public void alliancePost(Player player, GenericModel genericModel) {
-     /*
-        post to alliance channel
-      */
-    }
 
+        post to alliance channel
+
+    }
+*/
 }

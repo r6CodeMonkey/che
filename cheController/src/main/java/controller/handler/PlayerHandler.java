@@ -2,12 +2,15 @@ package controller.handler;
 
 import controller.CheController;
 import core.HazelcastManagerInterface;
+import message.CheMessage;
 import message.HazelcastMessage;
 import model.Player;
 import model.UTM;
+import model.UTMLocation;
 import org.json.JSONException;
 import util.Configuration;
 import util.Response;
+import util.Tags;
 
 import java.rmi.RemoteException;
 
@@ -26,9 +29,9 @@ public class PlayerHandler {
         this.utmHandler = new UTMHandler(hazelcastManagerInterface, configuration);
     }
 
-    public Player handlePlayer(Core message) throws RemoteException, JSONException {
-        Player player = getPlayer(message.getUser().getUid());
-        UTMLocation utmLocation = utmHandler.getUTMLocation(message.getLocation());
+    public Player handlePlayer(CheMessage message) throws RemoteException, JSONException {
+        Player player = getPlayer(message.getMessage(Tags.PLAYER).getKey());
+        UTMLocation utmLocation = utmHandler.getUTMLocation(message.getMessage(Tags.UTM));
 
         boolean hasUTMChanged = player.hasUTMChanged(utmLocation);
         boolean hasSubUTMChanged = player.hasSubUTMChanged(utmLocation);

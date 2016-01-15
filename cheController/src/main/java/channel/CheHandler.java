@@ -5,6 +5,7 @@ import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import message.CheMessage;
+import message.CoreMessage;
 import util.Configuration;
 import util.Tags;
 

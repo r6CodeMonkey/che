@@ -1,8 +1,8 @@
 package controller.handler.generic;
 
 import core.HazelcastManagerInterface;
-import model.client.generic.GenericModel;
-import model.server.Player;
+import model.Missile;
+import model.Player;
 import util.Configuration;
 
 /**
@@ -18,7 +18,7 @@ public class MissileHandler {
         this.configuration = configuration;
     }
 
-    public void missileTarget(Player player, GenericModel genericModel) {
+    public void missileTarget(Player player, Missile missile) {
 
         /*
           add target to utm / sub utm return missile key
@@ -26,14 +26,14 @@ public class MissileHandler {
 
     }
 
-    public void missileFire(Player player, GenericModel genericModel) {
+    public void missileFire(Player player, Missile missile) {
 
         /*
          deploy missile to target / publish attack to sector
          */
     }
 
-    public void missileCancel(Player player, GenericModel genericModel) {
+    public void missileCancel(Player player, Missile missile) {
 
         /*
           remove missile from utm / subutm

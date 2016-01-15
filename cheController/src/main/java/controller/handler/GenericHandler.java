@@ -4,8 +4,9 @@ import controller.handler.generic.AllianceHandler;
 import controller.handler.generic.GameObjectHandler;
 import controller.handler.generic.MissileHandler;
 import core.HazelcastManagerInterface;
-import model.client.generic.GenericModel;
-import model.server.Player;
+import message.CheMessage;
+import model.Alliance;
+import model.Player;
 import util.Configuration;
 import util.Response;
 import util.Tags;
@@ -36,11 +37,11 @@ public class GenericHandler {
 
     }
 
-    public void handle(Player player, GenericModel genericModel) throws RemoteException, NoSuchAlgorithmException {
+    public void handle(Player player, CheMessage cheMessage) throws RemoteException, NoSuchAlgorithmException {
 
-        switch (genericModel.getType()) {
+        switch (cheMessage.getType()) {
             case Tags.ALLIANCE_CREATE:
-                allianceHandler.allianceCreate(player, genericModel);
+                allianceHandler.allianceCreate(player, new Alliance(cheMessage.getMessage(Tags.ALLIANCE)));
                 break;
             case Tags.ALLIANCE_INVITE:
                 allianceHandler.allianceInvite(player, genericModel);

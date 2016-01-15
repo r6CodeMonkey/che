@@ -6,6 +6,7 @@ import core.HazelcastManagerInterface;
 import io.netty.channel.Channel;
 import message.CheMessage;
 import message.HazelcastMessage;
+import model.Player;
 import org.json.JSONException;
 import server.CheCallbackInterface;
 import util.Configuration;
@@ -71,11 +72,9 @@ public class CheController {
             Player player = playerHandler.handlePlayer(message);
 
             configuration.getLogger().debug("something gone wrong " + message.toString());
+            configuration.getLogger().debug("we have generic object");
+            genericHandler.handle(player, message);
 
-            if (!message.isNull(Tags.GENERIC_OBJECT)) {
-                configuration.getLogger().debug("we have generic object");
-                genericHandler.handle(player, message.getGeneric());
-            }
         }
     }
 
