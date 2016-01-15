@@ -1,8 +1,8 @@
 package core;
 
 import com.hazelcast.core.IMap;
-import model.server.TopicSubscriptions;
 import server.CheCallbackInterface;
+import util.TopicSubscriptions;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

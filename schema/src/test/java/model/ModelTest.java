@@ -1,4 +1,4 @@
-package model;
+/*package model;
 
 import model.client.Acknowledge;
 import model.client.Core;
@@ -10,9 +10,6 @@ import util.Tags;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by timmytime on 11/12/15.
- */
 public class ModelTest {
 
     public static final String ACKNOWLEDGE_TEST = "{" + Tags.ACK_ID + ":'1', " + Tags.INFO + ":'info'," + Tags.STATE + ":'state'}";
@@ -80,3 +77,4 @@ public class ModelTest {
         //todo important
     }
 }
+*/

@@ -3,8 +3,8 @@ package server;
 import com.hazelcast.core.IMap;
 import core.HazelcastManager;
 import core.HazelcastManagerInterface;
-import model.server.TopicSubscriptions;
 import util.Configuration;
+import util.TopicSubscriptions;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;

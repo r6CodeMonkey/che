@@ -1,11 +1,9 @@
-package factory;
+/*package factory;
 
 import model.ModelTest;
 import org.junit.Test;
 
-/**
- * Created by timmytime on 11/12/15.
- */
+
 public class FactoryTest {
 
     @Test
@@ -20,4 +18,4 @@ public class FactoryTest {
         MessageFactory.getMessage(MessageFactory.CORE, "{hello: there}");
 
     }
-}
+}*/

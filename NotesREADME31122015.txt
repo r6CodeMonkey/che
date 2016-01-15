@@ -1,29 +1,15 @@
 {ackid:1,user:{uid:"B@14eefb31"},location:{utm:"",subutm:"",long:15.0, lat:-15.0, speed:0,altitude:1}}
-{ackid:1,user:{uid:""},location:{utm:"",subutm:"",long:15.0, lat:-15.0, speed:0,altitude:1}}
+{ackid:1,user:{uid:""},location:{utm:"",subutm:"",long:15.0, lat:-15.0, speed:0,altitude:1}, generic:{type:"1",value:"",state:"",uid:""}}
 
-/*
- testing notes
-*/
+straight up.
 
-as i will be doing tango 2016 early
+need to sort out return message objects for alliance, game object and missle.
 
-notes for dev / testing
+then need to build a test framework to test them all.  cant be assed to telnet anymore,
 
-1: need to upgrade testing framwork (all of it)
-2: there is an issue when we restart che.  ie not reconnecting, needs tests for this
-3: where i am at. basically, need to create socket (client) and nexus
-4: need to test message parsing and throughput at high levels
-5: deployment, including my own testing.....
+so need a socket in test, and a socket reader to assert response.
 
-basically, need test framework and fix tests.  otherwise its all good.
-
-
-(we may actually need to consider consolidating it all on 1 server, not two).
-
-For time being its not a major issue it still supports 65,000 channels (possibly more if i look at low level code).
-
-
-go to gym is a bit extreme this evening?  though i could do with getting out for a bit in reality.
+simples.....ish
 
 
 

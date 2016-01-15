@@ -1,15 +1,16 @@
 package message;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import model.CoreModel;
 
 /**
- * Created by timmytime on 09/12/15.
+ * Created by timmytime on 15/01/16.
  */
 public interface MessageInterface {
 
-    JSONObject get() throws JSONException;
+    public String getKey();
 
-    void create(String message) throws JSONException;
+    public String getState();
+
+    public String getValue();
 
 }

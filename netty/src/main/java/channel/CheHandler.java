@@ -3,7 +3,7 @@ package channel;
 import factory.MessageFactory;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import model.client.Core;
+import message.CoreMessage;
 import socket.CheControllerSocket;
 import util.Configuration;
 import util.Tags;
@@ -13,14 +13,15 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * Created by timmytime on 12/12/15.
  */
-public class CheHandler extends SimpleChannelInboundHandler<Core> {
+public class CheHandler extends SimpleChannelInboundHandler<CoreMessage> {
 
-    private final List<Core> pendingMessages = new ArrayList<>();
+    private final List<CoreMessage> pendingMessages = new ArrayList<>();
     private final Configuration configuration;
-    private Core core;
+    private CoreMessage core;
     private Socket socket;
     private CheControllerSocket cheControllerSocket;
     private boolean socketAvailable = false;
@@ -44,7 +45,7 @@ public class CheHandler extends SimpleChannelInboundHandler<Core> {
 
 
     @Override
-    protected void messageReceived(ChannelHandlerContext ctx, Core msg) throws Exception {
+    protected void messageReceived(ChannelHandlerContext ctx, CoreMessage msg) throws Exception {
 
         this.core = msg;
 
@@ -68,7 +69,7 @@ public class CheHandler extends SimpleChannelInboundHandler<Core> {
             configuration.getLogger().debug(core.toString());
             cheControllerSocket.write(core);
 
-            for (Core pending : pendingMessages) {
+            for (CoreMessage pending : pendingMessages) {
                 cheControllerSocket.write(pending);
             }
 

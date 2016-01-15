@@ -17,7 +17,7 @@ public class CheCamelController {
     public CheCamelController() throws Exception {
 
         context.addRoutes(new RouteBuilder() {
-            //testing only at present.  seems to work.  so next up is to build this up for proper testing.  ie send a core message then connect.
+            //testing only at present.  seems to work.  so next up is to build this up for proper testing.  ie client a core message then connect.
             @Override
             public void configure() throws Exception {
                 from("netty:tcp://localhost:8089").to("netty:tcp://localhost:8086").process(exchange -> {

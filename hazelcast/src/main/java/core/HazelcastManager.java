@@ -3,9 +3,9 @@ package core;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
-import model.server.TopicSubscriptions;
 import server.CheCallbackInterface;
 import util.CheMessageHandler;
+import util.TopicSubscriptions;
 
 
 /**

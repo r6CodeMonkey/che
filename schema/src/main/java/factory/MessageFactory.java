@@ -1,56 +1,33 @@
 package factory;
 
-import message.receive.UTM;
-import message.send.*;
+
+import message.*;
 import org.json.JSONObject;
+import util.Tags;
 
 /**
  * Created by timmytime on 11/12/15.
  */
 public class MessageFactory {
 
-    public static final int ACKNOWLEDGE = 0;
-    public static final int USER = 1;
-    public static final int LOCATION = 2;
-    public static final int CORE = 3;
-    public static final int GENERIC = 4;
-    public static final int UTM = 5;
 
+    public static JSONObject getMessage(CoreMessage coreMessage) {
 
-    /*
-      helper to make an acknowledge.  sent from server, should not be used from clients.
-     */
-    public static String createAcknowledge(String ackId, String state, String info) {
-        return model.client.Acknowledge.create(ackId, state, info).toString();
-    }
-
-
-    /*
-      not of huge use, as all messages will be in core anyway.  primarily for testing purposes (when type != CORE)
-     */
-    public static JSONObject getMessage(int type, String message) {
+        String type = coreMessage.getType();
 
         switch (type) {
-            case ACKNOWLEDGE:
-                Acknowledge acknowledge = new Acknowledge();
-                acknowledge.create(message);
-                return acknowledge.get();
-            case USER:
-                User user = new User();
-                user.create(message);
-                return user.get();
-            case LOCATION:
-                Location location = new Location();
-                location.create(message);
-                return location.get();
-            case CORE:
-                Core core = new Core();
-                core.create(message);
-                return core.get();
-            case GENERIC:
-                GenericMessage genericMessage = new GenericMessage();
-                genericMessage.create(message);
-                return genericMessage.get();
+            case Tags.ACKNOWLEDGE:
+                return new Acknowledge(coreMessage.toString());
+            case Tags.PLAYER:
+                new Player(coreMessage.toString());
+            case Tags.LOCATION:
+                return new UTMLocation(coreMessage.toString());
+            case Tags.MISSILE:
+                return new Missile(coreMessage.toString());
+            case Tags.GAME_OBJECT:
+                return new GameObject(coreMessage.toString());
+            case Tags.ALLIANCE:
+                return new Alliance(coreMessage.toString());
             default:
                 throw new RuntimeException("Unknown message type");
         }

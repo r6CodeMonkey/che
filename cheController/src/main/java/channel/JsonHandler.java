@@ -23,7 +23,7 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
 
 
     public void channelActive(ChannelHandlerContext ctx) {
-        //send an acknowledge to confirm we are active.  no need to send id
+        //client an acknowledge to confirm we are active.  no need to client id
         ctx.channel().writeAndFlush(MessageFactory.createAcknowledge("", Tags.ACCEPT, Tags.ACTIVE));
     }
 

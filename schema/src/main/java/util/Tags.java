@@ -6,10 +6,12 @@ package util;
 public class Tags {
 
     //object tags
-    public static final String LOCATION_OBJECT = "location";
-    public static final String GENERIC_OBJECT = "generic";
-    public static final String ACKNOWLEDGE_OBJECT = "acknowledge";
-    public static final String USER_OBJECT = "user";
+    public static final String LOCATION = "location";
+    public static final String ACKNOWLEDGE = "acknowledge";
+    public static final String PLAYER = "player";
+    public static final String ALLIANCE = "alliance";
+    public static final String MISSILE = "missile";
+    public static final String GAME_OBJECT = "gameObject";
 
     //in out tags
     public static final String UID = "uid";  //can be used for both in and out.
@@ -60,6 +62,11 @@ public class Tags {
     public final static String MISSILE_TARGET = "MISSILE_TARGET";
     public final static String MISSILE_FIRE = "MISSILE_FIRE";
     public final static String MISSILE_CANCEL = "MISSILE_CANCEL";
+
+    //General che object fields
+    public final static String ALLIANCE_NAME = "allianceName";
+    public final static String ALLIANCE_KEY = "allianceKey";
+    public final static String ALLIANCE_MEMBERS = "allianceMembers";
 
 
 }

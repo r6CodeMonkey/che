@@ -2,7 +2,7 @@ package controller.handler;
 
 import controller.CheController;
 import core.HazelcastManagerInterface;
-import message.receive.CheMessage;
+import message.server.CheMessage;
 import model.client.Core;
 import model.client.UTM;
 import model.server.Player;
