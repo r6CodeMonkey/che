@@ -11,27 +11,48 @@ import util.Tags;
 public class MessageFactory {
 
 
-    public static JSONObject getMessage(CoreMessage coreMessage) {
+    public static JSONObject getMessage(String message) {
 
-        String type = coreMessage.getType();
+        JSONObject coreMessage = new JSONObject(message);
+        String type = coreMessage.get(Tags.TYPE).toString();
 
         switch (type) {
             case Tags.ACKNOWLEDGE:
-                return new Acknowledge(coreMessage.toString());
+                return new Acknowledge(coreMessage.getJSONObject(Tags.ACKNOWLEDGE).toString());
             case Tags.PLAYER:
-                new Player(coreMessage.toString());
+                new Player(coreMessage.getJSONObject(Tags.PLAYER).toString());
             case Tags.LOCATION:
-                return new UTMLocation(coreMessage.toString());
+                return new UTMLocation(coreMessage.getJSONObject(Tags.LOCATION).toString());
             case Tags.MISSILE:
-                return new Missile(coreMessage.toString());
+                return new Missile(coreMessage.getJSONObject(Tags.MISSILE).toString());
             case Tags.GAME_OBJECT:
-                return new GameObject(coreMessage.toString());
+                return new GameObject(coreMessage.getJSONObject(Tags.GAME_OBJECT).toString());
             case Tags.ALLIANCE:
-                return new Alliance(coreMessage.toString());
+                return new Alliance(coreMessage.getJSONObject(Tags.ALLIANCE).toString());
             default:
                 throw new RuntimeException("Unknown message type");
         }
 
+    }
+
+    public static CoreMessage getCheMessage(CoreMessage coreMessage, String type) {
+
+        switch (type) {
+            case Tags.ACKNOWLEDGE:
+                return new Acknowledge(coreMessage.getJSONObject(Tags.ACKNOWLEDGE).toString());
+            case Tags.PLAYER:
+                new Player(coreMessage.getJSONObject(Tags.PLAYER).toString());
+            case Tags.LOCATION:
+                return new UTMLocation(coreMessage.getJSONObject(Tags.LOCATION).toString());
+            case Tags.MISSILE:
+                return new Missile(coreMessage.getJSONObject(Tags.MISSILE).toString());
+            case Tags.GAME_OBJECT:
+                return new GameObject(coreMessage.getJSONObject(Tags.GAME_OBJECT).toString());
+            case Tags.ALLIANCE:
+                return new Alliance(coreMessage.getJSONObject(Tags.ALLIANCE).toString());
+            default:
+                throw new RuntimeException("Unknown message type");
+        }
     }
 
 

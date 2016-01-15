@@ -1,7 +1,6 @@
 package model;
 
 
-import org.json.JSONObject;
 import util.Tags;
 
 /**
@@ -21,7 +20,7 @@ public class Acknowledge extends CoreModel {
     public String getMessage() {
 
         message.Acknowledge acknowledge = new message.Acknowledge(this);
-        
+
         acknowledge.put(Tags.STATE, state);
         acknowledge.put(Tags.VALUE, value);
 

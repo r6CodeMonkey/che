@@ -1,7 +1,7 @@
 package model;
 
 import io.netty.channel.Channel;
-import model.client.Core;
+import message.CheMessage;
 
 import java.io.Serializable;
 
@@ -22,11 +22,11 @@ public class CheControllerObject implements Serializable {
      */
 
 
-    private Core core;
+    private CheMessage cheMessage;
     private Channel channel;
 
-    public CheControllerObject(Core core, Channel channel) {
-        this.core = core;
+    public CheControllerObject(CheMessage core, Channel channel) {
+        this.cheMessage = core;
         this.channel = channel;
     }
 
@@ -34,7 +34,7 @@ public class CheControllerObject implements Serializable {
         return channel;
     }
 
-    public Core getCore() {
-        return core;
+    public CheMessage getCore() {
+        return cheMessage;
     }
 }

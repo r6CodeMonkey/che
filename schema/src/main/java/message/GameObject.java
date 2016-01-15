@@ -16,10 +16,14 @@ public class GameObject extends CoreMessage {
         super(model.getMessage());
     }
 
-
     @Override
     public String getKey() {
         return null;
+    }
+
+    @Override
+    public void setKey(String key) {
+
     }
 
     @Override

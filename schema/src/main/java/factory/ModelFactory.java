@@ -1,6 +1,5 @@
 package factory;
 
-import message.CoreMessage;
 import model.CoreModel;
 
 /**
@@ -12,7 +11,7 @@ public class ModelFactory {
     probably do not need this.
      */
 
-    public static CoreModel getModel(CoreModel coreModel){
+    public static CoreModel getModel(CoreModel coreModel) {
         return null;
     }
 }

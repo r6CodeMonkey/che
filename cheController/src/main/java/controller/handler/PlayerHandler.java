@@ -2,11 +2,9 @@ package controller.handler;
 
 import controller.CheController;
 import core.HazelcastManagerInterface;
-import message.server.CheMessage;
-import model.client.Core;
-import model.client.UTM;
-import model.server.Player;
-import model.server.UTMLocation;
+import message.HazelcastMessage;
+import model.Player;
+import model.UTM;
 import org.json.JSONException;
 import util.Configuration;
 import util.Response;
@@ -49,7 +47,7 @@ public class PlayerHandler {
             UTM model = new UTM(player.utmLocation.utm.getUtm(), player.utmLocation.subUtm.getUtm());
             configuration.getChannelMapController().getChannel(player.uid).writeAndFlush(model.toString());
             //need to use the proper message type, but it works....ie publishes properly to correct listeners.
-            hazelcastManagerInterface.publish(player.utmLocation.subUtm.getUtm(), "{" + CheMessage.REMOTE_ADDRESS +Response.FAKE_TAG+"," + CheMessage.CHE_OBJECT + Response.PLAYER_JOINED+"}");
+            hazelcastManagerInterface.publish(player.utmLocation.subUtm.getUtm(), "{" + HazelcastMessage.REMOTE_ADDRESS + Response.FAKE_TAG + "," + HazelcastMessage.CHE_OBJECT + Response.PLAYER_JOINED + "}");
         }
 
         hazelcastManagerInterface.put(CheController.PLAYER_MAP, player.uid, player);

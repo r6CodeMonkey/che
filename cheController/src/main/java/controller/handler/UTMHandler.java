@@ -1,10 +1,8 @@
 package controller.handler;
 
 import core.HazelcastManagerInterface;
-import model.client.Location;
-import model.server.Player;
-import model.server.TopicSubscriptions;
-import model.server.UTMLocation;
+import model.Player;
+import model.UTMLocation;
 import util.Configuration;
 
 import java.rmi.RemoteException;
@@ -35,7 +33,7 @@ public class UTMHandler {
     public void handleUTMChange(UTMLocation currentLocation, Player player) throws RemoteException {
         hazelcastManagerInterface.unSubscribe(player.utmLocation.utm.getUtm(), player.getTopicSubscriptions());
         player.getTopicSubscriptions().addSubscription(currentLocation.utm.getUtm(), hazelcastManagerInterface.subscribe(currentLocation.utm.getUtm(), player.uid));
-        handleSubUTMChange(currentLocation,player);
+        handleSubUTMChange(currentLocation, player);
     }
 
     public void handleSubUTMChange(UTMLocation currentLocation, Player player) throws RemoteException {

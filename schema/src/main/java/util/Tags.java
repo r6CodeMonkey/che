@@ -6,6 +6,7 @@ package util;
 public class Tags {
 
     //object tags
+    public static final String CORE = "core";
     public static final String LOCATION = "location";
     public static final String ACKNOWLEDGE = "acknowledge";
     public static final String PLAYER = "player";

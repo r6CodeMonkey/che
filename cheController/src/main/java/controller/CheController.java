@@ -4,9 +4,8 @@ import controller.handler.GenericHandler;
 import controller.handler.PlayerHandler;
 import core.HazelcastManagerInterface;
 import io.netty.channel.Channel;
-import message.server.CheMessage;
-import model.client.Core;
-import model.server.Player;
+import message.CheMessage;
+import message.HazelcastMessage;
 import org.json.JSONException;
 import server.CheCallbackInterface;
 import util.Configuration;
@@ -62,7 +61,7 @@ public class CheController {
         return false;
     }
 
-    public void receive(Core message) throws RemoteException, NotBoundException, MalformedURLException, JSONException, NoSuchAlgorithmException {
+    public void receive(CheMessage message) throws RemoteException, NotBoundException, MalformedURLException, JSONException, NoSuchAlgorithmException {
 
         if (hazelcastManagerInterface == null) {
             hazelcastServerUp = initHazelcastServer();
@@ -80,7 +79,7 @@ public class CheController {
         }
     }
 
-    private void handleMessage(CheMessage cheMessage, String key) throws JSONException {
+    private void handleMessage(HazelcastMessage cheMessage, String key) throws JSONException {
 
         Channel channel = configuration.getChannelMapController().getChannel(key);
 
@@ -102,7 +101,7 @@ public class CheController {
         @Override
         public void handleCallback(String message, String key) {
             try {
-                CheMessage cheMessage = new CheMessage(message);
+                HazelcastMessage cheMessage = new HazelcastMessage(message);
                 handleMessage(cheMessage, key);
             } catch (JSONException e) {
                 configuration.getLogger().error("callback failed " + e.getMessage());

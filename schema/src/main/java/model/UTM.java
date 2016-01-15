@@ -7,7 +7,7 @@ public class UTM extends CoreModel {
 
     private String utmLat, utmLong;
 
-    public UTM(){
+    public UTM() {
         utmLat = "";
         utmLong = "";
     }

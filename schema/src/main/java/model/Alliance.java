@@ -15,7 +15,7 @@ public class Alliance extends CoreModel {
         super(key);
     }
 
-    public List<Player> getMembers(){
+    public List<Player> getMembers() {
         return members;
     }
 

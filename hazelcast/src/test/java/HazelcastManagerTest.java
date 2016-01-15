@@ -1,9 +1,9 @@
 import core.HazelcastManager;
-import model.server.TopicSubscriptions;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import util.SimpleHandler;
+import util.TopicSubscriptions;
 
 import static org.junit.Assert.*;
 

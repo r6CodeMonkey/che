@@ -9,7 +9,7 @@ public class UTMLocation extends CoreModel {
     public UTM subUtm;
     public double latitude, longitude, altitude, speed;
 
-    public UTMLocation(){
+    public UTMLocation() {
         utm = new UTM();
         subUtm = new UTM();
     }

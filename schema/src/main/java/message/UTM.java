@@ -20,6 +20,11 @@ public class UTM extends CoreMessage {
     }
 
     @Override
+    public void setKey(String key) {
+
+    }
+
+    @Override
     public String getState() {
         return null;
     }

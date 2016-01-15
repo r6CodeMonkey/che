@@ -1,16 +1,17 @@
 package message;
 
+import factory.MessageFactory;
 import model.CoreModel;
 
 /**
  * Created by timmytime on 15/01/16.
  */
-public class Player extends CoreMessage {
-    public Player(String message) {
+public class CheMessage extends CoreMessage {
+    public CheMessage(String message) {
         super(message);
     }
 
-    public Player(CoreModel model) {
+    public CheMessage(CoreModel model) {
         super(model);
     }
 
@@ -33,4 +34,9 @@ public class Player extends CoreMessage {
     public String getValue() {
         return null;
     }
+
+    public CoreMessage getMessage(String type) {
+        return MessageFactory.getCheMessage(this, type);
+    }
+
 }

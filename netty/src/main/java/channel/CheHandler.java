@@ -3,7 +3,8 @@ package channel;
 import factory.MessageFactory;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import message.CoreMessage;
+import message.CheMessage;
+import model.Acknowledge;
 import socket.CheControllerSocket;
 import util.Configuration;
 import util.Tags;
@@ -17,11 +18,12 @@ import java.util.List;
 /**
  * Created by timmytime on 12/12/15.
  */
-public class CheHandler extends SimpleChannelInboundHandler<CoreMessage> {
+public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
 
-    private final List<CoreMessage> pendingMessages = new ArrayList<>();
+    private final List<CheMessage> pendingMessages = new ArrayList<>();
     private final Configuration configuration;
-    private CoreMessage core;
+    private CheMessage cheMessage;
+    private model.Acknowledge ack;
     private Socket socket;
     private CheControllerSocket cheControllerSocket;
     private boolean socketAvailable = false;
@@ -45,15 +47,20 @@ public class CheHandler extends SimpleChannelInboundHandler<CoreMessage> {
 
 
     @Override
-    protected void messageReceived(ChannelHandlerContext ctx, CoreMessage msg) throws Exception {
+    protected void messageReceived(ChannelHandlerContext ctx, CheMessage cheMessage) throws Exception {
 
-        this.core = msg;
+        this.cheMessage = cheMessage;
 
         //at this point, if the user has no id, we will create them one, even if the server is down elsewhere.
-        if (core.getUser().getUid().trim().isEmpty()) {
+        if (cheMessage.getMessage(Tags.PLAYER).getKey().isEmpty()) {
             configuration.getLogger().debug("new user created " + ctx.channel().remoteAddress().toString());
-            core.updateUserID(configuration.getUuidGenerator().generatePlayerKey());
-            ctx.channel().writeAndFlush(MessageFactory.createAcknowledge(core.getAckId(), Tags.UUID, core.getUser().getUid()));
+            cheMessage.getMessage(Tags.PLAYER).setKey(configuration.getUuidGenerator().generatePlayerKey());
+
+            ack = new Acknowledge(cheMessage.getKey());
+            ack.state = Tags.UUID;
+            ack.state = cheMessage.getMessage(Tags.PLAYER).getKey();
+
+            ctx.channel().writeAndFlush(MessageFactory.getMessage(ack.getMessage()));
         }
 
         if (socket == null || socket.isClosed()) {
@@ -66,25 +73,31 @@ public class CheHandler extends SimpleChannelInboundHandler<CoreMessage> {
                 cheControllerSocket = new CheControllerSocket(configuration, ctx.channel(), socket);
             }
 
-            configuration.getLogger().debug(core.toString());
-            cheControllerSocket.write(core);
+            configuration.getLogger().debug(cheMessage.toString());
+            cheControllerSocket.write(cheMessage);
 
-            for (CoreMessage pending : pendingMessages) {
+            for (CheMessage pending : pendingMessages) {
                 cheControllerSocket.write(pending);
             }
 
         } else {
-            pendingMessages.add(core);
+            pendingMessages.add(cheMessage);
         }
 
 
-        ctx.channel().writeAndFlush(MessageFactory.createAcknowledge(core.getAckId(), Tags.SUCCESS, "Received"));
+        ack.state = Tags.SUCCESS;
+        ack.value = "Received";  //needs to go in tags...
+
+        ctx.channel().writeAndFlush(MessageFactory.getMessage(ack.getMessage()));
 
     }
 
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         try {
-            ctx.channel().writeAndFlush(MessageFactory.createAcknowledge(core.getAckId(), Tags.ERROR, cause.toString()));
+            ack.state = Tags.ERROR;
+            ack.value = cause.toString();
+
+            ctx.channel().writeAndFlush(MessageFactory.getMessage(ack.getMessage()));
             configuration.getLogger().error(cause.getMessage());
         } catch (Exception e) {
             configuration.getLogger().error(e.getMessage());

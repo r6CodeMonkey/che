@@ -1,7 +1,7 @@
 package socket;
 
 import io.netty.channel.Channel;
-import model.client.Core;
+import message.CheMessage;
 import util.Configuration;
 
 import java.io.DataInputStream;
@@ -43,7 +43,7 @@ public class CheControllerSocket {
         read.start();
     }
 
-    public void write(Core message) {
+    public void write(CheMessage message) {
 
         try {
             dataOutputStream.write(message.toString().getBytes("UTF-8"));

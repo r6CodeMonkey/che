@@ -10,21 +10,21 @@ import java.util.Map;
 public class TopicSubscriptions implements Serializable {
 
 
-        private final Map<String, String> subscriptions;
+    private final Map<String, String> subscriptions;
 
-        public TopicSubscriptions() {
-            subscriptions = new HashMap<>();
-        }
+    public TopicSubscriptions() {
+        subscriptions = new HashMap<>();
+    }
 
-        public String getSubscription(String topic) {
-            return subscriptions.get(topic);
-        }
+    public String getSubscription(String topic) {
+        return subscriptions.get(topic);
+    }
 
-        public void addSubscription(String topic, String subscription) {
-            subscriptions.put(topic, subscription);
-        }
+    public void addSubscription(String topic, String subscription) {
+        subscriptions.put(topic, subscription);
+    }
 
-        public void removeSubscription(String topic) {
-            subscriptions.remove(topic);
-        }
+    public void removeSubscription(String topic) {
+        subscriptions.remove(topic);
+    }
 }

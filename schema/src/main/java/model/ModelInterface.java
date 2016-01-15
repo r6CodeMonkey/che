@@ -1,7 +1,5 @@
 package model;
 
-import message.CoreMessage;
-
 /**
  * Created by timmytime on 15/01/16.
  */

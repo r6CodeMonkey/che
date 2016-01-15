@@ -2,8 +2,8 @@ package controller.handler.generic;
 
 import controller.CheController;
 import core.HazelcastManagerInterface;
-import model.server.Alliance;
 import model.client.generic.GenericModel;
+import model.server.Alliance;
 import model.server.Player;
 import util.Configuration;
 import util.Response;
@@ -32,7 +32,7 @@ public class AllianceHandler {
         hazelcastManagerInterface.put(CheController.ALLIANCE_MAP, alliance.key, alliance);
 
         player.getTopicSubscriptions().addSubscription(alliance.key, hazelcastManagerInterface.subscribe(alliance.key, player.uid));
-        configuration.getChannelMapController().getChannel(player.uid).writeAndFlush(Response.CREATED_ALLIANCE+"need to add the key here.");
+        configuration.getChannelMapController().getChannel(player.uid).writeAndFlush(Response.CREATED_ALLIANCE + "need to add the key here.");
 
     }
 

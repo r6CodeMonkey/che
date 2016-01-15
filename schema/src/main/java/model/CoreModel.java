@@ -1,7 +1,5 @@
 package model;
 
-import message.CoreMessage;
-
 import java.io.Serializable;
 
 /**
@@ -11,17 +9,16 @@ public abstract class CoreModel implements Serializable, ModelInterface {
 
     private String key;
 
-    public CoreModel(){
+    public CoreModel() {
 
     }
 
-    public CoreModel(String key){
+    public CoreModel(String key) {
         this.key = key;
     }
 
 
-
-    public String getKey(){
+    public String getKey() {
         return key;
     }
 }

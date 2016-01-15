@@ -4,15 +4,16 @@ import controller.CheController;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import model.client.Core;
+import message.CheMessage;
 import util.Configuration;
+import util.Tags;
 
 
 /**
  * Created by timmytime on 29/12/15.
  */
 @ChannelHandler.Sharable
-public class CheHandler extends SimpleChannelInboundHandler<Core> {
+public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
 
 
     private final Configuration configuration;
@@ -24,12 +25,12 @@ public class CheHandler extends SimpleChannelInboundHandler<Core> {
     }
 
     @Override
-    protected void messageReceived(ChannelHandlerContext ctx, Core core) throws Exception {
-        configuration.getChannelMapController().addChannel(core.getUser().getUid(), ctx.channel());
+    protected void messageReceived(ChannelHandlerContext ctx, CheMessage cheMessage) throws Exception {
+        configuration.getChannelMapController().addChannel(cheMessage.getMessage(Tags.PLAYER).getKey(), ctx.channel());
 
         new Thread(() -> {
             try {
-                cheController.receive(core);
+                cheController.receive(cheMessage);
             } catch (Exception e) {
                 configuration.getLogger().error("failed to call che controller " + e.getMessage());
             }

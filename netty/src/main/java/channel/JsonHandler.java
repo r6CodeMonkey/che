@@ -3,7 +3,8 @@ package channel;
 import factory.MessageFactory;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import model.client.Core;
+import message.Acknowledge;
+import message.CheMessage;
 import util.Configuration;
 import util.Tags;
 
@@ -16,6 +17,7 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
 
 
     private final Configuration configuration;
+    private final model.Acknowledge ack = new model.Acknowledge("");
 
     public JsonHandler(Configuration configuration) {
         this.configuration = configuration;
@@ -24,7 +26,9 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
 
     public void channelActive(ChannelHandlerContext ctx) {
         //client an acknowledge to confirm we are active.  no need to client id
-        ctx.channel().writeAndFlush(MessageFactory.createAcknowledge("", Tags.ACCEPT, Tags.ACTIVE));
+        ack.state = Tags.ACCEPT;
+        ack.value = Tags.ACTIVE;
+        ctx.channel().writeAndFlush(MessageFactory.getMessage(ack.getMessage()));
     }
 
 
@@ -33,13 +37,15 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
 
         configuration.getLogger().debug(msg.toString());
 
-        Core core = (Core) MessageFactory.getMessage(MessageFactory.CORE, msg.toString());
+        Acknowledge acknowledge = (Acknowledge) MessageFactory.getMessage(msg.toString());
         //does the message contain what is required.
-        if (core.getAckId().trim().isEmpty()) {
-            ctx.channel().writeAndFlush(MessageFactory.createAcknowledge("", Tags.ERROR, "ackid not set"));
+        if (acknowledge.getKey().trim().isEmpty()) {
+            ack.state = Tags.ACCEPT;
+            ack.value = Tags.ACTIVE;
+            ctx.channel().writeAndFlush(MessageFactory.getMessage(ack.getMessage()));
         } else {
             //should test validity of the model...at some point.
-            ctx.fireChannelRead(core);
+            ctx.fireChannelRead(new CheMessage(msg.toString()));
         }
     }
 
@@ -47,7 +53,10 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
 
         configuration.getLogger().error("error of sorts");
 
-        ctx.channel().writeAndFlush(MessageFactory.createAcknowledge("", Tags.ERROR, cause.toString()));
+        ack.state = Tags.ERROR;
+        ack.value = cause.toString();
+
+        ctx.channel().writeAndFlush(MessageFactory.getMessage(ack.getMessage()));
 
         configuration.getLogger().error(cause.getMessage());
         //really need to implement a logger.  but the base of this works.
