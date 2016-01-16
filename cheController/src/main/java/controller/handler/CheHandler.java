@@ -6,6 +6,8 @@ import controller.handler.che.MissileHandler;
 import core.HazelcastManagerInterface;
 import message.CheMessage;
 import model.Alliance;
+import model.GameObject;
+import model.Missile;
 import model.Player;
 import org.json.JSONException;
 import util.Configuration;
@@ -45,10 +47,11 @@ public class CheHandler {
         }
 
         if (!cheMessage.getJSONObject(Tags.CHE).isNull(Tags.MISSILE)) {
-
+            missileHandler.handle(player, new Missile((message.Missile) cheMessage.getMessage(Tags.MISSILE)));
         }
 
         if (!cheMessage.getJSONObject(Tags.CHE).isNull(Tags.GAME_OBJECT)) {
+            gameObjectHandler.handle(player, new GameObject((message.GameObject)cheMessage.getMessage(Tags.GAME_OBJECT)));
 
         }
 
