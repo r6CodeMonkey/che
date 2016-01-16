@@ -62,6 +62,7 @@
       <module name="netty" target="1.8" />
       <module name="schema" target="1.8" />
       <module name="SystemTesting" target="1.8" />
+      <module name="testing" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

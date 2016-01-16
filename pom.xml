@@ -14,6 +14,7 @@
         <module>hazelcast</module>
         <module>schema</module>
         <module>cheController</module>
+        <module>testing</module>
     </modules>
 
 

@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SystemTesting/SystemTesting.iml" filepath="$PROJECT_DIR$/SystemTesting/SystemTesting.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/che.iml" filepath="$PROJECT_DIR$/.idea/che.iml" />
       <module fileurl="file://$PROJECT_DIR$/cheController/cheController.iml" filepath="$PROJECT_DIR$/cheController/cheController.iml" />
       <module fileurl="file://$PROJECT_DIR$/erlang/erlang.iml" filepath="$PROJECT_DIR$/erlang/erlang.iml" />
       <module fileurl="file://$PROJECT_DIR$/hazelcast/hazelcast.iml" filepath="$PROJECT_DIR$/hazelcast/hazelcast.iml" />
       <module fileurl="file://$PROJECT_DIR$/netty/netty.iml" filepath="$PROJECT_DIR$/netty/netty.iml" />
       <module fileurl="file://$PROJECT_DIR$/schema/schema.iml" filepath="$PROJECT_DIR$/schema/schema.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testing/testing.iml" filepath="$PROJECT_DIR$/testing/testing.iml" />
     </modules>
   </component>
 </project>

@@ -26,7 +26,6 @@ public class UtmConvertTest {
         assertEquals("N31", utm.getUtm());
         assertEquals("1C0", utmConvert.getUTMSubGrid(utm,0.0,0.0).getUtm());
 
-
     }
 
 }
