@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+import util.Tags;
 import util.TopicSubscriptions;
 
 import java.awt.*;
@@ -50,6 +52,13 @@ public class Player extends CoreModel {
 
     @Override
     public String getMessage() {
-        return null;
+
+        JSONObject jsonObject = new JSONObject();
+
+        jsonObject.put(Tags.PLAYER_KEY, key);
+        jsonObject.put(Tags.PLAYER_NAME, name);
+        jsonObject.put(Tags.PLAYER_IMAGE, image); //needs to be a stream base64..to do
+
+        return jsonObject.toString();
     }
 }

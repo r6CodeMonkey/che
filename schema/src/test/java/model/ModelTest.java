@@ -1,10 +1,5 @@
-/*package model;
+package model;
 
-import model.client.Acknowledge;
-import model.client.Core;
-import model.client.Location;
-import model.client.User;
-import model.client.generic.GenericModel;
 import org.junit.Test;
 import util.Tags;
 
@@ -12,69 +7,42 @@ import static org.junit.Assert.assertEquals;
 
 public class ModelTest {
 
-    public static final String ACKNOWLEDGE_TEST = "{" + Tags.ACK_ID + ":'1', " + Tags.INFO + ":'info'," + Tags.STATE + ":'state'}";
-    public static final String USER_TEST = "{" + Tags.UID + ":'1'}";
-    public static final String CORE_TEST = "{" + Tags.ACK_ID + ":'1'," + Tags.USER_OBJECT + ":" + USER_TEST + "}";
-    public static final String LOCATION_TEST = "{" + Tags.ALTITUDE + ":1.0," + Tags.SPEED + ":2.0," + Tags.LATITUTDE + ":3.0," + Tags.LONGITUDE + ":4.0," + Tags.UTM + ":'UTM'," + Tags.SUB_UTM + ":'SUB'}";
-    public static final String GENERIC_TEST = "{" + Tags.UID + ":'1'," + Tags.TYPE + ":'generic'," + Tags.VALUE + ":'value'," + Tags.STATE + ":'state'}";
-
 
     @Test
     public void testAcknowledge() {
-        Acknowledge acknowledge = new Acknowledge(ACKNOWLEDGE_TEST);
-
-        assertEquals("info", acknowledge.getInfo());
-        assertEquals("state", acknowledge.getState());
-        assertEquals("1", acknowledge.getAckId());
-
-    }
-
-
-    @Test
-    public void testCore() {
-        Core core = new Core(CORE_TEST);
-
-        assertEquals("1", core.getAckId());
-        assertEquals("1", core.getUser().getUid());
 
     }
 
     @Test
-    public void testLocation() {
-        Location location = new Location(LOCATION_TEST);
-
-        assertEquals("UTM", location.getUtm());
-        assertEquals("SUB", location.getSubUtm());
-        assertEquals(1.0, location.getAltitude(), 0);
-        assertEquals(2.0, location.getSpeed(), 0);
-        assertEquals(3.0, location.getLatitude(), 0);
-        assertEquals(4.0, location.getLongitude(), 0);
+    public void testUTM(){
 
     }
 
     @Test
-    public void testUser() {
-        User user = new User(USER_TEST);
+    public void testAlliance(){
 
-        assertEquals("1", user.getUid());
     }
 
     @Test
-    public void testGeneric() {
-        GenericModel genericModel = new GenericModel(GENERIC_TEST);
-
-        assertEquals("1", genericModel.getId());
-        assertEquals("generic", genericModel.getType());
-        assertEquals("state", genericModel.getState());
-        assertEquals("value", genericModel.getValue());
-
+    public void testMissile(){
 
     }
 
-    //need to test complete message dicj
     @Test
-    public void testFull(){
-        //todo important
+    public void testGameObject(){
+
     }
+
+    @Test
+    public void tesUTMLocation() {
+
+    }
+
+    @Test
+    public void testPlayer() {
+    }
+
+
+
 }
-*/
+

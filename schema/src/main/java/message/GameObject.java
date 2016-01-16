@@ -8,12 +8,19 @@ import model.CoreModel;
  */
 public class GameObject extends CoreMessage {
 
+    public GameObject(){}
+
     public GameObject(String message) {
         super(message);
     }
 
     public GameObject(CoreModel model) {
         super(model.getMessage());
+    }
+
+    @Override
+    public void create() {
+
     }
 
     @Override
@@ -26,15 +33,7 @@ public class GameObject extends CoreMessage {
 
     }
 
-    @Override
-    public String getState() {
-        return null;
-    }
 
-    @Override
-    public String getValue() {
-        return null;
-    }
 
 
 }

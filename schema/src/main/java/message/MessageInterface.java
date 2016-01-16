@@ -5,12 +5,10 @@ package message;
  */
 public interface MessageInterface {
 
+    public void create();
+
     public String getKey();
 
     public void setKey(String key);
-
-    public String getState();
-
-    public String getValue();
 
 }

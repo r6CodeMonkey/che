@@ -9,8 +9,10 @@ import org.json.JSONObject;
 public abstract class CoreMessage extends JSONObject implements MessageInterface {
 
 
-    private String key, type, state, value;
-    private CoreMessage coreMessage;
+
+    public CoreMessage(){
+
+    }
 
     public CoreMessage(String message) {
         super(message);
@@ -21,8 +23,6 @@ public abstract class CoreMessage extends JSONObject implements MessageInterface
         super(model.getMessage());
     }
 
-    public String getType() {
-        return type;
-    }
+
 
 }

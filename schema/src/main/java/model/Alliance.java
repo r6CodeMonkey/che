@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONObject;
+import util.Tags;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +11,7 @@ import java.util.List;
  */
 public class Alliance extends CoreModel {
 
-    private String name;
+    public String name;
     private List<Player> members = new ArrayList<>();
 
     public Alliance(String key) {
@@ -21,6 +24,13 @@ public class Alliance extends CoreModel {
 
     @Override
     public String getMessage() {
-        return null;
+
+        JSONObject jsonObject = new JSONObject();
+
+        jsonObject.put(Tags.ALLIANCE_KEY, key);
+        jsonObject.put(Tags.ALLIANCE_NAME, name);
+        jsonObject.put(Tags.ALLIANCE_MEMBERS, members);
+
+        return jsonObject.toString();
     }
 }

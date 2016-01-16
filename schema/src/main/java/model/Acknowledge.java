@@ -1,6 +1,7 @@
 package model;
 
 
+import org.json.JSONObject;
 import util.Tags;
 
 /**
@@ -19,11 +20,11 @@ public class Acknowledge extends CoreModel {
     @Override
     public String getMessage() {
 
-        message.Acknowledge acknowledge = new message.Acknowledge(this);
+        JSONObject jsonObject = new JSONObject();
 
-        acknowledge.put(Tags.STATE, state);
-        acknowledge.put(Tags.VALUE, value);
+        jsonObject.put(Tags.STATE, state);
+        jsonObject.put(Tags.VALUE, value);
 
-        return acknowledge.toString();
+        return jsonObject.toString();
     }
 }

@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public abstract class CoreModel implements Serializable, ModelInterface {
 
-    private String key;
+    protected String key;
 
     public CoreModel() {
 

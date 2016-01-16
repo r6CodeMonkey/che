@@ -6,46 +6,47 @@ package util;
 public class Tags {
 
     //object tags
-    public static final String CORE = "core";
-    public static final String LOCATION = "location";
     public static final String ACKNOWLEDGE = "acknowledge";
     public static final String PLAYER = "player";
     public static final String ALLIANCE = "alliance";
     public static final String MISSILE = "missile";
     public static final String GAME_OBJECT = "gameObject";
+    public static final String UTM = "utm";
+    public static final String UTM_LOCATION = "utmLocation";
+    public static final String CHE = "che";
+    public static final String HAZELCAST = "hazelcast";
+    public static final String CORE = "core";
 
-    //in out tags
-    public static final String UID = "uid";  //can be used for both in and out.
+
+    //generics
+    public static final String STATE = "state";
+    public static final String INFO = "info";
+    public static final String TYPE = "type";
+    public static final String VALUE = "value";
+
+    //state values
+    public final static String ERROR = "ERROR";
+    public final static String SUCCESS = "SUCCESS";
+    public final static String ACCEPT = "ACCEPT";
+    public final static String ACTIVE = "ACTIVE";
+    //states
+    public final static String UUID = "UUID";
+    public final static String CONNECT = "CONNECT";
+    public final static String MESSAGE = "MESSAGE";
+
+    //acknowledge
     public static final String ACK_ID = "ackid";
 
-    //int tags
+    //utm location
     public static final String LONGITUDE = "long";
     public static final String LATITUTDE = "lat";
     public static final String SPEED = "speed";
     public static final String ALTITUDE = "altitude";
 
-    //out tags
-    public static final String STATE = "state";
-    public static final String INFO = "info";
-    public static final String UTM = "utm";
-    public static final String SUB_UTM = "subutm";
+    //utm
+    public static final String UTM_GRID = "utmGrid";
+    public static final String SUB_UTM_GRID = "subutmGrid";
 
-    //generics
-    public static final String TYPE = "type";
-    public static final String VALUE = "value";
-
-    //states
-    public final static String ERROR = "ERROR";
-    public final static String SUCCESS = "SUCCESS";
-    public final static String ACCEPT = "ACCEPT";
-    public final static String UUID = "UUID";
-
-    //general
-    public final static String ACTIVE = "ACTIVE";
-
-    /*
-    generic types.  game based message calls
-     */
     //alliance
     public final static String ALLIANCE_CREATE = "CREATE_ALLIANCE_CREATE";
     public final static String ALLIANCE_JOIN = "JOIN_ALLIANCE_JOIN";
@@ -68,6 +69,10 @@ public class Tags {
     public final static String ALLIANCE_NAME = "allianceName";
     public final static String ALLIANCE_KEY = "allianceKey";
     public final static String ALLIANCE_MEMBERS = "allianceMembers";
+
+    public final static String PLAYER_KEY = "playerKey";
+    public final static String PLAYER_NAME = "playerName";
+    public final static String PLAYER_IMAGE = "playerImage";
 
 
 }
