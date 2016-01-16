@@ -23,17 +23,17 @@ public class AllianceHandler {
         this.configuration = configuration;
     }
 
-    public void allianceCreate(Player player, Alliance alliance) throws RemoteException, NoSuchAlgorithmException {
+   /* public void allianceCreate(Player player, Alliance alliance) throws RemoteException, NoSuchAlgorithmException {
 
         Alliance alliance = new Alliance(configuration.getUuidGenerator().generateKey("alliance " + genericModel.getValue()), genericModel.getValue());
-        alliance.addMember(player.uid);
+        alliance.getMembers().add(player);
         player.alliances.add(alliance);
-        hazelcastManagerInterface.put(CheController.ALLIANCE_MAP, alliance.key, alliance);
+        hazelcastManagerInterface.put(CheController.ALLIANCE_MAP, alliance.getKey(), alliance);
 
-        player.getTopicSubscriptions().addSubscription(alliance.key, hazelcastManagerInterface.subscribe(alliance.key, player.uid));
-        configuration.getChannelMapController().getChannel(player.uid).writeAndFlush(Response.CREATED_ALLIANCE + "need to add the key here.");
+        player.getTopicSubscriptions().addSubscription(alliance.getKey(), hazelcastManagerInterface.subscribe(alliance.getKey(), player.getKey()));
+        configuration.getChannelMapController().getChannel(player.getKey()).writeAndFlush(Response.CREATED_ALLIANCE + "need to add the key here.");
 
-    }
+    } */
 /*
     public void allianceInvite(Player player, GenericModel genericModel) {
 

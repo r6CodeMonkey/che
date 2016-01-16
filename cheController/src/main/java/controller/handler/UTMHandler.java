@@ -30,13 +30,13 @@ public class UTMHandler {
 
     public void handleUTMChange(UTMLocation currentLocation, Player player) throws RemoteException {
         hazelcastManagerInterface.unSubscribe(player.utmLocation.utm.getUtm(), player.getTopicSubscriptions());
-        player.getTopicSubscriptions().addSubscription(currentLocation.utm.getUtm(), hazelcastManagerInterface.subscribe(currentLocation.utm.getUtm(), player.uid));
+        player.getTopicSubscriptions().addSubscription(currentLocation.utm.getUtm(), hazelcastManagerInterface.subscribe(currentLocation.utm.getUtm(), player.getKey()));
         handleSubUTMChange(currentLocation, player);
     }
 
     public void handleSubUTMChange(UTMLocation currentLocation, Player player) throws RemoteException {
         hazelcastManagerInterface.unSubscribe(player.utmLocation.subUtm.getUtm(), player.getTopicSubscriptions());
-        player.getTopicSubscriptions().addSubscription(currentLocation.subUtm.getUtm(), hazelcastManagerInterface.subscribe(currentLocation.subUtm.getUtm(), player.uid));
+        player.getTopicSubscriptions().addSubscription(currentLocation.subUtm.getUtm(), hazelcastManagerInterface.subscribe(currentLocation.subUtm.getUtm(), player.getKey()));
     }
 
 }

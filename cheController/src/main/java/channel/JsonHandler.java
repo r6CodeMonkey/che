@@ -33,7 +33,7 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
         ack.value = Tags.ACTIVE;
 
         //client an acknowledge to confirm we are active.  no need to client id
-        ctx.channel().writeAndFlush(MessageFactory.getMessage(ack.getMessage()));
+        ctx.channel().writeAndFlush(ack.getMessage());
     }
 
 
@@ -52,7 +52,7 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
         ack.state = Tags.ERROR;
         ack.value = cause.toString();
 
-        ctx.channel().writeAndFlush(MessageFactory.getMessage(ack.getMessage()));
+        ctx.channel().writeAndFlush(ack.getMessage());
 
         configuration.getLogger().error(cause.getMessage());
         //really need to implement a logger.  but the base of this works.

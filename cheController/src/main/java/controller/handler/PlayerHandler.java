@@ -2,6 +2,7 @@ package controller.handler;
 
 import controller.CheController;
 import core.HazelcastManagerInterface;
+import factory.MessageFactory;
 import message.CheMessage;
 import message.HazelcastMessage;
 import model.Player;
@@ -31,7 +32,7 @@ public class PlayerHandler {
 
     public Player handlePlayer(CheMessage message) throws RemoteException, JSONException {
         Player player = getPlayer(message.getMessage(Tags.PLAYER).getKey());
-        UTMLocation utmLocation = utmHandler.getUTMLocation(message.getMessage(Tags.UTM_LOCATION));
+        UTMLocation utmLocation = utmHandler.getUTMLocation(new UTMLocation((message.UTMLocation)message.getMessage(Tags.UTM_LOCATION)));
 
         boolean hasUTMChanged = player.hasUTMChanged(utmLocation);
         boolean hasSubUTMChanged = player.hasSubUTMChanged(utmLocation);
@@ -47,13 +48,12 @@ public class PlayerHandler {
         player.utmLocation = utmLocation;
 
         if (hasUTMChanged || hasSubUTMChanged) {
-            UTM model = new UTM(player.utmLocation.utm.getUtm(), player.utmLocation.subUtm.getUtm());
-            configuration.getChannelMapController().getChannel(player.uid).writeAndFlush(model.toString());
+            configuration.getChannelMapController().getChannel(player.getKey()).writeAndFlush(utmLocation.getMessage());
             //need to use the proper message type, but it works....ie publishes properly to correct listeners.
             hazelcastManagerInterface.publish(player.utmLocation.subUtm.getUtm(), "{" + HazelcastMessage.REMOTE_ADDRESS + Response.FAKE_TAG + "," + HazelcastMessage.CHE_OBJECT + Response.PLAYER_JOINED + "}");
         }
 
-        hazelcastManagerInterface.put(CheController.PLAYER_MAP, player.uid, player);
+        hazelcastManagerInterface.put(CheController.PLAYER_MAP, player.getKey(), player);
 
         return player;
     }

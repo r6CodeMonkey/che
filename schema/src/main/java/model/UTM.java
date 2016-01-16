@@ -12,6 +12,11 @@ public class UTM extends CoreModel {
         utmLong = "";
     }
 
+    public UTM(String utmLat, String utmLong){
+        this.utmLat = utmLat;
+        this.utmLong = utmLong;
+    }
+
     public UTM(String key) {
         super(key);
     }
