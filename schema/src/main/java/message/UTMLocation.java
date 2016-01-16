@@ -28,6 +28,10 @@ public class UTMLocation extends CoreMessage {
         utm.create();
         inner.put(Tags.UTM, utm);
 
+        utm = new UTM();
+        utm.create();
+        inner.put(Tags.SUB_UTM, utm);
+
         this.put(Tags.UTM_LOCATION, inner);
     }
 
@@ -48,6 +52,15 @@ public class UTMLocation extends CoreMessage {
     public void setUTM(UTM utm) {
         this.getJSONObject(Tags.UTM_LOCATION).put(Tags.UTM, utm);
     }
+
+    public UTM getSubUTM() {
+        return new UTM(this.getJSONObject(Tags.UTM_LOCATION).getJSONObject(Tags.SUB_UTM).toString());
+    }
+
+    public void setSubUTM(UTM utm) {
+        this.getJSONObject(Tags.UTM_LOCATION).put(Tags.SUB_UTM, utm);
+    }
+
 
     public double getLatitude() {
         return this.getJSONObject(Tags.UTM_LOCATION).getDouble(Tags.LATITUTDE);

@@ -31,7 +31,7 @@ public class PlayerHandler {
 
     public Player handlePlayer(CheMessage message) throws RemoteException, JSONException {
         Player player = getPlayer(message.getMessage(Tags.PLAYER).getKey());
-        UTMLocation utmLocation = utmHandler.getUTMLocation(message.getMessage(Tags.UTM));
+        UTMLocation utmLocation = utmHandler.getUTMLocation(message.getMessage(Tags.UTM_LOCATION));
 
         boolean hasUTMChanged = player.hasUTMChanged(utmLocation);
         boolean hasSubUTMChanged = player.hasSubUTMChanged(utmLocation);

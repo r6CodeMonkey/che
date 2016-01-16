@@ -18,8 +18,8 @@ public class UTM extends CoreMessage {
     @Override
     public void create() {
         JSONObject inner = new JSONObject();
-        inner.put(Tags.UTM_GRID, "");
-        inner.put(Tags.SUB_UTM_GRID, "");
+        inner.put(Tags.UTM_LAT_GRID, "");
+        inner.put(Tags.UTM_LONG_GRID, "");
         this.put(Tags.UTM, inner);
 
     }
@@ -34,21 +34,22 @@ public class UTM extends CoreMessage {
 
     }
 
-    public String getUTMGrid() {
-        return this.getJSONObject(Tags.UTM).get(Tags.UTM_GRID).toString();
+    public String getUTMLatGrid() {
+        return this.getJSONObject(Tags.UTM).get(Tags.UTM_LAT_GRID).toString();
     }
 
-    public void setUTMGrid(String utmGrid) {
-        this.getJSONObject(Tags.UTM).put(Tags.UTM_GRID, utmGrid);
+    public String getUTMLongGrid() {
+        return this.getJSONObject(Tags.UTM).get(Tags.UTM_LONG_GRID).toString();
     }
 
-    public String getSubUTMGrid() {
-        return this.getJSONObject(Tags.UTM).get(Tags.SUB_UTM_GRID).toString();
+    public void setUTMLatGrid(String utmLatGrid) {
+        this.getJSONObject(Tags.UTM).put(Tags.UTM_LAT_GRID, utmLatGrid);
     }
 
-    public void setSubUTMGrid(String subUTMGrid) {
-        this.getJSONObject(Tags.UTM).put(Tags.SUB_UTM_GRID, subUTMGrid);
+    public void setUTMLongGrid(String utmLongGrid) {
+        this.getJSONObject(Tags.UTM).put(Tags.UTM_LONG_GRID, utmLongGrid);
     }
+
 
 
 }

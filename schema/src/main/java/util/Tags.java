@@ -12,6 +12,7 @@ public class Tags {
     public static final String MISSILE = "missile";
     public static final String GAME_OBJECT = "gameObject";
     public static final String UTM = "utm";
+    public static final String SUB_UTM = "subUtm";
     public static final String UTM_LOCATION = "utmLocation";
     public static final String CHE = "che";
     public static final String HAZELCAST = "hazelcast";
@@ -46,6 +47,10 @@ public class Tags {
     //utm
     public static final String UTM_GRID = "utmGrid";
     public static final String SUB_UTM_GRID = "subutmGrid";
+
+    public static final String UTM_LAT_GRID = "utmLat";
+    public static final String UTM_LONG_GRID = "utmLong";
+
 
     //alliance
     public final static String ALLIANCE_CREATE = "CREATE_ALLIANCE_CREATE";

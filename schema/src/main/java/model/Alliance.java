@@ -16,6 +16,14 @@ public class Alliance extends CoreModel {
         super(key);
     }
 
+    public Alliance(message.Alliance alliance){
+        super(alliance.getKey());
+        name = alliance.getName();
+        value = alliance.getValue();
+        state = alliance.getState();
+        members.addAll(alliance.getMembers().stream().map(Player::new).collect(Collectors.toList()));
+    }
+
     public List<Player> getMembers() {
         return members;
     }

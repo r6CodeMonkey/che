@@ -1,6 +1,6 @@
 package controller;
 
-import controller.handler.GenericHandler;
+import controller.handler.CheHandler;
 import controller.handler.PlayerHandler;
 import core.HazelcastManagerInterface;
 import io.netty.channel.Channel;
@@ -10,7 +10,6 @@ import model.Player;
 import org.json.JSONException;
 import server.CheCallbackInterface;
 import util.Configuration;
-import util.Tags;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -35,7 +34,7 @@ public class CheController {
     private final Configuration configuration;
     //handlers
     private PlayerHandler playerHandler;
-    private GenericHandler genericHandler;
+    private CheHandler cheHandler;
     //server up flag
     private boolean hazelcastServerUp = false;
 
@@ -49,7 +48,7 @@ public class CheController {
         try {
             hazelcastManagerInterface = (HazelcastManagerInterface) Naming.lookup(configuration.getHazelcastURL());
             playerHandler = new PlayerHandler(hazelcastManagerInterface, configuration);
-            genericHandler = new GenericHandler(hazelcastManagerInterface, configuration);
+            cheHandler = new CheHandler(hazelcastManagerInterface, configuration);
             hazelcastManagerInterface.addCallback(new CheCallbackClient());
             return true;
         } catch (NotBoundException e) {
@@ -73,7 +72,7 @@ public class CheController {
 
             configuration.getLogger().debug("something gone wrong " + message.toString());
             configuration.getLogger().debug("we have generic object");
-            genericHandler.handle(player, message);
+            cheHandler.handle(player, message);
 
         }
     }

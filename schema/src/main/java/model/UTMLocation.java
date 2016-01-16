@@ -14,6 +14,16 @@ public class UTMLocation extends CoreModel {
         subUtm = new UTM();
     }
 
+    public UTMLocation(message.UTMLocation utmLocation){
+        //construct from message.
+        utm = new UTM(utmLocation.getUTM());
+        subUtm = new UTM(utmLocation.getSubUTM());
+        latitude = utmLocation.getLatitude();
+        longitude = utmLocation.getLongitude();
+        altitude = utmLocation.getAltitude();
+        speed = utmLocation.getSpeed();
+    }
+
     public UTMLocation(String key) {
         super(key);
     }
@@ -32,10 +42,18 @@ public class UTMLocation extends CoreModel {
         message.UTM temp = new message.UTM();
         temp.create();
 
-        temp.setUTMGrid(utm.getUtm());
-        temp.setSubUTMGrid(subUtm.getUtm());
+        temp.setUTMLatGrid(utm.getUtmLat());
+        temp.setUTMLongGrid(subUtm.getUtmLong());
 
         utmLocation.setUTM(temp);
+
+        temp = new message.UTM();
+        temp.create();
+
+        temp.setUTMLatGrid(utm.getUtmLat());
+        temp.setUTMLongGrid(subUtm.getUtmLong());
+
+        utmLocation.setSubUTM(temp);
 
         return utmLocation.toString();
     }

@@ -16,14 +16,19 @@ public class UTM extends CoreModel {
         super(key);
     }
 
+    public UTM(message.UTM utm){
+        utmLat = utm.getUTMLatGrid();
+        utmLong = utm.getUTMLongGrid();
+    }
+
     @Override
     public String getMessage() {
 
         message.UTM utm = new message.UTM();
         utm.create();
 
-        utm.setUTMGrid(getUtm());
-        utm.setUTMGrid(getUtm());
+        utm.setUTMLatGrid(utmLat);
+        utm.setUTMLongGrid(utmLong);
 
         return utm.toString();
     }

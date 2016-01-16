@@ -20,9 +20,7 @@ public class CheMessage extends CoreMessage {
     @Override
     public void create() {
         JSONObject inner = new JSONObject();
-        inner.put(Tags.TYPE, "");
         this.put(Tags.CHE, inner);
-
     }
 
     @Override
@@ -35,20 +33,13 @@ public class CheMessage extends CoreMessage {
 
     }
 
-    public String getType() {
-        return this.getJSONObject(Tags.CHE).get(Tags.TYPE).toString();
+
+    public CoreMessage getMessage(String type) {
+        return MessageFactory.getCheMessage(this.getJSONObject(Tags.CHE).getJSONObject(type).toString(), type);
     }
 
-    public void setType(String type) {
-        this.getJSONObject(Tags.CHE).put(Tags.TYPE, type);
-    }
-
-    public CoreMessage getMessage() {
-        return MessageFactory.getCheMessage(this.getJSONObject(Tags.CHE).getJSONObject(Tags.CORE).toString(), this.getJSONObject(Tags.CHE).get(Tags.TYPE).toString());
-    }
-
-    public void setMessage(CoreMessage message) {
-        this.getJSONObject(Tags.CHE).put(Tags.CORE, message);
+    public void setMessage(String type, CoreMessage message) {
+        this.getJSONObject(Tags.CHE).put(type, message);
     }
 
 }
