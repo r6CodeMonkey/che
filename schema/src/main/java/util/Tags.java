@@ -34,6 +34,9 @@ public class Tags {
     public final static String SUCCESS = "SUCCESS";
     public final static String ACCEPT = "ACCEPT";
     public final static String ACTIVE = "ACTIVE";
+    public final static String PLAYER_ENTERED = "PLAYER_ENTERED";
+    public final static String PLAYER_LEFT = "PLAYER_LEFT";
+
     //states
     public final static String UUID = "UUID";
     public final static String CONNECT = "CONNECT";

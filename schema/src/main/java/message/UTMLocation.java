@@ -24,6 +24,8 @@ public class UTMLocation extends CoreMessage {
         inner.put(Tags.LONGITUDE, "");
         inner.put(Tags.SPEED, "");
         inner.put(Tags.ALTITUDE, "");
+        inner.put(Tags.VALUE, "");
+        inner.put(Tags.STATE, "");
         UTM utm = new UTM();
         utm.create();
         inner.put(Tags.UTM, utm);
@@ -43,6 +45,22 @@ public class UTMLocation extends CoreMessage {
     @Override
     public void setKey(String key) {
 
+    }
+
+    public String getValue(){
+        return this.getJSONObject(Tags.UTM_LOCATION).get(Tags.VALUE).toString();
+    }
+
+    public void setValue(String value){
+        this.getJSONObject(Tags.UTM_LOCATION).put(Tags.VALUE, value);
+    }
+
+    public String getState(){
+        return this.getJSONObject(Tags.UTM_LOCATION).get(Tags.STATE).toString();
+    }
+
+    public void setState(String state){
+        this.getJSONObject(Tags.UTM_LOCATION).put(Tags.STATE, state);
     }
 
     public UTM getUTM() {

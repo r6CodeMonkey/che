@@ -1,4 +1,4 @@
-package controller.handler.generic;
+package controller.handler.che;
 
 import core.HazelcastManagerInterface;
 import model.Missile;

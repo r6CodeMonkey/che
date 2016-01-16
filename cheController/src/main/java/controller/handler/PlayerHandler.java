@@ -3,9 +3,11 @@ package controller.handler;
 import controller.CheController;
 import core.HazelcastManagerInterface;
 import message.CheMessage;
+import message.HazelcastMessage;
 import model.Player;
 import model.UTMLocation;
 import org.json.JSONException;
+import org.json.JSONObject;
 import util.Configuration;
 import util.Tags;
 
@@ -47,8 +49,11 @@ public class PlayerHandler {
 
         if (hasUTMChanged || hasSubUTMChanged) {
             configuration.getChannelMapController().getChannel(player.getKey()).writeAndFlush(player.utmLocation.getMessage());
-            //this needs to be reviewed
-            //   hazelcastManagerInterface.publish(player.utmLocation.subUtm.getUtm(), "{" + HazelcastMessage.REMOTE_ADDRESS + Response.FAKE_TAG + "," + HazelcastMessage.CHE_OBJECT + Response.PLAYER_JOINED + "}");
+            //we dont actually need to send this? well we could.  needs information status.
+            player.utmLocation.state = Tags.MESSAGE;
+            player.utmLocation.value = Tags.PLAYER_ENTERED;
+            HazelcastMessage hazelcastMessage = new HazelcastMessage(configuration.getChannelMapController().getChannel(player.getKey()).remoteAddress().toString(), new JSONObject(player.utmLocation.getMessage()));
+            hazelcastManagerInterface.publish(player.utmLocation.subUtm.getUtm(), hazelcastMessage.toString());
         }
 
         hazelcastManagerInterface.put(CheController.PLAYER_MAP, player.getKey(), player);

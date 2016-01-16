@@ -13,7 +13,10 @@
         <module>netty</module>
         <module>hazelcast</module>
         <module>schema</module>
+        <module>cheController</module>
     </modules>
+
+
 
 
 </project>

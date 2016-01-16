@@ -1,8 +1,8 @@
 package controller.handler;
 
-import controller.handler.generic.AllianceHandler;
-import controller.handler.generic.GameObjectHandler;
-import controller.handler.generic.MissileHandler;
+import controller.handler.che.AllianceHandler;
+import controller.handler.che.GameObjectHandler;
+import controller.handler.che.MissileHandler;
 import core.HazelcastManagerInterface;
 import message.CheMessage;
 import model.Alliance;
@@ -22,7 +22,7 @@ public class CheHandler {
     private final HazelcastManagerInterface hazelcastManagerInterface;
     private final Configuration configuration;
 
-    //generic handlers
+    //che handlers
     private final AllianceHandler allianceHandler;
     private final GameObjectHandler gameObjectHandler;
     private final MissileHandler missileHandler;

@@ -25,7 +25,7 @@ public class CheMessageHandler implements MessageListener {
 
             cheCallbackInterface.handleCallback(msg, playerKey);
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace();  //should really log on configuration. logger could be static.  anyway.
         }
     }
 }

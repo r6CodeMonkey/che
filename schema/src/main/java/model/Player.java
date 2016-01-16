@@ -14,7 +14,7 @@ public class Player extends CoreModel {
     public String name;
     public Image image;
     public UTMLocation utmLocation;
-    private List<Alliance> alliances = new ArrayList<>();
+    private List<String> alliances = new ArrayList<>();  //just hold the keys.
     private List<Missile> missiles = new ArrayList<>();
     private List<GameObject> gameObjects = new ArrayList<>();
     private TopicSubscriptions topicSubscriptions = new TopicSubscriptions();
@@ -43,7 +43,7 @@ public class Player extends CoreModel {
         return !this.utmLocation.subUtm.getUtm().equals(utmLocation.subUtm.getUtm());
     }
 
-    public List<Alliance> getAlliances() {
+    public List<String> getAlliances() {
         return alliances;
     }
 

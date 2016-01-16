@@ -8,6 +8,7 @@ public class UTMLocation extends CoreModel {
     public UTM utm;
     public UTM subUtm;
     public double latitude, longitude, altitude, speed;
+    public String state, value;
 
     public UTMLocation() {
         utm = new UTM();
@@ -22,6 +23,8 @@ public class UTMLocation extends CoreModel {
         longitude = utmLocation.getLongitude();
         altitude = utmLocation.getAltitude();
         speed = utmLocation.getSpeed();
+        state = utmLocation.getState();
+        value = utmLocation.getValue();
     }
 
     public UTMLocation(String key) {
@@ -38,6 +41,8 @@ public class UTMLocation extends CoreModel {
         utmLocation.setSpeed(speed);
         utmLocation.setLongitude(longitude);
         utmLocation.setLatitude(latitude);
+        utmLocation.setState(state);
+        utmLocation.setValue(value);
 
         message.UTM temp = new message.UTM();
         temp.create();
