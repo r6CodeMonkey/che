@@ -14,17 +14,17 @@ import static org.junit.Assert.assertEquals;
  */
 public class MessageTest {
 
-    public static final String ACKNOWLEDGE = "{"+Tags.ACKNOWLEDGE+" :{"+ Tags.ACK_ID+":'1',"+Tags.STATE+":"+Tags.MESSAGE+","+Tags.VALUE+":"+Tags.SUCCESS+"}}";
-    public static final String UTM = "{"+Tags.UTM+" :{"+Tags.UTM_LAT_GRID+":'E1', "+Tags.UTM_LONG_GRID+":'3W'}}";
-    public static final String SUB_UTM = "{"+Tags.UTM+" :{"+Tags.UTM_LAT_GRID+":'TT', "+Tags.UTM_LONG_GRID+":'JJ'}}";
-    public static final String UTM_LOCATION = "{"+Tags.UTM_LOCATION+" :{"+Tags.LATITUTDE+":1.0, "+Tags.LONGITUDE+":2.0,"+Tags.ALTITUDE+":10,"+Tags.SPEED+": 12.2,"+Tags.UTM+":"+UTM+","+Tags.SUB_UTM+":"+SUB_UTM+"}}";
-    public static final String PLAYER = "{"+Tags.PLAYER+" :{"+Tags.PLAYER_KEY+":'2',"+Tags.PLAYER_NAME+":'Tim',"+Tags.PLAYER_IMAGE+":'image',"+Tags.UTM_LOCATION+":"+UTM_LOCATION+"}}";
-    public static final String ALLIANCE = "{"+Tags.ALLIANCE+" :{"+Tags.ALLIANCE_KEY+":'15',"+Tags.ALLIANCE_NAME+":'team',"+Tags.STATE+":"+Tags.ALLIANCE_POST+","+Tags.VALUE+":'hello',"+Tags.ALLIANCE_MEMBERS+":["+PLAYER+"]}}";
-    public static final String HAZELCAST = "{"+Tags.HAZELCAST+" :{"+HazelcastMessage.REMOTE_ADDRESS+":'remote2',"+HazelcastMessage.CHE_OBJECT+":{testing:'that'}}}";
-    public static final String CHE = "{"+Tags.CHE+":{"+Tags.UTM+":"+UTM+"}}";
+    public static final String ACKNOWLEDGE = "{" + Tags.ACKNOWLEDGE + " :{" + Tags.ACK_ID + ":'1'," + Tags.STATE + ":" + Tags.MESSAGE + "," + Tags.VALUE + ":" + Tags.SUCCESS + "}}";
+    public static final String UTM = "{" + Tags.UTM + " :{" + Tags.UTM_LAT_GRID + ":'E1', " + Tags.UTM_LONG_GRID + ":'3W'}}";
+    public static final String SUB_UTM = "{" + Tags.UTM + " :{" + Tags.UTM_LAT_GRID + ":'TT', " + Tags.UTM_LONG_GRID + ":'JJ'}}";
+    public static final String UTM_LOCATION = "{" + Tags.UTM_LOCATION + " :{" + Tags.LATITUTDE + ":1.0, " + Tags.LONGITUDE + ":2.0," + Tags.ALTITUDE + ":10," + Tags.SPEED + ": 12.2," + Tags.UTM + ":" + UTM + "," + Tags.SUB_UTM + ":" + SUB_UTM + "}}";
+    public static final String PLAYER = "{" + Tags.PLAYER + " :{" + Tags.PLAYER_KEY + ":'2'," + Tags.PLAYER_NAME + ":'Tim'," + Tags.PLAYER_IMAGE + ":'image'," + Tags.UTM_LOCATION + ":" + UTM_LOCATION + "}}";
+    public static final String ALLIANCE = "{" + Tags.ALLIANCE + " :{" + Tags.ALLIANCE_KEY + ":'15'," + Tags.ALLIANCE_NAME + ":'team'," + Tags.STATE + ":" + Tags.ALLIANCE_POST + "," + Tags.VALUE + ":'hello'," + Tags.ALLIANCE_MEMBERS + ":[" + PLAYER + "]}}";
+    public static final String HAZELCAST = "{" + Tags.HAZELCAST + " :{" + HazelcastMessage.REMOTE_ADDRESS + ":'remote2'," + HazelcastMessage.CHE_OBJECT + ":{testing:'that'}}}";
+    public static final String CHE = "{" + Tags.CHE + ":{" + Tags.PLAYER + ":" + PLAYER + "}}";
     //add these later i havent thought about what it needs.
-    public static final String MISSILE = "{"+Tags.MISSILE+" :{}}";
-    public static final String GAME_OBJECT = "{"+Tags.GAME_OBJECT+" :{}}";
+    public static final String MISSILE = "{" + Tags.MISSILE + " :{}}";
+    public static final String GAME_OBJECT = "{" + Tags.GAME_OBJECT + " :{}}";
 
 
     @Test
@@ -35,8 +35,8 @@ public class MessageTest {
         assertEquals("2", player.getKey());
         assertEquals("Tim", player.getName());
         assertEquals("image", player.getImage());
-        assertEquals("E1",player.getUTMLocation().getUTM().getUTMLatGrid());
-        assertEquals("3W",player.getUTMLocation().getUTM().getUTMLongGrid());
+        assertEquals("E1", player.getUTMLocation().getUTM().getUTMLatGrid());
+        assertEquals("3W", player.getUTMLocation().getUTM().getUTMLongGrid());
 
 
         player = new Player();
@@ -49,8 +49,8 @@ public class MessageTest {
         assertEquals("3", player.getKey());
         assertEquals("wright", player.getName());
         assertEquals("another", player.getImage());
-        assertEquals("E1",player.getUTMLocation().getUTM().getUTMLatGrid());
-        assertEquals("3W",player.getUTMLocation().getUTM().getUTMLongGrid());
+        assertEquals("E1", player.getUTMLocation().getUTM().getUTMLatGrid());
+        assertEquals("3W", player.getUTMLocation().getUTM().getUTMLongGrid());
 
     }
 
@@ -87,17 +87,16 @@ public class MessageTest {
         assertEquals("wrong", alliance.getMembers().get(0).getName());
 
 
-
     }
 
     @Test
-    public void testMissile(){
+    public void testMissile() {
 
         Missile missile = new Missile(MISSILE);
     }
 
     @Test
-    public void testUTM(){
+    public void testUTM() {
 
         message.UTM utm = new UTM(UTM);
 
@@ -115,7 +114,7 @@ public class MessageTest {
     }
 
     @Test
-    public void testUTMLocation(){
+    public void testUTMLocation() {
 
         UTMLocation utmLocation = new UTMLocation(UTM_LOCATION);
 
@@ -155,13 +154,13 @@ public class MessageTest {
     }
 
     @Test
-    public void testGameObject(){
+    public void testGameObject() {
 
         GameObject gameObject = new GameObject(GAME_OBJECT);
     }
 
     @Test
-    public void testAcknowledge(){
+    public void testAcknowledge() {
 
         Acknowledge acknowledge = new Acknowledge(ACKNOWLEDGE);
 
@@ -180,10 +179,11 @@ public class MessageTest {
         assertEquals(Tags.CONNECT, acknowledge.getState());
 
 
+
     }
 
     @Test
-    public void testHazelcastMessage(){
+    public void testHazelcastMessage() {
 
         HazelcastMessage hazelcastMessage = new HazelcastMessage(HAZELCAST);
 
@@ -192,7 +192,7 @@ public class MessageTest {
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("testing", "this");
-        hazelcastMessage = new HazelcastMessage("remote",jsonObject);
+        hazelcastMessage = new HazelcastMessage("remote", jsonObject);
 
         assertEquals("remote", hazelcastMessage.getRemoteAddress());
         assertEquals("this", hazelcastMessage.getCheObject().getString("testing"));
@@ -200,9 +200,12 @@ public class MessageTest {
     }
 
     @Test
-    public void testCheMessage(){
+    public void testCheMessage() {
 
         CheMessage cheMessage = new CheMessage(CHE);
+        cheMessage.setMessage(Tags.ACKNOWLEDGE,new Acknowledge(ACKNOWLEDGE));
+
+        System.out.print(cheMessage.toString());
 
 
         assertEquals("E1", ((UTM) cheMessage.getMessage(Tags.UTM)).getUTMLatGrid());
@@ -211,11 +214,12 @@ public class MessageTest {
 
         assertEquals("team", ((Alliance) cheMessage.getMessage(Tags.ALLIANCE)).getName());
 
-        cheMessage.setMessage(Tags.UTM_LOCATION ,new UTMLocation(UTM_LOCATION));
+        cheMessage.setMessage(Tags.UTM_LOCATION, new UTMLocation(UTM_LOCATION));
 
-        assertEquals(1.0, ((UTMLocation) cheMessage.getMessage(Tags.UTM_LOCATION)).getLatitude(),0);
+        assertEquals(1.0, ((UTMLocation) cheMessage.getMessage(Tags.UTM_LOCATION)).getLatitude(), 0);
 
         cheMessage.setMessage(Tags.PLAYER, new Player(PLAYER));
+
 
         assertEquals("Tim", ((Player) cheMessage.getMessage(Tags.PLAYER)).getName());
 

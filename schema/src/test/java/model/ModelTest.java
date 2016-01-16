@@ -1,8 +1,8 @@
 package model;
 
-import message.*;
 import message.Acknowledge;
 import message.Alliance;
+import message.*;
 import message.Player;
 import message.UTM;
 import message.UTMLocation;
@@ -31,7 +31,7 @@ public class ModelTest {
     }
 
     @Test
-    public void testUTM(){
+    public void testUTM() {
 
         UTM utm = new UTM(MessageTest.UTM);
         model.UTM utm1 = new model.UTM(utm);
@@ -42,7 +42,7 @@ public class ModelTest {
     }
 
     @Test
-    public void testAlliance(){
+    public void testAlliance() {
 
         Alliance alliance = new Alliance(MessageTest.ALLIANCE);
         model.Alliance alliance1 = new model.Alliance(alliance);
@@ -57,12 +57,12 @@ public class ModelTest {
     }
 
     @Test
-    public void testMissile(){
+    public void testMissile() {
 
     }
 
     @Test
-    public void testGameObject(){
+    public void testGameObject() {
 
     }
 
@@ -96,12 +96,11 @@ public class ModelTest {
 
         assertEquals("2", player1.getKey());
         assertEquals("Tim", player1.name);
-       // assertEquals("image", player1.getImage());
-        assertEquals("E1",player1.utmLocation.utm.getUtmLat());
-        assertEquals("3W",player1.utmLocation.utm.getUtmLong());
+        // assertEquals("image", player1.getImage());
+        assertEquals("E1", player1.utmLocation.utm.getUtmLat());
+        assertEquals("3W", player1.utmLocation.utm.getUtmLong());
 
     }
-
 
 
 }

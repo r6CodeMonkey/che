@@ -12,7 +12,7 @@ public class UTM extends CoreModel {
         utmLong = "";
     }
 
-    public UTM(String utmLat, String utmLong){
+    public UTM(String utmLat, String utmLong) {
         this.utmLat = utmLat;
         this.utmLong = utmLong;
     }
@@ -21,7 +21,7 @@ public class UTM extends CoreModel {
         super(key);
     }
 
-    public UTM(message.UTM utm){
+    public UTM(message.UTM utm) {
         utmLat = utm.getUTMLatGrid();
         utmLong = utm.getUTMLongGrid();
     }

@@ -1,6 +1,5 @@
 package channel;
 
-import factory.MessageFactory;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import message.Acknowledge;
@@ -37,7 +36,8 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
 
         configuration.getLogger().debug(msg.toString());
 
-        Acknowledge acknowledge = new Acknowledge(msg.toString());
+        CheMessage cheMessage = new CheMessage(msg.toString());
+        Acknowledge acknowledge = (Acknowledge)cheMessage.getMessage(Tags.ACKNOWLEDGE);
         //does the message contain what is required.
         if (acknowledge.getKey().trim().isEmpty()) {
             ack.state = Tags.ACCEPT;

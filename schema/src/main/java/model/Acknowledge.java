@@ -13,7 +13,7 @@ public class Acknowledge extends CoreModel {
         super(key);
     }
 
-    public Acknowledge(message.Acknowledge acknowledge){
+    public Acknowledge(message.Acknowledge acknowledge) {
         super(acknowledge.getKey());
         state = acknowledge.getState();
         value = acknowledge.getValue();

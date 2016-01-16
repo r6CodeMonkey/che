@@ -16,7 +16,7 @@ public class Alliance extends CoreModel {
         super(key);
     }
 
-    public Alliance(message.Alliance alliance){
+    public Alliance(message.Alliance alliance) {
         super(alliance.getKey());
         name = alliance.getName();
         value = alliance.getValue();

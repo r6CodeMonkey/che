@@ -4,6 +4,7 @@ import factory.MessageFactory;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import message.CheMessage;
+import message.Player;
 import model.Acknowledge;
 import socket.CheControllerSocket;
 import util.Configuration;
@@ -54,13 +55,15 @@ public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
         //at this point, if the user has no id, we will create them one, even if the server is down elsewhere.
         if (cheMessage.getMessage(Tags.PLAYER).getKey().isEmpty()) {
             configuration.getLogger().debug("new user created " + ctx.channel().remoteAddress().toString());
-            cheMessage.getMessage(Tags.PLAYER).setKey(configuration.getUuidGenerator().generatePlayerKey());
+            Player player = (Player)cheMessage.getMessage(Tags.PLAYER);
+            player.setKey(configuration.getUuidGenerator().generatePlayerKey());
 
-            ack = new Acknowledge(cheMessage.getKey());
+            ack = new Acknowledge(cheMessage.getMessage(Tags.ACKNOWLEDGE).getKey());
             ack.state = Tags.UUID;
-            ack.state = cheMessage.getMessage(Tags.PLAYER).getKey();
+            ack.value = player.getKey();
+            cheMessage.setMessage(Tags.PLAYER, player);
 
-            ctx.channel().writeAndFlush(MessageFactory.getMessage(ack.getMessage()));
+            ctx.channel().writeAndFlush(ack.getMessage());
         }
 
         if (socket == null || socket.isClosed()) {
@@ -88,16 +91,17 @@ public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
         ack.state = Tags.SUCCESS;
         ack.value = "Received";  //needs to go in tags...
 
-        ctx.channel().writeAndFlush(MessageFactory.getMessage(ack.getMessage()));
+        ctx.channel().writeAndFlush(ack.getMessage());
 
     }
 
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         try {
+            ack = new Acknowledge(cheMessage.getMessage(Tags.ACKNOWLEDGE).getKey());
             ack.state = Tags.ERROR;
             ack.value = cause.toString();
 
-            ctx.channel().writeAndFlush(MessageFactory.getMessage(ack.getMessage()));
+            ctx.channel().writeAndFlush(ack.getMessage());
             configuration.getLogger().error(cause.getMessage());
         } catch (Exception e) {
             configuration.getLogger().error(e.getMessage());

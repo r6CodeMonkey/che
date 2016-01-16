@@ -38,18 +38,17 @@ public class UTM extends CoreMessage {
         return this.getJSONObject(Tags.UTM).get(Tags.UTM_LAT_GRID).toString();
     }
 
-    public String getUTMLongGrid() {
-        return this.getJSONObject(Tags.UTM).get(Tags.UTM_LONG_GRID).toString();
-    }
-
     public void setUTMLatGrid(String utmLatGrid) {
         this.getJSONObject(Tags.UTM).put(Tags.UTM_LAT_GRID, utmLatGrid);
+    }
+
+    public String getUTMLongGrid() {
+        return this.getJSONObject(Tags.UTM).get(Tags.UTM_LONG_GRID).toString();
     }
 
     public void setUTMLongGrid(String utmLongGrid) {
         this.getJSONObject(Tags.UTM).put(Tags.UTM_LONG_GRID, utmLongGrid);
     }
-
 
 
 }

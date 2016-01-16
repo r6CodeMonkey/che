@@ -1,14 +1,7 @@
 package controller.handler.generic;
 
-import controller.CheController;
 import core.HazelcastManagerInterface;
-import model.Alliance;
-import model.Player;
 import util.Configuration;
-import util.Response;
-
-import java.rmi.RemoteException;
-import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by timmytime on 13/01/16.

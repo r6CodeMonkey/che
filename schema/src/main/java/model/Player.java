@@ -23,7 +23,7 @@ public class Player extends CoreModel {
         super(key);
     }
 
-    public Player(message.Player player){
+    public Player(message.Player player) {
         super(player.getKey());
         name = player.getName();
         //image = player.getImage().toString();

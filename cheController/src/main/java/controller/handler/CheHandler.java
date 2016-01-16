@@ -4,12 +4,9 @@ import controller.handler.generic.AllianceHandler;
 import controller.handler.generic.GameObjectHandler;
 import controller.handler.generic.MissileHandler;
 import core.HazelcastManagerInterface;
-import factory.MessageFactory;
 import message.CheMessage;
-import model.Alliance;
 import model.Player;
 import util.Configuration;
-import util.Response;
 import util.Tags;
 
 import java.rmi.RemoteException;
@@ -41,22 +38,21 @@ public class CheHandler {
     public void handle(Player player, CheMessage cheMessage) throws RemoteException, NoSuchAlgorithmException {
 
 
-        if(!cheMessage.isNull(Tags.ALLIANCE)){
+        if (!cheMessage.isNull(Tags.ALLIANCE)) {
 
         }
 
-        if(!cheMessage.isNull(Tags.MISSILE)){
+        if (!cheMessage.isNull(Tags.MISSILE)) {
 
         }
 
-        if(!cheMessage.isNull(Tags.GAME_OBJECT)){
+        if (!cheMessage.isNull(Tags.GAME_OBJECT)) {
 
         }
 
-        if(!cheMessage.isNull(Tags.MISSILE)){
+        if (!cheMessage.isNull(Tags.MISSILE)) {
 
         }
-
 
 
     }

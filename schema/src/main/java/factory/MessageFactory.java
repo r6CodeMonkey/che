@@ -2,14 +2,12 @@ package factory;
 
 
 import message.*;
-import org.json.JSONObject;
 import util.Tags;
 
 /**
  * Created by timmytime on 11/12/15.
  */
 public class MessageFactory {
-
 
 
     public static CoreMessage getCheMessage(String coreMessage, String type) {

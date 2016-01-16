@@ -14,7 +14,7 @@ public class UTMLocation extends CoreModel {
         subUtm = new UTM();
     }
 
-    public UTMLocation(message.UTMLocation utmLocation){
+    public UTMLocation(message.UTMLocation utmLocation) {
         //construct from message.
         utm = new UTM(utmLocation.getUTM());
         subUtm = new UTM(utmLocation.getSubUTM());

@@ -1,9 +1,7 @@
 package channel;
 
-import factory.MessageFactory;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-
 import message.CheMessage;
 import model.Acknowledge;
 import util.Configuration;
@@ -19,7 +17,7 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
 
     private final Configuration configuration;
 
-    private  model.Acknowledge ack;
+    private model.Acknowledge ack;
 
     public JsonHandler(Configuration configuration) {
         this.configuration = configuration;
@@ -29,7 +27,7 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
     public void channelActive(ChannelHandlerContext ctx) {
 
         ack = new Acknowledge("");
-        ack.state =Tags.ACCEPT;
+        ack.state = Tags.ACCEPT;
         ack.value = Tags.ACTIVE;
 
         //client an acknowledge to confirm we are active.  no need to client id
