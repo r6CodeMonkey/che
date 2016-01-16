@@ -16,11 +16,6 @@ public class Tags {
     public static final String UTM_LOCATION = "utmLocation";
     public static final String CHE = "che";
     public static final String HAZELCAST = "hazelcast";
-    public static final String CORE = "core";
-    //used to get the inner utm locations.
-    public static final String PLAYER_UTM_LOCATION = "playerUtmLocation";
-    public static final String GAME_OBJECT_UTM_LOCATION = "gameObjectUtmLocation";
-    public static final String MISSILE_UTM_LOCATION = "missileUtmLocation";
 
 
     //generics
@@ -85,6 +80,23 @@ public class Tags {
     public final static String PLAYER_KEY = "playerKey";
     public final static String PLAYER_NAME = "playerName";
     public final static String PLAYER_IMAGE = "playerImage";
+
+    public final static String MISSILE_PAYLOAD = "missilePayLoad";
+    public final static String MISSILE_RADIUS = "missileRadius";
+    public final static String MISSILE_RADIUS_IMPAACT_SCALAR = "missileRadiusImpactScalar";
+    public final static String MISSILE_UTM_LOCATION = "missileUtmLocation";
+    public final static String MISSILE_TARGET_UTM_LOCATION = "missileTargetUtmLocation";
+    public final static String MISSILE_START_UTM_LOCATION = "missileStartUtmLocation";
+    public final static String MISSILE_LAUNCHED = "missileLaunched";
+    public final static String MISSILE_DESTROYED = "missileDestoyed";
+
+    //need game object equivalent.....to be fair build test framework next.
+
+
+
+
+
+
 
 
 }

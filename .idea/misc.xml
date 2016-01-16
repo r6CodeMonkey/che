@@ -11,6 +11,7 @@
         <option value="$PROJECT_DIR$/hazelcast/pom.xml" />
         <option value="$PROJECT_DIR$/schema/pom.xml" />
         <option value="$PROJECT_DIR$/cheController/pom.xml" />
+        <option value="$PROJECT_DIR$/SystemTesting/pom.xml" />
       </list>
     </option>
   </component>

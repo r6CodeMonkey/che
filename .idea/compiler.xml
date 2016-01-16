@@ -45,6 +45,13 @@
         <processorPath useClasspath="true" />
         <module name="cheController" />
       </profile>
+      <profile default="false" name="Annotation profile for SystemTesting" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="SystemTesting" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="camel" target="1.5" />
@@ -54,6 +61,7 @@
       <module name="hazelcast" target="1.8" />
       <module name="netty" target="1.8" />
       <module name="schema" target="1.8" />
+      <module name="SystemTesting" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
