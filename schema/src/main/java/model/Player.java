@@ -21,6 +21,7 @@ public class Player extends CoreModel {
 
     public Player(String key) {
         super(key);
+        utmLocation = new UTMLocation();
     }
 
     public Player(message.Player player) {

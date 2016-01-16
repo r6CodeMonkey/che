@@ -30,7 +30,9 @@ public class PlayerHandler {
 
     public Player handlePlayer(CheMessage message) throws RemoteException, JSONException {
         Player player = getPlayer(message.getMessage(Tags.PLAYER).getKey());
-        UTMLocation utmLocation = utmHandler.getUTMLocation(new UTMLocation((message.UTMLocation) message.getMessage(Tags.UTM_LOCATION)));
+
+        message.Player playerMessage = (message.Player)message.getMessage(Tags.PLAYER);
+        UTMLocation utmLocation = utmHandler.getUTMLocation(new UTMLocation(playerMessage.getUTMLocation()));
 
         boolean hasUTMChanged = player.hasUTMChanged(utmLocation);
         boolean hasSubUTMChanged = player.hasSubUTMChanged(utmLocation);
@@ -46,7 +48,7 @@ public class PlayerHandler {
         player.utmLocation = utmLocation;
 
         if (hasUTMChanged || hasSubUTMChanged) {
-            configuration.getChannelMapController().getChannel(player.getKey()).writeAndFlush(utmLocation.getMessage());
+            configuration.getChannelMapController().getChannel(player.getKey()).writeAndFlush(player.utmLocation.getMessage());
             //need to use the proper message type, but it works....ie publishes properly to correct listeners.
             hazelcastManagerInterface.publish(player.utmLocation.subUtm.getUtm(), "{" + HazelcastMessage.REMOTE_ADDRESS + Response.FAKE_TAG + "," + HazelcastMessage.CHE_OBJECT + Response.PLAYER_JOINED + "}");
         }

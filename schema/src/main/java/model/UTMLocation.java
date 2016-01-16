@@ -43,14 +43,14 @@ public class UTMLocation extends CoreModel {
         temp.create();
 
         temp.setUTMLatGrid(utm.getUtmLat());
-        temp.setUTMLongGrid(subUtm.getUtmLong());
+        temp.setUTMLongGrid(utm.getUtmLong());
 
         utmLocation.setUTM(temp);
 
         temp = new message.UTM();
         temp.create();
 
-        temp.setUTMLatGrid(utm.getUtmLat());
+        temp.setUTMLatGrid(subUtm.getUtmLat());
         temp.setUTMLongGrid(subUtm.getUtmLong());
 
         utmLocation.setSubUTM(temp);

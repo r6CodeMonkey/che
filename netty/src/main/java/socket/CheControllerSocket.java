@@ -33,12 +33,7 @@ public class CheControllerSocket {
         this.dataOutputStream = new DataOutputStream(socket.getOutputStream());
 
         //now start listening to the socket this is ongoing.
-        read = new Thread((new Runnable() {
-            @Override
-            public void run() {
-                listen();
-            }
-        }));
+        read = new Thread((this::listen));
 
         read.start();
     }
@@ -56,9 +51,7 @@ public class CheControllerSocket {
 
         channel.writeAndFlush(message);
 
-        for (String msg : pendingSendMessages) {
-            channel.writeAndFlush(msg);
-        }
+        pendingSendMessages.forEach(channel::writeAndFlush);
         pendingSendMessages.clear();
 
     }

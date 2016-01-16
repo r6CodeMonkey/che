@@ -79,9 +79,7 @@ public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
             configuration.getLogger().debug(cheMessage.toString());
             cheControllerSocket.write(cheMessage);
 
-            for (CheMessage pending : pendingMessages) {
-                cheControllerSocket.write(pending);
-            }
+            pendingMessages.forEach(cheControllerSocket::write);
 
         } else {
             pendingMessages.add(cheMessage);

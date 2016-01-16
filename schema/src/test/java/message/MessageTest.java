@@ -21,7 +21,7 @@ public class MessageTest {
     public static final String PLAYER = "{" + Tags.PLAYER + " :{" + Tags.PLAYER_KEY + ":'2'," + Tags.PLAYER_NAME + ":'Tim'," + Tags.PLAYER_IMAGE + ":'image'," + Tags.UTM_LOCATION + ":" + UTM_LOCATION + "}}";
     public static final String ALLIANCE = "{" + Tags.ALLIANCE + " :{" + Tags.ALLIANCE_KEY + ":'15'," + Tags.ALLIANCE_NAME + ":'team'," + Tags.STATE + ":" + Tags.ALLIANCE_POST + "," + Tags.VALUE + ":'hello'," + Tags.ALLIANCE_MEMBERS + ":[" + PLAYER + "]}}";
     public static final String HAZELCAST = "{" + Tags.HAZELCAST + " :{" + HazelcastMessage.REMOTE_ADDRESS + ":'remote2'," + HazelcastMessage.CHE_OBJECT + ":{testing:'that'}}}";
-    public static final String CHE = "{" + Tags.CHE + ":{" + Tags.PLAYER + ":" + PLAYER + "}}";
+    public static final String CHE = "{" + Tags.CHE + ":{" + Tags.UTM + ":" + UTM + "}}";
     //add these later i havent thought about what it needs.
     public static final String MISSILE = "{" + Tags.MISSILE + " :{}}";
     public static final String GAME_OBJECT = "{" + Tags.GAME_OBJECT + " :{}}";
@@ -203,10 +203,6 @@ public class MessageTest {
     public void testCheMessage() {
 
         CheMessage cheMessage = new CheMessage(CHE);
-        cheMessage.setMessage(Tags.ACKNOWLEDGE,new Acknowledge(ACKNOWLEDGE));
-
-        System.out.print(cheMessage.toString());
-
 
         assertEquals("E1", ((UTM) cheMessage.getMessage(Tags.UTM)).getUTMLatGrid());
 
@@ -222,6 +218,10 @@ public class MessageTest {
 
 
         assertEquals("Tim", ((Player) cheMessage.getMessage(Tags.PLAYER)).getName());
+
+        //
+        UTMLocation utmLocation = ((Player) cheMessage.getMessage(Tags.PLAYER)).getUTMLocation();
+        model.UTMLocation utmLocation1 = new model.UTMLocation(utmLocation);
 
 
     }

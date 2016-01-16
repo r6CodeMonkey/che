@@ -17,6 +17,11 @@ public class Tags {
     public static final String CHE = "che";
     public static final String HAZELCAST = "hazelcast";
     public static final String CORE = "core";
+    //used to get the inner utm locations.
+    public static final String PLAYER_UTM_LOCATION = "playerUtmLocation";
+    public static final String GAME_OBJECT_UTM_LOCATION = "gameObjectUtmLocation";
+    public static final String MISSILE_UTM_LOCATION = "missileUtmLocation";
+
 
 
     //generics
