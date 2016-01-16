@@ -17,6 +17,12 @@ public class CheControllerServer {
     private final Configuration configuration;
     private final CheChannelInitializer cheChannelInitializer;
 
+    public CheControllerServer() throws Exception {
+        configuration = new Configuration();
+        cheChannelInitializer = new CheChannelInitializer(configuration);
+
+    }
+
     public CheControllerServer(Configuration configuration) throws Exception {
         this.configuration = configuration;
         cheChannelInitializer = new CheChannelInitializer(configuration);

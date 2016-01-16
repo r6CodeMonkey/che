@@ -17,7 +17,7 @@ public class MessageTest {
     public static final String ACKNOWLEDGE = "{" + Tags.ACKNOWLEDGE + " :{" + Tags.ACK_ID + ":'1'," + Tags.STATE + ":" + Tags.MESSAGE + "," + Tags.VALUE + ":" + Tags.SUCCESS + "}}";
     public static final String UTM = "{" + Tags.UTM + " :{" + Tags.UTM_LAT_GRID + ":'E1', " + Tags.UTM_LONG_GRID + ":'3W'}}";
     public static final String SUB_UTM = "{" + Tags.UTM + " :{" + Tags.UTM_LAT_GRID + ":'TT', " + Tags.UTM_LONG_GRID + ":'JJ'}}";
-    public static final String UTM_LOCATION = "{" + Tags.UTM_LOCATION + " :{"+Tags.STATE+":'',"+Tags.VALUE+":'',"+ Tags.LATITUTDE + ":1.0, " + Tags.LONGITUDE + ":2.0," + Tags.ALTITUDE + ":10," + Tags.SPEED + ": 12.2," + Tags.UTM + ":" + UTM + "," + Tags.SUB_UTM + ":" + SUB_UTM + "}}";
+    public static final String UTM_LOCATION = "{" + Tags.UTM_LOCATION + " :{" + Tags.STATE + ":''," + Tags.VALUE + ":''," + Tags.LATITUTDE + ":1.0, " + Tags.LONGITUDE + ":2.0," + Tags.ALTITUDE + ":10," + Tags.SPEED + ": 12.2," + Tags.UTM + ":" + UTM + "," + Tags.SUB_UTM + ":" + SUB_UTM + "}}";
     public static final String PLAYER = "{" + Tags.PLAYER + " :{" + Tags.PLAYER_KEY + ":'2'," + Tags.PLAYER_NAME + ":'Tim'," + Tags.PLAYER_IMAGE + ":'image'," + Tags.UTM_LOCATION + ":" + UTM_LOCATION + "}}";
     public static final String ALLIANCE = "{" + Tags.ALLIANCE + " :{" + Tags.ALLIANCE_KEY + ":'15'," + Tags.ALLIANCE_NAME + ":'team'," + Tags.STATE + ":" + Tags.ALLIANCE_POST + "," + Tags.VALUE + ":'hello'," + Tags.ALLIANCE_MEMBERS + ":[" + PLAYER + "]}}";
     public static final String HAZELCAST = "{" + Tags.HAZELCAST + " :{" + HazelcastMessage.REMOTE_ADDRESS + ":'remote2'," + HazelcastMessage.CHE_OBJECT + ":{testing:'that'}}}";
@@ -203,10 +203,10 @@ public class MessageTest {
 
         CheMessage cheMessage = new CheMessage(CHE);
 
-       // cheMessage.setMessage(Tags.ACKNOWLEDGE, new Acknowledge(ACKNOWLEDGE));
-       // cheMessage.setMessage(Tags.ALLIANCE, new Alliance(ALLIANCE));
+        // cheMessage.setMessage(Tags.ACKNOWLEDGE, new Acknowledge(ACKNOWLEDGE));
+        // cheMessage.setMessage(Tags.ALLIANCE, new Alliance(ALLIANCE));
 
-      //  System.out.print(cheMessage.toString());
+        //  System.out.print(cheMessage.toString());
 
         assertEquals("E1", ((UTM) cheMessage.getMessage(Tags.UTM)).getUTMLatGrid());
 

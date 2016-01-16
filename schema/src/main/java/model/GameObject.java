@@ -14,15 +14,13 @@ public class GameObject extends CoreModel {
 
     //general physics variables.
     public double mass, acceleration, velocity;
-
+    //is it fixed / hit / destroyed / located
+    public boolean fixed, hit, destroyed, located;
     //contains a list of missiles.  perhaps supports holding all sorts.
     private List<Missile> missiles = new ArrayList<>();
 
-    //is it fixed / hit / destroyed / located
-    public boolean fixed, hit, destroyed, located;
 
-
-    public GameObject(message.GameObject gameObject){
+    public GameObject(message.GameObject gameObject) {
 
     }
 
@@ -30,7 +28,7 @@ public class GameObject extends CoreModel {
         super(key);
     }
 
-    public List<Missile> getMissiles(){
+    public List<Missile> getMissiles() {
         return missiles;
     }
 

@@ -32,7 +32,7 @@ public class PlayerHandler {
         Player player = getPlayer((message.Player) message.getMessage(Tags.PLAYER));
 
         message.Player playerMessage = (message.Player) message.getMessage(Tags.PLAYER);
-        UTMLocation utmLocation = utmHandler.getUTMLocation(new UTMLocation(playerMessage.getUTMLocation()));
+        UTMLocation utmLocation = utmHandler.getUTMLocation(playerMessage.getUTMLocation());
 
         boolean hasUTMChanged = player.hasUTMChanged(utmLocation);
         boolean hasSubUTMChanged = player.hasSubUTMChanged(utmLocation);

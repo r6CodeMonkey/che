@@ -13,7 +13,7 @@ public class Missile extends CoreModel {
     //ie is it active or destroyed.  or stastic.  ie !launched
     public boolean launched, destroyed;
 
-    public Missile(message.Missile missile){
+    public Missile(message.Missile missile) {
 
     }
 

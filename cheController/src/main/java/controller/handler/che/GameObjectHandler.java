@@ -19,9 +19,9 @@ public class GameObjectHandler {
         this.configuration = configuration;
     }
 
-    public void handle(Player player, GameObject gameObject){
+    public void handle(Player player, GameObject gameObject) {
 
-        switch(gameObject.state){
+        switch (gameObject.state) {
             case Tags.GAME_OBJECT_ADD:
                 objectAdd(player, gameObject);
                 break;
@@ -43,20 +43,19 @@ public class GameObjectHandler {
         //add object to utm / sub utm grid + lat lng return key
 
 
-
     }
 
     private void objectMove(Player player, GameObject gameObject) {
 
 
-         //move object in utm / subutm
+        //move object in utm / subutm
 
     }
 
     private void objectHit(Player player, GameObject gameObject) {
 
 
-         // publish to utm/ subutm grid a hit has occured
+        // publish to utm/ subutm grid a hit has occured
 
 
     }
@@ -64,6 +63,6 @@ public class GameObjectHandler {
     private void objectDestroyed(Player player, GameObject gameObject) {
 
 
-     //   publish to utm / sub utm object destroyed and remove object
+        //   publish to utm / sub utm object destroyed and remove object
     }
 }

@@ -47,19 +47,19 @@ public class UTMLocation extends CoreMessage {
 
     }
 
-    public String getValue(){
+    public String getValue() {
         return this.getJSONObject(Tags.UTM_LOCATION).get(Tags.VALUE).toString();
     }
 
-    public void setValue(String value){
+    public void setValue(String value) {
         this.getJSONObject(Tags.UTM_LOCATION).put(Tags.VALUE, value);
     }
 
-    public String getState(){
+    public String getState() {
         return this.getJSONObject(Tags.UTM_LOCATION).get(Tags.STATE).toString();
     }
 
-    public void setState(String state){
+    public void setState(String state) {
         this.getJSONObject(Tags.UTM_LOCATION).put(Tags.STATE, state);
     }
 

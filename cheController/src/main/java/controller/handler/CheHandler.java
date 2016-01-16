@@ -51,7 +51,7 @@ public class CheHandler {
         }
 
         if (!cheMessage.getJSONObject(Tags.CHE).isNull(Tags.GAME_OBJECT)) {
-            gameObjectHandler.handle(player, new GameObject((message.GameObject)cheMessage.getMessage(Tags.GAME_OBJECT)));
+            gameObjectHandler.handle(player, new GameObject((message.GameObject) cheMessage.getMessage(Tags.GAME_OBJECT)));
 
         }
 

@@ -19,7 +19,7 @@ public class MissileHandler {
         this.configuration = configuration;
     }
 
-    public void handle(Player player, Missile missile){
+    public void handle(Player player, Missile missile) {
 
         switch (missile.state) {
 

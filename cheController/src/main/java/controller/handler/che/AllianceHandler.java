@@ -76,8 +76,8 @@ public class AllianceHandler {
 
         Object object = hazelcastManagerInterface.get(CheController.ALLIANCE_MAP, alliance.getKey());
 
-        if(object != null) {
-            Alliance serverAlliance = (Alliance)object;
+        if (object != null) {
+            Alliance serverAlliance = (Alliance) object;
 
             serverAlliance.getMembers().add(player);
             player.getAlliances().add(serverAlliance.getKey());
@@ -97,8 +97,8 @@ public class AllianceHandler {
 
         Object object = hazelcastManagerInterface.get(CheController.ALLIANCE_MAP, alliance.getKey());
 
-        if(object != null) {
-            Alliance serverAlliance = (Alliance)object;
+        if (object != null) {
+            Alliance serverAlliance = (Alliance) object;
 
             serverAlliance.getMembers().remove(player); //need to ensure the correct player is removed..  ie hashcode wont be same. (actually it will be as it came from server).  to test
             player.getAlliances().remove(serverAlliance.getKey());

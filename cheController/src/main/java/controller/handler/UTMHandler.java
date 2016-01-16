@@ -20,12 +20,13 @@ public class UTMHandler {
         this.configuration = configuration;
     }
 
-    public UTMLocation getUTMLocation(UTMLocation location) {
+    public UTMLocation getUTMLocation(message.UTMLocation location) {
 
-        location.utm = configuration.getUtmConvert().getUTMGrid(location.latitude, location.longitude);
-        location.subUtm = configuration.getUtmConvert().getUTMSubGrid(location.utm, location.latitude, location.longitude);
+        UTMLocation utmLocation = new UTMLocation(location);
+        utmLocation.utm = configuration.getUtmConvert().getUTMGrid(utmLocation.latitude, utmLocation.longitude);
+        utmLocation.subUtm = configuration.getUtmConvert().getUTMSubGrid(utmLocation.utm, utmLocation.latitude, utmLocation.longitude);
 
-        return location;
+        return utmLocation;
     }
 
     public void handleUTMChange(UTMLocation currentLocation, Player player) throws RemoteException {

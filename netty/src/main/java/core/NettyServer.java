@@ -16,6 +16,11 @@ public class NettyServer {
     private final Configuration configuration;
     private final NettyChannelInitializer channelInitializer;
 
+    public NettyServer(){
+        configuration = new Configuration();
+        channelInitializer = new NettyChannelInitializer(configuration);
+    }
+
     public NettyServer(Configuration configuration) {
         this.configuration = configuration;
         channelInitializer = new NettyChannelInitializer(configuration);
