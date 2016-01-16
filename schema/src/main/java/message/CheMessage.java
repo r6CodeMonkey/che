@@ -1,7 +1,6 @@
 package message;
 
 import factory.MessageFactory;
-import model.CoreModel;
 import org.json.JSONObject;
 import util.Tags;
 
@@ -10,15 +9,13 @@ import util.Tags;
  */
 public class CheMessage extends CoreMessage {
 
-    public CheMessage(){}
+    public CheMessage() {
+    }
 
     public CheMessage(String message) {
         super(message);
     }
 
-    public CheMessage(CoreModel model) {
-        super(model);
-    }
 
     @Override
     public void create() {
@@ -33,26 +30,25 @@ public class CheMessage extends CoreMessage {
         return null;
     }
 
-    public String getType(){
-        return this.getJSONObject(Tags.CHE).get(Tags.TYPE).toString();
-    }
-
     @Override
     public void setKey(String key) {
 
     }
 
-    public void setType(String type){
-      this.getJSONObject(Tags.CHE).put(Tags.TYPE, type);
+    public String getType() {
+        return this.getJSONObject(Tags.CHE).get(Tags.TYPE).toString();
     }
 
-    public void setMessage(CoreMessage message){
-        this.getJSONObject(Tags.CHE).put(Tags.CORE, message);
+    public void setType(String type) {
+        this.getJSONObject(Tags.CHE).put(Tags.TYPE, type);
     }
-
 
     public CoreMessage getMessage() {
         return MessageFactory.getCheMessage(this.getJSONObject(Tags.CHE).getJSONObject(Tags.CORE).toString(), this.getJSONObject(Tags.CHE).get(Tags.TYPE).toString());
+    }
+
+    public void setMessage(CoreMessage message) {
+        this.getJSONObject(Tags.CHE).put(Tags.CORE, message);
     }
 
 }

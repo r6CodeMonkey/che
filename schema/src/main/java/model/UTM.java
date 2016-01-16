@@ -18,7 +18,14 @@ public class UTM extends CoreModel {
 
     @Override
     public String getMessage() {
-        return null;
+
+        message.UTM utm = new message.UTM();
+        utm.create();
+
+        utm.setUTMGrid(getUtm());
+        utm.setUTMGrid(getUtm());
+
+        return utm.toString();
     }
 
     public String getUtmLat() {

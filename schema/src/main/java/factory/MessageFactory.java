@@ -41,7 +41,7 @@ public class MessageFactory {
             case Tags.ACKNOWLEDGE:
                 return new Acknowledge(coreMessage);
             case Tags.PLAYER:
-                new Player(coreMessage);
+                return new Player(coreMessage);
             case Tags.UTM_LOCATION:
                 return new UTMLocation(coreMessage);
             case Tags.UTM:

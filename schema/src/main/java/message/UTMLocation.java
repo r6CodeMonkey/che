@@ -1,6 +1,5 @@
 package message;
 
-import model.CoreModel;
 import org.json.JSONObject;
 import util.Tags;
 
@@ -9,15 +8,13 @@ import util.Tags;
  */
 public class UTMLocation extends CoreMessage {
 
-    public UTMLocation(){}
+    public UTMLocation() {
+    }
 
     public UTMLocation(String message) {
         super(message);
     }
 
-    public UTMLocation(CoreModel model) {
-        super(model.getMessage());
-    }
 
     @Override
     public void create() {
@@ -44,48 +41,48 @@ public class UTMLocation extends CoreMessage {
 
     }
 
-    public void setUTM(UTM utm){
+    public UTM getUTM() {
+        return new UTM(this.getJSONObject(Tags.UTM_LOCATION).getJSONObject(Tags.UTM).toString());
+    }
+
+    public void setUTM(UTM utm) {
         this.getJSONObject(Tags.UTM_LOCATION).put(Tags.UTM, utm);
     }
 
-    public void setLatitude(double latitude){
+    public double getLatitude() {
+        return this.getJSONObject(Tags.UTM_LOCATION).getDouble(Tags.LATITUTDE);
+    }
+
+    public void setLatitude(double latitude) {
         this.getJSONObject(Tags.UTM_LOCATION).put(Tags.LATITUTDE, latitude);
 
     }
 
-    public void setLongitude(double longitude){
+    public double getLongitude() {
+        return this.getJSONObject(Tags.UTM_LOCATION).getDouble(Tags.LONGITUDE);
+    }
+
+    public void setLongitude(double longitude) {
         this.getJSONObject(Tags.UTM_LOCATION).put(Tags.LONGITUDE, longitude);
 
     }
 
-    public void setSpeed(double speed){
-        this.getJSONObject(Tags.UTM_LOCATION).put(Tags.SPEED, speed);
-
+    public double getAltitude() {
+        return this.getJSONObject(Tags.UTM_LOCATION).getDouble(Tags.ALTITUDE);
     }
 
-    public void setAltitude(double altitude){
+    public void setAltitude(double altitude) {
         this.getJSONObject(Tags.UTM_LOCATION).put(Tags.ALTITUDE, altitude);
 
     }
 
-    public UTM getUTM(){
-        return new UTM(this.getJSONObject(Tags.UTM_LOCATION).getJSONObject(Tags.UTM).toString());
-    }
-
-    public double getLatitude(){
-        return this.getJSONObject(Tags.UTM_LOCATION).getDouble(Tags.LATITUTDE);
-    }
-
-    public double getLongitude(){
-        return this.getJSONObject(Tags.UTM_LOCATION).getDouble(Tags.LONGITUDE);
-    }
-
-    public double getAltitude(){
-        return this.getJSONObject(Tags.UTM_LOCATION).getDouble(Tags.ALTITUDE);
-    }
-
-    public double getSpeed(){
+    public double getSpeed() {
         return this.getJSONObject(Tags.UTM_LOCATION).getDouble(Tags.SPEED);
+    }
+
+    public void setSpeed(double speed) {
+        this.getJSONObject(Tags.UTM_LOCATION).put(Tags.SPEED, speed);
+
     }
 
 

@@ -1,6 +1,5 @@
 package message;
 
-import model.CoreModel;
 import org.json.JSONObject;
 
 /**
@@ -9,8 +8,7 @@ import org.json.JSONObject;
 public abstract class CoreMessage extends JSONObject implements MessageInterface {
 
 
-
-    public CoreMessage(){
+    public CoreMessage() {
 
     }
 
@@ -18,11 +16,6 @@ public abstract class CoreMessage extends JSONObject implements MessageInterface
         super(message);
 
     }
-
-    public CoreMessage(CoreModel model) {
-        super(model.getMessage());
-    }
-
 
 
 }

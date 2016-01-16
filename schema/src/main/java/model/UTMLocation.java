@@ -20,6 +20,23 @@ public class UTMLocation extends CoreModel {
 
     @Override
     public String getMessage() {
-        return null;
+
+        message.UTMLocation utmLocation = new message.UTMLocation();
+        utmLocation.create();
+
+        utmLocation.setAltitude(altitude);
+        utmLocation.setSpeed(speed);
+        utmLocation.setLongitude(longitude);
+        utmLocation.setLatitude(latitude);
+
+        message.UTM temp = new message.UTM();
+        temp.create();
+
+        temp.setUTMGrid(utm.getUtm());
+        temp.setSubUTMGrid(subUtm.getUtm());
+
+        utmLocation.setUTM(temp);
+
+        return utmLocation.toString();
     }
 }

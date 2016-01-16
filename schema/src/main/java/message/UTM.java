@@ -1,6 +1,5 @@
 package message;
 
-import model.CoreModel;
 import org.json.JSONObject;
 import util.Tags;
 
@@ -9,14 +8,11 @@ import util.Tags;
  */
 public class UTM extends CoreMessage {
 
-    public UTM(){}
+    public UTM() {
+    }
 
     public UTM(String message) {
         super(message);
-    }
-
-    public UTM(CoreModel model) {
-        super(model.getMessage());
     }
 
     @Override
@@ -38,22 +34,21 @@ public class UTM extends CoreMessage {
 
     }
 
-    public void setUTMGrid(String utmGrid){
-        this.getJSONObject(Tags.UTM).put(Tags.UTM_GRID, utmGrid);
-    }
-
-    public void setSubUTMGrid(String subUTMGrid){
-        this.getJSONObject(Tags.UTM).put(Tags.SUB_UTM_GRID, subUTMGrid);
-    }
-
-    public String getUTMGrid(){
+    public String getUTMGrid() {
         return this.getJSONObject(Tags.UTM).get(Tags.UTM_GRID).toString();
     }
 
-    public String getSubUTMGrid(){
+    public void setUTMGrid(String utmGrid) {
+        this.getJSONObject(Tags.UTM).put(Tags.UTM_GRID, utmGrid);
+    }
+
+    public String getSubUTMGrid() {
         return this.getJSONObject(Tags.UTM).get(Tags.SUB_UTM_GRID).toString();
     }
 
+    public void setSubUTMGrid(String subUTMGrid) {
+        this.getJSONObject(Tags.UTM).put(Tags.SUB_UTM_GRID, subUTMGrid);
+    }
 
 
 }

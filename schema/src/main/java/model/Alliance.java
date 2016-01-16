@@ -1,17 +1,15 @@
 package model;
 
-import org.json.JSONObject;
-import util.Tags;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by timmytime on 15/01/16.
  */
 public class Alliance extends CoreModel {
 
-    public String name;
+    public String name, value, state;
     private List<Player> members = new ArrayList<>();
 
     public Alliance(String key) {
@@ -25,12 +23,16 @@ public class Alliance extends CoreModel {
     @Override
     public String getMessage() {
 
-        JSONObject jsonObject = new JSONObject();
+        message.Alliance alliance = new message.Alliance();
+        alliance.create();
 
-        jsonObject.put(Tags.ALLIANCE_KEY, key);
-        jsonObject.put(Tags.ALLIANCE_NAME, name);
-        jsonObject.put(Tags.ALLIANCE_MEMBERS, members);
+        alliance.setKey(key);
+        alliance.setName(name);
+        alliance.setValue(value);
+        alliance.setState(state);
 
-        return jsonObject.toString();
+        alliance.setMembers(members.stream().map(player -> new message.Player(player.getMessage())).collect(Collectors.toList()));
+
+        return alliance.toString();
     }
 }

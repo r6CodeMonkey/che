@@ -8,7 +8,7 @@ import model.CoreModel;
 public class ModelFactory {
 
     /*
-    probably do not need this.
+    probably do not need this.  anyway it looks ok.
      */
 
     public static CoreModel getModel(CoreModel coreModel) {

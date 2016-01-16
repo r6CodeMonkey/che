@@ -1,7 +1,5 @@
 package model;
 
-import org.json.JSONObject;
-import util.Tags;
 import util.TopicSubscriptions;
 
 import java.awt.*;
@@ -53,12 +51,14 @@ public class Player extends CoreModel {
     @Override
     public String getMessage() {
 
-        JSONObject jsonObject = new JSONObject();
+        message.Player player = new message.Player();
+        player.create();
 
-        jsonObject.put(Tags.PLAYER_KEY, key);
-        jsonObject.put(Tags.PLAYER_NAME, name);
-        jsonObject.put(Tags.PLAYER_IMAGE, image); //needs to be a stream base64..to do
+        player.setKey(key);
+        player.setName(name);
+        player.setImage(image.toString());  //this is wrong...ignore as not implementing yet
+        player.setUTMLocation(new message.UTMLocation(utmLocation.getMessage()));
 
-        return jsonObject.toString();
+        return player.toString();
     }
 }

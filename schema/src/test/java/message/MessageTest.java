@@ -196,8 +196,26 @@ public class MessageTest {
 
         CheMessage cheMessage = new CheMessage(CHE);
 
+
         assertEquals(Tags.UTM, cheMessage.getType());
-        assertEquals("E1", ((UTM)cheMessage.getMessage()).getUTMGrid());
+        assertEquals("E1", ((UTM) cheMessage.getMessage()).getUTMGrid());
+
+        cheMessage.setType(Tags.ALLIANCE);
+        cheMessage.setMessage(new Alliance(ALLIANCE));
+
+        assertEquals("team", ((Alliance) cheMessage.getMessage()).getName());
+
+        cheMessage.setType(Tags.UTM_LOCATION);
+        cheMessage.setMessage(new UTMLocation(UTM_LOCATION));
+
+        assertEquals(1.0, ((UTMLocation) cheMessage.getMessage()).getLatitude(),0);
+
+        cheMessage.setType(Tags.PLAYER);
+        cheMessage.setMessage(new Player(PLAYER));
+
+        assertEquals("Tim", ((Player) cheMessage.getMessage()).getName());
+
+
     }
 
 }

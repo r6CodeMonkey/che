@@ -14,7 +14,7 @@ public class HazelcastMessage extends JSONObject implements Serializable {
     public static final String REMOTE_ADDRESS = "remoteAddress";
     public static final String CHE_OBJECT = "cheObject";
 
-    public HazelcastMessage(){
+    public HazelcastMessage() {
         this.put(Tags.HAZELCAST, new JSONObject());
     }
 
