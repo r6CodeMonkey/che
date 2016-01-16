@@ -11,6 +11,9 @@ server needs messages to models.  likely need to build into schema,.
 
 anyway im supposed to play hockey need to stop
 
+//useful...
+{"che":{"acknowledge":{"acknowledge":{"ackid":"1","state":"MESSAGE","value":""}},"player":{"player":{"playerImage":"","playerKey":"","playerName":"Tim","utmLocation":{"utmLocation":{"altitude":10,"subUtm":{"utm":{"utmLong":"","utmLat":""}},"lat":1,"long":2,"speed":12.2,"utm":{"utm":{"utmLong":"","utmLat":""}}}}}}}}
+
 
 
 

@@ -1,6 +1,5 @@
 package channel;
 
-import factory.MessageFactory;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import message.CheMessage;
@@ -55,7 +54,7 @@ public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
         //at this point, if the user has no id, we will create them one, even if the server is down elsewhere.
         if (cheMessage.getMessage(Tags.PLAYER).getKey().isEmpty()) {
             configuration.getLogger().debug("new user created " + ctx.channel().remoteAddress().toString());
-            Player player = (Player)cheMessage.getMessage(Tags.PLAYER);
+            Player player = (Player) cheMessage.getMessage(Tags.PLAYER);
             player.setKey(configuration.getUuidGenerator().generatePlayerKey());
 
             ack = new Acknowledge(cheMessage.getMessage(Tags.ACKNOWLEDGE).getKey());

@@ -27,7 +27,7 @@ public class MessageFactory {
                 return new GameObject(coreMessage);
             case Tags.ALLIANCE:
                 return new Alliance(coreMessage);
-             default:
+            default:
                 throw new RuntimeException("Unknown message type");
         }
     }

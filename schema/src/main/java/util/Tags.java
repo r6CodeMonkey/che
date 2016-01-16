@@ -23,7 +23,6 @@ public class Tags {
     public static final String MISSILE_UTM_LOCATION = "missileUtmLocation";
 
 
-
     //generics
     public static final String STATE = "state";
     public static final String INFO = "info";
@@ -58,9 +57,9 @@ public class Tags {
 
 
     //alliance
-    public final static String ALLIANCE_CREATE = "CREATE_ALLIANCE_CREATE";
-    public final static String ALLIANCE_JOIN = "JOIN_ALLIANCE_JOIN";
-    public final static String ALLIANCE_LEAVE = "LEAVE_ALLIANCE_LEAVE";
+    public final static String ALLIANCE_CREATE = "ALLIANCE_CREATE";
+    public final static String ALLIANCE_JOIN = "ALLIANCE_JOIN";
+    public final static String ALLIANCE_LEAVE = "ALLIANCE_LEAVE";
     public final static String ALLIANCE_POST = "ALLIANCE_POST";
     public final static String ALLIANCE_INVITE = "ALLIANCE_INVITE";
 

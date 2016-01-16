@@ -64,7 +64,7 @@ public class Player extends CoreModel {
 
         player.setKey(key);
         player.setName(name);
-        player.setImage(image.toString());  //this is wrong...ignore as not implementing yet
+        player.setImage("");   //to fix
         player.setUTMLocation(new message.UTMLocation(utmLocation.getMessage()));
 
         return player.toString();

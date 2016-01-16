@@ -5,7 +5,9 @@ import controller.handler.generic.GameObjectHandler;
 import controller.handler.generic.MissileHandler;
 import core.HazelcastManagerInterface;
 import message.CheMessage;
+import model.Alliance;
 import model.Player;
+import org.json.JSONException;
 import util.Configuration;
 import util.Tags;
 
@@ -35,22 +37,18 @@ public class CheHandler {
 
     }
 
-    public void handle(Player player, CheMessage cheMessage) throws RemoteException, NoSuchAlgorithmException {
+    public void handle(Player player, CheMessage cheMessage) throws RemoteException, NoSuchAlgorithmException, JSONException {
 
 
-        if (!cheMessage.isNull(Tags.ALLIANCE)) {
+        if (!cheMessage.getJSONObject(Tags.CHE).isNull(Tags.ALLIANCE)) {
+            allianceHandler.handle(player, new Alliance((message.Alliance) cheMessage.getMessage(Tags.ALLIANCE)));
+        }
+
+        if (!cheMessage.getJSONObject(Tags.CHE).isNull(Tags.MISSILE)) {
 
         }
 
-        if (!cheMessage.isNull(Tags.MISSILE)) {
-
-        }
-
-        if (!cheMessage.isNull(Tags.GAME_OBJECT)) {
-
-        }
-
-        if (!cheMessage.isNull(Tags.MISSILE)) {
+        if (!cheMessage.getJSONObject(Tags.CHE).isNull(Tags.GAME_OBJECT)) {
 
         }
 

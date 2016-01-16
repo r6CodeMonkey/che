@@ -69,11 +69,7 @@ public class CheController {
 
         if (hazelcastServerUp) {
             Player player = playerHandler.handlePlayer(message);
-
-            configuration.getLogger().debug("something gone wrong " + message.toString());
-            configuration.getLogger().debug("we have generic object");
             cheHandler.handle(player, message);
-
         }
     }
 

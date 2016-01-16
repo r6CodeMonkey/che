@@ -3,12 +3,10 @@ package controller.handler;
 import controller.CheController;
 import core.HazelcastManagerInterface;
 import message.CheMessage;
-import message.HazelcastMessage;
 import model.Player;
 import model.UTMLocation;
 import org.json.JSONException;
 import util.Configuration;
-import util.Response;
 import util.Tags;
 
 import java.rmi.RemoteException;
@@ -29,9 +27,9 @@ public class PlayerHandler {
     }
 
     public Player handlePlayer(CheMessage message) throws RemoteException, JSONException {
-        Player player = getPlayer(message.getMessage(Tags.PLAYER).getKey());
+        Player player = getPlayer((message.Player) message.getMessage(Tags.PLAYER));
 
-        message.Player playerMessage = (message.Player)message.getMessage(Tags.PLAYER);
+        message.Player playerMessage = (message.Player) message.getMessage(Tags.PLAYER);
         UTMLocation utmLocation = utmHandler.getUTMLocation(new UTMLocation(playerMessage.getUTMLocation()));
 
         boolean hasUTMChanged = player.hasUTMChanged(utmLocation);
@@ -49,8 +47,8 @@ public class PlayerHandler {
 
         if (hasUTMChanged || hasSubUTMChanged) {
             configuration.getChannelMapController().getChannel(player.getKey()).writeAndFlush(player.utmLocation.getMessage());
-            //need to use the proper message type, but it works....ie publishes properly to correct listeners.
-            hazelcastManagerInterface.publish(player.utmLocation.subUtm.getUtm(), "{" + HazelcastMessage.REMOTE_ADDRESS + Response.FAKE_TAG + "," + HazelcastMessage.CHE_OBJECT + Response.PLAYER_JOINED + "}");
+            //this needs to be reviewed
+            //   hazelcastManagerInterface.publish(player.utmLocation.subUtm.getUtm(), "{" + HazelcastMessage.REMOTE_ADDRESS + Response.FAKE_TAG + "," + HazelcastMessage.CHE_OBJECT + Response.PLAYER_JOINED + "}");
         }
 
         hazelcastManagerInterface.put(CheController.PLAYER_MAP, player.getKey(), player);
@@ -58,13 +56,15 @@ public class PlayerHandler {
         return player;
     }
 
-    public Player getPlayer(String uid) throws RemoteException {
+    public Player getPlayer(message.Player message) throws RemoteException {
 
-        Player player = (Player) hazelcastManagerInterface.get(CheController.PLAYER_MAP, uid);
+        Player player = (Player) hazelcastManagerInterface.get(CheController.PLAYER_MAP, message.getKey());
 
         if (player == null) {
             configuration.getLogger().debug("created a new player");
-            player = new Player(uid);
+            player = new Player(message.getKey());
+            player.name = message.getName();
+            //image to sort out.
         }
 
         return player;
