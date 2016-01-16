@@ -5,33 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1da809bf-b5cd-41ef-846a-b237902f929e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SystemTesting/src/main/java/Setup.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_pool_commons_pool_1_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_3_10_5_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_camel_camel_netty_2_16_1.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/target/classes/server/CheControllerServer.class" afterPath="$PROJECT_DIR$/cheController/target/classes/server/CheControllerServer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/model/GameObject.class" afterPath="$PROJECT_DIR$/schema/target/classes/model/GameObject.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/target/classes/controller/handler/che/GameObjectHandler.class" afterPath="$PROJECT_DIR$/cheController/target/classes/controller/handler/che/GameObjectHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/core/NettyServer.class" afterPath="$PROJECT_DIR$/netty/target/classes/core/NettyServer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/che/AllianceHandler.java" afterPath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/che/AllianceHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/C:\log4j-application.log" afterPath="$PROJECT_DIR$/C:\log4j-application.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/src/main/java/server/CheControllerServer.java" afterPath="$PROJECT_DIR$/cheController/src/main/java/server/CheControllerServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/CheHandler.java" afterPath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/CheHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/model/GameObject.java" afterPath="$PROJECT_DIR$/schema/src/main/java/model/GameObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/che/GameObjectHandler.java" afterPath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/che/GameObjectHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/test/java/message/MessageTest.java" afterPath="$PROJECT_DIR$/schema/src/test/java/message/MessageTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/model/Missile.java" afterPath="$PROJECT_DIR$/schema/src/main/java/model/Missile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/che/MissileHandler.java" afterPath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/che/MissileHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/core/NettyServer.java" afterPath="$PROJECT_DIR$/netty/src/main/java/core/NettyServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/PlayerHandler.java" afterPath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/PlayerHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemTesting/SystemTesting.iml" afterPath="$PROJECT_DIR$/SystemTesting/SystemTesting.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/util/Tags.java" afterPath="$PROJECT_DIR$/schema/src/main/java/util/Tags.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/UTMHandler.java" afterPath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/UTMHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/message/UTMLocation.java" afterPath="$PROJECT_DIR$/schema/src/main/java/message/UTMLocation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/netty.iml" afterPath="$PROJECT_DIR$/netty/netty.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemTesting/pom.xml" afterPath="$PROJECT_DIR$/SystemTesting/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/pom.xml" afterPath="$PROJECT_DIR$/netty/pom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cheController/src/test/java/UtmConvertTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Che.iws" />
@@ -72,16 +46,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SystemTesting/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Setup.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SystemTesting/src/main/java/Setup.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -104,12 +68,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlayerHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cheController/src/main/java/controller/handler/PlayerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42880794">
-              <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UtmConvertTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cheController/src/test/java/UtmConvertTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3043478">
+              <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -196,7 +172,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/cheController/src/main/java/controller/handler/generic/GameObjectHandler.java" />
         <option value="$PROJECT_DIR$/cheController/src/main/java/controller/handler/UTMLocation.java" />
         <option value="$PROJECT_DIR$/cheController/src/main/java/util/UTMConvert.java" />
         <option value="$PROJECT_DIR$/cheController/src/main/java/controller/handler/generic/MissileHandler.java" />
@@ -247,6 +222,7 @@
         <option value="$PROJECT_DIR$/SystemTesting/src/main/java/Setup.java" />
         <option value="$PROJECT_DIR$/cheController/src/main/java/controller/handler/UTMHandler.java" />
         <option value="$PROJECT_DIR$/cheController/src/main/java/controller/handler/PlayerHandler.java" />
+        <option value="$PROJECT_DIR$/cheController/src/test/java/UtmConvertTest.java" />
       </list>
     </option>
   </component>
@@ -706,6 +682,14 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -951,7 +935,7 @@
       <recent name="util" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Setup">
+  <component name="RunManager" selected="JUnit.UtmConvertTest">
     <configuration default="false" name="CheControllerServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -969,26 +953,6 @@
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="cheController" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="HazelcastServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="server.HazelcastServer" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="hazelcast" />
       <envs />
       <method />
     </configuration>
@@ -1047,6 +1011,27 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="SystemTesting" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="UtmConvertTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="cheController" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UtmConvertTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -1242,18 +1227,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.CheControllerServer" />
-      <item index="1" class="java.lang.String" itemvalue="Application.HazelcastServer" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.HazelcastManagerTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.HazelcastServerTest" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Setup" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.HazelcastManagerTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.HazelcastServerTest" />
+      <item index="3" class="java.lang.String" itemvalue="Application.Setup" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.UtmConvertTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.Setup" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.HazelcastServerTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.HazelcastManagerTest" />
-        <item index="3" class="java.lang.String" itemvalue="Application.CheControllerServer" />
-        <item index="4" class="java.lang.String" itemvalue="Application.HazelcastServer" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.UtmConvertTest" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Setup" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.HazelcastServerTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.HazelcastManagerTest" />
+        <item index="4" class="java.lang.String" itemvalue="Application.CheControllerServer" />
       </list>
     </recent_temporary>
   </component>
@@ -1278,11 +1263,11 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32606634" sideWeight="0.41401917" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39905214" sideWeight="0.501765" order="7" side_tool="true" content_ui="combo" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31753555" sideWeight="0.5279879" order="7" side_tool="true" content_ui="combo" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31753555" sideWeight="0.47402924" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31753555" sideWeight="0.4720121" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25687203" sideWeight="0.498235" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1292,7 +1277,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39905214" sideWeight="0.498235" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39905214" sideWeight="0.498235" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1322,14 +1307,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/schema/src/main/java/factory/ModelFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23913044">
-          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cheController/src/main/java/channel/JsonFrameDecoder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1765,9 +1742,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cheController/src/main/java/controller/handler/PlayerHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42880794">
-          <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cheController/src/test/java/UtmConvertTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3043478">
+          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
