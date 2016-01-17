@@ -26,6 +26,7 @@ public class GameObject extends CoreModel {
 
     public GameObject(String key) {
         super(key);
+        utmLocation = new UTMLocation();
     }
 
     public List<Missile> getMissiles() {

@@ -71,6 +71,7 @@ public class Tags {
     public final static String MISSILE_TARGET = "MISSILE_TARGET";
     public final static String MISSILE_FIRE = "MISSILE_FIRE";
     public final static String MISSILE_CANCEL = "MISSILE_CANCEL";
+    public final static String MISSILE_ADDED = "MISSILE_ADDED";
 
     //General che object fields
     public final static String ALLIANCE_NAME = "allianceName";
@@ -94,6 +95,8 @@ public class Tags {
     public final static String MISSILE_DESTROYED = "missileDestoyed";
 
     //need game object equivalent.....to be fair build test framework next.
+    public final static String GAME_OBJECT_KEY = "gameObjectKey";
+    public final static String GAME_OBJECT_UTM_LOCATION = "gameObjectUtmLocation";
 
 
 }

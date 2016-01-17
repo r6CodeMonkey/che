@@ -2,6 +2,7 @@ package controller.handler.che;
 
 import core.HazelcastManagerInterface;
 import model.GameObject;
+import model.Missile;
 import model.Player;
 import util.Configuration;
 import util.Tags;
@@ -34,7 +35,15 @@ public class GameObjectHandler {
             case Tags.GAME_OBJECT_MOVE:
                 objectMove(player, gameObject);
                 break;
+            case Tags.MISSILE_ADDED:
+                missileAdded(player, gameObject); //need to add a missile to our game object...
+                break;
         }
+    }
+
+    private void missileAdded(Player player, GameObject gameObject){
+        //we can work out what missile it is...probably call the missile handler to process.
+
     }
 
     private void objectAdd(Player player, GameObject gameObject) {

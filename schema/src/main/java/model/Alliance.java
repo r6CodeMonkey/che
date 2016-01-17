@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
  */
 public class Alliance extends CoreModel {
 
-    public String name, value, state;
+    public String name, value, state;//tt
     private List<Player> members = new ArrayList<>();
 
     public Alliance(String key) {

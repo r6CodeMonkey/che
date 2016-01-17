@@ -1,6 +1,5 @@
 package message;
 
-import model.*;
 import org.json.JSONObject;
 import org.junit.Test;
 import util.Tags;
@@ -24,8 +23,8 @@ public class MessageTest {
     public static final String HAZELCAST = "{" + Tags.HAZELCAST + " :{" + HazelcastMessage.REMOTE_ADDRESS + ":'remote2'," + HazelcastMessage.CHE_OBJECT + ":{testing:'that'}}}";
     public static final String CHE = "{" + Tags.CHE + ":{" + Tags.UTM + ":" + UTM + "}}";
     //add these later i havent thought about what it needs.
-    public static final String MISSILE = "{" + Tags.MISSILE + " :{"+Tags.MISSILE_KEY+":'99',"+Tags.STATE+":"+Tags.MISSILE_TARGET+","+Tags.VALUE+":'fire',"+Tags.MISSILE_RADIUS+":5,"+Tags.MISSILE_RADIUS_IMPACT_SCALAR+":6,"+Tags.MISSILE_PAYLOAD+":100,"+
-                                         Tags.MISSILE_RANGE+":5000,"+Tags.MISSILE_DESTROYED+":false,"+Tags.MISSILE_LAUNCHED+":true,"+Tags.MISSILE_UTM_LOCATION+":"+ UTM_LOCATION+", "+Tags.MISSILE_START_UTM_LOCATION+":"+UTM_LOCATION+","+Tags.MISSILE_TARGET_UTM_LOCATION+":"+UTM_LOCATION+"}}";
+    public static final String MISSILE = "{" + Tags.MISSILE + " :{" + Tags.MISSILE_KEY + ":'99'," + Tags.STATE + ":" + Tags.MISSILE_TARGET + "," + Tags.VALUE + ":'fire'," + Tags.MISSILE_RADIUS + ":5," + Tags.MISSILE_RADIUS_IMPACT_SCALAR + ":6," + Tags.MISSILE_PAYLOAD + ":100," +
+            Tags.MISSILE_RANGE + ":5000," + Tags.MISSILE_DESTROYED + ":false," + Tags.MISSILE_LAUNCHED + ":true," + Tags.MISSILE_UTM_LOCATION + ":" + UTM_LOCATION + ", " + Tags.MISSILE_START_UTM_LOCATION + ":" + UTM_LOCATION + "," + Tags.MISSILE_TARGET_UTM_LOCATION + ":" + UTM_LOCATION + "}}";
     public static final String GAME_OBJECT = "{" + Tags.GAME_OBJECT + " :{}}";
 
 
