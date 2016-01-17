@@ -81,9 +81,12 @@ public class Tags {
     public final static String PLAYER_NAME = "playerName";
     public final static String PLAYER_IMAGE = "playerImage";
 
+
+    public final static String MISSILE_KEY = "missileKey";
     public final static String MISSILE_PAYLOAD = "missilePayLoad";
     public final static String MISSILE_RADIUS = "missileRadius";
-    public final static String MISSILE_RADIUS_IMPAACT_SCALAR = "missileRadiusImpactScalar";
+    public final static String MISSILE_RANGE = "missileRange";
+    public final static String MISSILE_RADIUS_IMPACT_SCALAR = "missileRadiusImpactScalar";
     public final static String MISSILE_UTM_LOCATION = "missileUtmLocation";
     public final static String MISSILE_TARGET_UTM_LOCATION = "missileTargetUtmLocation";
     public final static String MISSILE_START_UTM_LOCATION = "missileStartUtmLocation";

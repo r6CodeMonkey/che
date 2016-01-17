@@ -72,6 +72,7 @@ public class AllianceHandler {
 
     }
 
+    //note testing wise, you can post withouth joining.  not a major issue presumably.
     private void allianceJoin(Player player, Alliance alliance) throws RemoteException, NoSuchAlgorithmException {
 
         Object object = hazelcastManagerInterface.get(CheController.ALLIANCE_MAP, alliance.getKey());

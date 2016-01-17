@@ -3,6 +3,7 @@ package model;
 import message.Acknowledge;
 import message.Alliance;
 import message.*;
+import message.Missile;
 import message.Player;
 import message.UTM;
 import message.UTMLocation;
@@ -58,6 +59,29 @@ public class ModelTest {
 
     @Test
     public void testMissile() {
+
+        message.Missile missile = new Missile(MessageTest.MISSILE);
+        model.Missile missile1 = new model.Missile(missile);
+
+        assertEquals(5000, missile1.range, 0);
+        assertEquals(5, missile1.impactRadius, 0);
+        assertEquals(6, missile1.radiusImpactScalar, 0);
+        assertEquals(100, missile1.payLoad, 0);
+
+        assertEquals(true, missile1.launched);
+        assertEquals(false, missile1.destroyed);
+
+        assertEquals("99", missile1.getKey());
+        assertEquals(Tags.MISSILE_TARGET, missile1.state);
+        assertEquals("fire", missile1.value);
+
+        assertEquals("E1", missile1.currentUTMLocation.utm.getUtmLat());
+        assertEquals("3W", missile1.currentUTMLocation.utm.getUtmLong());
+        assertEquals("E1", missile1.startUTMLocation.utm.getUtmLat());
+        assertEquals("3W", missile1.startUTMLocation.utm.getUtmLong());
+        assertEquals("E1", missile1.targetUTMLocation.utm.getUtmLat());
+        assertEquals("3W", missile1.targetUTMLocation.utm.getUtmLong());
+
 
     }
 

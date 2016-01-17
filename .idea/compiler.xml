@@ -52,6 +52,13 @@
         <processorPath useClasspath="true" />
         <module name="SystemTesting" />
       </profile>
+      <profile default="false" name="Annotation profile for testing" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="testing" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="camel" target="1.5" />

@@ -119,6 +119,8 @@ public class TestSocketController {
 
     private void handleMessageReceived(String message) throws JSONException {
 
+        System.out.println("received che return message " + message);
+
         JSONObject jsonObject = new JSONObject(message);
         //we are either a che message, or an ack.
         //look for OUR UUID type.

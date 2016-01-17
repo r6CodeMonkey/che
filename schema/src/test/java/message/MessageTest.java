@@ -1,5 +1,6 @@
 package message;
 
+import model.*;
 import org.json.JSONObject;
 import org.junit.Test;
 import util.Tags;
@@ -23,7 +24,8 @@ public class MessageTest {
     public static final String HAZELCAST = "{" + Tags.HAZELCAST + " :{" + HazelcastMessage.REMOTE_ADDRESS + ":'remote2'," + HazelcastMessage.CHE_OBJECT + ":{testing:'that'}}}";
     public static final String CHE = "{" + Tags.CHE + ":{" + Tags.UTM + ":" + UTM + "}}";
     //add these later i havent thought about what it needs.
-    public static final String MISSILE = "{" + Tags.MISSILE + " :{}}";
+    public static final String MISSILE = "{" + Tags.MISSILE + " :{"+Tags.MISSILE_KEY+":'99',"+Tags.STATE+":"+Tags.MISSILE_TARGET+","+Tags.VALUE+":'fire',"+Tags.MISSILE_RADIUS+":5,"+Tags.MISSILE_RADIUS_IMPACT_SCALAR+":6,"+Tags.MISSILE_PAYLOAD+":100,"+
+                                         Tags.MISSILE_RANGE+":5000,"+Tags.MISSILE_DESTROYED+":false,"+Tags.MISSILE_LAUNCHED+":true,"+Tags.MISSILE_UTM_LOCATION+":"+ UTM_LOCATION+", "+Tags.MISSILE_START_UTM_LOCATION+":"+UTM_LOCATION+","+Tags.MISSILE_TARGET_UTM_LOCATION+":"+UTM_LOCATION+"}}";
     public static final String GAME_OBJECT = "{" + Tags.GAME_OBJECT + " :{}}";
 
 
@@ -93,6 +95,66 @@ public class MessageTest {
     public void testMissile() {
 
         Missile missile = new Missile(MISSILE);
+
+        assertEquals(5000, missile.getRange(), 0);
+        assertEquals(5, missile.getImpactRadius(), 0);
+        assertEquals(6, missile.getImpactRadiusScalar(), 0);
+        assertEquals(100, missile.getPayLoad(), 0);
+
+        assertEquals(true, missile.isLaunched());
+        assertEquals(false, missile.isDestroyed());
+
+        assertEquals("99", missile.getKey());
+        assertEquals(Tags.MISSILE_TARGET, missile.getState());
+        assertEquals("fire", missile.getValue());
+
+        assertEquals("E1", missile.getCurrentUTMLocation().getUTM().getUTMLatGrid());
+        assertEquals("3W", missile.getCurrentUTMLocation().getUTM().getUTMLongGrid());
+        assertEquals("E1", missile.getStartUTMLocation().getUTM().getUTMLatGrid());
+        assertEquals("3W", missile.getStartUTMLocation().getUTM().getUTMLongGrid());
+        assertEquals("E1", missile.getTargetUTMLocation().getUTM().getUTMLatGrid());
+        assertEquals("3W", missile.getTargetUTMLocation().getUTM().getUTMLongGrid());
+
+
+        missile = new Missile();
+        //need to fill this in too really.  cba at moment
+        missile.create();
+
+        missile.setKey("100");
+        missile.setState("new");
+        missile.setValue("something");
+        missile.setDestroyed(true);
+        missile.setLaunched(false);
+        missile.setRange(3000);
+        missile.setImpactRadius(15);
+        missile.setImpactRadiusScalar(2);
+        missile.setPayLoad(98);
+
+        missile.setCurrentUTMLocation(new UTMLocation(UTM_LOCATION));
+        missile.setStartUTMLocation(new UTMLocation(UTM_LOCATION));
+        missile.setTargetUTMLocation(new UTMLocation(UTM_LOCATION));
+
+
+        assertEquals(3000, missile.getRange(), 0);
+        assertEquals(15, missile.getImpactRadius(), 0);
+        assertEquals(2, missile.getImpactRadiusScalar(), 0);
+        assertEquals(98, missile.getPayLoad(), 0);
+
+        assertEquals(false, missile.isLaunched());
+        assertEquals(true, missile.isDestroyed());
+
+        assertEquals("100", missile.getKey());
+        assertEquals("new", missile.getState());
+        assertEquals("something", missile.getValue());
+
+        assertEquals("E1", missile.getCurrentUTMLocation().getUTM().getUTMLatGrid());
+        assertEquals("3W", missile.getCurrentUTMLocation().getUTM().getUTMLongGrid());
+        assertEquals("E1", missile.getStartUTMLocation().getUTM().getUTMLatGrid());
+        assertEquals("3W", missile.getStartUTMLocation().getUTM().getUTMLongGrid());
+        assertEquals("E1", missile.getTargetUTMLocation().getUTM().getUTMLatGrid());
+        assertEquals("3W", missile.getTargetUTMLocation().getUTM().getUTMLongGrid());
+
+
     }
 
     @Test

@@ -17,7 +17,6 @@ import java.util.List;
 public class CheControllerSocket {
 
     public static final int BUFFER_SIZE = 2048;
-    //private final List<String> pendingSendMessages = new ArrayList<>();
     private final Configuration configuration;
     private final Channel channel;
     private final Socket socket;
@@ -48,12 +47,11 @@ public class CheControllerSocket {
     }
 
     private void writeToChannel(String message) {
-
-        channel.writeAndFlush(message);
-
-       // pendingSendMessages.forEach(channel::writeAndFlush);
-       // pendingSendMessages.clear();
-
+       if(channel != null) {
+           channel.writeAndFlush(message);
+       }else{
+           configuration.getLogger().debug("channel is null");
+       }
     }
 
 

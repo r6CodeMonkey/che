@@ -1,6 +1,4 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,13 +7,15 @@ import java.util.List;
  */
 public class Setup {
 
-    private static final int MAX_SOCKETS = 10;
+    private static final int MAX_SOCKETS = 10;  //its not that sensible to hammer my own connection....raises questions about netty server doing it
     private List<TestSocketController> socketControllers = new ArrayList<>();
 
     private List<String> allianceKeys = new ArrayList<>();
 
 
-
+/*
+  worth thinking about game objects at some point.  and what they will do etc?   or start mobile client.
+ */
 
 
     public Setup() throws Exception {
@@ -51,7 +51,6 @@ public class Setup {
             System.out.println("created alliance "+e.getActionCommand());
             //now we have it...lets try and join
             socketControllers.get(1).joinAlliance(e.getActionCommand());
-
         });
 
 

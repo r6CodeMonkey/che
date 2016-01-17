@@ -80,8 +80,13 @@ public class CheController {
 
         Channel channel = configuration.getChannelMapController().getChannel(key);
 
-        if (!cheMessage.getRemoteAddress().equals(channel.remoteAddress().toString())) {
-            channel.writeAndFlush(cheMessage.getCheObject().toString());
+        if(channel != null) {
+
+            if (!cheMessage.getRemoteAddress().equals(channel.remoteAddress().toString())) {
+                channel.writeAndFlush(cheMessage.getCheObject().toString());
+            }
+        }else{
+            configuration.getLogger().debug("we have no channel for "+key);
         }
     }
 
@@ -102,6 +107,9 @@ public class CheController {
                 handleMessage(cheMessage, key);
             } catch (JSONException e) {
                 configuration.getLogger().error("callback failed " + e.getMessage());
+            }catch(Exception e2){
+                configuration.getLogger().error("callback failed "+message+" "+ e2.getMessage());
+
             }
         }
     }
