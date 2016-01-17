@@ -17,7 +17,7 @@ import java.util.List;
 public class CheControllerSocket {
 
     public static final int BUFFER_SIZE = 2048;
-    private static final List<String> pendingSendMessages = new ArrayList<>();
+    //private final List<String> pendingSendMessages = new ArrayList<>();
     private final Configuration configuration;
     private final Channel channel;
     private final Socket socket;
@@ -51,8 +51,8 @@ public class CheControllerSocket {
 
         channel.writeAndFlush(message);
 
-        pendingSendMessages.forEach(channel::writeAndFlush);
-        pendingSendMessages.clear();
+       // pendingSendMessages.forEach(channel::writeAndFlush);
+       // pendingSendMessages.clear();
 
     }
 

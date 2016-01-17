@@ -1,10 +1,19 @@
-
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by timmytime on 16/01/16.
  */
 public class Setup {
+
+    private static final int MAX_SOCKETS = 10;
+    private List<TestSocketController> socketControllers = new ArrayList<>();
+
+    private List<String> allianceKeys = new ArrayList<>();
+
 
     /*
       fuck the jvm startups...i need a script to start the servers.  in interim can do it manually but fix this tomoz based on source locations. simples.
@@ -34,8 +43,8 @@ public class Setup {
      */
 
 
- //   private final NettyServer nettyServer;
- //   private final CheControllerServer cheControllerServer;
+    //   private final NettyServer nettyServer;
+    //   private final CheControllerServer cheControllerServer;
 
     /*
       start our servers.
@@ -46,8 +55,8 @@ public class Setup {
         //basically needs to run in seperate JVMS lol.
         //doesnt stop me from testing it however.  ie need a script to start each up in seperate jvms...yawn.  stop.
 
-    //    nettyServer = new NettyServer();
-    //    cheControllerServer = new CheControllerServer();
+        //    nettyServer = new NettyServer();
+        //    cheControllerServer = new CheControllerServer();
 
         /*
           work my way around this,  if not....not an issue, ie start each service, then use this to test it.  which makes sense....tbh.
@@ -56,27 +65,43 @@ public class Setup {
 
     }
 
-    public void start() throws Exception {
-
-   //     nettyServer.run();
-    //    HazelcastServer.startServer();
-   //     cheControllerServer.run();
-
-    }
-
-    public void stop(){
-   //     HazelcastServer.stopServer();
-    }
-
     public static void main(String[] args) throws Exception {
 
         Setup setup = new Setup();
 
-        try{
+        try {
             setup.start();
-        }catch (Exception e){
+        } catch (Exception e) {
+            e.printStackTrace();
             setup.stop();
 
         }
+    }
+
+    public void start() throws Exception {
+
+
+        for(int i=0;i<MAX_SOCKETS; i++){
+            socketControllers.add(new TestSocketController());
+        }
+
+
+        socketControllers.get(0).createAlliance(e -> {
+            allianceKeys.add(e.getActionCommand());
+            System.out.println("created alliance "+e.getActionCommand());
+            //now we have it...lets try and join
+            socketControllers.get(1).joinAlliance(e.getActionCommand());
+
+        });
+
+        //need to manage some alliances too then basically add remove members....
+
+
+
+
+    }
+
+    public void stop() {
+        socketControllers.forEach(TestSocketController::stop);
     }
 }
