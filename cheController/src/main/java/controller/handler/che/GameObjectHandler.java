@@ -12,6 +12,22 @@ import util.Tags;
  */
 public class GameObjectHandler {
 
+    /*
+
+      this could basically be
+
+      Tank
+      Missile launcher
+      Ship
+      Submarine
+      Plane (airbourne).
+
+      key is we need to consider the other states actions, basic physics should help
+
+      probably need a game object type (ie state and value in use).
+
+     */
+
     private final HazelcastManagerInterface hazelcastManagerInterface;
     private final Configuration configuration;
 
@@ -38,11 +54,19 @@ public class GameObjectHandler {
             case Tags.MISSILE_ADDED:
                 missileAdded(player, gameObject); //need to add a missile to our game object...
                 break;
+            case Tags.MISSILE_REMOVED:
+                missileRemoved(player, gameObject);
+                break;
         }
     }
 
     private void missileAdded(Player player, GameObject gameObject){
         //we can work out what missile it is...probably call the missile handler to process.
+
+    }
+
+    private void missileRemoved(Player player, GameObject gameObject){
+        //remove missile from the game object...ie its been transferred elsewhere.
 
     }
 

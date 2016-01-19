@@ -1,5 +1,6 @@
 package message;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.json.JSONObject;
 import org.junit.Test;
 import util.Tags;
@@ -25,7 +26,9 @@ public class MessageTest {
     //add these later i havent thought about what it needs.
     public static final String MISSILE = "{" + Tags.MISSILE + " :{" + Tags.MISSILE_KEY + ":'99'," + Tags.STATE + ":" + Tags.MISSILE_TARGET + "," + Tags.VALUE + ":'fire'," + Tags.MISSILE_RADIUS + ":5," + Tags.MISSILE_RADIUS_IMPACT_SCALAR + ":6," + Tags.MISSILE_PAYLOAD + ":100," +
             Tags.MISSILE_RANGE + ":5000," + Tags.MISSILE_DESTROYED + ":false," + Tags.MISSILE_LAUNCHED + ":true," + Tags.MISSILE_UTM_LOCATION + ":" + UTM_LOCATION + ", " + Tags.MISSILE_START_UTM_LOCATION + ":" + UTM_LOCATION + "," + Tags.MISSILE_TARGET_UTM_LOCATION + ":" + UTM_LOCATION + "}}";
-    public static final String GAME_OBJECT = "{" + Tags.GAME_OBJECT + " :{}}";
+    public static final String GAME_OBJECT = "{" + Tags.GAME_OBJECT + " :{"+Tags.GAME_OBJECT_KEY+":'58',"+Tags.STATE+":"+Tags.GAME_OBJECT_HIT+","+Tags.VALUE+":'true',"+Tags.GAME_OBJECT_MASS+":2098,"+Tags.GAME_OBJECT_ACCELERATION+":9.99,"+
+            Tags.GAME_OBJECT_VELOCITY+":123.2356,"+Tags.GAME_OBJECT_IS_DESTROYED+":'false',"+Tags.GAME_OBJECT_IS_FIXED+":'false',"+Tags.GAME_OBJECT_IS_HIT+":'true',"+Tags.GAME_OBJECT_IS_LOCATED+":'true',"+Tags.GAME_OBJECT_UTM_LOCATION+":"+UTM_LOCATION+","+
+            Tags.GAME_OBJECT_MISSILES+":["+MISSILE+"]}}";
 
 
     @Test
@@ -116,7 +119,6 @@ public class MessageTest {
 
 
         missile = new Missile();
-        //need to fill this in too really.  cba at moment
         missile.create();
 
         missile.setKey("100");
@@ -217,7 +219,61 @@ public class MessageTest {
     @Test
     public void testGameObject() {
 
+
         GameObject gameObject = new GameObject(GAME_OBJECT);
+
+        assertEquals("58", gameObject.getKey());
+        assertEquals(Tags.GAME_OBJECT_HIT, gameObject.getState());
+        assertEquals("true", gameObject.getValue());
+        assertEquals(2098, gameObject.getMass(),0);
+        assertEquals(123.2356, gameObject.getVelocity(),0);
+        assertEquals(9.99, gameObject.getAcceleration(),0);
+        assertEquals(Boolean.FALSE, gameObject.isDestroyed());
+        assertEquals(Boolean.FALSE, gameObject.isFixed());
+        assertEquals(Boolean.TRUE, gameObject.isHit());
+        assertEquals(Boolean.TRUE, gameObject.isLocated());
+        assertEquals("99", gameObject.getMissiles().get(0).getKey());
+        assertEquals("E1", gameObject.getUtmLocation().getUTM().getUTMLatGrid());
+        assertEquals("3W", gameObject.getUtmLocation().getUTM().getUTMLongGrid());
+
+        gameObject = new GameObject();
+        gameObject.create();
+
+        gameObject.setKey("58");
+        gameObject.setState(Tags.GAME_OBJECT_HIT);
+        gameObject.setValue("true");
+        gameObject.setMass(2098);
+        gameObject.setVelocity(123.2356);
+        gameObject.setAcceleration(9.99);
+        gameObject.setHit(true);
+        gameObject.setDestroyed(false);
+        gameObject.setFixed(false);
+        gameObject.setLocated(true);
+        gameObject.setUtmLocation(new UTMLocation(UTM_LOCATION));
+
+        Missile missile = new Missile();
+        missile.create();
+        missile.setKey("99");
+        List<Missile> missiles = new ArrayList<>();
+        missiles.add(missile);
+        gameObject.setMissiles(missiles);
+
+
+        assertEquals("58", gameObject.getKey());
+        assertEquals(Tags.GAME_OBJECT_HIT, gameObject.getState());
+        assertEquals("true", gameObject.getValue());
+        assertEquals(2098, gameObject.getMass(),0);
+        assertEquals(123.2356, gameObject.getVelocity(),0);
+        assertEquals(9.99, gameObject.getAcceleration(),0);
+        assertEquals(Boolean.FALSE, gameObject.isDestroyed());
+        assertEquals(Boolean.FALSE, gameObject.isFixed());
+        assertEquals(Boolean.TRUE, gameObject.isHit());
+        assertEquals(Boolean.TRUE, gameObject.isLocated());
+        assertEquals("99", gameObject.getMissiles().get(0).getKey());
+        assertEquals("E1", gameObject.getUtmLocation().getUTM().getUTMLatGrid());
+        assertEquals("3W", gameObject.getUtmLocation().getUTM().getUTMLongGrid());
+
+
     }
 
     @Test

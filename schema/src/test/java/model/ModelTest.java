@@ -3,6 +3,7 @@ package model;
 import message.Acknowledge;
 import message.Alliance;
 import message.*;
+import message.GameObject;
 import message.Missile;
 import message.Player;
 import message.UTM;
@@ -87,6 +88,26 @@ public class ModelTest {
 
     @Test
     public void testGameObject() {
+
+        GameObject gameObject = new GameObject(MessageTest.GAME_OBJECT);
+        model.GameObject gameObject1 = new model.GameObject(gameObject);
+
+        assertEquals("58", gameObject1.getKey());
+        assertEquals(Tags.GAME_OBJECT_HIT, gameObject1.state);
+        assertEquals("true", gameObject1.value);
+        assertEquals(2098, gameObject1.mass,0);
+        assertEquals(123.2356, gameObject1.velocity,0);
+        assertEquals(9.99, gameObject1.acceleration,0);
+        assertEquals(Boolean.FALSE, gameObject1.destroyed);
+        assertEquals(Boolean.FALSE, gameObject1.fixed);
+        assertEquals(Boolean.TRUE, gameObject1.hit);
+        assertEquals(Boolean.TRUE, gameObject1.located);
+        assertEquals("99", gameObject1.getMissiles().get(0).getKey());
+        assertEquals("E1", gameObject1.utmLocation.utm.getUtmLat());
+        assertEquals("3W", gameObject1.utmLocation.utm.getUtmLong());
+
+
+
 
     }
 

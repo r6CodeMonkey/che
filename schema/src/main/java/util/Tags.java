@@ -66,12 +66,13 @@ public class Tags {
     public final static String GAME_OBJECT_MOVE = "OBJECT_MOVE";
     public final static String GAME_OBJECT_HIT = "OBJECT_HIT";
     public final static String GAME_OBJECT_DESTROYED = "OBJECT_DESTROYED";
+    public final static String MISSILE_ADDED = "MISSILE_ADDED";
+    public final static String MISSILE_REMOVED = "MISSILE_REMOVED";
 
     //launch commands
     public final static String MISSILE_TARGET = "MISSILE_TARGET";
     public final static String MISSILE_FIRE = "MISSILE_FIRE";
     public final static String MISSILE_CANCEL = "MISSILE_CANCEL";
-    public final static String MISSILE_ADDED = "MISSILE_ADDED";
 
     //General che object fields
     public final static String ALLIANCE_NAME = "allianceName";
@@ -94,9 +95,17 @@ public class Tags {
     public final static String MISSILE_LAUNCHED = "missileLaunched";
     public final static String MISSILE_DESTROYED = "missileDestoyed";
 
-    //need game object equivalent.....to be fair build test framework next.
     public final static String GAME_OBJECT_KEY = "gameObjectKey";
     public final static String GAME_OBJECT_UTM_LOCATION = "gameObjectUtmLocation";
+    public final static String GAME_OBJECT_MASS = "gameObjectMass";
+    public final static String GAME_OBJECT_ACCELERATION = "gameObjectAcceleration";
+    public final static String GAME_OBJECT_VELOCITY = "gameObjectVelocity";
+    public final static String GAME_OBJECT_IS_FIXED = "gameObjectFixed";
+    public final static String GAME_OBJECT_IS_HIT = "gameObjectHit";
+    public final static String GAME_OBJECT_IS_DESTROYED = "gameObjectDestroyed";
+    public final static String GAME_OBJECT_IS_LOCATED = "gameObjectLocated";
+    public final static String GAME_OBJECT_MISSILES = "gameObjectMissiles";
+
 
 
 }
