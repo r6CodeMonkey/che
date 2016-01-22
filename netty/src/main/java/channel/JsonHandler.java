@@ -28,6 +28,7 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
         ack.state = Tags.ACCEPT;
         ack.value = Tags.ACTIVE;
         ctx.channel().writeAndFlush(ack.getMessage());
+
     }
 
 
