@@ -26,6 +26,8 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
 
     public void channelActive(ChannelHandlerContext ctx) {
 
+        configuration.getLogger().debug("active");
+
         ack = new Acknowledge("");
         ack.state = Tags.ACCEPT;
         ack.value = Tags.ACTIVE;

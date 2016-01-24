@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Setup {
 
-    private static final int MAX_SOCKETS = 10;  //its not that sensible to hammer my own connection....raises questions about netty server doing it
+    private static final int MAX_SOCKETS = 1;  //its not that sensible to hammer my own connection....raises questions about netty server doing it
     private List<TestSocketController> socketControllers = new ArrayList<>();
 
     private List<String> allianceKeys = new ArrayList<>();
@@ -48,7 +48,7 @@ public class Setup {
     public void start() throws Exception {
 
 
-   /*     for(int i=0;i<MAX_SOCKETS; i++){
+        for(int i=0;i<MAX_SOCKETS; i++){
             socketControllers.add(new TestSocketController());
         }
 
@@ -59,8 +59,8 @@ public class Setup {
             //now we have it...lets try and join
             socketControllers.get(1).joinAlliance(e.getActionCommand());
         });
-*/
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
+
+     /*   EventLoopGroup workerGroup = new NioEventLoopGroup();
         try{
         Bootstrap b = new Bootstrap();
             b.group(workerGroup); // (2)
@@ -82,7 +82,7 @@ public class Setup {
         } finally {
             workerGroup.shutdownGracefully();
         }
-
+*/
 
 
 

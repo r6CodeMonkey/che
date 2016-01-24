@@ -19,6 +19,8 @@ public class JsonFrameDecoder extends ByteToMessageDecoder {
     protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf in, List<Object> out) throws Exception {
 
 
+        System.out.println("decoder called");
+
         Object msg = new String(in.toString(Charset.forName("UTF-8")));
 
         String message = "";

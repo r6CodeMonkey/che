@@ -1,5 +1,6 @@
 package core;
 
+import channel.CheBootstrapHandler;
 import channel.CheHandler;
 import channel.JsonFrameDecoder;
 import channel.JsonHandler;
@@ -25,6 +26,7 @@ public class NettyChannelInitializer extends ChannelInitializer {
     public static final String STRING_ENCODER_HANDLER = "stringEncoder";
     public static final String JSON_HANDLER = "jsonHandler";
     public static final String CHE_HANDLER = "cheHandler";
+    public static final String BS_CHE_HANDLER = "bsCheHandler";
 
     private final Configuration configuration;
     private SSLContext sslContext;
@@ -53,6 +55,7 @@ public class NettyChannelInitializer extends ChannelInitializer {
         channel.pipeline().addLast(STRING_ENCODER_HANDLER, new StringEncoder());
         channel.pipeline().addLast(JSON_HANDLER, new JsonHandler(configuration));
         channel.pipeline().addLast(CHE_HANDLER, new CheHandler(configuration));
+       // channel.pipeline().addLast(BS_CHE_HANDLER, new CheBootstrapHandler(configuration));
     }
 
     public void stop() {

@@ -51,6 +51,7 @@ public class CheControllerSocket {
            channel.writeAndFlush(message);
        }else{
            configuration.getLogger().debug("channel is null");
+           //store the message...to do.
        }
     }
 
