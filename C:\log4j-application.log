@@ -4902,3 +4902,53 @@
 2016-01-25 18:58:56 DEBUG netty:38 - {"che":{"acknowledge":{"acknowledge":{"ackid":"10982605-8088-4614-9d4e-2751de1e7e5d","state":"MESSAGE","value":""}},"alliance":{"alliance":{"allianceMembers":[],"allianceKey":"[B@63c08efd","allianceName":"testing","state":"ALLIANCE_JOIN","value":""}},"player":{"player":{"playerImage":"","playerKey":"[B@28ba738b","playerName":"5a77fac5-5c53-4b98-9bee-68b76fe3fb4f","utmLocation":{"utmLocation":{"altitude":11,"subUtm":{"utm":{"utmLong":"","utmLat":""}},"state":"","value":"","lat":1,"long":12,"speed":5,"utm":{"utm":{"utmLong":"","utmLat":""}}}}}}}}
 2016-01-25 18:58:56 DEBUG netty:69 - created a new player
 2016-01-25 18:58:56 DEBUG netty:42 - UTM has changed
+2016-01-25 19:40:15 DEBUG InternalLoggerFactory:59 - Using Log4J as the default logging framework
+2016-01-25 19:40:15 DEBUG PlatformDependent0:75 - java.nio.Buffer.address: available
+2016-01-25 19:40:15 DEBUG PlatformDependent0:83 - sun.misc.Unsafe.theUnsafe: available
+2016-01-25 19:40:15 DEBUG PlatformDependent0:92 - sun.misc.Unsafe.copyMemory: available
+2016-01-25 19:40:15 DEBUG PlatformDependent0:132 - java.nio.Bits.unaligned: true
+2016-01-25 19:40:15 DEBUG PlatformDependent:583 - Java version: 8
+2016-01-25 19:40:15 DEBUG PlatformDependent:590 - -Dio.netty.noUnsafe: false
+2016-01-25 19:40:15 DEBUG PlatformDependent:617 - sun.misc.Unsafe: available
+2016-01-25 19:40:15 DEBUG PlatformDependent:700 - -Dio.netty.noJavassist: false
+2016-01-25 19:40:15 DEBUG PlatformDependent:713 - Javassist: unavailable
+2016-01-25 19:40:15 DEBUG PlatformDependent:714 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2016-01-25 19:40:15 DEBUG PlatformDependent:732 - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+2016-01-25 19:40:15 DEBUG PlatformDependent:811 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2016-01-25 19:40:15 DEBUG PlatformDependent:87 - -Dio.netty.noPreferDirect: false
+2016-01-25 19:40:15 ERROR netty:43 - SSL Context Configuration failed java.lang.NullPointerException
+2016-01-25 19:40:15 DEBUG MultithreadEventLoopGroup:41 - -Dio.netty.eventLoopThreads: 16
+2016-01-25 19:40:15 DEBUG NioEventLoop:87 - -Dio.netty.noKeySetOptimization: false
+2016-01-25 19:40:15 DEBUG NioEventLoop:88 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2016-01-25 19:40:15 DEBUG DefaultChannelId:90 - -Dio.netty.processId: 6628 (auto-detected)
+2016-01-25 19:40:15 DEBUG DefaultChannelId:110 - -Dio.netty.machineId: 30:85:a9:ff:fe:98:f9:40 (auto-detected)
+2016-01-25 19:40:15 DEBUG ThreadLocalRandom:199 - -Dio.netty.initialSeedUniquifier: 0x279ff492d6eb006d (took 19 ms)
+2016-01-25 19:40:15 DEBUG PooledByteBufAllocator:98 - -Dio.netty.allocator.numHeapArenas: 8
+2016-01-25 19:40:15 DEBUG PooledByteBufAllocator:99 - -Dio.netty.allocator.numDirectArenas: 8
+2016-01-25 19:40:15 DEBUG PooledByteBufAllocator:101 - -Dio.netty.allocator.pageSize: 8192
+2016-01-25 19:40:15 DEBUG PooledByteBufAllocator:106 - -Dio.netty.allocator.maxOrder: 11
+2016-01-25 19:40:15 DEBUG PooledByteBufAllocator:110 - -Dio.netty.allocator.chunkSize: 16777216
+2016-01-25 19:40:15 DEBUG PooledByteBufAllocator:111 - -Dio.netty.allocator.tinyCacheSize: 512
+2016-01-25 19:40:15 DEBUG PooledByteBufAllocator:112 - -Dio.netty.allocator.smallCacheSize: 256
+2016-01-25 19:40:15 DEBUG PooledByteBufAllocator:113 - -Dio.netty.allocator.normalCacheSize: 64
+2016-01-25 19:40:15 DEBUG PooledByteBufAllocator:114 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2016-01-25 19:40:15 DEBUG PooledByteBufAllocator:115 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2016-01-25 19:40:15 DEBUG ByteBufUtil:66 - -Dio.netty.allocator.type: pooled
+2016-01-25 19:40:15 DEBUG ByteBufUtil:75 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2016-01-25 19:40:15 DEBUG NetUtil:203 - Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
+2016-01-25 19:40:15 DEBUG NetUtil:241 - /proc/sys/net/core/somaxconn: 128
+2016-01-25 19:40:19 DEBUG Recycler:56 - -Dio.netty.recycler.maxCapacity: 262144
+2016-01-25 19:40:19 DEBUG ResourceLeakDetector:79 - -Dio.netty.leakDetectionLevel: simple
+2016-01-25 19:40:19 DEBUG netty:38 - {"che":{"acknowledge":{"acknowledge":{"ackid":"320c513b-d3d6-450c-a654-8a2384193451","state":"MESSAGE","value":""}},"player":{"player":{"playerImage":"","playerKey":"","playerName":"a914c80b-b42b-423e-beed-064e1eab1334","utmLocation":{"utmLocation":{"altitude":11,"subUtm":{"utm":{"utmLong":"","utmLat":""}},"state":"","value":"","lat":1,"long":12,"speed":5,"utm":{"utm":{"utmLong":"","utmLat":""}}}}}}}}
+2016-01-25 19:40:19 DEBUG netty:38 - {"che":{"acknowledge":{"acknowledge":{"ackid":"feeb3f73-8455-416a-ac29-aa6b215c5d19","state":"MESSAGE","value":""}},"player":{"player":{"playerImage":"","playerKey":"","playerName":"37f0a4c6-cc45-48de-8124-02e2214107f2","utmLocation":{"utmLocation":{"altitude":11,"subUtm":{"utm":{"utmLong":"","utmLat":""}},"state":"","value":"","lat":1,"long":12,"speed":5,"utm":{"utm":{"utmLong":"","utmLat":""}}}}}}}}
+2016-01-25 19:40:19 DEBUG netty:33 - new user created /127.0.0.1:41303
+2016-01-25 19:40:19 DEBUG netty:33 - new user created /127.0.0.1:41304
+2016-01-25 19:40:19 DEBUG netty:38 - {"che":{"acknowledge":{"acknowledge":{"ackid":"f6be2f89-4828-43ce-afc8-c04e3edc4432","state":"MESSAGE","value":""}},"alliance":{"alliance":{"allianceMembers":[],"allianceKey":"","allianceName":"testing","state":"ALLIANCE_CREATE","value":""}},"player":{"player":{"playerImage":"","playerKey":"","playerName":"37f0a4c6-cc45-48de-8124-02e2214107f2","utmLocation":{"utmLocation":{"altitude":11,"subUtm":{"utm":{"utmLong":"","utmLat":""}},"state":"","value":"","lat":1,"long":12,"speed":5,"utm":{"utm":{"utmLong":"","utmLat":""}}}}}}}}
+2016-01-25 19:40:19 DEBUG netty:33 - new user created /127.0.0.1:41303
+2016-01-25 19:40:19 DEBUG netty:70 - created a new player
+2016-01-25 19:40:19 DEBUG netty:70 - created a new player
+2016-01-25 19:40:19 DEBUG netty:70 - created a new player
+2016-01-25 19:40:19 DEBUG netty:43 - UTM has changed
+2016-01-25 19:40:19 DEBUG netty:43 - UTM has changed
+2016-01-25 19:40:19 DEBUG netty:43 - UTM has changed
+2016-01-25 19:40:19 DEBUG netty:38 - {"che":{"acknowledge":{"acknowledge":{"ackid":"1195da20-00d4-414a-a4c8-17a4f9838a41","state":"MESSAGE","value":""}},"alliance":{"alliance":{"allianceMembers":[],"allianceKey":"[B@41887fc9","allianceName":"testing","state":"ALLIANCE_JOIN","value":""}},"player":{"player":{"playerImage":"","playerKey":"[B@3e476235","playerName":"a914c80b-b42b-423e-beed-064e1eab1334","utmLocation":{"utmLocation":{"altitude":11,"subUtm":{"utm":{"utmLong":"","utmLat":""}},"state":"","value":"","lat":1,"long":12,"speed":5,"utm":{"utm":{"utmLong":"","utmLat":""}}}}}}}}

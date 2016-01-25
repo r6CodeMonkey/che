@@ -2,9 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1da809bf-b5cd-41ef-846a-b237902f929e" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/netty/src/main/java/util/security/User.java" afterPath="$PROJECT_DIR$/netty/src/main/java/model/security/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/util/security/CertificateBuilder.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/security/CertificateBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/util/security/KeyStoreBuilder.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/security/KeyStoreBuilder.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/netty/src/main/java/util/CheCallbackClient.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/channel/CheControllerHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/channel/CheHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/controller/CheController$CheCallbackClient.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/controller/CheController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/controller/handler/CheHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/controller/handler/PlayerHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/controller/handler/che/AllianceHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/core/NettyChannelInitializer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/factory/CheChannelFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/model/CheChannel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/util/Configuration.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/AllianceHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/AllianceHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/model/CheChannel.java" afterPath="$PROJECT_DIR$/netty/src/main/java/model/CheChannel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/factory/CheChannelFactory.java" afterPath="$PROJECT_DIR$/netty/src/main/java/factory/CheChannelFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/controller/CheController.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/CheController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/CheControllerHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/channel/CheControllerHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/util/Configuration.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/Configuration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/controller/handler/PlayerHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/PlayerHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Che.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,24 +62,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Setup.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Setup.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testing/src/main/java/Setup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36956522">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheChannelFactory.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CheChannelFactory.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/netty/src/main/java/factory/CheChannelFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5869565">
+              <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
               <folding>
-                <element signature="e#683#684#0" expanded="true" />
-                <element signature="e#716#717#0" expanded="true" />
+                <element signature="e#427#428#0" expanded="true" />
+                <element signature="e#472#473#0" expanded="true" />
+                <element signature="e#663#664#0" expanded="true" />
+                <element signature="e#704#705#0" expanded="true" />
+                <element signature="e#1162#1163#0" expanded="true" />
+                <element signature="e#1218#1219#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,7 +93,27 @@
         <entry file="file://$PROJECT_DIR$/netty/src/main/java/model/CheChannel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#456#457#0" expanded="true" />
+                <element signature="e#494#495#0" expanded="true" />
+                <element signature="e#528#529#0" expanded="true" />
+                <element signature="e#558#559#0" expanded="true" />
+                <element signature="e#587#588#0" expanded="true" />
+                <element signature="e#613#614#0" expanded="true" />
+                <element signature="e#771#772#0" expanded="true" />
+                <element signature="e#820#821#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/netty/src/main/java/model/security/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -82,61 +123,66 @@
         <entry file="file://$PROJECT_DIR$/netty/src/main/java/controller/CheController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tags.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/schema/src/main/java/util/Tags.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.774194">
-              <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HazelcastManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java">
+      <file leaf-file-name="PlayerHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/netty/src/main/java/controller/handler/PlayerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CheMessageHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hazelcast/src/main/java/util/CheMessageHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SSLConfiguration.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/netty/src/main/java/util/security/SSLConfiguration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CheHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/netty/src/main/java/channel/CheHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+              <caret line="55" column="40" selection-start-line="55" selection-start-column="40" selection-end-line="55" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#530#531#0" expanded="true" />
-                <element signature="e#580#581#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CheCallbackClient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/netty/src/main/java/util/CheCallbackClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AllianceHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/netty/src/main/java/controller/handler/che/AllianceHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="109" column="27" selection-start-line="109" selection-start-column="27" selection-end-line="109" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CheControllerHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/netty/src/main/java/channel/CheControllerHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="28" column="3" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="118" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Configuration.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/netty/src/main/java/util/Configuration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="280" column="0" selection-start-line="280" selection-start-column="0" selection-end-line="280" selection-end-column="0" />
+              <folding>
+                <element signature="e#7496#7497#0" expanded="true" />
+                <element signature="e#7532#7533#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -162,12 +208,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/schema/src/main/java/model/UTM.java" />
-        <option value="$PROJECT_DIR$/schema/src/main/java/factory/MessageFactory.java" />
-        <option value="$PROJECT_DIR$/schema/src/main/java/model/CoreModel.java" />
-        <option value="$PROJECT_DIR$/cheController/src/main/java/controller/handler/generic/AllianceHandler.java" />
-        <option value="$PROJECT_DIR$/NotesREADME31122015.txt" />
-        <option value="$PROJECT_DIR$/schema/src/main/java/model/Player.java" />
         <option value="$PROJECT_DIR$/hazelcast/src/main/java/util/CheMessageHandler.java" />
         <option value="$PROJECT_DIR$/schema/src/main/java/message/UTMLocation.java" />
         <option value="$PROJECT_DIR$/schema/src/main/java/model/UTMLocation.java" />
@@ -204,8 +244,6 @@
         <option value="$PROJECT_DIR$/netty/src/main/java/channel/CheClientHandler.java" />
         <option value="$PROJECT_DIR$/netty/src/main/java/channel/CheBootstrapHandler.java" />
         <option value="$PROJECT_DIR$/netty/src/main/java/util/CheBootstrap.java" />
-        <option value="$PROJECT_DIR$/netty/src/main/java/util/Configuration.java" />
-        <option value="$PROJECT_DIR$/netty/src/main/java/channel/CheControllerHandler.java" />
         <option value="$PROJECT_DIR$/netty/src/main/java/core/NettyChannelInitializer.java" />
         <option value="$PROJECT_DIR$/netty/src/main/java/util/UUIDGenerator.java" />
         <option value="$PROJECT_DIR$/netty/src/main/java/core/NettyServer.java" />
@@ -213,6 +251,14 @@
         <option value="$PROJECT_DIR$/netty/src/main/java/channel/CheHandler.java" />
         <option value="$PROJECT_DIR$/testing/src/main/java/Setup.java" />
         <option value="$PROJECT_DIR$/netty/src/main/java/factory/ChannelMapFactory.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/util/Configuration.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/channel/CheControllerHandler.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/util/CheCallbackClient.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/controller/CheController.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/controller/handler/PlayerHandler.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/AllianceHandler.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/model/CheChannel.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/factory/CheChannelFactory.java" />
       </list>
     </option>
   </component>
@@ -1349,13 +1395,13 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32606634" sideWeight="0.40040344" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32606634" sideWeight="0.38678768" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31753555" sideWeight="0.5562279" order="7" side_tool="true" content_ui="combo" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31753555" sideWeight="0.5602622" order="7" side_tool="true" content_ui="combo" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31753555" sideWeight="0.44377205" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31753555" sideWeight="0.43973777" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25687203" sideWeight="0.49621785" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17044881" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1658,39 +1704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/netty/src/main/java/util/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
-          <folding>
-            <element signature="e#3868#3869#0" expanded="true" />
-            <element signature="e#3897#3898#0" expanded="true" />
-            <element signature="e#3934#3935#0" expanded="true" />
-            <element signature="e#3966#3967#0" expanded="true" />
-            <element signature="e#4017#4018#0" expanded="true" />
-            <element signature="e#4059#4060#0" expanded="true" />
-            <element signature="e#4096#4097#0" expanded="true" />
-            <element signature="e#4128#4129#0" expanded="true" />
-            <element signature="e#4179#4180#0" expanded="true" />
-            <element signature="e#4221#4222#0" expanded="true" />
-            <element signature="e#4253#4254#0" expanded="true" />
-            <element signature="e#4284#4285#0" expanded="true" />
-            <element signature="e#7664#7665#0" expanded="true" />
-            <element signature="e#7704#7705#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netty/src/main/java/channel/CheControllerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/netty/src/main/java/core/NettyChannelInitializer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1698,14 +1711,6 @@
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netty/src/main/java/controller/handler/che/AllianceHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="38" selection-start-line="62" selection-start-column="38" selection-end-line="62" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1736,16 +1741,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/netty/src/main/java/controller/handler/PlayerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/netty/src/main/java/channel/CheHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1755,14 +1750,6 @@
             <element signature="e#530#531#0" expanded="true" />
             <element signature="e#580#581#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netty/src/main/java/controller/CheController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1798,30 +1785,109 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/netty/src/main/java/factory/CheChannelFactory.java">
+    <entry file="file://$PROJECT_DIR$/testing/src/main/java/Setup.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/model/security/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/util/Configuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="280" column="0" selection-start-line="280" selection-start-column="0" selection-end-line="280" selection-end-column="0" />
           <folding>
-            <element signature="e#683#684#0" expanded="true" />
-            <element signature="e#716#717#0" expanded="true" />
+            <element signature="e#7496#7497#0" expanded="true" />
+            <element signature="e#7532#7533#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/channel/CheControllerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="3" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="118" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/util/CheCallbackClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/controller/CheController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/controller/handler/PlayerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="55" column="40" selection-start-line="55" selection-start-column="40" selection-end-line="55" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/controller/handler/che/AllianceHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="109" column="27" selection-start-line="109" selection-start-column="27" selection-end-line="109" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/netty/src/main/java/model/CheChannel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-          <folding />
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#456#457#0" expanded="true" />
+            <element signature="e#494#495#0" expanded="true" />
+            <element signature="e#528#529#0" expanded="true" />
+            <element signature="e#558#559#0" expanded="true" />
+            <element signature="e#587#588#0" expanded="true" />
+            <element signature="e#613#614#0" expanded="true" />
+            <element signature="e#771#772#0" expanded="true" />
+            <element signature="e#820#821#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testing/src/main/java/Setup.java">
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/factory/CheChannelFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36956522">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.5869565">
+          <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
+          <folding>
+            <element signature="e#427#428#0" expanded="true" />
+            <element signature="e#472#473#0" expanded="true" />
+            <element signature="e#663#664#0" expanded="true" />
+            <element signature="e#704#705#0" expanded="true" />
+            <element signature="e#1162#1163#0" expanded="true" />
+            <element signature="e#1218#1219#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

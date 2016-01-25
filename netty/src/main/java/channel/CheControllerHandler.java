@@ -25,11 +25,12 @@ public class CheControllerHandler extends SimpleChannelInboundHandler<CheMessage
 
     @Override
     protected void messageReceived(ChannelHandlerContext ctx, CheMessage cheMessage) throws Exception {
-        configuration.getCheChannelFactory().addChannel(cheMessage.getMessage(Tags.PLAYER).getKey(), ctx.channel());
+
+     //   configuration.getCheChannelFactory().addChannel(cheMessage.getMessage(Tags.PLAYER).getKey(), ctx.channel());
 
         new Thread(() -> {
             try {
-                cheController.receive(cheMessage);
+                cheController.receive(ctx.channel(), cheMessage);
             } catch (Exception e) {
                 configuration.getLogger().error("failed to call che controller " + e.getMessage());
             }

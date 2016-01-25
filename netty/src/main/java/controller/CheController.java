@@ -3,13 +3,16 @@ package controller;
 import controller.handler.CheHandler;
 import controller.handler.PlayerHandler;
 import core.HazelcastManagerInterface;
+import factory.CheChannelFactory;
 import io.netty.channel.Channel;
 import message.CheMessage;
 import message.HazelcastMessage;
 import model.Player;
 import org.json.JSONException;
 import server.CheCallbackInterface;
+import util.CheCallbackClient;
 import util.Configuration;
+import util.Tags;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -49,7 +52,7 @@ public class CheController {
             hazelcastManagerInterface = (HazelcastManagerInterface) Naming.lookup(configuration.getHazelcastURL());
             playerHandler = new PlayerHandler(hazelcastManagerInterface, configuration);
             cheHandler = new CheHandler(hazelcastManagerInterface, configuration);
-            hazelcastManagerInterface.addCallback(new CheCallbackClient());
+            hazelcastManagerInterface.addCallback(new CheCallbackClient(configuration));
             return true;
         } catch (NotBoundException e) {
             configuration.getLogger().error("hazelcast server failed " + e.getMessage());
@@ -61,13 +64,16 @@ public class CheController {
         return false;
     }
 
-    public void receive(CheMessage message) throws RemoteException, NotBoundException, MalformedURLException, JSONException, NoSuchAlgorithmException {
+    public void receive(Channel channel, CheMessage message) throws RemoteException, NotBoundException, MalformedURLException, JSONException, NoSuchAlgorithmException {
 
         if (hazelcastManagerInterface == null) {
             hazelcastServerUp = initHazelcastServer();
         }
 
         if (hazelcastServerUp) {
+             //do the needful ;) trademarked.  needs testing under force ie should be thread safe as static, and we never access same shit form multiple threads.
+            CheChannelFactory.updateCheChannel(message.getMessage(Tags.PLAYER).getKey(), channel);
+
             Player player = playerHandler.handlePlayer(message);
             cheHandler.handle(player, message);
 
@@ -75,44 +81,5 @@ public class CheController {
             hazelcastManagerInterface.put(CheController.PLAYER_MAP, player.getKey(), player);
         }
     }
-
-    private void handleMessage(HazelcastMessage cheMessage, String key) throws JSONException {
-
-        Channel channel = configuration.getCheChannelFactory().getChannel(key);
-
-        if (channel != null) {
-
-            if (!cheMessage.getRemoteAddress().equals(channel.remoteAddress().toString())) {
-                channel.writeAndFlush(cheMessage.getCheObject().toString());
-            }
-        } else {
-            configuration.getLogger().debug("we have no channel for " + key);
-        }
-    }
-
-
-    /*
-      callback handler requires local access. (working around various issues with decoupling).
-     */
-    public class CheCallbackClient extends UnicastRemoteObject implements CheCallbackInterface {
-
-        public CheCallbackClient() throws RemoteException {
-            super();
-        }
-
-        @Override
-        public void handleCallback(String message, String key) {
-            try {
-                HazelcastMessage cheMessage = new HazelcastMessage(message);
-                handleMessage(cheMessage, key);
-            } catch (JSONException e) {
-                configuration.getLogger().error("callback failed " + e.getMessage());
-            } catch (Exception e2) {
-                configuration.getLogger().error("callback failed " + message + " " + e2.getMessage());
-
-            }
-        }
-    }
-
 
 }

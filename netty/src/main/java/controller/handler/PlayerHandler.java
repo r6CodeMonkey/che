@@ -2,6 +2,7 @@ package controller.handler;
 
 import controller.CheController;
 import core.HazelcastManagerInterface;
+import factory.CheChannelFactory;
 import message.CheMessage;
 import message.HazelcastMessage;
 import model.Player;
@@ -48,11 +49,11 @@ public class PlayerHandler {
         player.utmLocation = utmLocation;
 
         if (hasUTMChanged || hasSubUTMChanged) {
-            configuration.getCheChannelFactory().getChannel(player.getKey()).writeAndFlush(player.utmLocation.getMessage());
+            CheChannelFactory.write(player.getKey(), utmLocation.getMessage());
             //we dont actually need to send this? well we could.  needs information status.
             player.utmLocation.state = Tags.MESSAGE;
             player.utmLocation.value = Tags.PLAYER_ENTERED;
-            HazelcastMessage hazelcastMessage = new HazelcastMessage(configuration.getCheChannelFactory().getChannel(player.getKey()).remoteAddress().toString(), new JSONObject(player.utmLocation.getMessage()));
+            HazelcastMessage hazelcastMessage = new HazelcastMessage(CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(), new JSONObject(player.utmLocation.getMessage()));
             hazelcastManagerInterface.publish(player.utmLocation.subUtm.getUtm(), hazelcastMessage.toString());
         }
 

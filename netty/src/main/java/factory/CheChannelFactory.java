@@ -1,6 +1,10 @@
 package factory;
 
 import io.netty.channel.Channel;
+import message.CheMessage;
+import message.HazelcastMessage;
+import model.CheChannel;
+import org.json.JSONException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,27 +14,34 @@ import java.util.Map;
  */
 public class CheChannelFactory {
 
-    /*
-      need to create an object for this, that can persist messages / and update the channels..
-     */
+    private static Map<String, CheChannel> cheChannelMap = new HashMap<>();
 
-
-    private final Map<String, Channel> channelMap = new HashMap<>();
-
-    public void addChannel(String uid, Channel channel) {
-        channelMap.put(uid, channel);
+    public static CheChannel getCheChannel(String key){
+        return cheChannelMap.get(key);
     }
 
-    public void removeChannel(String uid) {
-        channelMap.remove(uid);
+    private static void addCheChannel(String key, Channel channel){
+        cheChannelMap.put(key, new CheChannel(key, channel));
     }
 
-    public Channel getChannel(String uid) {
-        return channelMap.get(uid);
+    public static void removeCheChannel(String key){
+        cheChannelMap.remove(key);
     }
 
-    public Map<String, Channel> getChannelMap() {
-        return channelMap;
+    public static void updateCheChannel(String key, Channel channel){
+        if(cheChannelMap.containsKey(key)){
+            cheChannelMap.get(key).updateChannel(channel);
+        }else{
+            addCheChannel(key, channel);
+        }
+    }
+
+    public static void write(String key, HazelcastMessage cheMessage) throws JSONException {
+        cheChannelMap.get(key).write(cheMessage);
+    }
+
+    public static void write(String key, String cheMessage){
+        cheChannelMap.get(key).write(cheMessage);
     }
 
 }

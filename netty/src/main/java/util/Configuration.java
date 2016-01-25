@@ -48,9 +48,6 @@ public class Configuration {
     private String hazelcastURL = "//localhost/HazelcastServer";
 
 
-    private CheChannelFactory cheChannelFactory = new CheChannelFactory();
-
-
     public Configuration() {
 
     }
@@ -280,10 +277,6 @@ public class Configuration {
 
     public UUIDGenerator getUuidGenerator() {
         return uuidGenerator;
-    }
-
-    public CheChannelFactory getCheChannelFactory() {
-        return cheChannelFactory;
     }
 
     public UTMConvert getUtmConvert() {

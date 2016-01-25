@@ -2,6 +2,7 @@ package controller.handler.che;
 
 import controller.CheController;
 import core.HazelcastManagerInterface;
+import factory.CheChannelFactory;
 import message.HazelcastMessage;
 import model.Alliance;
 import model.Player;
@@ -60,8 +61,7 @@ public class AllianceHandler {
         player.getTopicSubscriptions().addSubscription(alliance.getKey(), hazelcastManagerInterface.subscribe(alliance.getKey(), player.getKey()));
         alliance.value = Tags.SUCCESS;
 
-        configuration.getCheChannelFactory().getChannel(player.getKey()).writeAndFlush(alliance.getMessage());
-
+        CheChannelFactory.write(player.getKey(), alliance.getMessage());
     }
 
     private void allianceInvite(Player player, Alliance alliance) throws RemoteException, NoSuchAlgorithmException {
@@ -89,7 +89,7 @@ public class AllianceHandler {
             serverAlliance.value = Tags.SUCCESS;
             serverAlliance.state = Tags.ALLIANCE_JOIN;
 
-            configuration.getCheChannelFactory().getChannel(player.getKey()).writeAndFlush(serverAlliance.getMessage());
+            CheChannelFactory.write(player.getKey(), serverAlliance.getMessage());
         }
 
     }
@@ -109,7 +109,7 @@ public class AllianceHandler {
             serverAlliance.value = Tags.SUCCESS;
             serverAlliance.state = Tags.ALLIANCE_LEAVE;
 
-            configuration.getCheChannelFactory().getChannel(player.getKey()).writeAndFlush(serverAlliance.getMessage());
+            CheChannelFactory.write(player.getKey(), serverAlliance.getMessage());
         }
 
 
@@ -117,7 +117,7 @@ public class AllianceHandler {
 
     private void alliancePost(Player player, Alliance alliance) throws RemoteException, NoSuchAlgorithmException, JSONException {
 
-        HazelcastMessage hazelcastMessage = new HazelcastMessage(configuration.getCheChannelFactory().getChannel(player.getKey()).remoteAddress().toString(), new JSONObject(alliance.getMessage()));
+        HazelcastMessage hazelcastMessage = new HazelcastMessage(CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(), new JSONObject(alliance.getMessage()));
         hazelcastManagerInterface.publish(alliance.getKey(), hazelcastMessage.toString());
 
     }
