@@ -2,100 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1da809bf-b5cd-41ef-846a-b237902f929e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/netty/src/main/java/model/CheChannel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/netty/src/main/java/channel/CheControllerHandler.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/cheController.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/src/main/java/channel/CheHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/src/main/java/channel/JsonFrameDecoder.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/src/main/java/channel/JsonHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/src/main/java/server/CheChannelInitializer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/src/main/java/server/CheControllerServer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/src/main/java/util/Configuration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/src/main/java/util/Response.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/src/main/java/util/UUIDGenerator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/src/main/resources/log4j.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/src/test/java/UtmConvertTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/channel/CheHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/channel/JsonFrameDecoder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/channel/JsonHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/channel/TestHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/controller/CheController$CheCallbackClient.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/controller/CheController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/controller/handler/CheHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/controller/handler/PlayerHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/controller/handler/UTMHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/controller/handler/che/AllianceHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/controller/handler/che/GameObjectHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/controller/handler/che/MissileHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/log4j.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/server/CheChannelInitializer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/server/CheControllerServer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/util/ChannelMapController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/util/Configuration.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/util/Response.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/util/UTMConvert$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/util/UTMConvert.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/classes/util/UUIDGenerator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cheController/target/test-classes/UtmConvertTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/CheBootstrapHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/CheClientHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/model/CheControllerObject.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/socket/CheControllerSocket.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/util/CheBootstrap.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/util/CheCamelController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/test/java/util/CheCamelControllerIT.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/channel/CheBootstrapHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/channel/CheClientHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/model/CheControllerObject.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/socket/CheControllerSocket.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/util/CheBootstrap$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/util/CheBootstrap.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/util/CheCamelController$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/util/CheCamelController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/util/SSLConfiguration.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/test-classes/util/CheCamelControllerIT.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/cheController/src/main/java/controller/CheController.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/CheController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/CheHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/CheHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/PlayerHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/PlayerHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/UTMHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/UTMHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/che/AllianceHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/AllianceHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/che/GameObjectHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/GameObjectHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/cheController/src/main/java/controller/handler/che/MissileHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/MissileHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/cheController/src/main/java/util/ChannelMapController.java" afterPath="$PROJECT_DIR$/netty/src/main/java/factory/CheChannelFactory.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/cheController/src/main/java/util/UTMConvert.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/UTMConvert.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/netty/src/main/java/util/SSLConfiguration.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/security/SSLConfiguration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/channel/CheHandler.class" afterPath="$PROJECT_DIR$/netty/target/classes/channel/CheHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/util/Configuration.class" afterPath="$PROJECT_DIR$/netty/target/classes/util/Configuration.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/message/GameObject.class" afterPath="$PROJECT_DIR$/schema/target/classes/message/GameObject.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/test-classes/message/MessageTest.class" afterPath="$PROJECT_DIR$/schema/target/test-classes/message/MessageTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/test-classes/model/ModelTest.class" afterPath="$PROJECT_DIR$/schema/target/test-classes/model/ModelTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/core/NettyChannelInitializer.class" afterPath="$PROJECT_DIR$/netty/target/classes/core/NettyChannelInitializer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/core/NettyServer.class" afterPath="$PROJECT_DIR$/netty/target/classes/core/NettyServer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/target/classes/Setup.class" afterPath="$PROJECT_DIR$/testing/target/classes/Setup.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/target/classes/TestSocket.class" afterPath="$PROJECT_DIR$/testing/target/classes/TestSocket.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/target/classes/TestSocketController.class" afterPath="$PROJECT_DIR$/testing/target/classes/TestSocketController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/util/UUIDGenerator.class" afterPath="$PROJECT_DIR$/netty/target/classes/util/UUIDGenerator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/C:\log4j-application.log" afterPath="$PROJECT_DIR$/C:\log4j-application.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/src/main/java/CheClientHandler.java" afterPath="$PROJECT_DIR$/testing/src/main/java/CheClientHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/CheHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/channel/CheHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/util/Configuration.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/Configuration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/message/GameObject.java" afterPath="$PROJECT_DIR$/schema/src/main/java/message/GameObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/test/java/message/MessageTest.java" afterPath="$PROJECT_DIR$/schema/src/test/java/message/MessageTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/test/java/model/ModelTest.java" afterPath="$PROJECT_DIR$/schema/src/test/java/model/ModelTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/core/NettyChannelInitializer.java" afterPath="$PROJECT_DIR$/netty/src/main/java/core/NettyChannelInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/core/NettyServer.java" afterPath="$PROJECT_DIR$/netty/src/main/java/core/NettyServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/src/main/java/Setup.java" afterPath="$PROJECT_DIR$/testing/src/main/java/Setup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/util/Tags.java" afterPath="$PROJECT_DIR$/schema/src/main/java/util/Tags.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/src/main/java/TestSocket.java" afterPath="$PROJECT_DIR$/testing/src/main/java/TestSocket.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/src/main/java/TestSocketController.java" afterPath="$PROJECT_DIR$/testing/src/main/java/TestSocketController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/util/UUIDGenerator.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/UUIDGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/netty.iml" afterPath="$PROJECT_DIR$/netty/netty.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/pom.xml" afterPath="$PROJECT_DIR$/netty/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/netty/src/main/java/util/security/User.java" afterPath="$PROJECT_DIR$/netty/src/main/java/model/security/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/util/security/CertificateBuilder.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/security/CertificateBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/util/security/KeyStoreBuilder.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/security/KeyStoreBuilder.java" />
     </list>
     <ignored path="Che.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -139,8 +48,8 @@
       <file leaf-file-name="Setup.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testing/src/main/java/Setup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45652175">
-              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.36956522">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -719,7 +628,75 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="security" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="che" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="che" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="netty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="che" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="che" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="netty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="security" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1842,8 +1819,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testing/src/main/java/Setup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45652175">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.36956522">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>

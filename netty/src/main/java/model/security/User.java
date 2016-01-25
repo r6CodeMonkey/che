@@ -1,4 +1,4 @@
-package util.security;
+package model.security;
 
 /**
  * Created by timmytime on 28/12/15.
