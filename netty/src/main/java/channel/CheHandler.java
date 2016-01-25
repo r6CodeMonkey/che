@@ -5,14 +5,8 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import message.CheMessage;
 import message.Player;
 import model.Acknowledge;
-import socket.CheControllerSocket;
 import util.Configuration;
 import util.Tags;
-
-import java.io.IOException;
-import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -20,29 +14,12 @@ import java.util.List;
  */
 public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
 
-    private final List<CheMessage> pendingMessages = new ArrayList<>();
     private final Configuration configuration;
     private CheMessage cheMessage;
     private model.Acknowledge ack;
-    private Socket socket;
-    private CheControllerSocket cheControllerSocket;
-    private boolean socketAvailable = false;
-
 
     public CheHandler(Configuration configuration) {
         this.configuration = configuration;
-        socketAvailable = initSocket();
-    }
-
-
-    private boolean initSocket() {
-        try {
-            socket = new Socket(configuration.getCheIP(), configuration.getChePort());
-            return true;
-        } catch (IOException e) {
-            configuration.getLogger().error("Che Port is not Available " + e.getMessage());
-            return false;
-        }
     }
 
 
@@ -65,30 +42,14 @@ public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
             ctx.channel().writeAndFlush(ack.getMessage());
         }
 
-        if (socket == null || socket.isClosed()) {
-            socketAvailable = initSocket();
-        }
-
-        if (socketAvailable) {
-
-            if (cheControllerSocket == null || !cheControllerSocket.getChannel().isOpen()) {
-                cheControllerSocket = new CheControllerSocket(configuration, ctx.channel(), socket);
-            }
-
-            configuration.getLogger().debug(cheMessage.toString());
-            cheControllerSocket.write(cheMessage);
-
-            pendingMessages.forEach(cheControllerSocket::write);
-
-        } else {
-            pendingMessages.add(cheMessage);
-        }
-
 
         ack.state = Tags.SUCCESS;
         ack.value = "Received";  //needs to go in tags...
 
         ctx.channel().writeAndFlush(ack.getMessage());
+
+        //fire up pipeline...
+        ctx.fireChannelRead(cheMessage);
 
     }
 

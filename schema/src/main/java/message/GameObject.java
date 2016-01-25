@@ -1,6 +1,5 @@
 package message;
 
-import model.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import util.Tags;
@@ -77,63 +76,63 @@ public class GameObject extends CoreMessage {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_UTM_LOCATION, utmLocation);
     }
 
-    public double getMass(){
+    public double getMass() {
         return this.getJSONObject(Tags.GAME_OBJECT).getDouble(Tags.GAME_OBJECT_MASS);
     }
 
-    public void setMass(double mass){
+    public void setMass(double mass) {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_MASS, mass);
     }
 
-    public double getAcceleration(){
+    public double getAcceleration() {
         return this.getJSONObject(Tags.GAME_OBJECT).getDouble(Tags.GAME_OBJECT_ACCELERATION);
     }
 
-    public void setAcceleration(double acceleration){
+    public void setAcceleration(double acceleration) {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_ACCELERATION, acceleration);
     }
 
-    public double getVelocity(){
+    public double getVelocity() {
         return this.getJSONObject(Tags.GAME_OBJECT).getDouble(Tags.GAME_OBJECT_VELOCITY);
     }
 
-    public void setVelocity(double velocity){
+    public void setVelocity(double velocity) {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_VELOCITY, velocity);
     }
 
-    public boolean isHit(){
+    public boolean isHit() {
         return this.getJSONObject(Tags.GAME_OBJECT).getBoolean(Tags.GAME_OBJECT_IS_HIT);
     }
 
-    public void setHit(boolean hit){
+    public void setHit(boolean hit) {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_IS_HIT, hit);
     }
 
-    public boolean isFixed(){
+    public boolean isFixed() {
         return this.getJSONObject(Tags.GAME_OBJECT).getBoolean(Tags.GAME_OBJECT_IS_FIXED);
     }
 
-    public void setFixed(boolean fixed){
+    public void setFixed(boolean fixed) {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_IS_FIXED, fixed);
     }
 
-    public boolean isDestroyed(){
+    public boolean isDestroyed() {
         return this.getJSONObject(Tags.GAME_OBJECT).getBoolean(Tags.GAME_OBJECT_IS_DESTROYED);
     }
 
-    public void setDestroyed(boolean destroyed){
+    public void setDestroyed(boolean destroyed) {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_IS_DESTROYED, destroyed);
     }
 
-    public boolean isLocated(){
+    public boolean isLocated() {
         return this.getJSONObject(Tags.GAME_OBJECT).getBoolean(Tags.GAME_OBJECT_IS_LOCATED);
     }
 
-    public void setLocated(boolean located){
+    public void setLocated(boolean located) {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_IS_LOCATED, located);
     }
 
-    public List<Missile> getMissiles(){
+    public List<Missile> getMissiles() {
         JSONArray array = this.getJSONObject(Tags.GAME_OBJECT).getJSONArray(Tags.GAME_OBJECT_MISSILES);
 
         List<Missile> missiles = new ArrayList<>();
@@ -145,7 +144,7 @@ public class GameObject extends CoreMessage {
         return missiles;
     }
 
-    public void setMissiles(List<Missile> missiles){
+    public void setMissiles(List<Missile> missiles) {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_MISSILES, missiles);
     }
 

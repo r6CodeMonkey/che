@@ -19,4 +19,8 @@ public final class UUIDGenerator {
         return (MessageDigest.getInstance(algorithm).digest(("Player Unique ID" + UUID.randomUUID().toString() + System.currentTimeMillis()).toString().getBytes())).toString();
     }
 
+    public String generateKey(String keyType) throws NoSuchAlgorithmException {
+        return (MessageDigest.getInstance(algorithm).digest((keyType + UUID.randomUUID().toString() + System.currentTimeMillis()).toString().getBytes())).toString();
+    }
+
 }

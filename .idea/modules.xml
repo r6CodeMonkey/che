@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/che.iml" filepath="$PROJECT_DIR$/.idea/che.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cheController/cheController.iml" filepath="$PROJECT_DIR$/cheController/cheController.iml" />
       <module fileurl="file://$PROJECT_DIR$/erlang/erlang.iml" filepath="$PROJECT_DIR$/erlang/erlang.iml" />
       <module fileurl="file://$PROJECT_DIR$/hazelcast/hazelcast.iml" filepath="$PROJECT_DIR$/hazelcast/hazelcast.iml" />
       <module fileurl="file://$PROJECT_DIR$/netty/netty.iml" filepath="$PROJECT_DIR$/netty/netty.iml" />

@@ -1,5 +1,6 @@
 package util;
 
+import factory.CheChannelFactory;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -16,9 +17,12 @@ import java.io.IOException;
  */
 public class Configuration {
 
-
     private static Logger logger = Logger.getLogger("che.netty");
+    private double SUB_ZONE_LAT = 0.05;
+    private double SUB_ZONE_LONG = 0.1;
     private UUIDGenerator uuidGenerator = new UUIDGenerator("MD5");
+    private UTMConvert utmConvert = new UTMConvert(SUB_ZONE_LAT, SUB_ZONE_LONG);
+
     private int bossThreads = 1;
     private int workerThreads = 5;
     private int port = 8085;
@@ -40,6 +44,11 @@ public class Configuration {
     private boolean keepAlive = true;
     private int backlog = 128;
     private boolean epollMode = false;
+    private int hazelcastPort = 1099;
+    private String hazelcastURL = "//localhost/HazelcastServer";
+
+
+    private CheChannelFactory cheChannelFactory = new CheChannelFactory();
 
 
     public Configuration() {
@@ -83,6 +92,8 @@ public class Configuration {
 
         uuidGenerator = new UUIDGenerator(String.valueOf(element.getAttribute("uuidalgo")));
 
+        uuidGenerator = new UUIDGenerator(String.valueOf(element.getAttribute("uuidalgo")));
+        utmConvert = new UTMConvert(Double.valueOf(element.getAttribute("subzonelat")), Double.valueOf(element.getAttribute("subzonelong")));
 
     }
 
@@ -178,6 +189,23 @@ public class Configuration {
         this.port = port;
     }
 
+    public int getHazelcastPort() {
+        return hazelcastPort;
+    }
+
+    public void setHazelcastPort(int hazelcastPort) {
+        this.hazelcastPort = hazelcastPort;
+    }
+
+    public String getHazelcastURL() {
+        return hazelcastURL;
+    }
+
+    public void setHazelcastURL(String hazelcastURL) {
+        this.hazelcastURL = hazelcastURL;
+    }
+
+
     public int getBossThreads() {
         return bossThreads;
     }
@@ -254,5 +282,12 @@ public class Configuration {
         return uuidGenerator;
     }
 
+    public CheChannelFactory getCheChannelFactory() {
+        return cheChannelFactory;
+    }
+
+    public UTMConvert getUtmConvert() {
+        return utmConvert;
+    }
 
 }

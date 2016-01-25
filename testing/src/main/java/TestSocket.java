@@ -36,15 +36,16 @@ public class TestSocket {
         read.start();
     }
 
-    public void write(CheMessage message){
+    public void write(CheMessage message) {
         try {
             dataOutputStream.write(message.toString().getBytes("UTF-8"));
-        } catch (IOException e) { e.printStackTrace();
-         //   configuration.getLogger().error("something bad happened " + e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+            //   configuration.getLogger().error("something bad happened " + e.getMessage());
         }
     }
 
-    private void listen(){
+    private void listen() {
         try {
 
             byte[] buffer = new byte[BUFFER_SIZE];
@@ -100,7 +101,7 @@ public class TestSocket {
 
                     }
 
-                    System.out.println("recd "+object);
+                    System.out.println("recd " + object);
 
                     callback.actionPerformed(new ActionEvent(this, 1, object));
 
@@ -115,7 +116,7 @@ public class TestSocket {
 
     }
 
-    public void destroy(){
+    public void destroy() {
         try {
             dataOutputStream.close();
         } catch (IOException e) {

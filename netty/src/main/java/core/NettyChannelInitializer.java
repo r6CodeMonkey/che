@@ -1,6 +1,6 @@
 package core;
 
-import channel.CheBootstrapHandler;
+import channel.CheControllerHandler;
 import channel.CheHandler;
 import channel.JsonFrameDecoder;
 import channel.JsonHandler;
@@ -10,7 +10,7 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.ssl.SslHandler;
 import util.Configuration;
-import util.SSLConfiguration;
+import util.security.SSLConfiguration;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
@@ -26,13 +26,16 @@ public class NettyChannelInitializer extends ChannelInitializer {
     public static final String STRING_ENCODER_HANDLER = "stringEncoder";
     public static final String JSON_HANDLER = "jsonHandler";
     public static final String CHE_HANDLER = "cheHandler";
-    public static final String BS_CHE_HANDLER = "bsCheHandler";
+    public static final String CHE_CONTROLLER_HANDLER = "cheControllerHandler";
+
 
     private final Configuration configuration;
+    private final CheControllerHandler cheControllerHandler;
     private SSLContext sslContext;
 
-    public NettyChannelInitializer(Configuration configuration) {
+    public NettyChannelInitializer(Configuration configuration) throws Exception {
         this.configuration = configuration;
+        this.cheControllerHandler = new CheControllerHandler(configuration);
 
         try {
             sslContext = SSLConfiguration.configure(configuration);
@@ -55,7 +58,7 @@ public class NettyChannelInitializer extends ChannelInitializer {
         channel.pipeline().addLast(STRING_ENCODER_HANDLER, new StringEncoder());
         channel.pipeline().addLast(JSON_HANDLER, new JsonHandler(configuration));
         channel.pipeline().addLast(CHE_HANDLER, new CheHandler(configuration));
-       // channel.pipeline().addLast(BS_CHE_HANDLER, new CheBootstrapHandler(configuration));
+        channel.pipeline().addLast(CHE_CONTROLLER_HANDLER, cheControllerHandler);
     }
 
     public void stop() {

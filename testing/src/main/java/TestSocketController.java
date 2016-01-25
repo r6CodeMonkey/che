@@ -1,5 +1,4 @@
 import message.CheMessage;
-import message.UTM;
 import model.Acknowledge;
 import model.Alliance;
 import model.Player;
@@ -20,14 +19,13 @@ import java.util.UUID;
  */
 public class TestSocketController {
 
+    private final TestSocket testSocket;
     //basic stuff.  each test socket controller will have a user key.
-    private  Player player;
+    private Player player;
     private Alliance alliance;
     private List<Alliance> alliances = new ArrayList<>();
     //need to confirm we get acks....
     private ActionListener allianceCallback;
-
-    private final TestSocket testSocket;
 
     public TestSocketController() throws IOException {
 
@@ -45,7 +43,7 @@ public class TestSocketController {
         acknowledge.state = Tags.MESSAGE;
         acknowledge.value = "";
         player = new Player("");
-        player.name =  UUID.randomUUID().toString();
+        player.name = UUID.randomUUID().toString();
         UTMLocation utmLocation = new UTMLocation();
         utmLocation.latitude = 1.0;
         utmLocation.longitude = 12.0;
@@ -67,13 +65,10 @@ public class TestSocketController {
         testSocket.write(cheMessage);
 
 
-
-
-
     }
 
 
-    public void joinAlliance(String key){
+    public void joinAlliance(String key) {
         Acknowledge acknowledge = new Acknowledge(UUID.randomUUID().toString());
         acknowledge.state = Tags.MESSAGE;
         acknowledge.value = "";
@@ -94,7 +89,7 @@ public class TestSocketController {
     }
 
 
-    public void createAlliance(ActionListener allianceCallback){
+    public void createAlliance(ActionListener allianceCallback) {
         this.allianceCallback = allianceCallback;
 
         Acknowledge acknowledge = new Acknowledge(UUID.randomUUID().toString());
@@ -124,18 +119,18 @@ public class TestSocketController {
         JSONObject jsonObject = new JSONObject(message);
         //we are either a che message, or an ack.
         //look for OUR UUID type.
-        if(!jsonObject.isNull(Tags.CHE)){
+        if (!jsonObject.isNull(Tags.CHE)) {
             System.out.println("received che return message " + message);
         }
 
-        if(!jsonObject.isNull(Tags.UTM_LOCATION)){
+        if (!jsonObject.isNull(Tags.UTM_LOCATION)) {
             System.out.println("received utm location return message " + message);
         }
 
-        if(!jsonObject.isNull(Tags.ALLIANCE)) {
+        if (!jsonObject.isNull(Tags.ALLIANCE)) {
             System.out.println("received alliance return message " + message);
-           //ok so case 1.  we created alliance
-            switch(jsonObject.getJSONObject(Tags.ALLIANCE).get(Tags.STATE).toString()){
+            //ok so case 1.  we created alliance
+            switch (jsonObject.getJSONObject(Tags.ALLIANCE).get(Tags.STATE).toString()) {
                 case Tags.ALLIANCE_CREATE:
                     alliance.setKey(jsonObject.getJSONObject(Tags.ALLIANCE).get(Tags.ALLIANCE_KEY).toString());
                     alliances.add(alliance);
@@ -156,9 +151,9 @@ public class TestSocketController {
 
         }
 
-        if(!jsonObject.isNull(Tags.ACKNOWLEDGE)){
+        if (!jsonObject.isNull(Tags.ACKNOWLEDGE)) {
             //its an ack.
-            if(jsonObject.getJSONObject(Tags.ACKNOWLEDGE).get(Tags.STATE).equals(Tags.UUID)){
+            if (jsonObject.getJSONObject(Tags.ACKNOWLEDGE).get(Tags.STATE).equals(Tags.UUID)) {
                 player.setKey(jsonObject.getJSONObject(Tags.ACKNOWLEDGE).get(Tags.VALUE).toString());
 
                 System.out.println("created player " + player.getKey());
@@ -167,7 +162,7 @@ public class TestSocketController {
 
     }
 
-    public void stop(){
+    public void stop() {
         testSocket.destroy();
     }
 }

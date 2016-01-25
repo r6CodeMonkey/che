@@ -1,6 +1,5 @@
 package message;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.json.JSONObject;
 import org.junit.Test;
 import util.Tags;
@@ -26,9 +25,9 @@ public class MessageTest {
     //add these later i havent thought about what it needs.
     public static final String MISSILE = "{" + Tags.MISSILE + " :{" + Tags.MISSILE_KEY + ":'99'," + Tags.STATE + ":" + Tags.MISSILE_TARGET + "," + Tags.VALUE + ":'fire'," + Tags.MISSILE_RADIUS + ":5," + Tags.MISSILE_RADIUS_IMPACT_SCALAR + ":6," + Tags.MISSILE_PAYLOAD + ":100," +
             Tags.MISSILE_RANGE + ":5000," + Tags.MISSILE_DESTROYED + ":false," + Tags.MISSILE_LAUNCHED + ":true," + Tags.MISSILE_UTM_LOCATION + ":" + UTM_LOCATION + ", " + Tags.MISSILE_START_UTM_LOCATION + ":" + UTM_LOCATION + "," + Tags.MISSILE_TARGET_UTM_LOCATION + ":" + UTM_LOCATION + "}}";
-    public static final String GAME_OBJECT = "{" + Tags.GAME_OBJECT + " :{"+Tags.GAME_OBJECT_KEY+":'58',"+Tags.STATE+":"+Tags.GAME_OBJECT_HIT+","+Tags.VALUE+":'true',"+Tags.GAME_OBJECT_MASS+":2098,"+Tags.GAME_OBJECT_ACCELERATION+":9.99,"+
-            Tags.GAME_OBJECT_VELOCITY+":123.2356,"+Tags.GAME_OBJECT_IS_DESTROYED+":'false',"+Tags.GAME_OBJECT_IS_FIXED+":'false',"+Tags.GAME_OBJECT_IS_HIT+":'true',"+Tags.GAME_OBJECT_IS_LOCATED+":'true',"+Tags.GAME_OBJECT_UTM_LOCATION+":"+UTM_LOCATION+","+
-            Tags.GAME_OBJECT_MISSILES+":["+MISSILE+"]}}";
+    public static final String GAME_OBJECT = "{" + Tags.GAME_OBJECT + " :{" + Tags.GAME_OBJECT_KEY + ":'58'," + Tags.STATE + ":" + Tags.GAME_OBJECT_HIT + "," + Tags.VALUE + ":'true'," + Tags.GAME_OBJECT_MASS + ":2098," + Tags.GAME_OBJECT_ACCELERATION + ":9.99," +
+            Tags.GAME_OBJECT_VELOCITY + ":123.2356," + Tags.GAME_OBJECT_IS_DESTROYED + ":'false'," + Tags.GAME_OBJECT_IS_FIXED + ":'false'," + Tags.GAME_OBJECT_IS_HIT + ":'true'," + Tags.GAME_OBJECT_IS_LOCATED + ":'true'," + Tags.GAME_OBJECT_UTM_LOCATION + ":" + UTM_LOCATION + "," +
+            Tags.GAME_OBJECT_MISSILES + ":[" + MISSILE + "]}}";
 
 
     @Test
@@ -225,9 +224,9 @@ public class MessageTest {
         assertEquals("58", gameObject.getKey());
         assertEquals(Tags.GAME_OBJECT_HIT, gameObject.getState());
         assertEquals("true", gameObject.getValue());
-        assertEquals(2098, gameObject.getMass(),0);
-        assertEquals(123.2356, gameObject.getVelocity(),0);
-        assertEquals(9.99, gameObject.getAcceleration(),0);
+        assertEquals(2098, gameObject.getMass(), 0);
+        assertEquals(123.2356, gameObject.getVelocity(), 0);
+        assertEquals(9.99, gameObject.getAcceleration(), 0);
         assertEquals(Boolean.FALSE, gameObject.isDestroyed());
         assertEquals(Boolean.FALSE, gameObject.isFixed());
         assertEquals(Boolean.TRUE, gameObject.isHit());
@@ -262,9 +261,9 @@ public class MessageTest {
         assertEquals("58", gameObject.getKey());
         assertEquals(Tags.GAME_OBJECT_HIT, gameObject.getState());
         assertEquals("true", gameObject.getValue());
-        assertEquals(2098, gameObject.getMass(),0);
-        assertEquals(123.2356, gameObject.getVelocity(),0);
-        assertEquals(9.99, gameObject.getAcceleration(),0);
+        assertEquals(2098, gameObject.getMass(), 0);
+        assertEquals(123.2356, gameObject.getVelocity(), 0);
+        assertEquals(9.99, gameObject.getAcceleration(), 0);
         assertEquals(Boolean.FALSE, gameObject.isDestroyed());
         assertEquals(Boolean.FALSE, gameObject.isFixed());
         assertEquals(Boolean.TRUE, gameObject.isHit());

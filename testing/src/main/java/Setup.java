@@ -1,11 +1,3 @@
-
-import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.*;
-import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.SocketChannel;
-import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.util.concurrent.GenericFutureListener;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +6,7 @@ import java.util.List;
  */
 public class Setup {
 
-    private static final int MAX_SOCKETS = 1;  //its not that sensible to hammer my own connection....raises questions about netty server doing it
+    private static final int MAX_SOCKETS = 2;  //its not that sensible to hammer my own connection....raises questions about netty server doing it
     private List<TestSocketController> socketControllers = new ArrayList<>();
 
     private List<String> allianceKeys = new ArrayList<>();
@@ -26,8 +18,6 @@ public class Setup {
 
 
     public Setup() throws Exception {
-
-
 
 
     }
@@ -48,14 +38,14 @@ public class Setup {
     public void start() throws Exception {
 
 
-        for(int i=0;i<MAX_SOCKETS; i++){
+        for (int i = 0; i < MAX_SOCKETS; i++) {
             socketControllers.add(new TestSocketController());
         }
 
 
         socketControllers.get(0).createAlliance(e -> {
             allianceKeys.add(e.getActionCommand());
-            System.out.println("created alliance "+e.getActionCommand());
+            System.out.println("created alliance " + e.getActionCommand());
             //now we have it...lets try and join
             socketControllers.get(1).joinAlliance(e.getActionCommand());
         });
@@ -83,7 +73,6 @@ public class Setup {
             workerGroup.shutdownGracefully();
         }
 */
-
 
 
     }

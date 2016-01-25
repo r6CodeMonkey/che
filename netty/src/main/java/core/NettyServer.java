@@ -16,12 +16,12 @@ public class NettyServer {
     private final Configuration configuration;
     private final NettyChannelInitializer channelInitializer;
 
-    public NettyServer() {
+    public NettyServer() throws Exception {
         configuration = new Configuration();
         channelInitializer = new NettyChannelInitializer(configuration);
     }
 
-    public NettyServer(Configuration configuration) {
+    public NettyServer(Configuration configuration) throws Exception {
         this.configuration = configuration;
         channelInitializer = new NettyChannelInitializer(configuration);
     }
