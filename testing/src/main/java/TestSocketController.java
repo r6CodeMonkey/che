@@ -60,7 +60,7 @@ public class TestSocketController {
         cheMessage.setMessage(Tags.ACKNOWLEDGE, new message.Acknowledge(acknowledge.getMessage()));
         cheMessage.setMessage(Tags.PLAYER, new message.Player(player.getMessage()));
 
-        System.out.println("che message" + cheMessage.toString());
+        // System.out.println("che message" + cheMessage.toString());
 
         testSocket.write(cheMessage);
 
@@ -114,8 +114,6 @@ public class TestSocketController {
 
     private void handleMessageReceived(String message) throws JSONException {
 
-        System.out.println("received che return message " + message);
-
         JSONObject jsonObject = new JSONObject(message);
         //we are either a che message, or an ack.
         //look for OUR UUID type.
@@ -128,7 +126,7 @@ public class TestSocketController {
         }
 
         if (!jsonObject.isNull(Tags.ALLIANCE)) {
-            System.out.println("received alliance return message " + message);
+            //   System.out.println("received alliance return message " + message);
             //ok so case 1.  we created alliance
             switch (jsonObject.getJSONObject(Tags.ALLIANCE).get(Tags.STATE).toString()) {
                 case Tags.ALLIANCE_CREATE:
@@ -153,11 +151,18 @@ public class TestSocketController {
 
         if (!jsonObject.isNull(Tags.ACKNOWLEDGE)) {
             //its an ack.
+            System.out.println(jsonObject);
             if (jsonObject.getJSONObject(Tags.ACKNOWLEDGE).get(Tags.STATE).equals(Tags.UUID)) {
                 player.setKey(jsonObject.getJSONObject(Tags.ACKNOWLEDGE).get(Tags.VALUE).toString());
 
-                System.out.println("created player " + player.getKey());
+                //      System.out.println("created player " + player.getKey());
             }
+        }
+
+        if (!jsonObject.isNull(Tags.CHE_ACKNOWLEDGE)) {
+            //its an ack.
+            System.out.println(jsonObject);
+
         }
 
     }

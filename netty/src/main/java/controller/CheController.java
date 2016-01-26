@@ -6,10 +6,8 @@ import core.HazelcastManagerInterface;
 import factory.CheChannelFactory;
 import io.netty.channel.Channel;
 import message.CheMessage;
-import message.HazelcastMessage;
 import model.Player;
 import org.json.JSONException;
-import server.CheCallbackInterface;
 import util.CheCallbackClient;
 import util.Configuration;
 import util.Tags;
@@ -18,7 +16,6 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 import java.security.NoSuchAlgorithmException;
 
 /**
@@ -71,7 +68,7 @@ public class CheController {
         }
 
         if (hazelcastServerUp) {
-             //do the needful ;) trademarked.  needs testing under force ie should be thread safe as static, and we never access same shit form multiple threads.
+            //do the needful ;) trademarked.  needs testing under force ie should be thread safe as static, and we never access same shit form multiple threads.
             CheChannelFactory.updateCheChannel(message.getMessage(Tags.PLAYER).getKey(), channel);
 
             Player player = playerHandler.handlePlayer(message);

@@ -6,6 +6,7 @@ import message.HazelcastMessage;
 import model.CheChannel;
 import org.json.JSONException;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,31 +17,31 @@ public class CheChannelFactory {
 
     private static Map<String, CheChannel> cheChannelMap = new HashMap<>();
 
-    public static CheChannel getCheChannel(String key){
+    public static CheChannel getCheChannel(String key) {
         return cheChannelMap.get(key);
     }
 
-    private static void addCheChannel(String key, Channel channel){
+    private static void addCheChannel(String key, Channel channel) {
         cheChannelMap.put(key, new CheChannel(key, channel));
     }
 
-    public static void removeCheChannel(String key){
+    public static void removeCheChannel(String key) {
         cheChannelMap.remove(key);
     }
 
-    public static void updateCheChannel(String key, Channel channel){
-        if(cheChannelMap.containsKey(key)){
+    public static void updateCheChannel(String key, Channel channel) {
+        if (cheChannelMap.containsKey(key)) {
             cheChannelMap.get(key).updateChannel(channel);
-        }else{
+        } else {
             addCheChannel(key, channel);
         }
     }
 
-    public static void write(String key, HazelcastMessage cheMessage) throws JSONException {
+    public static void write(String key, HazelcastMessage cheMessage) throws JSONException, NoSuchAlgorithmException {
         cheChannelMap.get(key).write(cheMessage);
     }
 
-    public static void write(String key, String cheMessage){
+    public static void write(String key, CheMessage cheMessage) throws JSONException, NoSuchAlgorithmException {
         cheChannelMap.get(key).write(cheMessage);
     }
 

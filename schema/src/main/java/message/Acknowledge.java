@@ -8,48 +8,58 @@ import util.Tags;
  */
 public class Acknowledge extends CoreMessage {
 
-    public Acknowledge() {
+    private final boolean che;
 
+    public Acknowledge() {
+        super(Tags.ACKNOWLEDGE);
+        che = false;
     }
 
+    public Acknowledge(boolean che) {
+        super(che ? Tags.CHE_ACKNOWLEDGE : Tags.ACKNOWLEDGE);
+        this.che = che;
+    }
+
+
     public Acknowledge(String message) {
-        super(message);
+        super(Tags.ACKNOWLEDGE, message);
+        che = false;
     }
 
     @Override
     public void create() {
         JSONObject inner = new JSONObject();
-        inner.put(Tags.ACK_ID, "");
+        inner.put(che ? Tags.CHE_ACK_ID : Tags.ACK_ID, "");
         inner.put(Tags.STATE, "");
         inner.put(Tags.VALUE, "");
-        this.put(Tags.ACKNOWLEDGE, inner);
+        this.put(che ? Tags.CHE_ACKNOWLEDGE : Tags.ACKNOWLEDGE, inner);
     }
 
     @Override
     public String getKey() {
-        return this.getJSONObject(Tags.ACKNOWLEDGE).get(Tags.ACK_ID).toString();
+        return this.getJSONObject(che ? Tags.CHE_ACKNOWLEDGE : Tags.ACKNOWLEDGE).get(Tags.ACK_ID).toString();
     }
 
     @Override
     public void setKey(String key) {
-        this.getJSONObject(Tags.ACKNOWLEDGE).put(Tags.ACK_ID, key);
+        this.getJSONObject(che ? Tags.CHE_ACKNOWLEDGE : Tags.ACKNOWLEDGE).put(che ? Tags.CHE_ACK_ID : Tags.ACK_ID, key);
     }
 
     public String getState() {
-        return this.getJSONObject(Tags.ACKNOWLEDGE).get(Tags.STATE).toString();
+        return this.getJSONObject(che ? Tags.CHE_ACKNOWLEDGE : Tags.ACKNOWLEDGE).get(Tags.STATE).toString();
     }
 
     public void setState(String state) {
-        this.getJSONObject(Tags.ACKNOWLEDGE).put(Tags.STATE, state);
+        this.getJSONObject(che ? Tags.CHE_ACKNOWLEDGE : Tags.ACKNOWLEDGE).put(Tags.STATE, state);
 
     }
 
     public String getValue() {
-        return this.getJSONObject(Tags.ACKNOWLEDGE).get(Tags.VALUE).toString();
+        return this.getJSONObject(che ? Tags.CHE_ACKNOWLEDGE : Tags.ACKNOWLEDGE).get(Tags.VALUE).toString();
     }
 
     public void setValue(String value) {
-        this.getJSONObject(Tags.ACKNOWLEDGE).put(Tags.VALUE, value);
+        this.getJSONObject(che ? Tags.CHE_ACKNOWLEDGE : Tags.ACKNOWLEDGE).put(Tags.VALUE, value);
     }
 
 

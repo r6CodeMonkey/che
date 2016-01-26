@@ -14,7 +14,7 @@ public class CheClientHandler extends ChannelHandlerAdapter {
 
         for (int i = 0; i < buffer.capacity(); i++) {
             byte b = buffer.getByte(i);
-            System.out.println((char) b);
+            //     System.out.println((char) b);
         }
 
         // System.out.print("hello from handler "+m.toString());

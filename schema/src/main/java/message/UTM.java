@@ -9,10 +9,11 @@ import util.Tags;
 public class UTM extends CoreMessage {
 
     public UTM() {
+        super(Tags.UTM);
     }
 
     public UTM(String message) {
-        super(message);
+        super(Tags.UTM, message);
     }
 
     @Override
@@ -23,6 +24,7 @@ public class UTM extends CoreMessage {
         this.put(Tags.UTM, inner);
 
     }
+
 
     @Override
     public String getKey() {

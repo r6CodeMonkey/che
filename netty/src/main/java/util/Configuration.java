@@ -1,6 +1,5 @@
 package util;
 
-import factory.CheChannelFactory;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

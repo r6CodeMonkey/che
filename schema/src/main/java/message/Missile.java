@@ -9,10 +9,11 @@ import util.Tags;
 public class Missile extends CoreMessage {
 
     public Missile() {
+        super(Tags.MISSILE);
     }
 
     public Missile(String message) {
-        super(message);
+        super(Tags.MISSILE, message);
     }
 
 
@@ -36,6 +37,7 @@ public class Missile extends CoreMessage {
 
         this.put(Tags.MISSILE, inner);
     }
+
 
     @Override
     public String getKey() {

@@ -13,10 +13,11 @@ import java.util.List;
 public class GameObject extends CoreMessage {
 
     public GameObject() {
+        super(Tags.GAME_OBJECT);
     }
 
     public GameObject(String message) {
-        super(message);
+        super(Tags.GAME_OBJECT, message);
     }
 
 
@@ -40,6 +41,7 @@ public class GameObject extends CoreMessage {
         inner.put(Tags.GAME_OBJECT_UTM_LOCATION, utmLocation);
         this.put(Tags.GAME_OBJECT, inner);
     }
+
 
     @Override
     public String getKey() {

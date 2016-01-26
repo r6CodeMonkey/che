@@ -13,11 +13,12 @@ import java.util.List;
 public class Alliance extends CoreMessage {
 
     public Alliance() {
+        super(Tags.ALLIANCE);
 
     }
 
     public Alliance(String message) {
-        super(message);
+        super(Tags.ALLIANCE, message);
     }
 
 

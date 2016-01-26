@@ -9,10 +9,11 @@ import util.Tags;
 public class Player extends CoreMessage {
 
     public Player() {
+        super(Tags.PLAYER);
     }
 
     public Player(String message) {
-        super(message);
+        super(Tags.PLAYER, message);
     }
 
 
@@ -28,6 +29,7 @@ public class Player extends CoreMessage {
         this.put(Tags.PLAYER, inner);
 
     }
+
 
     @Override
     public String getKey() {

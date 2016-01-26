@@ -7,6 +7,7 @@ public class Tags {
 
     //object tags
     public static final String ACKNOWLEDGE = "acknowledge";
+    public static final String CHE_ACKNOWLEDGE = "cheAcknowledge";
     public static final String PLAYER = "player";
     public static final String ALLIANCE = "alliance";
     public static final String MISSILE = "missile";
@@ -39,6 +40,8 @@ public class Tags {
 
     //acknowledge
     public static final String ACK_ID = "ackid";
+    public static final String CHE_ACK_ID = "cheAckid";
+
 
     //utm location
     public static final String LONGITUDE = "long";

@@ -15,6 +15,11 @@ public final class UUIDGenerator {
         this.algorithm = algorithm;
     }
 
+    public static String generate() throws NoSuchAlgorithmException {
+        return (MessageDigest.getInstance("MD5").digest(("che ack " + UUID.randomUUID().toString() + System.currentTimeMillis()).toString().getBytes())).toString();
+
+    }
+
     public String generatePlayerKey() throws NoSuchAlgorithmException {
         return (MessageDigest.getInstance(algorithm).digest(("Player Unique ID" + UUID.randomUUID().toString() + System.currentTimeMillis()).toString().getBytes())).toString();
     }

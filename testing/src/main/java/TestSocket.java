@@ -101,7 +101,6 @@ public class TestSocket {
 
                     }
 
-                    System.out.println("recd " + object);
 
                     callback.actionPerformed(new ActionEvent(this, 1, object));
 

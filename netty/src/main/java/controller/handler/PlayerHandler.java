@@ -13,6 +13,7 @@ import util.Configuration;
 import util.Tags;
 
 import java.rmi.RemoteException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by timmytime on 31/12/15.
@@ -29,7 +30,7 @@ public class PlayerHandler {
         this.utmHandler = new UTMHandler(hazelcastManagerInterface, configuration);
     }
 
-    public Player handlePlayer(CheMessage message) throws RemoteException, JSONException {
+    public Player handlePlayer(CheMessage message) throws RemoteException, JSONException, NoSuchAlgorithmException {
         Player player = getPlayer((message.Player) message.getMessage(Tags.PLAYER));
 
         message.Player playerMessage = (message.Player) message.getMessage(Tags.PLAYER);
@@ -49,7 +50,7 @@ public class PlayerHandler {
         player.utmLocation = utmLocation;
 
         if (hasUTMChanged || hasSubUTMChanged) {
-            CheChannelFactory.write(player.getKey(), utmLocation.getMessage());
+            CheChannelFactory.write(player.getKey(), new CheMessage(Tags.UTM_LOCATION, new message.UTMLocation(utmLocation.getMessage()).getContents()));
             //we dont actually need to send this? well we could.  needs information status.
             player.utmLocation.state = Tags.MESSAGE;
             player.utmLocation.value = Tags.PLAYER_ENTERED;

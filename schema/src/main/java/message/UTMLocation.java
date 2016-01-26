@@ -9,10 +9,11 @@ import util.Tags;
 public class UTMLocation extends CoreMessage {
 
     public UTMLocation() {
+        super(Tags.UTM_LOCATION);
     }
 
     public UTMLocation(String message) {
-        super(message);
+        super(Tags.UTM_LOCATION, message);
     }
 
 
@@ -36,6 +37,7 @@ public class UTMLocation extends CoreMessage {
 
         this.put(Tags.UTM_LOCATION, inner);
     }
+
 
     @Override
     public String getKey() {

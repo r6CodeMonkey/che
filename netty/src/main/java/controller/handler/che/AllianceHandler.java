@@ -3,6 +3,7 @@ package controller.handler.che;
 import controller.CheController;
 import core.HazelcastManagerInterface;
 import factory.CheChannelFactory;
+import message.CheMessage;
 import message.HazelcastMessage;
 import model.Alliance;
 import model.Player;
@@ -49,7 +50,7 @@ public class AllianceHandler {
         }
     }
 
-    private void allianceCreate(Player player, Alliance alliance) throws RemoteException, NoSuchAlgorithmException {
+    private void allianceCreate(Player player, Alliance alliance) throws RemoteException, NoSuchAlgorithmException, JSONException {
 
         alliance.setKey(configuration.getUuidGenerator().generateKey("alliance " + alliance.name));
 
@@ -61,7 +62,7 @@ public class AllianceHandler {
         player.getTopicSubscriptions().addSubscription(alliance.getKey(), hazelcastManagerInterface.subscribe(alliance.getKey(), player.getKey()));
         alliance.value = Tags.SUCCESS;
 
-        CheChannelFactory.write(player.getKey(), alliance.getMessage());
+        CheChannelFactory.write(player.getKey(), new CheMessage(Tags.ALLIANCE, new message.Alliance(alliance.getMessage()).getContents()));
     }
 
     private void allianceInvite(Player player, Alliance alliance) throws RemoteException, NoSuchAlgorithmException {
@@ -73,7 +74,7 @@ public class AllianceHandler {
     }
 
     //note testing wise, you can post withouth joining.  not a major issue presumably.
-    private void allianceJoin(Player player, Alliance alliance) throws RemoteException, NoSuchAlgorithmException {
+    private void allianceJoin(Player player, Alliance alliance) throws RemoteException, NoSuchAlgorithmException, JSONException {
 
         Object object = hazelcastManagerInterface.get(CheController.ALLIANCE_MAP, alliance.getKey());
 
@@ -89,12 +90,12 @@ public class AllianceHandler {
             serverAlliance.value = Tags.SUCCESS;
             serverAlliance.state = Tags.ALLIANCE_JOIN;
 
-            CheChannelFactory.write(player.getKey(), serverAlliance.getMessage());
+            CheChannelFactory.write(player.getKey(), new CheMessage(Tags.ALLIANCE, new message.Alliance(serverAlliance.getMessage()).getContents()));
         }
 
     }
 
-    private void allianceLeave(Player player, Alliance alliance) throws RemoteException, NoSuchAlgorithmException {
+    private void allianceLeave(Player player, Alliance alliance) throws RemoteException, NoSuchAlgorithmException, JSONException {
 
         Object object = hazelcastManagerInterface.get(CheController.ALLIANCE_MAP, alliance.getKey());
 
@@ -109,7 +110,7 @@ public class AllianceHandler {
             serverAlliance.value = Tags.SUCCESS;
             serverAlliance.state = Tags.ALLIANCE_LEAVE;
 
-            CheChannelFactory.write(player.getKey(), serverAlliance.getMessage());
+            CheChannelFactory.write(player.getKey(), new CheMessage(Tags.ALLIANCE, new message.Alliance(serverAlliance.getMessage()).getContents()));
         }
 
 
