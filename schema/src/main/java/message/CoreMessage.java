@@ -22,7 +22,6 @@ public abstract class CoreMessage extends JSONObject implements MessageInterface
     public CoreMessage(String type, String message) {
         super(message);
         this.type = type;
-
     }
 
     public JSONObject getContents() {

@@ -1,5 +1,6 @@
 package model;
 
+import factory.MessageFactory;
 import io.netty.channel.Channel;
 import message.Acknowledge;
 import message.CheMessage;
@@ -46,10 +47,13 @@ public class CheChannel {
         return key;
     }
 
-    public void receive(Acknowledge acknowledge) throws JSONException {
-        buffer.remove(acknowledge.getKey());
-        bufferOrder.remove(acknowledge.getKey());
-        //nah. if we cant send.  we cant send.....simples really.
+    public void receive(String acknowledge) throws JSONException {
+
+        Acknowledge ack = (Acknowledge) MessageFactory.getCheMessage(acknowledge, Tags.CHE_ACKNOWLEDGE);
+
+        //making a fooking mess....with these messages.  need to get a mobile client and retest
+        buffer.remove(ack.get(Tags.CHE_ACK_ID));
+        bufferOrder.remove(ack.get(Tags.CHE_ACK_ID));
     }
 
     private void send(JSONObject message) throws JSONException {

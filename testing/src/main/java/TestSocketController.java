@@ -1,3 +1,4 @@
+import factory.MessageFactory;
 import message.CheMessage;
 import model.Acknowledge;
 import model.Alliance;
@@ -114,11 +115,49 @@ public class TestSocketController {
 
     private void handleMessageReceived(String message) throws JSONException {
 
+        /*
+         everything is now a che object ,, i think,  tests to work with on ack reply....to finish tonight then all good.
+
+         basically bounce back our che ack...
+         */
+
+
         JSONObject jsonObject = new JSONObject(message);
+
+
         //we are either a che message, or an ack.
         //look for OUR UUID type.
         if (!jsonObject.isNull(Tags.CHE)) {
-            System.out.println("received che return message " + message);
+
+            jsonObject = jsonObject.getJSONObject(Tags.CHE);
+
+            System.out.println("received che return message " + jsonObject.toString());
+          if(!jsonObject.isNull(Tags.CHE_ACKNOWLEDGE)) {
+              System.out.println("received che return message 2 ");
+                //send the ack back...  fuck this off.  it should not be so difficult.  ie send a fucking ack back.
+
+              CheMessage cheMessage = new CheMessage();
+              cheMessage.create();
+
+              Acknowledge acknowledge2 = new Acknowledge(UUID.randomUUID().toString());
+              acknowledge2.state = Tags.MESSAGE;
+              acknowledge2.value = "";
+
+
+              System.out.println("well  this is it "+jsonObject.getJSONObject(Tags.CHE_ACKNOWLEDGE).toString());
+
+              cheMessage.setMessage(Tags.CHE_ACKNOWLEDGE, MessageFactory.getCheMessage(jsonObject.getJSONObject(Tags.CHE_ACKNOWLEDGE).toString(), Tags.CHE_ACKNOWLEDGE));
+
+              System.out.println("well it worked once");
+
+              cheMessage.setMessage(Tags.ACKNOWLEDGE, new message.Acknowledge(acknowledge2.getMessage()));
+
+              cheMessage.setMessage(Tags.PLAYER, new message.Player(player.getMessage()));
+
+
+                testSocket.write(cheMessage);
+            }
+
         }
 
         if (!jsonObject.isNull(Tags.UTM_LOCATION)) {

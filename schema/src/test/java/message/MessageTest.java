@@ -280,6 +280,7 @@ public class MessageTest {
 
         Acknowledge acknowledge = new Acknowledge(ACKNOWLEDGE);
 
+
         assertEquals("1", acknowledge.getKey());
         assertEquals(Tags.SUCCESS, acknowledge.getValue());
         assertEquals(Tags.MESSAGE, acknowledge.getState());

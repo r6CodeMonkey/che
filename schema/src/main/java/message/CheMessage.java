@@ -45,6 +45,10 @@ public class CheMessage extends CoreMessage {
         return MessageFactory.getCheMessage(this.getJSONObject(Tags.CHE).getJSONObject(type).toString(), type);
     }
 
+    public boolean containsMessage(String type){
+        return !this.getJSONObject(Tags.CHE).isNull(type);
+    }
+
     public void setMessage(String type, CoreMessage message) {
         this.getJSONObject(Tags.CHE).put(type, message);
     }

@@ -8,6 +8,7 @@ public class Acknowledge extends CoreModel {
 
     public String state;
     public String value;
+    public boolean che;
 
     public Acknowledge(String key) {
         super(key);
@@ -17,13 +18,14 @@ public class Acknowledge extends CoreModel {
         super(acknowledge.getKey());
         state = acknowledge.getState();
         value = acknowledge.getValue();
+        che = acknowledge.isChe();
     }
 
 
     @Override
     public String getMessage() {
 
-        message.Acknowledge acknowledge = new message.Acknowledge();
+        message.Acknowledge acknowledge = new message.Acknowledge(che);
         acknowledge.create();
         acknowledge.setKey(key);
         acknowledge.setValue(value);

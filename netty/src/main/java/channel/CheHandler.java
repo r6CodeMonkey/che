@@ -1,5 +1,7 @@
 package channel;
 
+import factory.CheChannelFactory;
+import factory.MessageFactory;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import message.CheMessage;
@@ -48,12 +50,17 @@ public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
 
         ctx.channel().writeAndFlush(ack.getMessage());
 
-        //fire up pipeline...
-        ctx.fireChannelRead(cheMessage);
+        if(cheMessage.containsMessage(Tags.CHE_ACKNOWLEDGE)){
+            CheChannelFactory.getCheChannel(cheMessage.getMessage(Tags.PLAYER).getKey()).receive(cheMessage.getMessage(Tags.CHE_ACKNOWLEDGE).toString());
+        }else{
+            //fire up pipeline...
+            ctx.fireChannelRead(cheMessage);
+        }
 
     }
 
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+
         try {
             ack = new Acknowledge(cheMessage.getMessage(Tags.ACKNOWLEDGE).getKey());
             ack.state = Tags.ERROR;

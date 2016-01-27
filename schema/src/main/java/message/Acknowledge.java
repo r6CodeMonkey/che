@@ -26,6 +26,23 @@ public class Acknowledge extends CoreMessage {
         che = false;
     }
 
+    public Acknowledge(boolean che, String message) {
+        super(che ? Tags.CHE_ACKNOWLEDGE : Tags.ACKNOWLEDGE, message);
+        this.che = che;
+    }
+
+    //a little hack for returning unlikely required for any other messages.  plus we dont want to touch java8 models, unless we can test it on client tonight
+    public static CoreMessage create(String tag, String contents){
+        Acknowledge acknowledge = new Acknowledge(tag.equals(Tags.CHE_ACKNOWLEDGE));
+        JSONObject jsonObject = new JSONObject(contents);
+
+        acknowledge.put(acknowledge.che ? Tags.CHE_ACK_ID : Tags.ACK_ID, jsonObject.getString(acknowledge.che ? Tags.CHE_ACK_ID : Tags.ACK_ID));
+        acknowledge.put(Tags.VALUE, jsonObject.getString(Tags.VALUE));
+        acknowledge.put(Tags.STATE, jsonObject.getString(Tags.STATE));
+
+        return acknowledge;
+    }
+
     @Override
     public void create() {
         JSONObject inner = new JSONObject();
@@ -51,7 +68,6 @@ public class Acknowledge extends CoreMessage {
 
     public void setState(String state) {
         this.getJSONObject(che ? Tags.CHE_ACKNOWLEDGE : Tags.ACKNOWLEDGE).put(Tags.STATE, state);
-
     }
 
     public String getValue() {
@@ -60,6 +76,10 @@ public class Acknowledge extends CoreMessage {
 
     public void setValue(String value) {
         this.getJSONObject(che ? Tags.CHE_ACKNOWLEDGE : Tags.ACKNOWLEDGE).put(Tags.VALUE, value);
+    }
+
+    public boolean isChe(){
+        return che;
     }
 
 

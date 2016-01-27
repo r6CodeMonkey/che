@@ -6,7 +6,7 @@ import java.util.List;
  */
 public class Setup {
 
-    private static final int MAX_SOCKETS = 10;  //its not that sensible to hammer my own connection....raises questions about netty server doing it
+    private static final int MAX_SOCKETS = 2;  //its not that sensible to hammer my own connection....raises questions about netty server doing it
     private List<TestSocketController> socketControllers = new ArrayList<>();
 
     private List<String> allianceKeys = new ArrayList<>();

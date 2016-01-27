@@ -68,6 +68,7 @@ public class CheController {
         }
 
         if (hazelcastServerUp) {
+
             //do the needful ;) trademarked.  needs testing under force ie should be thread safe as static, and we never access same shit form multiple threads.
             CheChannelFactory.updateCheChannel(message.getMessage(Tags.PLAYER).getKey(), channel);
 

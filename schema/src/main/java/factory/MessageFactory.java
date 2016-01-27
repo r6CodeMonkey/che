@@ -27,10 +27,13 @@ public class MessageFactory {
                 return new GameObject(coreMessage);
             case Tags.ALLIANCE:
                 return new Alliance(coreMessage);
+            case Tags.CHE_ACKNOWLEDGE:
+                return Acknowledge.create(Tags.CHE_ACKNOWLEDGE, coreMessage);
             default:
                 throw new RuntimeException("Unknown message type");
         }
     }
+
 
 
 }
