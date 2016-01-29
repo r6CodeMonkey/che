@@ -5,6 +5,7 @@ import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import server.CheCallbackInterface;
 import util.CheMessageHandler;
+import util.Configuration;
 import util.TopicSubscriptions;
 
 
@@ -17,6 +18,8 @@ public class HazelcastManager implements HazelcastManagerInterface {
     private static CheCallbackInterface cheCallbackInterface;
 
     public static void start() {
+
+        //need to consider config....but the test is stupid.  ie 10,000 topics published in 1 second.  lol
         hazelcastInstance = Hazelcast.newHazelcastInstance();
     }
 
@@ -38,7 +41,9 @@ public class HazelcastManager implements HazelcastManagerInterface {
     }
 
     public void publish(String topic, String message) {
-        hazelcastInstance.getTopic(topic).publish(message);
+       new Thread(() -> {
+           hazelcastInstance.getTopic(topic).publish(message);
+       }).start();
     }
 
     public void createMap(String map) {

@@ -22,8 +22,8 @@ public class Configuration {
     private UUIDGenerator uuidGenerator = new UUIDGenerator("MD5");
     private UTMConvert utmConvert = new UTMConvert(SUB_ZONE_LAT, SUB_ZONE_LONG);
 
-    private int bossThreads = 1;
-    private int workerThreads = 5;
+    private int bossThreads = 2;
+    private int workerThreads = 20;
     private int port = 8085;
     private int chePort = 8086;
     private String cheIP = "localhost";
