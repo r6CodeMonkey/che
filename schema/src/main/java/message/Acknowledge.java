@@ -43,6 +43,12 @@ public class Acknowledge extends CoreMessage {
         return acknowledge;
     }
 
+    //another hack for return chec acks...
+    public String getCheAckId() {
+        return this.getString(Tags.CHE_ACK_ID);
+    }
+
+
     @Override
     public void create() {
         JSONObject inner = new JSONObject();
@@ -76,10 +82,6 @@ public class Acknowledge extends CoreMessage {
 
     public void setValue(String value) {
         this.getJSONObject(che ? Tags.CHE_ACKNOWLEDGE : Tags.ACKNOWLEDGE).put(Tags.VALUE, value);
-    }
-
-    public String getCheAckId() {
-        return this.getString(Tags.CHE_ACK_ID);
     }
 
     public boolean isChe() {
