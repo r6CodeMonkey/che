@@ -21,17 +21,14 @@ import java.util.Map;
  */
 public class CheChannel {
 
-    private final String key;
     private Channel channel;
 
     //ideally we need a list...or something ordered.
     private List<String> bufferOrder = new ArrayList<>();
     private Map<String, JSONObject> buffer = new HashMap<>();
 
-    //need a list of messages we are buffering
 
-    public CheChannel(String key, Channel channel) {
-        this.key = key;
+    public CheChannel(Channel channel) {
         this.channel = channel;
     }
 
@@ -43,17 +40,12 @@ public class CheChannel {
         return channel;
     }
 
-    public String getKey() {
-        return key;
-    }
-
     public void receive(String acknowledge) throws JSONException {
 
         Acknowledge ack = (Acknowledge) MessageFactory.getCheMessage(acknowledge, Tags.CHE_ACKNOWLEDGE);
 
-        //making a fooking mess....with these messages.  need to get a mobile client and retest
-        buffer.remove(ack.get(Tags.CHE_ACK_ID));
-        bufferOrder.remove(ack.get(Tags.CHE_ACK_ID));
+        buffer.remove(ack.getCheAckId());
+        bufferOrder.remove(ack.getCheAckId());
     }
 
     private void send(JSONObject message) throws JSONException {

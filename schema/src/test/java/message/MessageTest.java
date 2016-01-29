@@ -276,6 +276,11 @@ public class MessageTest {
     }
 
     @Test
+    public void testCheAcknowedge() {
+        //its not that important tbf....
+    }
+
+    @Test
     public void testAcknowledge() {
 
         Acknowledge acknowledge = new Acknowledge(ACKNOWLEDGE);

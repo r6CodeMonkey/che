@@ -32,7 +32,7 @@ public class Acknowledge extends CoreMessage {
     }
 
     //a little hack for returning unlikely required for any other messages.  plus we dont want to touch java8 models, unless we can test it on client tonight
-    public static CoreMessage create(String tag, String contents){
+    public static CoreMessage create(String tag, String contents) {
         Acknowledge acknowledge = new Acknowledge(tag.equals(Tags.CHE_ACKNOWLEDGE));
         JSONObject jsonObject = new JSONObject(contents);
 
@@ -78,7 +78,11 @@ public class Acknowledge extends CoreMessage {
         this.getJSONObject(che ? Tags.CHE_ACKNOWLEDGE : Tags.ACKNOWLEDGE).put(Tags.VALUE, value);
     }
 
-    public boolean isChe(){
+    public String getCheAckId() {
+        return this.getString(Tags.CHE_ACK_ID);
+    }
+
+    public boolean isChe() {
         return che;
     }
 

@@ -7,25 +7,24 @@ import com.hazelcast.config.Config;
  */
 public class Configuration {
 
+    private static Config config;
     private int port = 1099;
     private String url = "//localhost/HazelcastServer";
-
-    private static Config config;
 
     public Configuration() {
 
 
     }
 
-    public static Config getConfig(){
+    public Configuration(String path) {
+    }
+
+    public static Config getConfig() {
 
         config = new Config();
 
         config.setProperty("hazelcast.event.thread.count", "500");
         return config;
-    }
-
-    public Configuration(String path) {
     }
 
     public int getPort() {

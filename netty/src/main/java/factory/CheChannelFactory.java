@@ -22,7 +22,7 @@ public class CheChannelFactory {
     }
 
     private static void addCheChannel(String key, Channel channel) {
-        cheChannelMap.put(key, new CheChannel(key, channel));
+        cheChannelMap.put(key, new CheChannel(channel));
     }
 
     public static void removeCheChannel(String key) {

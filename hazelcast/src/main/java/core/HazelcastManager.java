@@ -5,7 +5,6 @@ import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import server.CheCallbackInterface;
 import util.CheMessageHandler;
-import util.Configuration;
 import util.TopicSubscriptions;
 
 
@@ -41,9 +40,9 @@ public class HazelcastManager implements HazelcastManagerInterface {
     }
 
     public void publish(String topic, String message) {
-       new Thread(() -> {
-           hazelcastInstance.getTopic(topic).publish(message);
-       }).start();
+        new Thread(() -> {
+            hazelcastInstance.getTopic(topic).publish(message);
+        }).start();
     }
 
     public void createMap(String map) {
