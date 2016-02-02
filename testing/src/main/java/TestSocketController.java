@@ -133,7 +133,6 @@ public class TestSocketController {
 
             System.out.println("received che return message " + jsonObject.toString());
             if (!jsonObject.isNull(Tags.CHE_ACKNOWLEDGE)) {
-                System.out.println("received che return message 2 ");
                 //send the ack back...  fuck this off.  it should not be so difficult.  ie send a fucking ack back.
 
                 CheMessage cheMessage = new CheMessage();
@@ -144,11 +143,9 @@ public class TestSocketController {
                 acknowledge2.value = "";
 
 
-                System.out.println("well  this is it " + jsonObject.getJSONObject(Tags.CHE_ACKNOWLEDGE).toString());
 
                 cheMessage.setMessage(Tags.CHE_ACKNOWLEDGE, MessageFactory.getCheMessage(jsonObject.getJSONObject(Tags.CHE_ACKNOWLEDGE).toString(), Tags.CHE_ACKNOWLEDGE));
 
-                System.out.println("well it worked once");
 
                 cheMessage.setMessage(Tags.ACKNOWLEDGE, new message.Acknowledge(acknowledge2.getMessage()));
 
@@ -176,8 +173,7 @@ public class TestSocketController {
                 case Tags.ALLIANCE_JOIN:
                     alliance = new Alliance(new message.Alliance(jsonObject.toString()));
                     alliances.add(alliance);
-                    System.out.println("joined allinace " + alliance.getMessage());
-                    break;
+                     break;
                 case Tags.ALLIANCE_LEAVE:
                     break;
                 case Tags.ALLIANCE_INVITE:

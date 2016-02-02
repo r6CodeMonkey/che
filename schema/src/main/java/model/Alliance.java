@@ -21,7 +21,9 @@ public class Alliance extends CoreModel {
         name = alliance.getName();
         value = alliance.getValue();
         state = alliance.getState();
-        members.addAll(alliance.getMembers().stream().map(Player::new).collect(Collectors.toList()));
+        for(message.Player player : alliance.getMembers()){
+            members.add(new Player(player));
+        }
     }
 
     public List<Player> getMembers() {
@@ -39,7 +41,13 @@ public class Alliance extends CoreModel {
         alliance.setValue(value);
         alliance.setState(state);
 
-        alliance.setMembers(members.stream().map(player -> new message.Player(player.getMessage())).collect(Collectors.toList()));
+        List<message.Player> temp = new ArrayList<>();
+
+        for(Player player : members){
+            temp.add(new message.Player(player.getMessage()));
+        }
+
+        alliance.setMembers(temp);
 
         return alliance.toString();
     }

@@ -33,8 +33,10 @@ public class GameObject extends CoreModel {
         this.hit = gameObject.isHit();
         this.located = gameObject.isLocated();
         this.destroyed = gameObject.isDestroyed();
-        this.missiles.addAll(gameObject.getMissiles().stream().map(Missile::new).collect(Collectors.toList()));
-        this.utmLocation = new UTMLocation(gameObject.getUtmLocation());
+        for(message.Missile missile : gameObject.getMissiles()){
+           missiles.add(new Missile(missile));
+        }
+         this.utmLocation = new UTMLocation(gameObject.getUtmLocation());
 
     }
 
@@ -73,7 +75,13 @@ public class GameObject extends CoreModel {
         gameObject.setLocated(located);
         gameObject.setFixed(fixed);
 
-        gameObject.setMissiles(missiles.stream().map(missile -> new message.Missile(missile.getMessage())).collect(Collectors.toList()));
+        List<message.Missile> temp = new ArrayList<>();
+        for(Missile missile : missiles){
+            temp.add(new message.Missile(missile.getMessage()));
+        }
+
+        gameObject.setMissiles(temp);
+
         gameObject.setUtmLocation(new message.UTMLocation(utmLocation.getMessage()));
 
 

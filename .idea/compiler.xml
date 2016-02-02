@@ -66,7 +66,7 @@
       <module name="cheController" target="1.8" />
       <module name="hazelcast" target="1.8" />
       <module name="netty" target="1.8" />
-      <module name="schema" target="1.8" />
+      <module name="schema" target="1.7" />
       <module name="SystemTesting" target="1.8" />
       <module name="testing" target="1.8" />
     </bytecodeTargetLevel>
