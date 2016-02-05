@@ -29,6 +29,8 @@ public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
 
         this.cheMessage = cheMessage;
 
+        configuration.getLogger().debug("received something..."+cheMessage.toString());
+
         //at this point, if the user has no id, we will create them one, even if the server is down elsewhere.
         if (cheMessage.getMessage(Tags.PLAYER).getKey().isEmpty()) {
             configuration.getLogger().debug("new user created " + ctx.channel().remoteAddress().toString());
@@ -50,6 +52,7 @@ public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
         ctx.channel().writeAndFlush(ack.getMessage());
 
         if (cheMessage.containsMessage(Tags.CHE_ACKNOWLEDGE)) {
+            configuration.getLogger().debug("received che ack");
             CheChannelFactory.getCheChannel(cheMessage.getMessage(Tags.PLAYER).getKey()).receive(cheMessage.getMessage(Tags.CHE_ACKNOWLEDGE).toString());
         } else {
             //fire up pipeline...

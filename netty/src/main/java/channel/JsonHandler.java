@@ -25,6 +25,7 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
 
     public void channelActive(ChannelHandlerContext ctx) {
         //client an acknowledge to confirm we are active.  no need to client id
+        configuration.getLogger().debug("we have active connection");
         ack.state = Tags.ACCEPT;
         ack.value = Tags.ACTIVE;
         ctx.channel().writeAndFlush(ack.getMessage());
@@ -39,7 +40,9 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
 
         CheMessage cheMessage = new CheMessage(msg.toString());
         Acknowledge acknowledge = (Acknowledge) cheMessage.getMessage(Tags.ACKNOWLEDGE);
-        //does the message contain what is required.
+
+
+        //does the message contain what is required. need to test for the che ack too...der.
         if (acknowledge.getKey().trim().isEmpty()) {
             ack.state = Tags.ACCEPT;
             ack.value = Tags.ACTIVE;
