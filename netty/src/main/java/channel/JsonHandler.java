@@ -44,8 +44,8 @@ public class JsonHandler extends SimpleChannelInboundHandler<Object> {
 
         //does the message contain what is required. need to test for the che ack too...der.
         if (acknowledge.getKey().trim().isEmpty()) {
-            ack.state = Tags.ACCEPT;
-            ack.value = Tags.ACTIVE;
+            ack.state = Tags.ERROR;
+            ack.value = "ackid not set";
             ctx.channel().writeAndFlush(ack.getMessage());
         } else {
             //should test validity of the model...at some point.

@@ -86,6 +86,8 @@ public class TestSocketController {
         cheMessage.setMessage(Tags.PLAYER, new message.Player(player.getMessage()));
         cheMessage.setMessage(Tags.ALLIANCE, new message.Alliance(alliance.getMessage()));
 
+        System.out.println("aaliance " +cheMessage.toString());
+
         testSocket.write(cheMessage);
     }
 

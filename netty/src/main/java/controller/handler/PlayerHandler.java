@@ -50,7 +50,7 @@ public class PlayerHandler {
         player.utmLocation = utmLocation;
 
         if (hasUTMChanged || hasSubUTMChanged) {
-            CheChannelFactory.write(player.getKey(), new CheMessage(Tags.UTM_LOCATION, new message.UTMLocation(utmLocation.getMessage()).getContents()));
+            CheChannelFactory.write(player.getKey(), new CheMessage(Tags.UTM_LOCATION, new message.UTMLocation(utmLocation.getMessage())));
             //we dont actually need to send this? well we could.  needs information status.
             player.utmLocation.state = Tags.MESSAGE;
             player.utmLocation.value = Tags.PLAYER_ENTERED;

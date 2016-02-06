@@ -62,7 +62,7 @@ public class AllianceHandler {
         player.getTopicSubscriptions().addSubscription(alliance.getKey(), hazelcastManagerInterface.subscribe(alliance.getKey(), player.getKey()));
         alliance.value = Tags.SUCCESS;
 
-        CheChannelFactory.write(player.getKey(), new CheMessage(Tags.ALLIANCE, new message.Alliance(alliance.getMessage()).getContents()));
+        CheChannelFactory.write(player.getKey(), new CheMessage(Tags.ALLIANCE, new message.Alliance(alliance.getMessage())));
     }
 
     private void allianceInvite(Player player, Alliance alliance) throws RemoteException, NoSuchAlgorithmException {
@@ -90,7 +90,7 @@ public class AllianceHandler {
             serverAlliance.value = Tags.SUCCESS;
             serverAlliance.state = Tags.ALLIANCE_JOIN;
 
-            CheChannelFactory.write(player.getKey(), new CheMessage(Tags.ALLIANCE, new message.Alliance(serverAlliance.getMessage()).getContents()));
+            CheChannelFactory.write(player.getKey(), new CheMessage(Tags.ALLIANCE, new message.Alliance(serverAlliance.getMessage())));
         }
 
     }
@@ -110,7 +110,7 @@ public class AllianceHandler {
             serverAlliance.value = Tags.SUCCESS;
             serverAlliance.state = Tags.ALLIANCE_LEAVE;
 
-            CheChannelFactory.write(player.getKey(), new CheMessage(Tags.ALLIANCE, new message.Alliance(serverAlliance.getMessage()).getContents()));
+            CheChannelFactory.write(player.getKey(), new CheMessage(Tags.ALLIANCE, new message.Alliance(serverAlliance.getMessage())));
         }
 
 

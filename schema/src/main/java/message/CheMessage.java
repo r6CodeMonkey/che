@@ -56,4 +56,5 @@ public class CheMessage extends CoreMessage {
     public void setMessage(String type, JSONObject message) {
         this.getJSONObject(Tags.CHE).put(type, message);
     }
+
 }

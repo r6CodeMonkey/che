@@ -46,15 +46,16 @@ public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
         }
 
 
-        ack.state = Tags.SUCCESS;
-        ack.value = "Received";  //needs to go in tags...
-
-        ctx.channel().writeAndFlush(ack.getMessage());
 
         if (cheMessage.containsMessage(Tags.CHE_ACKNOWLEDGE)) {
             configuration.getLogger().debug("received che ack");
             CheChannelFactory.getCheChannel(cheMessage.getMessage(Tags.PLAYER).getKey()).receive(cheMessage.getMessage(Tags.CHE_ACKNOWLEDGE).toString());
         } else {
+            ack = new Acknowledge(cheMessage.getMessage(Tags.ACKNOWLEDGE).getKey());
+            ack.state = Tags.SUCCESS;
+            ack.value = "Received";  //needs to go in tags...
+
+            ctx.channel().writeAndFlush(ack.getMessage());
             //fire up pipeline...
             ctx.fireChannelRead(cheMessage);
         }
@@ -67,6 +68,8 @@ public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
             ack = new Acknowledge(cheMessage.getMessage(Tags.ACKNOWLEDGE).getKey());
             ack.state = Tags.ERROR;
             ack.value = cause.toString();
+
+            cause.printStackTrace();
 
             ctx.channel().writeAndFlush(ack.getMessage());
             configuration.getLogger().error(cause.getMessage());
