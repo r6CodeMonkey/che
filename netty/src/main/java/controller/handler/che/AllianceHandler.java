@@ -62,6 +62,8 @@ public class AllianceHandler {
         player.getTopicSubscriptions().addSubscription(alliance.getKey(), hazelcastManagerInterface.subscribe(alliance.getKey(), player.getKey()));
         alliance.value = Tags.SUCCESS;
 
+        configuration.getLogger().debug("created alliance");
+
         CheChannelFactory.write(player.getKey(), new CheMessage(Tags.ALLIANCE, new message.Alliance(alliance.getMessage())));
     }
 

@@ -30,7 +30,8 @@ public class Alliance extends CoreMessage {
         inner.put(Tags.VALUE, "");
         inner.put(Tags.STATE, "");
         List<Player> members = new ArrayList<>();
-        inner.put(Tags.ALLIANCE_MEMBERS, members);
+        JSONArray jsonArray = new JSONArray(members);
+        inner.put(Tags.ALLIANCE_MEMBERS, jsonArray);//android doesnt like the collector
         this.put(Tags.ALLIANCE, inner);
 
     }
@@ -83,7 +84,7 @@ public class Alliance extends CoreMessage {
     }
 
     public void setMembers(List<Player> members) {
-        this.getJSONObject(Tags.ALLIANCE).put(Tags.ALLIANCE_MEMBERS, members);
+        this.getJSONObject(Tags.ALLIANCE).put(Tags.ALLIANCE_MEMBERS, new JSONArray(members));
     }
 
 

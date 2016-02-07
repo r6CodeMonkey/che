@@ -41,16 +41,20 @@ public class CheHandler {
 
     public void handle(Player player, CheMessage cheMessage) throws RemoteException, NoSuchAlgorithmException, JSONException {
 
+        configuration.getLogger().debug("che handler");
 
-        if (!cheMessage.getJSONObject(Tags.CHE).isNull(Tags.ALLIANCE)) {
+        if (cheMessage.containsMessage(Tags.ALLIANCE)) {
+            configuration.getLogger().debug("have alliance");
             allianceHandler.handle(player, new Alliance((message.Alliance) cheMessage.getMessage(Tags.ALLIANCE)));
         }
 
-        if (!cheMessage.getJSONObject(Tags.CHE).isNull(Tags.MISSILE)) {
+        if (cheMessage.containsMessage(Tags.MISSILE)) {
+            configuration.getLogger().debug("have missle");
             missileHandler.handle(player, new Missile((message.Missile) cheMessage.getMessage(Tags.MISSILE)));
         }
 
-        if (!cheMessage.getJSONObject(Tags.CHE).isNull(Tags.GAME_OBJECT)) {
+        if (cheMessage.containsMessage(Tags.GAME_OBJECT)) {
+            configuration.getLogger().debug("have game object");
             gameObjectHandler.handle(player, new GameObject((message.GameObject) cheMessage.getMessage(Tags.GAME_OBJECT)));
 
         }
