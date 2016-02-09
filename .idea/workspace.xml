@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1da809bf-b5cd-41ef-846a-b237902f929e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/message/Alliance.java" afterPath="$PROJECT_DIR$/schema/src/main/java/message/Alliance.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/AllianceHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/AllianceHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/controller/handler/CheHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/CheHandler.java" />
-    </list>
+    <list default="true" id="1da809bf-b5cd-41ef-846a-b237902f929e" name="Default" comment="" />
     <ignored path="Che.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
