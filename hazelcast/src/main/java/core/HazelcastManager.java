@@ -40,6 +40,7 @@ public class HazelcastManager implements HazelcastManagerInterface {
     }
 
     public void publish(String topic, String message) {
+
         new Thread(() -> {
             hazelcastInstance.getTopic(topic).publish(message);
         }).start();

@@ -24,6 +24,8 @@ public class Tags {
     public static final String INFO = "info";
     public static final String TYPE = "type";
     public static final String VALUE = "value";
+    public static final String TIME = "time";
+
 
     //state values
     public final static String ERROR = "ERROR";

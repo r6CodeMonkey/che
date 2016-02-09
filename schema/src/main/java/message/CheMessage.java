@@ -21,12 +21,14 @@ public class CheMessage extends CoreMessage {
 
     public CheMessage(String message) {
         super(Tags.CHE, message);
+        this.put(Tags.TIME, System.currentTimeMillis());
     }
 
 
     @Override
     public void create() {
         JSONObject inner = new JSONObject();
+        inner.put(Tags.TIME, System.currentTimeMillis());
         this.put(Tags.CHE, inner);
     }
 
@@ -55,6 +57,10 @@ public class CheMessage extends CoreMessage {
 
     public void setMessage(String type, JSONObject message) {
         this.getJSONObject(Tags.CHE).put(type, message);
+    }
+
+    public long getTime(){
+        return this.getLong(Tags.TIME);
     }
 
 }

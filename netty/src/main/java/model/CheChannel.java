@@ -91,8 +91,8 @@ public class CheChannel {
 
     public void write(HazelcastMessage cheMessage) throws JSONException, NoSuchAlgorithmException {
 
-        if (!cheMessage.getRemoteAddress().equals(channel.remoteAddress().toString())) {
-            send(setAcknowledge(new CheMessage(cheMessage.getCheObject().toString())));
+        if (cheMessage.isSendToSelf() ||(!cheMessage.getRemoteAddress().equals(channel.remoteAddress().toString()))) {
+           send(setAcknowledge(new CheMessage(new JSONObject().put(Tags.CHE, cheMessage.getCheObject()).toString())));
         }
     }
 }

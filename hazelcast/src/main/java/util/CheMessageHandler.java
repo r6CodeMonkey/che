@@ -37,7 +37,7 @@ public class CheMessageHandler implements MessageListener {
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
-            });
+            }).start();
 
 
         } catch (Exception e) {

@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class HazelcastMessage extends JSONObject implements Serializable {
 
     public static final String REMOTE_ADDRESS = "remoteAddress";
-    public static final String CHE_OBJECT = "cheObject";
+    public static final String SEND_TO_SELF = "sendToSelf";
 
     public HazelcastMessage() {
         this.put(Tags.HAZELCAST, new JSONObject());
@@ -25,7 +25,15 @@ public class HazelcastMessage extends JSONObject implements Serializable {
     public HazelcastMessage(String remoteAddress, JSONObject cheObject) throws JSONException {
         this.put(Tags.HAZELCAST, new JSONObject());
         this.getJSONObject(Tags.HAZELCAST).put(REMOTE_ADDRESS, remoteAddress);
-        this.getJSONObject(Tags.HAZELCAST).put(CHE_OBJECT, cheObject);
+        this.getJSONObject(Tags.HAZELCAST).put(Tags.CHE, cheObject);
+        this.getJSONObject(Tags.HAZELCAST).put(SEND_TO_SELF, false);
+    }
+
+    public HazelcastMessage(String remoteAddress, boolean sendToSelf, JSONObject cheObject) throws JSONException {
+        this.put(Tags.HAZELCAST, new JSONObject());
+        this.getJSONObject(Tags.HAZELCAST).put(REMOTE_ADDRESS, remoteAddress);
+        this.getJSONObject(Tags.HAZELCAST).put(Tags.CHE, cheObject);
+        this.getJSONObject(Tags.HAZELCAST).put(SEND_TO_SELF, sendToSelf);
     }
 
     public String getRemoteAddress() throws JSONException {
@@ -33,6 +41,10 @@ public class HazelcastMessage extends JSONObject implements Serializable {
     }
 
     public JSONObject getCheObject() throws JSONException {
-        return this.getJSONObject(Tags.HAZELCAST).getJSONObject(CHE_OBJECT);
+        return this.getJSONObject(Tags.HAZELCAST).getJSONObject(Tags.CHE);
+    }
+
+    public boolean isSendToSelf() throws JSONException {
+        return this.getJSONObject(Tags.HAZELCAST).getBoolean(SEND_TO_SELF);
     }
 }

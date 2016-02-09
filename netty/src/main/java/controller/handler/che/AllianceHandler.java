@@ -3,6 +3,7 @@ package controller.handler.che;
 import controller.CheController;
 import core.HazelcastManagerInterface;
 import factory.CheChannelFactory;
+import factory.MessageFactory;
 import message.CheMessage;
 import message.HazelcastMessage;
 import model.Alliance;
@@ -120,7 +121,9 @@ public class AllianceHandler {
 
     private void alliancePost(Player player, Alliance alliance) throws RemoteException, NoSuchAlgorithmException, JSONException {
 
-        HazelcastMessage hazelcastMessage = new HazelcastMessage(CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(), new JSONObject(alliance.getMessage()));
+        HazelcastMessage hazelcastMessage = new HazelcastMessage(CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(), true,
+                new JSONObject().put(Tags.ALLIANCE, new message.Alliance(alliance.getMessage())));
+        configuration.getLogger().debug("sending a post "+hazelcastMessage.toString());
         hazelcastManagerInterface.publish(alliance.getKey(), hazelcastMessage.toString());
 
     }
