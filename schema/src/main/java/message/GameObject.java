@@ -94,6 +94,18 @@ public class GameObject extends CoreMessage {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_ACCELERATION, acceleration);
     }
 
+    public int getType(){return this.getJSONObject(Tags.GAME_OBJECT).getInt(Tags.GAME_OBJECT_TYPE);}
+
+    public void setType(int type){
+        this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_TYPE, type);
+    }
+
+    public int getSubType(){return this.getJSONObject(Tags.GAME_OBJECT).getInt(Tags.GAME_OBJECT_SUBTYPE);}
+
+    public void setSubType(int type){
+        this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_SUBTYPE, type);
+    }
+
     public double getVelocity() {
         return this.getJSONObject(Tags.GAME_OBJECT).getDouble(Tags.GAME_OBJECT_VELOCITY);
     }

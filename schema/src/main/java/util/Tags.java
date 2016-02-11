@@ -102,6 +102,8 @@ public class Tags {
     public final static String MISSILE_DESTROYED = "missileDestoyed";
 
     public final static String GAME_OBJECT_KEY = "gameObjectKey";
+    public final static String GAME_OBJECT_TYPE = "gameObjectType";
+    public final static String GAME_OBJECT_SUBTYPE = "gameObjectSubType";
     public final static String GAME_OBJECT_UTM_LOCATION = "gameObjectUtmLocation";
     public final static String GAME_OBJECT_MASS = "gameObjectMass";
     public final static String GAME_OBJECT_ACCELERATION = "gameObjectAcceleration";

@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class GameObject extends CoreModel {
 
     public String state, value;
+    public int type, subType;
     //where are we located now...rest is calculated see physics shit. ie we can only be in 1 place.
     public UTMLocation utmLocation;
 
@@ -33,6 +34,8 @@ public class GameObject extends CoreModel {
         this.hit = gameObject.isHit();
         this.located = gameObject.isLocated();
         this.destroyed = gameObject.isDestroyed();
+        this.type = gameObject.getType();
+        this.subType = gameObject.getSubType();
         for(message.Missile missile : gameObject.getMissiles()){
            missiles.add(new Missile(missile));
         }
@@ -52,6 +55,8 @@ public class GameObject extends CoreModel {
         this.hit = false;
         this.located = false;
         this.destroyed = false;
+        this.type = -1;
+        this.subType = -1;
     }
 
     public List<Missile> getMissiles() {
@@ -74,6 +79,8 @@ public class GameObject extends CoreModel {
         gameObject.setDestroyed(destroyed);
         gameObject.setLocated(located);
         gameObject.setFixed(fixed);
+        gameObject.setType(type);
+        gameObject.setSubType(subType);
 
         List<message.Missile> temp = new ArrayList<>();
         for(Missile missile : missiles){
