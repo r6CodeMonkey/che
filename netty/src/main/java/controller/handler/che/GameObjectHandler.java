@@ -38,6 +38,9 @@ public class GameObjectHandler {
     public void handle(Player player, GameObject gameObject) {
 
         switch (gameObject.state) {
+            case Tags.PURCHASE:
+                purchaseGameObject(player, gameObject);
+                break;
             case Tags.GAME_OBJECT_ADD:
                 objectAdd(player, gameObject);
                 break;
@@ -57,6 +60,10 @@ public class GameObjectHandler {
                 missileRemoved(player, gameObject);
                 break;
         }
+    }
+
+    private void purchaseGameObject(Player player, GameObject gameObject){
+        //we add the object to db and tell user....
     }
 
     private void missileAdded(Player player, GameObject gameObject) {

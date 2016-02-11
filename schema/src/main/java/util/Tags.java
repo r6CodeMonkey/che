@@ -25,6 +25,7 @@ public class Tags {
     public static final String TYPE = "type";
     public static final String VALUE = "value";
     public static final String TIME = "time";
+    public final static String PURCHASE = "PURCHASE";
 
 
     //state values
