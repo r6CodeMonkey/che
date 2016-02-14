@@ -1,10 +1,15 @@
 package controller.handler.che;
 
 import core.HazelcastManagerInterface;
+import factory.CheChannelFactory;
+import message.CheMessage;
 import model.GameObject;
 import model.Player;
+import org.json.JSONException;
 import util.Configuration;
 import util.Tags;
+
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by timmytime on 13/01/16.
@@ -35,7 +40,7 @@ public class GameObjectHandler {
         this.configuration = configuration;
     }
 
-    public void handle(Player player, GameObject gameObject) {
+    public void handle(Player player, GameObject gameObject) throws JSONException, NoSuchAlgorithmException {
 
         switch (gameObject.state) {
             case Tags.PURCHASE:
@@ -62,8 +67,14 @@ public class GameObjectHandler {
         }
     }
 
-    private void purchaseGameObject(Player player, GameObject gameObject){
+    private void purchaseGameObject(Player player, GameObject gameObject) throws NoSuchAlgorithmException, JSONException {
         //we add the object to db and tell user....
+        gameObject.setKey(configuration.getUuidGenerator().generateKey("game object " + gameObject.type + "-" + gameObject.subType));
+
+        //need to add this to the player...
+        player.getGameObjects().add(gameObject);
+
+        CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
     }
 
     private void missileAdded(Player player, GameObject gameObject) {

@@ -51,7 +51,7 @@ public class Player extends CoreModel {
         return missiles;
     }
 
-    public List<GameObject> gameObjects() {
+    public List<GameObject> getGameObjects() {
         return gameObjects;
     }
 

@@ -34,8 +34,11 @@ public class GameObject extends CoreMessage {
         inner.put(Tags.GAME_OBJECT_IS_HIT, false);
         inner.put(Tags.VALUE, "");
         inner.put(Tags.STATE, "");
+        inner.put(Tags.GAME_OBJECT_TYPE, -1);
+        inner.put(Tags.GAME_OBJECT_SUBTYPE, -1);
         List<Missile> missiles = new ArrayList<>();
-        inner.put(Tags.GAME_OBJECT_MISSILES, missiles);
+        JSONArray jsonArray = new JSONArray(missiles);
+        inner.put(Tags.GAME_OBJECT_MISSILES, jsonArray);
         UTMLocation utmLocation = new UTMLocation();
         utmLocation.create();
         inner.put(Tags.GAME_OBJECT_UTM_LOCATION, utmLocation);
