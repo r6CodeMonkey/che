@@ -86,7 +86,7 @@ public class TestSocketController {
         cheMessage.setMessage(Tags.PLAYER, new message.Player(player.getMessage()));
         cheMessage.setMessage(Tags.ALLIANCE, new message.Alliance(alliance.getMessage()));
 
-        System.out.println("aaliance " +cheMessage.toString());
+        System.out.println("aaliance " + cheMessage.toString());
 
         testSocket.write(cheMessage);
     }
@@ -145,7 +145,6 @@ public class TestSocketController {
                 acknowledge2.value = "";
 
 
-
                 cheMessage.setMessage(Tags.CHE_ACKNOWLEDGE, MessageFactory.getCheMessage(jsonObject.getJSONObject(Tags.CHE_ACKNOWLEDGE).toString(), Tags.CHE_ACKNOWLEDGE));
 
 
@@ -175,7 +174,7 @@ public class TestSocketController {
                 case Tags.ALLIANCE_JOIN:
                     alliance = new Alliance(new message.Alliance(jsonObject.toString()));
                     alliances.add(alliance);
-                     break;
+                    break;
                 case Tags.ALLIANCE_LEAVE:
                     break;
                 case Tags.ALLIANCE_INVITE:

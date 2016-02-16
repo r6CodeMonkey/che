@@ -68,13 +68,19 @@ public class GameObjectHandler {
     }
 
     private void purchaseGameObject(Player player, GameObject gameObject) throws NoSuchAlgorithmException, JSONException {
-        //we add the object to db and tell user....
-        gameObject.setKey(configuration.getUuidGenerator().generateKey("game object " + gameObject.type + "-" + gameObject.subType));
+        while (gameObject.quantity-- > 0) {
 
-        //need to add this to the player...
-        player.getGameObjects().add(gameObject);
 
-        CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
+            //we add the object to db and tell user....
+            gameObject.setKey(configuration.getUuidGenerator().generateKey("game object " + gameObject.type + "-" + gameObject.subType + "-" + gameObject.quantity + "-" + player.getKey()));
+
+            configuration.getLogger().debug("creating a game object " + gameObject.getKey());
+
+            //need to add this to the player...
+            player.getGameObjects().add(gameObject);
+
+            CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
+        }
     }
 
     private void missileAdded(Player player, GameObject gameObject) {

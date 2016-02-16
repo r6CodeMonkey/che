@@ -23,7 +23,7 @@ public class GameObjectTypes {
     public static final int SUB = 7;
     public static final int CARRIER = 8;
     public static final int FAC = 9;
-    public static final int DESTROYER =23;
+    public static final int DESTROYER = 23;
 
     //infrastuture
     public static final int SATELLITE = 10;
@@ -47,9 +47,9 @@ public class GameObjectTypes {
     public static final int GROUND_MINE = 28;
 
 
-    public static String getTypeName(int type){
+    public static String getTypeName(int type) {
 
-        switch(type){
+        switch (type) {
             case TANK:
                 return "Tank";
             case MISSILE_LAUNCHER:

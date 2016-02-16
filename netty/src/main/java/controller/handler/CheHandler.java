@@ -54,7 +54,7 @@ public class CheHandler {
         }
 
         if (cheMessage.containsMessage(Tags.GAME_OBJECT)) {
-            configuration.getLogger().debug("have game object "+cheMessage.toString());
+            configuration.getLogger().debug("have game object " + cheMessage.toString());
             gameObjectHandler.handle(player, new GameObject((message.GameObject) cheMessage.getMessage(Tags.GAME_OBJECT)));
 
         }

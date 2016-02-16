@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by timmytime on 15/01/16.
@@ -21,7 +20,7 @@ public class Alliance extends CoreModel {
         name = alliance.getName();
         value = alliance.getValue();
         state = alliance.getState();
-        for(message.Player player : alliance.getMembers()){
+        for (message.Player player : alliance.getMembers()) {
             members.add(new Player(player));
         }
     }
@@ -43,7 +42,7 @@ public class Alliance extends CoreModel {
 
         List<message.Player> temp = new ArrayList<>();
 
-        for(Player player : members){
+        for (Player player : members) {
             temp.add(new message.Player(player.getMessage()));
         }
 

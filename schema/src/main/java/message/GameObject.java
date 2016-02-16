@@ -36,6 +36,7 @@ public class GameObject extends CoreMessage {
         inner.put(Tags.STATE, "");
         inner.put(Tags.GAME_OBJECT_TYPE, -1);
         inner.put(Tags.GAME_OBJECT_SUBTYPE, -1);
+        inner.put(Tags.GAME_OBJECT_QUANTITY, 1);
         List<Missile> missiles = new ArrayList<>();
         JSONArray jsonArray = new JSONArray(missiles);
         inner.put(Tags.GAME_OBJECT_MISSILES, jsonArray);
@@ -97,15 +98,27 @@ public class GameObject extends CoreMessage {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_ACCELERATION, acceleration);
     }
 
-    public int getType(){return this.getJSONObject(Tags.GAME_OBJECT).getInt(Tags.GAME_OBJECT_TYPE);}
+    public int getQuantity() {
+        return this.getJSONObject(Tags.GAME_OBJECT).getInt(Tags.GAME_OBJECT_QUANTITY);
+    }
 
-    public void setType(int type){
+    public void setQuantity(int quantity) {
+        this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_QUANTITY, quantity);
+    }
+
+    public int getType() {
+        return this.getJSONObject(Tags.GAME_OBJECT).getInt(Tags.GAME_OBJECT_TYPE);
+    }
+
+    public void setType(int type) {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_TYPE, type);
     }
 
-    public int getSubType(){return this.getJSONObject(Tags.GAME_OBJECT).getInt(Tags.GAME_OBJECT_SUBTYPE);}
+    public int getSubType() {
+        return this.getJSONObject(Tags.GAME_OBJECT).getInt(Tags.GAME_OBJECT_SUBTYPE);
+    }
 
-    public void setSubType(int type){
+    public void setSubType(int type) {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_SUBTYPE, type);
     }
 

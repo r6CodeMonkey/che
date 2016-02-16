@@ -3,7 +3,6 @@ package controller.handler.che;
 import controller.CheController;
 import core.HazelcastManagerInterface;
 import factory.CheChannelFactory;
-import factory.MessageFactory;
 import message.CheMessage;
 import message.HazelcastMessage;
 import model.Alliance;
@@ -123,7 +122,7 @@ public class AllianceHandler {
 
         HazelcastMessage hazelcastMessage = new HazelcastMessage(CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(), true,
                 new JSONObject().put(Tags.ALLIANCE, new message.Alliance(alliance.getMessage())));
-        configuration.getLogger().debug("sending a post "+hazelcastMessage.toString());
+        configuration.getLogger().debug("sending a post " + hazelcastMessage.toString());
         hazelcastManagerInterface.publish(alliance.getKey(), hazelcastMessage.toString());
 
     }

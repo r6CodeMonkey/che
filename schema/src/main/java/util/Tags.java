@@ -25,7 +25,9 @@ public class Tags {
     public static final String TYPE = "type";
     public static final String VALUE = "value";
     public static final String TIME = "time";
-    public final static String PURCHASE = "PURCHASE";
+    public static final String PURCHASE = "PURCHASE";
+    public static final String RECEIVED = "Received";
+    public static final String CHE_RECEIVED = "cheReceived";
 
 
     //state values
@@ -113,6 +115,7 @@ public class Tags {
     public final static String GAME_OBJECT_IS_DESTROYED = "gameObjectDestroyed";
     public final static String GAME_OBJECT_IS_LOCATED = "gameObjectLocated";
     public final static String GAME_OBJECT_MISSILES = "gameObjectMissiles";
+    public final static String GAME_OBJECT_QUANTITY = "gameObjectQuantity";
 
 
 }

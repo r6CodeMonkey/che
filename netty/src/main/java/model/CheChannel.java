@@ -1,6 +1,5 @@
 package model;
 
-import factory.MessageFactory;
 import io.netty.channel.Channel;
 import message.Acknowledge;
 import message.CheMessage;
@@ -11,21 +10,17 @@ import util.Tags;
 import util.UUIDGenerator;
 
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.LinkedHashMap;
 
 /**
  * Created by timmytime on 25/01/16.
  */
 public class CheChannel {
 
+    private final LinkedHashMap<String, JSONObject> buffer = new LinkedHashMap<>();
     private Channel channel;
-
-    //ideally we need a list...or something ordered.
-    private List<String> bufferOrder = new ArrayList<>();
-    private Map<String, JSONObject> buffer = new HashMap<>();
+    private Object lock = new Object();
+    private String lastSentKey = "";
 
 
     public CheChannel(Channel channel) {
@@ -40,23 +35,26 @@ public class CheChannel {
         return channel;
     }
 
-    public void receive(String acknowledge) throws JSONException {
-
-        Acknowledge ack = (Acknowledge) MessageFactory.getCheMessage(acknowledge, Tags.CHE_ACKNOWLEDGE);
-
-        buffer.remove(ack.getCheAckId());
-        bufferOrder.remove(ack.getCheAckId());
+    public void receive(Acknowledge acknowledge) throws JSONException {
+        synchronized (lock) {
+            buffer.remove(acknowledge.getCheAckId());
+            lastSentKey = "";
+            //now try and make the buffer send the reset.
+            if (!buffer.isEmpty()) {
+                String msg = buffer.get(buffer.keySet().iterator().next()).toString();
+                writeToChannel(msg);
+            }
+        }
     }
 
     private void send(JSONObject message) throws JSONException {
-
-        bufferOrder.add(message.getJSONObject(Tags.CHE).getJSONObject(Tags.CHE_ACKNOWLEDGE).getString(Tags.CHE_ACK_ID));
-        buffer.put(message.getJSONObject(Tags.CHE).getJSONObject(Tags.CHE_ACKNOWLEDGE).getString(Tags.CHE_ACK_ID), message);
-
-        //try and send our buffer first.
-        for (String key : bufferOrder) {
-            //try to send it.
-            writeToChannel(buffer.get(key).toString());
+        synchronized (lock) {
+            buffer.put(message.getJSONObject(Tags.CHE).getJSONObject(Tags.CHE_ACKNOWLEDGE).getString(Tags.CHE_ACK_ID), message);
+            String nextKey = buffer.keySet().iterator().next();
+            if (!lastSentKey.equals(nextKey)) {
+                lastSentKey = nextKey;
+                writeToChannel(buffer.get(lastSentKey).toString());
+            }
         }
 
     }
@@ -91,8 +89,8 @@ public class CheChannel {
 
     public void write(HazelcastMessage cheMessage) throws JSONException, NoSuchAlgorithmException {
 
-        if (cheMessage.isSendToSelf() ||(!cheMessage.getRemoteAddress().equals(channel.remoteAddress().toString()))) {
-           send(setAcknowledge(new CheMessage(new JSONObject().put(Tags.CHE, cheMessage.getCheObject()).toString())));
+        if (cheMessage.isSendToSelf() || (!cheMessage.getRemoteAddress().equals(channel.remoteAddress().toString()))) {
+            send(setAcknowledge(new CheMessage(new JSONObject().put(Tags.CHE, cheMessage.getCheObject()).toString())));
         }
     }
 }

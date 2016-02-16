@@ -59,7 +59,7 @@ public class CheMessage extends CoreMessage {
         this.getJSONObject(Tags.CHE).put(type, message);
     }
 
-    public long getTime(){
+    public long getTime() {
         return this.getLong(Tags.TIME);
     }
 

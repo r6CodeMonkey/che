@@ -1,6 +1,7 @@
 package channel;
 
 import factory.CheChannelFactory;
+import factory.MessageFactory;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import message.CheMessage;
@@ -29,7 +30,7 @@ public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
 
         this.cheMessage = cheMessage;
 
-        configuration.getLogger().debug("received something..."+cheMessage.toString());
+        configuration.getLogger().debug("received something..." + cheMessage.toString());
 
         //at this point, if the user has no id, we will create them one, even if the server is down elsewhere.
         if (cheMessage.getMessage(Tags.PLAYER).getKey().isEmpty()) {
@@ -46,14 +47,24 @@ public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
         }
 
 
-
         if (cheMessage.containsMessage(Tags.CHE_ACKNOWLEDGE)) {
-            configuration.getLogger().debug("received che ack");
-            CheChannelFactory.getCheChannel(cheMessage.getMessage(Tags.PLAYER).getKey()).receive(cheMessage.getMessage(Tags.CHE_ACKNOWLEDGE).toString());
+            message.Acknowledge cheAck = (message.Acknowledge) MessageFactory.getCheMessage(cheMessage.getMessage(Tags.CHE_ACKNOWLEDGE).toString(), Tags.CHE_ACKNOWLEDGE);
+
+            configuration.getLogger().debug("received che ack " + cheAck.getCheAckId());
+
+            ack = new Acknowledge(cheAck.getCheAckId());
+            configuration.getLogger().debug("received key " + ack.getKey());
+            ack.state = Tags.SUCCESS;
+            ack.value = Tags.CHE_RECEIVED;
+            //client needs to clear all acks now...to stop flooding on client.
+            ctx.channel().writeAndFlush(ack.getMessage());
+
+            CheChannelFactory.getCheChannel(cheMessage.getMessage(Tags.PLAYER).getKey()).receive(cheAck);
+
         } else {
             ack = new Acknowledge(cheMessage.getMessage(Tags.ACKNOWLEDGE).getKey());
             ack.state = Tags.SUCCESS;
-            ack.value = "Received";  //needs to go in tags...
+            ack.value = Tags.RECEIVED;
 
             ctx.channel().writeAndFlush(ack.getMessage());
             //fire up pipeline...

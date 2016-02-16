@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by timmytime on 15/01/16.
@@ -10,7 +9,7 @@ import java.util.stream.Collectors;
 public class GameObject extends CoreModel {
 
     public String state, value;
-    public int type, subType;
+    public int type, subType, quantity;
     //where are we located now...rest is calculated see physics shit. ie we can only be in 1 place.
     public UTMLocation utmLocation;
 
@@ -36,10 +35,11 @@ public class GameObject extends CoreModel {
         this.destroyed = gameObject.isDestroyed();
         this.type = gameObject.getType();
         this.subType = gameObject.getSubType();
-        for(message.Missile missile : gameObject.getMissiles()){
-           missiles.add(new Missile(missile));
+        this.quantity = gameObject.getQuantity();
+        for (message.Missile missile : gameObject.getMissiles()) {
+            missiles.add(new Missile(missile));
         }
-         this.utmLocation = new UTMLocation(gameObject.getUtmLocation());
+        this.utmLocation = new UTMLocation(gameObject.getUtmLocation());
 
     }
 
@@ -57,6 +57,7 @@ public class GameObject extends CoreModel {
         this.destroyed = false;
         this.type = -1;
         this.subType = -1;
+        this.quantity = 1;
     }
 
     public List<Missile> getMissiles() {
@@ -81,9 +82,10 @@ public class GameObject extends CoreModel {
         gameObject.setFixed(fixed);
         gameObject.setType(type);
         gameObject.setSubType(subType);
+        gameObject.setQuantity(quantity);
 
         List<message.Missile> temp = new ArrayList<>();
-        for(Missile missile : missiles){
+        for (Missile missile : missiles) {
             temp.add(new message.Missile(missile.getMessage()));
         }
 
