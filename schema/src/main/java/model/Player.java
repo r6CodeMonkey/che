@@ -4,7 +4,9 @@ import util.TopicSubscriptions;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by timmytime on 15/01/16.
@@ -15,8 +17,8 @@ public class Player extends CoreModel {
     public Image image;
     public UTMLocation utmLocation;
     private List<String> alliances = new ArrayList<>();  //just hold the keys.
-    private List<Missile> missiles = new ArrayList<>();
-    private List<GameObject> gameObjects = new ArrayList<>();
+    private Map<String, Missile> missiles = new HashMap<>();
+    private Map<String, GameObject> gameObjects = new HashMap<>();
     private TopicSubscriptions topicSubscriptions = new TopicSubscriptions();
 
     public Player(String key) {
@@ -47,11 +49,11 @@ public class Player extends CoreModel {
         return alliances;
     }
 
-    public List<Missile> getMissiles() {
+    public Map<String, Missile> getMissiles() {
         return missiles;
     }
 
-    public List<GameObject> getGameObjects() {
+    public Map<String,GameObject> getGameObjects() {
         return gameObjects;
     }
 

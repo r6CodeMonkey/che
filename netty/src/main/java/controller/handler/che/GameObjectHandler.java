@@ -1,5 +1,7 @@
 package controller.handler.che;
 
+import controller.CheController;
+import controller.handler.UTMHandler;
 import core.HazelcastManagerInterface;
 import factory.CheChannelFactory;
 import message.CheMessage;
@@ -9,6 +11,7 @@ import org.json.JSONException;
 import util.Configuration;
 import util.Tags;
 
+import java.rmi.RemoteException;
 import java.security.NoSuchAlgorithmException;
 
 /**
@@ -34,13 +37,16 @@ public class GameObjectHandler {
 
     private final HazelcastManagerInterface hazelcastManagerInterface;
     private final Configuration configuration;
+    private final UTMHandler utmHandler;
+
 
     public GameObjectHandler(HazelcastManagerInterface hazelcastManagerInterface, Configuration configuration) {
         this.hazelcastManagerInterface = hazelcastManagerInterface;
         this.configuration = configuration;
+        this.utmHandler = new UTMHandler(hazelcastManagerInterface, configuration);
     }
 
-    public void handle(Player player, GameObject gameObject) throws JSONException, NoSuchAlgorithmException {
+    public void handle(Player player, GameObject gameObject) throws JSONException, NoSuchAlgorithmException, RemoteException {
 
         switch (gameObject.state) {
             case Tags.PURCHASE:
@@ -70,21 +76,21 @@ public class GameObjectHandler {
     private void purchaseGameObject(Player player, GameObject gameObject) throws NoSuchAlgorithmException, JSONException {
         while (gameObject.quantity-- > 0) {
 
-
             //we add the object to db and tell user....
             gameObject.setKey(configuration.getUuidGenerator().generateKey("game object " + gameObject.type + "-" + gameObject.subType + "-" + gameObject.quantity + "-" + player.getKey()));
 
             configuration.getLogger().debug("creating a game object " + gameObject.getKey());
 
             //need to add this to the player...
-            player.getGameObjects().add(gameObject);
+            player.getGameObjects().put(gameObject.getKey(), gameObject);
 
             CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
         }
     }
 
     private void missileAdded(Player player, GameObject gameObject) {
-        //we can work out what missile it is...probably call the missile handler to process.
+
+        //this is wrong...player.getGameObjects().put(gameObject.getKey(), gameObject);
 
     }
 
@@ -93,10 +99,19 @@ public class GameObjectHandler {
 
     }
 
-    private void objectAdd(Player player, GameObject gameObject) {
+    private void objectAdd(Player player, GameObject gameObject) throws RemoteException, JSONException, NoSuchAlgorithmException {
 
+        hazelcastManagerInterface.put(CheController.OBJECT_MAP, gameObject.getKey(), gameObject);
 
-        //add object to utm / sub utm grid + lat lng return key
+        player.getGameObjects().put(gameObject.getKey(), gameObject);
+        //how do we unsubscribe?  i guess if we move out of zone, but then...
+        //we may still be in zone as player and object not....regardless its ok to listen to sectors.
+        //perhaps add something to player handler to remove pointless subscribes.
+        utmHandler.handleUTMChange(gameObject.utmLocation, player);
+        //need to consider do we put it in a UTM / SubUTM....probably should register our item to that topic.  makes sense.
+        //and remove when we get move it out of zone.
+
+        CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
 
 
     }
