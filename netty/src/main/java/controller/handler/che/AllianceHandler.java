@@ -122,6 +122,8 @@ public class AllianceHandler {
 
         HazelcastMessage hazelcastMessage = new HazelcastMessage(CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(), true,
                 new JSONObject().put(Tags.ALLIANCE, new message.Alliance(alliance.getMessage())));
+
+        hazelcastMessage.getCheObject().put(Tags.PLAYER, new message.Player(player.getMessage()));
         configuration.getLogger().debug("sending a post " + hazelcastMessage.toString());
         hazelcastManagerInterface.publish(alliance.getKey(), hazelcastMessage.toString());
 

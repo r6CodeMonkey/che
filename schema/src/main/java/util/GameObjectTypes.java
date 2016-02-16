@@ -53,13 +53,13 @@ public class GameObjectTypes {
             case TANK:
                 return "Tank";
             case MISSILE_LAUNCHER:
-                return "Missile Launcher";
+                return "Missile\nLauncher";
             case RV:
                 return "ATV";
             case MINI_DRONE:
                 return "Mini Drone";
             case LONGRANGE_DRONE:
-                return "Longrange Drone";
+                return "Longrange\nDrone";
             case ARMED_DRONE:
                 return "Armed Drone";
             case BOMBER:
@@ -71,9 +71,9 @@ public class GameObjectTypes {
             case SUB:
                 return "Submarine";
             case CARRIER:
-                return "Aircraft Carrier";
+                return "Aircraft\nCarrier";
             case FAC:
-                return "Fast Attack Craft";
+                return "Fast\nAttack\nCraft";
             case DESTROYER:
                 return "Destroyer";
             case SATELLITE:
@@ -87,23 +87,23 @@ public class GameObjectTypes {
             case AIRPORT:
                 return "Airport";
             case G2A:
-                return "Ground2Air";
+                return "Ground\n2\nAir";
             case G2G:
-                return "Ground2Ground";
+                return "Ground\n2\nGround";
             case A2G:
-                return "Air2Ground";
+                return "Air\n2\nGround";
             case CLUSTER:
-                return "Cluster Bomb";
+                return "Cluster\nBomb";
             case A2A:
-                return "Air2Air";
+                return "Air\n2\nAir";
             case CARPET:
-                return "Carpet Bomb";
+                return "Carpet\nBomb";
             case W2A:
-                return "Water2Air";
+                return "Water\n2\nAir";
             case W2G:
-                return "Water2Ground";
+                return "Water\n2\nGround";
             case W2W:
-                return "Water2Water";
+                return "Water\n2\nWater";
             case WATER_MINE:
                 return "Watermine";
             case GROUND_MINE:
