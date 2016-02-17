@@ -45,6 +45,9 @@ public class GameObjectTypes {
     public static final int W2G = 26;
     public static final int WATER_MINE = 27;
     public static final int GROUND_MINE = 28;
+    public static final int A2W = 29;
+    public static final int G2W = 30;
+
 
 
     public static String getTypeName(int type) {
@@ -108,6 +111,10 @@ public class GameObjectTypes {
                 return "Watermine";
             case GROUND_MINE:
                 return "Landmine";
+            case A2W:
+                return "Air\n2\nWater";
+            case G2W:
+                return "Ground\n2\nWater";
 
         }
         return "";

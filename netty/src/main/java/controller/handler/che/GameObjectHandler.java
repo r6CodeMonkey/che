@@ -65,7 +65,7 @@ public class GameObjectHandler {
                 objectMove(player, gameObject);
                 break;
             case Tags.MISSILE_ADDED:
-                missileAdded(player, gameObject); //need to add a missile to our game object...
+                missileAdded(player, gameObject);
                 break;
             case Tags.MISSILE_REMOVED:
                 missileRemoved(player, gameObject);
@@ -88,10 +88,15 @@ public class GameObjectHandler {
         }
     }
 
-    private void missileAdded(Player player, GameObject gameObject) {
+    private void missileAdded(Player player, GameObject gameObject) throws RemoteException, JSONException, NoSuchAlgorithmException {
 
-        //this is wrong...player.getGameObjects().put(gameObject.getKey(), gameObject);
+        GameObject model = (GameObject) hazelcastManagerInterface.get(CheController.OBJECT_MAP, gameObject.getKey());
+        model.getMissiles().add(gameObject.getMissiles().get(0));
+        hazelcastManagerInterface.put(CheController.OBJECT_MAP, model.getKey(), model);
+        player.getGameObjects().put(model.getKey(), model);
 
+        gameObject.value = Tags.SUCCESS;
+        CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
     }
 
     private void missileRemoved(Player player, GameObject gameObject) {

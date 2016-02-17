@@ -175,7 +175,7 @@ public class GameObject extends CoreMessage {
     }
 
     public void setMissiles(List<Missile> missiles) {
-        this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_MISSILES, missiles);
+        this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_MISSILES, new JSONArray(missiles));
     }
 
 }
