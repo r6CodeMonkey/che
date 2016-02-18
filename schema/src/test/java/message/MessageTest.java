@@ -26,8 +26,8 @@ public class MessageTest {
     public static final String MISSILE = "{" + Tags.MISSILE + " :{" + Tags.MISSILE_KEY + ":'99'," + Tags.STATE + ":" + Tags.MISSILE_TARGET + "," + Tags.VALUE + ":'fire'," + Tags.MISSILE_RADIUS + ":5," + Tags.MISSILE_RADIUS_IMPACT_SCALAR + ":6," + Tags.MISSILE_PAYLOAD + ":100," +
             Tags.MISSILE_RANGE + ":5000," + Tags.MISSILE_DESTROYED + ":false," + Tags.MISSILE_LAUNCHED + ":true," + Tags.MISSILE_UTM_LOCATION + ":" + UTM_LOCATION + ", " + Tags.MISSILE_START_UTM_LOCATION + ":" + UTM_LOCATION + "," + Tags.MISSILE_TARGET_UTM_LOCATION + ":" + UTM_LOCATION + "}}";
     public static final String GAME_OBJECT = "{" + Tags.GAME_OBJECT + " :{" + Tags.GAME_OBJECT_KEY + ":'58'," + Tags.GAME_OBJECT_TYPE + ":1, " + Tags.GAME_OBJECT_QUANTITY + ":1, " + Tags.GAME_OBJECT_SUBTYPE + ":1," + Tags.STATE + ":" + Tags.GAME_OBJECT_HIT + "," + Tags.VALUE + ":'true'," + Tags.GAME_OBJECT_MASS + ":2098," + Tags.GAME_OBJECT_ACCELERATION + ":9.99," +
-            Tags.GAME_OBJECT_VELOCITY + ":123.2356," + Tags.GAME_OBJECT_IS_DESTROYED + ":'false'," + Tags.GAME_OBJECT_IS_FIXED + ":'false'," + Tags.GAME_OBJECT_IS_HIT + ":'true'," + Tags.GAME_OBJECT_IS_LOCATED + ":'true'," + Tags.GAME_OBJECT_UTM_LOCATION + ":" + UTM_LOCATION + "," +
-            Tags.GAME_OBJECT_MISSILES + ":[" + MISSILE + "]}}";
+            Tags.GAME_OBJECT_VELOCITY + ":123.2356," + Tags.GAME_OBJECT_IS_DESTROYED + ":'false'," + Tags.GAME_OBJECT_IS_FIXED + ":'false'," + Tags.GAME_OBJECT_IS_HIT + ":'true'," + Tags.GAME_OBJECT_IS_LOCATED + ":'true'," + Tags.GAME_OBJECT_UTM_LOCATION + ":" + UTM_LOCATION + "," +Tags.GAME_OBJECT_DEST_UTM_LOCATION+":"+UTM_LOCATION+","+
+            Tags.GAME_OBJECT_MISSILES + ":[" + MISSILE + "],"+Tags.GAME_OBJECT_DEST_VALIDATOR+":["+UTM+"]}}";
 
 
     @Test

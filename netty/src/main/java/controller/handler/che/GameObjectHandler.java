@@ -7,9 +7,11 @@ import factory.CheChannelFactory;
 import message.CheMessage;
 import model.GameObject;
 import model.Player;
+import model.UTM;
 import org.json.JSONException;
 import util.Configuration;
 import util.Tags;
+import util.UTMConvert;
 
 import java.rmi.RemoteException;
 import java.security.NoSuchAlgorithmException;
@@ -121,10 +123,27 @@ public class GameObjectHandler {
 
     }
 
-    private void objectMove(Player player, GameObject gameObject) {
+    private void objectMove(Player player, GameObject gameObject) throws RemoteException, JSONException, NoSuchAlgorithmException {
+
+        //no server shit at moment....basically do needful.. (tm)
+
+        //given our current dest cords..
+        UTM utm = configuration.getUtmConvert().getUTMGrid(gameObject.destinationUTMLocation.latitude, gameObject.destinationUTMLocation.longitude);
+        UTM subUtm = configuration.getUtmConvert().getUTMSubGrid(utm, gameObject.destinationUTMLocation.latitude, gameObject.destinationUTMLocation.longitude);
 
 
-        //move object in utm / subutm
+        if(gameObject.getDestinationValidator().contains(subUtm)) {
+            GameObject model = (GameObject) hazelcastManagerInterface.get(CheController.OBJECT_MAP, gameObject.getKey());
+            model.destinationUTMLocation = gameObject.destinationUTMLocation;
+            hazelcastManagerInterface.put(CheController.OBJECT_MAP, model.getKey(), model);
+            //move object in utm / subutm
+            gameObject.value = Tags.SUCCESS;
+        }else{
+            gameObject.value = Tags.ERROR;
+        }
+
+
+        CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
 
     }
 

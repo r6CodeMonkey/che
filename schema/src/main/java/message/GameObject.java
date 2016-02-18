@@ -40,9 +40,13 @@ public class GameObject extends CoreMessage {
         List<Missile> missiles = new ArrayList<>();
         JSONArray jsonArray = new JSONArray(missiles);
         inner.put(Tags.GAME_OBJECT_MISSILES, jsonArray);
+        List<UTM> utms = new ArrayList<>();
+        jsonArray = new JSONArray(utms);
+        inner.put(Tags.GAME_OBJECT_DEST_VALIDATOR, jsonArray);
         UTMLocation utmLocation = new UTMLocation();
         utmLocation.create();
         inner.put(Tags.GAME_OBJECT_UTM_LOCATION, utmLocation);
+        inner.put(Tags.GAME_OBJECT_DEST_UTM_LOCATION, utmLocation);
         this.put(Tags.GAME_OBJECT, inner);
     }
 
@@ -78,10 +82,17 @@ public class GameObject extends CoreMessage {
         return new UTMLocation(this.getJSONObject(Tags.GAME_OBJECT).getJSONObject(Tags.GAME_OBJECT_UTM_LOCATION).toString());
     }
 
+    public UTMLocation getDestinationUtmLocation() {
+        return new UTMLocation(this.getJSONObject(Tags.GAME_OBJECT).getJSONObject(Tags.GAME_OBJECT_DEST_UTM_LOCATION).toString());
+    }
+
     public void setUtmLocation(UTMLocation utmLocation) {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_UTM_LOCATION, utmLocation);
     }
 
+    public void setDestinationUtmLocation(UTMLocation utmLocation) {
+        this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_DEST_UTM_LOCATION, utmLocation);
+    }
     public double getMass() {
         return this.getJSONObject(Tags.GAME_OBJECT).getDouble(Tags.GAME_OBJECT_MASS);
     }
@@ -174,8 +185,24 @@ public class GameObject extends CoreMessage {
         return missiles;
     }
 
+    public List<UTM> getDestinationValidator() {
+        JSONArray array = this.getJSONObject(Tags.GAME_OBJECT).getJSONArray(Tags.GAME_OBJECT_DEST_VALIDATOR);
+
+        List<UTM> utms = new ArrayList<>();
+
+        for (int i = 0; i < array.length(); i++) {
+            utms.add(new UTM(array.get(i).toString()));
+        }
+
+        return utms;
+    }
+
     public void setMissiles(List<Missile> missiles) {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_MISSILES, new JSONArray(missiles));
+    }
+
+    public void setDestinationValidator(List<UTM> utms) {
+        this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_DEST_VALIDATOR, new JSONArray(utms));
     }
 
 }

@@ -108,6 +108,7 @@ public class Tags {
     public final static String GAME_OBJECT_TYPE = "gameObjectType";
     public final static String GAME_OBJECT_SUBTYPE = "gameObjectSubType";
     public final static String GAME_OBJECT_UTM_LOCATION = "gameObjectUtmLocation";
+    public final static String GAME_OBJECT_DEST_UTM_LOCATION = "gameObjectDestUtmLocation";
     public final static String GAME_OBJECT_MASS = "gameObjectMass";
     public final static String GAME_OBJECT_ACCELERATION = "gameObjectAcceleration";
     public final static String GAME_OBJECT_VELOCITY = "gameObjectVelocity";
@@ -115,8 +116,11 @@ public class Tags {
     public final static String GAME_OBJECT_IS_HIT = "gameObjectHit";
     public final static String GAME_OBJECT_IS_DESTROYED = "gameObjectDestroyed";
     public final static String GAME_OBJECT_IS_LOCATED = "gameObjectLocated";
+    public final static String GAME_OBJECT_IS_MOVING = "gameObjectMoving";
     public final static String GAME_OBJECT_MISSILES = "gameObjectMissiles";
     public final static String GAME_OBJECT_QUANTITY = "gameObjectQuantity";
+    public final static String GAME_OBJECT_DEST_VALIDATOR = "gameObjectDestValidator";
+
 
 
 }

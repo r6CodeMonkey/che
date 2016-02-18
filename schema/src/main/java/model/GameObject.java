@@ -1,5 +1,7 @@
 package model;
 
+import message.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,7 @@ public class GameObject extends CoreModel {
     public String state, value;
     public int type, subType, quantity;
     //where are we located now...rest is calculated see physics shit. ie we can only be in 1 place.
-    public UTMLocation utmLocation;
+    public UTMLocation utmLocation, destinationUTMLocation;
 
     //general physics variables.
     public double mass, acceleration, velocity;
@@ -19,6 +21,7 @@ public class GameObject extends CoreModel {
     public boolean fixed, hit, destroyed, located;
     //contains a list of missiles.  perhaps supports holding all sorts. (no all missiles are same, just different settings).
     private List<Missile> missiles = new ArrayList<>();
+    private List<UTM> destinationValidator = new ArrayList<>();
 
 
     public GameObject(message.GameObject gameObject) {
@@ -39,13 +42,19 @@ public class GameObject extends CoreModel {
         for (message.Missile missile : gameObject.getMissiles()) {
             missiles.add(new Missile(missile));
         }
+        for (message.UTM utm : gameObject.getDestinationValidator()) {
+            destinationValidator.add(new UTM(utm));
+        }
         this.utmLocation = new UTMLocation(gameObject.getUtmLocation());
+        this.destinationUTMLocation = new UTMLocation(gameObject.getDestinationUtmLocation());
+
 
     }
 
     public GameObject(String key) {
         super(key);
         utmLocation = new UTMLocation();
+        destinationUTMLocation = new UTMLocation();
         this.state = "";
         this.value = "";
         this.mass = 0;
@@ -63,6 +72,8 @@ public class GameObject extends CoreModel {
     public List<Missile> getMissiles() {
         return missiles;
     }
+
+    public List<UTM> getDestinationValidator(){return destinationValidator;}
 
     @Override
     public String getMessage() {
@@ -91,7 +102,15 @@ public class GameObject extends CoreModel {
 
         gameObject.setMissiles(temp);
 
+        List<message.UTM> temp2 = new ArrayList<>();
+        for (UTM utm : destinationValidator) {
+            temp2.add(new message.UTM(utm.getMessage()));
+        }
+
+        gameObject.setMissiles(temp);
+
         gameObject.setUtmLocation(new message.UTMLocation(utmLocation.getMessage()));
+        gameObject.setDestinationUtmLocation(new message.UTMLocation(destinationUTMLocation.getMessage()));
 
 
         return gameObject.toString();
