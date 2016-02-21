@@ -35,7 +35,7 @@ public class CheChannel {
         return channel;
     }
 
-    public void receive(Acknowledge acknowledge) throws JSONException {
+    public synchronized void receive(Acknowledge acknowledge) throws JSONException {
         synchronized (lock) {
             buffer.remove(acknowledge.getCheAckId());
             lastSentKey = "";
@@ -47,7 +47,7 @@ public class CheChannel {
         }
     }
 
-    private void send(JSONObject message) throws JSONException {
+    private synchronized void send(JSONObject message) throws JSONException {
         synchronized (lock) {
             buffer.put(message.getJSONObject(Tags.CHE).getJSONObject(Tags.CHE_ACKNOWLEDGE).getString(Tags.CHE_ACK_ID), message);
             String nextKey = buffer.keySet().iterator().next();

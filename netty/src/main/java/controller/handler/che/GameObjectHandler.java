@@ -81,7 +81,7 @@ public class GameObjectHandler {
             //we add the object to db and tell user....
             gameObject.setKey(configuration.getUuidGenerator().generateKey("game object " + gameObject.type + "-" + gameObject.subType + "-" + gameObject.quantity + "-" + player.getKey()));
 
-            configuration.getLogger().debug("creating a game object " + gameObject.getKey());
+            configuration.getLogger().debug("creating a purchase game object " + gameObject.getKey());
 
             //need to add this to the player...
             player.getGameObjects().put(gameObject.getKey(), gameObject);
@@ -132,7 +132,17 @@ public class GameObjectHandler {
         UTM subUtm = configuration.getUtmConvert().getUTMSubGrid(utm, gameObject.destinationUTMLocation.latitude, gameObject.destinationUTMLocation.longitude);
 
 
-        if(gameObject.getDestinationValidator().contains(subUtm)) {
+        boolean valid = false;
+
+        for(UTM validator : gameObject.getDestinationValidator()){
+
+            if((validator.getUtm()).equals(subUtm.getUtmLat()+subUtm.getUtmLong())){
+                valid = true;
+            }
+        }
+
+        if(valid){
+
             GameObject model = (GameObject) hazelcastManagerInterface.get(CheController.OBJECT_MAP, gameObject.getKey());
             model.destinationUTMLocation = gameObject.destinationUTMLocation;
             hazelcastManagerInterface.put(CheController.OBJECT_MAP, model.getKey(), model);
