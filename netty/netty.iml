@@ -28,6 +28,7 @@
     <orderEntry type="library" name="Maven: com.eclipsesource.minimal-json:minimal-json:0.9.2" level="project" />
     <orderEntry type="library" name="Maven: com.hazelcast:hazelcast-code-generator:3.5" level="project" />
     <orderEntry type="library" name="Maven: org.freemarker:freemarker:2.3.22" level="project" />
+    <orderEntry type="library" name="Maven: org.erlang.otp:jinterface:1.5.6" level="project" />
     <orderEntry type="module" module-name="hazelcast" />
     <orderEntry type="module" module-name="schema" />
   </component>

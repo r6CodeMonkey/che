@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class GameObjectRules {
 
-    int mass, impactRadius, maxSpeed, maxRange;
+    int mass, impactRadius, maxSpeed, maxRange, force;
 
 
     public int getMass(){
@@ -27,6 +27,9 @@ public class GameObjectRules {
     public int getMaxRange(){
         return maxRange;
     }
+
+    public int getForce(){ return force;}
+
     @XmlElement
     public void setMass(int mass){
         this.mass = mass;
@@ -42,6 +45,10 @@ public class GameObjectRules {
     @XmlElement
     public void setMaxRange(int maxRange){
         this.maxRange = maxRange;
+    }
+    @XmlElement
+    public void setForce(int force){
+        this.force = force;
     }
 
 

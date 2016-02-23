@@ -6,4 +6,5 @@
     <maxSpeed>80</maxSpeed>
     <impactRadius>0</impactRadius>
     <maxRange>50</maxRange>
+    <force>20</force>
 </gameObjectRules>

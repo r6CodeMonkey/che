@@ -32,6 +32,7 @@ public class GameObjectRulesFactory {
                 return (GameObjectRules)jaxbUnmarshaller.unmarshal(new File(classLoader.getResource("xml/atv_rules.xml").getFile()));
             case GameObjectTypes.MINI_DRONE:
                 return (GameObjectRules)jaxbUnmarshaller.unmarshal(new File(classLoader.getResource("xml/mini_drone_rules.xml").getFile()));
+            //need to flesh out the rest at some point...once done, can them simply update the xml, which is the point.
             default:
                 return null;
         }

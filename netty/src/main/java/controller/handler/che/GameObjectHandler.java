@@ -64,6 +64,12 @@ public class GameObjectHandler {
                 objectHit(player, gameObject);
                 break;
             case Tags.GAME_OBJECT_MOVE:
+
+                /*
+                  needs thought see sub routine
+                 */
+
+
                 objectMove(player, gameObject);
                 break;
             case Tags.MISSILE_ADDED:
@@ -126,6 +132,25 @@ public class GameObjectHandler {
     private void objectMove(Player player, GameObject gameObject) throws RemoteException, JSONException, NoSuchAlgorithmException {
 
         //no server shit at moment....basically do needful.. (tm)
+
+        /*
+         ignore comment above.  at this point, we need to ensure the server, or some component (ie erlang had i added it)
+
+         can manage the objects route, over a time interval (ie 5 seconds...) and update the sub utm grids, and make the position available on request.
+
+         also, once complete, it will send a message to user.  we dont want to send 5 sec location changes, only what user requests.
+
+         the engine will basically either process everything, or better a thread per user to handle...to decide.
+
+
+         so on that basis, yes, its one instance running on own.  therefore
+
+         1: create a java stub
+         2: pass in a user plus set of applicable objects.
+         3: process them and update on request only...
+
+         */
+
 
         //given our current dest cords..
         UTM utm = configuration.getUtmConvert().getUTMGrid(gameObject.destinationUTMLocation.latitude, gameObject.destinationUTMLocation.longitude);
