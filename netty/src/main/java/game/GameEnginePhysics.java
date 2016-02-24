@@ -12,7 +12,7 @@ public class GameEnginePhysics {
     private static final int EARTH_RADIUS = 6371000;
 
     /*
-     may not need but usefule
+     can be used for missile range / flying range.
      */
     public static double getHaversineDistance(double currentLat, double currentLong, double destLat, double destLong){
         double phi, phi2, deltaPhi,deltaLambda, a, c;
@@ -42,22 +42,24 @@ public class GameEnginePhysics {
         y = Math.sin(lambda2 - lambda) * Math.cos(phi2);
         x = Math.cos(phi) * Math.sin(phi2) - Math.sin(phi) * Math.cos(phi2) * Math.cos(lambda2 - lambda);
 
-        return /*((*/Math.toDegrees(Math.atan2(y,x))/*+180) % 360)*/;
+        return Math.toDegrees(Math.atan2(y, x));
     }
 
     public static double getLatitude(double latitude, double distance, double bearing){
         double phi = Math.toRadians(latitude);
-        return Math.toDegrees(Math.asin(Math.sin(phi) * Math.cos(distance / EARTH_RADIUS) + Math.cos(phi) * Math.sin(distance / EARTH_RADIUS) * Math.cos(bearing)));
+        double theta = Math.toRadians(bearing);
+        return Math.toDegrees(Math.asin(Math.sin(phi) * Math.cos(distance / EARTH_RADIUS) + Math.cos(phi) * Math.sin(distance / EARTH_RADIUS) * Math.cos(theta)));
     }
 
     public static double getLongitude(double latitude, double longitude, double newLatitude, double distance, double bearing){
-        double lambda, phi, phi2;
+        double lambda, phi, phi2, theta;
         lambda = Math.toRadians(longitude);
         phi = Math.toRadians(latitude);
         phi2 = Math.toRadians(newLatitude);
+        theta = Math.toRadians(bearing);
 
-        return ((Math.toDegrees(lambda - Math.atan2(Math.sin(bearing) * Math.sin(distance/EARTH_RADIUS) * Math.cos(phi),
-                                  Math.cos(distance/EARTH_RADIUS) - Math.sin(phi) * Math.sin(phi2)))+540)%360-180);
+        return Math.toDegrees(lambda + Math.atan2(Math.sin(theta) * Math.sin(distance/EARTH_RADIUS) * Math.cos(phi),
+                                  Math.cos(distance/EARTH_RADIUS) - Math.sin(phi) * Math.sin(phi2)))/*)+540)%360-180)*/;
 
     }
 
@@ -82,38 +84,22 @@ public class GameEnginePhysics {
         //so now we just need displacement...which we know is velocity * time....
         displacement = gameEngineModel.getGameObject().velocity * (milliseconds/1000);
 
-        double d = getHaversineDistance(gameEngineModel.getGameObject().utmLocation.latitude,
+
+        double bearing = calculateBearing(gameEngineModel.getGameObject().utmLocation.latitude,
                 gameEngineModel.getGameObject().utmLocation.longitude,
                 gameEngineModel.getGameObject().destinationUTMLocation.latitude,
                 gameEngineModel.getGameObject().destinationUTMLocation.longitude);
 
+        gameEngineModel.getGameUTMLocation().latitude= getLatitude(gameEngineModel.getGameObject().utmLocation.latitude, displacement, bearing);
+        gameEngineModel.getGameUTMLocation().longitude = getLongitude(gameEngineModel.getGameObject().utmLocation.latitude,
+                gameEngineModel.getGameObject().utmLocation.longitude, gameEngineModel.getGameUTMLocation().latitude, displacement, bearing);
+
+
+
         /*
-          so basically we have the total distance to destination.  now what we need to do is simply is take the displacement from the distance, and see if we can
-          work out the degrees from there.  basically...
-
-          so
-
-          1: c = new distance / earth radius.
-          now need to find a....
-          c/2 = Math.atan(1,2).
-
+          finally we also need to work out its new UTM / SubUTM...
          */
 
-
-
-    }
-
-    public static void main(String[] args){
-
-        double d = GameEnginePhysics.getHaversineDistance(50.0686, 5.7161, 58.6400, 3.0700);
-
-        double bearing = GameEnginePhysics.calculateBearing(50.0686, 5.7161, 58.6400, 3.0700);
-
-        double lat = GameEnginePhysics.getLatitude(50.0686, 2000, -9.131774011425927);
-
-        double lng = GameEnginePhysics.getLongitude(50.0686,5.7161,50.05137985817801,2000, -9.131774011425927);
-
-        System.out.println("lng "+lng);
 
     }
 
