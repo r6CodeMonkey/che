@@ -15,32 +15,32 @@ public class GameEngineModel {
     private GameObjectRules gameObjectRules;
     private UTMLocation gameUTMLocation = new UTMLocation();
 
-    public GameEngineModel(String playerKey, GameObject gameObject, GameObjectRules gameObjectRules){
+    public GameEngineModel(String playerKey, GameObject gameObject, GameObjectRules gameObjectRules) {
         this.playerKey = playerKey;
         this.gameObject = gameObject;
         this.gameObjectRules = gameObjectRules;
     }
 
-    public String getPlayerKey(){
+    public String getPlayerKey() {
         return playerKey;
     }
 
-    public GameObject getGameObject(){
+    public GameObject getGameObject() {
         return gameObject;
     }
 
-    public GameObjectRules getGameObjectRules(){
+    public GameObjectRules getGameObjectRules() {
         return gameObjectRules;
     }
 
-    public UTMLocation getGameUTMLocation(){
+    public UTMLocation getGameUTMLocation() {
         return gameUTMLocation;
     }
 
     @Override
-    public boolean equals(Object object){
+    public boolean equals(Object object) {
         //do rest later etc..plus hashcode bla bla
-        if(((GameEngineModel)object).playerKey.equals(this.playerKey)){
+        if (((GameEngineModel) object).playerKey.equals(this.playerKey)) {
             return true;
         }
 

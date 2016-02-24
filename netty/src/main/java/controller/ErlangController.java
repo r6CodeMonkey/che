@@ -10,8 +10,8 @@ import java.io.IOException;
  */
 public class ErlangController {
 
-    private OtpNode node;
     private final Configuration configuration;
+    private OtpNode node;
 
     public ErlangController(Configuration configuration) {
         this.configuration = configuration;

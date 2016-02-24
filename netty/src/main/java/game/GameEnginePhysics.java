@@ -1,9 +1,5 @@
 package game;
 
-import com.sun.javafx.geom.Vec2f;
-import com.sun.javafx.geom.Vec3f;
-import model.UTMLocation;
-
 /**
  * Created by timmytime on 23/02/16.
  */
@@ -14,24 +10,24 @@ public class GameEnginePhysics {
     /*
      can be used for missile range / flying range.
      */
-    public static double getHaversineDistance(double currentLat, double currentLong, double destLat, double destLong){
-        double phi, phi2, deltaPhi,deltaLambda, a, c;
+    public static double getHaversineDistance(double currentLat, double currentLong, double destLat, double destLong) {
+        double phi, phi2, deltaPhi, deltaLambda, a, c;
 
         phi = Math.toRadians(currentLat);
         phi2 = Math.toRadians(destLat);
         deltaPhi = Math.toRadians(destLat - currentLat);
         deltaLambda = Math.toRadians(destLong - currentLong);
 
-        a = Math.sin(deltaPhi/2) * Math.sin(deltaPhi/2) + Math.cos(phi) * Math.cos(phi2) * Math.sin(deltaLambda/2) * Math.sin(deltaLambda/2);
+        a = Math.sin(deltaPhi / 2) * Math.sin(deltaPhi / 2) + Math.cos(phi) * Math.cos(phi2) * Math.sin(deltaLambda / 2) * Math.sin(deltaLambda / 2);
 
-        c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
         return EARTH_RADIUS * c;
 
     }
 
-    public static double calculateBearing(double currentLat, double currentLong, double destLat, double destLong){
-        double phi, phi2, lambda, lambda2, y,x;
+    public static double calculateBearing(double currentLat, double currentLong, double destLat, double destLong) {
+        double phi, phi2, lambda, lambda2, y, x;
 
         phi = Math.toRadians(currentLat);
         phi2 = Math.toRadians(destLat);
@@ -45,44 +41,44 @@ public class GameEnginePhysics {
         return Math.toDegrees(Math.atan2(y, x));
     }
 
-    public static double getLatitude(double latitude, double distance, double bearing){
+    public static double getLatitude(double latitude, double distance, double bearing) {
         double phi = Math.toRadians(latitude);
         double theta = Math.toRadians(bearing);
         return Math.toDegrees(Math.asin(Math.sin(phi) * Math.cos(distance / EARTH_RADIUS) + Math.cos(phi) * Math.sin(distance / EARTH_RADIUS) * Math.cos(theta)));
     }
 
-    public static double getLongitude(double latitude, double longitude, double newLatitude, double distance, double bearing){
+    public static double getLongitude(double latitude, double longitude, double newLatitude, double distance, double bearing) {
         double lambda, phi, phi2, theta;
         lambda = Math.toRadians(longitude);
         phi = Math.toRadians(latitude);
         phi2 = Math.toRadians(newLatitude);
         theta = Math.toRadians(bearing);
 
-        return Math.toDegrees(lambda + Math.atan2(Math.sin(theta) * Math.sin(distance/EARTH_RADIUS) * Math.cos(phi),
-                                  Math.cos(distance/EARTH_RADIUS) - Math.sin(phi) * Math.sin(phi2)))/*)+540)%360-180)*/;
+        return Math.toDegrees(lambda + Math.atan2(Math.sin(theta) * Math.sin(distance / EARTH_RADIUS) * Math.cos(phi),
+                Math.cos(distance / EARTH_RADIUS) - Math.sin(phi) * Math.sin(phi2)))/*)+540)%360-180)*/;
 
     }
 
     /*
       process a model by its rules.  also pass in our timestep, as we may want to configure it faster or slower once we see how it runs.
      */
-    public static void process(final GameEngineModel gameEngineModel, final long milliseconds){
+    public static void process(final GameEngineModel gameEngineModel, final long milliseconds) {
 
-         double displacement;
-        if(gameEngineModel.getGameObject().acceleration != 0){
+        double displacement;
+        if (gameEngineModel.getGameObject().acceleration != 0) {
             gameEngineModel.getGameObject().acceleration = gameEngineModel.getGameObjectRules().getForce() / gameEngineModel.getGameObjectRules().getMass();
         }
 
-        if(gameEngineModel.getGameObject().velocity < gameEngineModel.getGameObjectRules().getMaxSpeed()) {
+        if (gameEngineModel.getGameObject().velocity < gameEngineModel.getGameObjectRules().getMaxSpeed()) {
             gameEngineModel.getGameObject().velocity = gameEngineModel.getGameObject().velocity + (gameEngineModel.getGameObject().acceleration * (milliseconds / 1000));
         }
 
-        if(gameEngineModel.getGameObject().velocity > gameEngineModel.getGameObjectRules().getMaxSpeed()){
+        if (gameEngineModel.getGameObject().velocity > gameEngineModel.getGameObjectRules().getMaxSpeed()) {
             gameEngineModel.getGameObject().velocity = gameEngineModel.getGameObjectRules().getMaxSpeed();
         }
 
         //so now we just need displacement...which we know is velocity * time....
-        displacement = gameEngineModel.getGameObject().velocity * (milliseconds/1000);
+        displacement = gameEngineModel.getGameObject().velocity * (milliseconds / 1000);
 
 
         double bearing = calculateBearing(gameEngineModel.getGameObject().utmLocation.latitude,
@@ -90,7 +86,7 @@ public class GameEnginePhysics {
                 gameEngineModel.getGameObject().destinationUTMLocation.latitude,
                 gameEngineModel.getGameObject().destinationUTMLocation.longitude);
 
-        gameEngineModel.getGameUTMLocation().latitude= getLatitude(gameEngineModel.getGameObject().utmLocation.latitude, displacement, bearing);
+        gameEngineModel.getGameUTMLocation().latitude = getLatitude(gameEngineModel.getGameObject().utmLocation.latitude, displacement, bearing);
         gameEngineModel.getGameUTMLocation().longitude = getLongitude(gameEngineModel.getGameObject().utmLocation.latitude,
                 gameEngineModel.getGameObject().utmLocation.longitude, gameEngineModel.getGameUTMLocation().latitude, displacement, bearing);
 

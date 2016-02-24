@@ -11,7 +11,6 @@ import model.UTM;
 import org.json.JSONException;
 import util.Configuration;
 import util.Tags;
-import util.UTMConvert;
 
 import java.rmi.RemoteException;
 import java.security.NoSuchAlgorithmException;
@@ -159,21 +158,21 @@ public class GameObjectHandler {
 
         boolean valid = false;
 
-        for(UTM validator : gameObject.getDestinationValidator()){
+        for (UTM validator : gameObject.getDestinationValidator()) {
 
-            if((validator.getUtm()).equals(subUtm.getUtmLat()+subUtm.getUtmLong())){
+            if ((validator.getUtm()).equals(subUtm.getUtmLat() + subUtm.getUtmLong())) {
                 valid = true;
             }
         }
 
-        if(valid){
+        if (valid) {
 
             GameObject model = (GameObject) hazelcastManagerInterface.get(CheController.OBJECT_MAP, gameObject.getKey());
             model.destinationUTMLocation = gameObject.destinationUTMLocation;
             hazelcastManagerInterface.put(CheController.OBJECT_MAP, model.getKey(), model);
             //move object in utm / subutm
             gameObject.value = Tags.SUCCESS;
-        }else{
+        } else {
             gameObject.value = Tags.ERROR;
         }
 
