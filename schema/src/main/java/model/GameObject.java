@@ -25,6 +25,8 @@ public class GameObject extends CoreModel {
     private List<UTM> destinationValidator = new ArrayList<>();
 
     private TopicSubscriptions topicSubscriptions = new TopicSubscriptions();
+    private double distanceBetweenPoints; //our total distance to move.
+
 
 
     public GameObject(message.GameObject gameObject) {
@@ -74,6 +76,14 @@ public class GameObject extends CoreModel {
 
     public List<Missile> getMissiles() {
         return missiles;
+    }
+
+    public double getDistanceBetweenPoints(){
+        return distanceBetweenPoints;
+    }
+
+    public void setDistanceBetweenPoints(double distanceBetweenPoints){
+        this.distanceBetweenPoints = distanceBetweenPoints;
     }
 
     public List<UTM> getDestinationValidator(){return destinationValidator;}

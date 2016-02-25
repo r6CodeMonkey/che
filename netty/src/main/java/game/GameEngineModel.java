@@ -16,7 +16,6 @@ public class GameEngineModel implements Serializable {
     private GameObject gameObject;
     private GameObjectRules gameObjectRules;
     private UTMLocation gameUTMLocation = new UTMLocation();
-    private double distance;
 
     public GameEngineModel(String playerKey, GameObject gameObject, GameObjectRules gameObjectRules) {
         this.playerKey = playerKey;
@@ -40,13 +39,6 @@ public class GameEngineModel implements Serializable {
         return gameUTMLocation;
     }
 
-    public double getDistance(){
-        return distance;
-    }
-
-    public void setDistance(double distance){
-        this.distance = distance;
-    }
 
     @Override
     public boolean equals(Object object) {

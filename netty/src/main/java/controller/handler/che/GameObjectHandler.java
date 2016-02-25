@@ -4,6 +4,7 @@ import controller.CheController;
 import controller.handler.UTMHandler;
 import core.HazelcastManagerInterface;
 import factory.CheChannelFactory;
+import game.GameEnginePhysics;
 import message.CheMessage;
 import model.GameObject;
 import model.Player;
@@ -116,6 +117,11 @@ public class GameObjectHandler {
         hazelcastManagerInterface.put(CheController.OBJECT_MAP, gameObject.getKey(), gameObject);
 
         player.getGameObjects().put(gameObject.getKey(), gameObject);
+
+        /*
+         soln.  added topic subscriptions to models as well so seperate from player subscriptions..simples.
+         */
+
         //how do we unsubscribe?  i guess if we move out of zone, but then...
         //we may still be in zone as player and object not....regardless its ok to listen to sectors.
         //perhaps add something to player handler to remove pointless subscribes.
@@ -129,26 +135,6 @@ public class GameObjectHandler {
     }
 
     private void objectMove(Player player, GameObject gameObject) throws RemoteException, JSONException, NoSuchAlgorithmException {
-
-        //no server shit at moment....basically do needful.. (tm)
-
-        /*
-         ignore comment above.  at this point, we need to ensure the server, or some component (ie erlang had i added it)
-
-         can manage the objects route, over a time interval (ie 5 seconds...) and update the sub utm grids, and make the position available on request.
-
-         also, once complete, it will send a message to user.  we dont want to send 5 sec location changes, only what user requests.
-
-         the engine will basically either process everything, or better a thread per user to handle...to decide.
-
-
-         so on that basis, yes, its one instance running on own.  therefore
-
-         1: create a java stub
-         2: pass in a user plus set of applicable objects.
-         3: process them and update on request only...
-
-         */
 
 
         //given our current dest cords..
@@ -169,13 +155,17 @@ public class GameObjectHandler {
 
             GameObject model = (GameObject) hazelcastManagerInterface.get(CheController.OBJECT_MAP, gameObject.getKey());
             model.destinationUTMLocation = gameObject.destinationUTMLocation;
+            model.setDistanceBetweenPoints(GameEnginePhysics.getHaversineDistance(model.utmLocation.latitude,model.utmLocation.longitude,model.destinationUTMLocation.latitude, model.destinationUTMLocation.longitude));
             hazelcastManagerInterface.put(CheController.OBJECT_MAP, model.getKey(), model);
-            //move object in utm / subutm
             gameObject.value = Tags.SUCCESS;
-        } else {
-            gameObject.value = Tags.ERROR;
-        }
 
+            /*
+             also need to add to game engine...to do.
+             */
+
+        } else {
+            gameObject.value = Tags.ERROR;  //just fail it...simples...
+        }
 
         CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
 
