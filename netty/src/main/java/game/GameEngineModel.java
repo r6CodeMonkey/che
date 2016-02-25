@@ -4,16 +4,19 @@ import model.GameObject;
 import model.UTMLocation;
 import util.GameObjectRules;
 
+import java.io.Serializable;
+
 /**
  * Created by timmytime on 23/02/16.
  */
-public class GameEngineModel {
+public class GameEngineModel implements Serializable {
 
 
     private String playerKey;
     private GameObject gameObject;
     private GameObjectRules gameObjectRules;
     private UTMLocation gameUTMLocation = new UTMLocation();
+    private double distance;
 
     public GameEngineModel(String playerKey, GameObject gameObject, GameObjectRules gameObjectRules) {
         this.playerKey = playerKey;
@@ -35,6 +38,14 @@ public class GameEngineModel {
 
     public UTMLocation getGameUTMLocation() {
         return gameUTMLocation;
+    }
+
+    public double getDistance(){
+        return distance;
+    }
+
+    public void setDistance(double distance){
+        this.distance = distance;
     }
 
     @Override

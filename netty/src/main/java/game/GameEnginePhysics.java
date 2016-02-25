@@ -1,5 +1,7 @@
 package game;
 
+import util.UTMConvert;
+
 /**
  * Created by timmytime on 23/02/16.
  */
@@ -62,7 +64,7 @@ public class GameEnginePhysics {
     /*
       process a model by its rules.  also pass in our timestep, as we may want to configure it faster or slower once we see how it runs.
      */
-    public static void process(final GameEngineModel gameEngineModel, final long milliseconds) {
+    public static void process(final GameEngineModel gameEngineModel, final UTMConvert utmConvert,  final long milliseconds) {
 
         double displacement;
         if (gameEngineModel.getGameObject().acceleration != 0) {
@@ -80,6 +82,12 @@ public class GameEnginePhysics {
         //so now we just need displacement...which we know is velocity * time....
         displacement = gameEngineModel.getGameObject().velocity * (milliseconds / 1000);
 
+        if(displacement > gameEngineModel.getDistance()){
+            displacement = gameEngineModel.getDistance();
+        }
+
+        gameEngineModel.setDistance(gameEngineModel.getDistance() - displacement);
+
 
         double bearing = calculateBearing(gameEngineModel.getGameObject().utmLocation.latitude,
                 gameEngineModel.getGameObject().utmLocation.longitude,
@@ -95,6 +103,9 @@ public class GameEnginePhysics {
         /*
           finally we also need to work out its new UTM / SubUTM...
          */
+        gameEngineModel.getGameUTMLocation().utm = utmConvert.getUTMGrid(gameEngineModel.getGameUTMLocation().latitude, gameEngineModel.getGameUTMLocation().longitude);
+        gameEngineModel.getGameUTMLocation().subUtm = utmConvert.getUTMSubGrid(gameEngineModel.getGameUTMLocation().utm,
+                gameEngineModel.getGameUTMLocation().latitude, gameEngineModel.getGameUTMLocation().longitude);
 
 
     }

@@ -1,6 +1,7 @@
 package model;
 
 import message.*;
+import util.TopicSubscriptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,8 @@ public class GameObject extends CoreModel {
     //contains a list of missiles.  perhaps supports holding all sorts. (no all missiles are same, just different settings).
     private List<Missile> missiles = new ArrayList<>();
     private List<UTM> destinationValidator = new ArrayList<>();
+
+    private TopicSubscriptions topicSubscriptions = new TopicSubscriptions();
 
 
     public GameObject(message.GameObject gameObject) {
@@ -74,6 +77,11 @@ public class GameObject extends CoreModel {
     }
 
     public List<UTM> getDestinationValidator(){return destinationValidator;}
+
+    public TopicSubscriptions getTopicSubscriptions() {
+        return topicSubscriptions;
+    }
+
 
     @Override
     public String getMessage() {

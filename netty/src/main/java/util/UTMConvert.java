@@ -41,16 +41,30 @@ public class UTMConvert {
     private double LAT_SUB_DEG = 0.05;
     private double LONG_SUB_DEG = 0.1;
 
+    private final List<String> utmGrids = new ArrayList<>();
+
 
     public UTMConvert() {
-
+        createUTMGrids();
     }
 
 
     public UTMConvert(double utmSubZoneLat, double utmSubZoneLong) {
         LAT_SUB_DEG = utmSubZoneLat;
         LONG_SUB_DEG = utmSubZoneLong;
+        createUTMGrids();
     }
+
+    private void createUTMGrids(){
+        //it goes letters, 1 - 60. simples. lol i put it wrong way round..oh well too late to change it all now....super bug!!
+        for(String v : latValues){
+            for(int i=1;i<=60;i++){
+                utmGrids.add(v+i);
+            }
+        }
+    }
+
+    public List<String> getUtmGrids(){return utmGrids;}
 
     public UTM getUTMGrid(double latitude, double longitude) {
         return new UTM(latToUTM(latitude), longToUTM(longitude));
