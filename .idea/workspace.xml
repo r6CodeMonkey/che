@@ -2,30 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1da809bf-b5cd-41ef-846a-b237902f929e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/game/GameEngineModel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/maven-archiver/pom.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/schema-1.0-SNAPSHOT.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/surefire-reports/TEST-message.MessageTest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/surefire-reports/TEST-model.ModelTest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/surefire-reports/message.MessageTest.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/surefire-reports/model.ModelTest.txt" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/netty/src/main/java/game/GameEngineModel.java" afterPath="$PROJECT_DIR$/schema/src/main/java/model/GameEngineModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/util/Configuration.class" afterPath="$PROJECT_DIR$/netty/target/classes/util/Configuration.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/game/GameEngine.class" afterPath="$PROJECT_DIR$/netty/target/classes/game/GameEngine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/game/GameEnginePhysics.class" afterPath="$PROJECT_DIR$/netty/target/classes/game/GameEnginePhysics.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/test-classes/GameEngineTest.class" afterPath="$PROJECT_DIR$/netty/target/test-classes/GameEngineTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/controller/handler/che/GameObjectHandler.class" afterPath="$PROJECT_DIR$/netty/target/classes/controller/handler/che/GameObjectHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/util/GameObjectRules.class" afterPath="$PROJECT_DIR$/schema/target/classes/util/GameObjectRules.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/target/classes/core/HazelcastManager.class" afterPath="$PROJECT_DIR$/hazelcast/target/classes/core/HazelcastManager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/game/GameEngine.java" afterPath="$PROJECT_DIR$/netty/src/main/java/game/GameEngine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/game/GameEnginePhysics.java" afterPath="$PROJECT_DIR$/netty/src/main/java/game/GameEnginePhysics.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/test/java/GameEngineTest.java" afterPath="$PROJECT_DIR$/netty/src/test/java/GameEngineTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/util/GameObjectRules.java" afterPath="$PROJECT_DIR$/schema/src/main/java/util/GameObjectRules.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java" afterPath="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManagerInterface.java" afterPath="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManagerInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/src/main/java/server/HazelcastServer.java" afterPath="$PROJECT_DIR$/hazelcast/src/main/java/server/HazelcastServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/util/UTMConvert.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/UTMConvert.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Che.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,8 +46,8 @@
       <file leaf-file-name="GameEngine.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/netty/src/main/java/game/GameEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39750692">
-              <caret line="95" column="68" selection-start-line="95" selection-start-column="68" selection-end-line="95" selection-end-column="68" />
+            <state vertical-scroll-proportion="0.23130193">
+              <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1430,7 +1407,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11497731" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2872038" sideWeight="0.68683815" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2872038" sideWeight="0.68683815" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25687203" sideWeight="0.49621785" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20474029" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1960,8 +1937,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/netty/src/main/java/game/GameEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39750692">
-          <caret line="95" column="68" selection-start-line="95" selection-start-column="68" selection-end-line="95" selection-end-column="68" />
+        <state vertical-scroll-proportion="0.23130193">
+          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

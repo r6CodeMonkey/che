@@ -27,19 +27,6 @@ public class GameEngine {
     }
 
 
-    /*
-
-     IMap not serializable.....not a big issue per se.
-
-     remove it from RMI interface.  and add method to get our members...which we sort of have to be fair without mods.
-
-     but for this, each IMap = UTM.  and each map entry is a <SubUtm, List<>);
-
-     so basically use getMap(Map, Key) to fulfill requirements.
-
-
-     */
-
     public void addGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {
         List<GameEngineModel> subUtmList = (List<GameEngineModel>) hazelcastManagerInterface
                 .get(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getUtm());
