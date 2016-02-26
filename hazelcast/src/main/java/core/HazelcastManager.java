@@ -7,6 +7,11 @@ import server.CheCallbackInterface;
 import util.CheMessageHandler;
 import util.TopicSubscriptions;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+
 
 /**
  * Created by timmytime on 11/12/15.
@@ -58,6 +63,28 @@ public class HazelcastManager implements HazelcastManagerInterface {
         return hazelcastInstance.getMap(map).get(key);
     }
 
+    @Override
+    public Collection<?> getAvailableKeys(String map) {
+
+        IMap iMap = hazelcastInstance.getMap(map);
+
+        List<String> keys = new ArrayList<>();
+
+        if (iMap == null) {
+            return keys;
+        }
+
+        Set<String> subUtmKeys = iMap.keySet();
+
+        for (String key : subUtmKeys) {
+            keys.add(key);
+        }
+
+        return keys;
+    }
+
+
+    //this is not serializable...so basically need to remove it.  and do something else...ha ha
     public IMap get(String map) {
         return hazelcastInstance.getMap(map);
     }

@@ -2,12 +2,13 @@ package util;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
 /**
  * Created by timmytime on 21/02/16.
  */
 @XmlRootElement
-public class GameObjectRules {
+public class GameObjectRules implements Serializable {
 
     int mass, impactRadius, maxSpeed, maxRange, force;
 

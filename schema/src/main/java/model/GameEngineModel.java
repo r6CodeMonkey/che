@@ -1,7 +1,5 @@
-package game;
+package model;
 
-import model.GameObject;
-import model.UTMLocation;
 import util.GameObjectRules;
 
 import java.io.Serializable;

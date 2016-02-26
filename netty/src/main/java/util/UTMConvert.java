@@ -42,6 +42,8 @@ public class UTMConvert {
     private double LONG_SUB_DEG = 0.1;
 
     private final List<String> utmGrids = new ArrayList<>();
+    private final List<String> subUtmGrids = new ArrayList<>();
+
 
 
     public UTMConvert() {
@@ -62,9 +64,21 @@ public class UTMConvert {
                 utmGrids.add(v+i);
             }
         }
+
+        //sub utm...runs 1C0 to 8X59....ie 1 to 8. then lat vals 1 . n + 0 - 59. probably could lambda, but this is cleaner really.
+        for(int i=1;i<9;i++){
+            for(String v : latValues){
+                for(int j=0;j<60;j++){
+                    subUtmGrids.add(i+v+j);
+                }
+            }
+        }
+
     }
 
     public List<String> getUtmGrids(){return utmGrids;}
+
+    public List<String> getSubUtmGrids(){return subUtmGrids;}
 
     public UTM getUTMGrid(double latitude, double longitude) {
         return new UTM(latToUTM(latitude), longToUTM(longitude));

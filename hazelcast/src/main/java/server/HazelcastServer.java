@@ -10,6 +10,9 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by timmytime on 12/12/15.
@@ -88,9 +91,10 @@ public class HazelcastServer extends UnicastRemoteObject implements HazelcastMan
     }
 
     @Override
-    public IMap get(String map) {
-        return hazelcastManager.get(map);
+    public Collection<?> getAvailableKeys(String map) {
+        return hazelcastManager.getAvailableKeys(map);
     }
+
 
     @Override
     public void removeAll(String map) {

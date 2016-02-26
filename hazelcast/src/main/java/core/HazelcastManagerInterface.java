@@ -6,6 +6,8 @@ import util.TopicSubscriptions;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by timmytime on 12/12/15.
@@ -26,7 +28,7 @@ public interface HazelcastManagerInterface extends Remote {
 
     Object get(String map, String key) throws RemoteException;
 
-    IMap get(String map) throws RemoteException;
+    Collection<?> getAvailableKeys(String map) throws RemoteException;
 
     void removeAll(String map) throws RemoteException;
 
