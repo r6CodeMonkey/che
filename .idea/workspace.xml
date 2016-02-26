@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1da809bf-b5cd-41ef-846a-b237902f929e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/game/GameEngine.java" afterPath="$PROJECT_DIR$/netty/src/main/java/game/GameEngine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/game/GameEnginePhysics.java" afterPath="$PROJECT_DIR$/netty/src/main/java/game/GameEnginePhysics.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/test/java/GameEngineTest.java" afterPath="$PROJECT_DIR$/netty/src/test/java/GameEngineTest.java" />
     </list>
     <ignored path="Che.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,11 +45,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GameEngine.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameEngine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/netty/src/main/java/game/GameEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.23130193">
-              <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="84" column="14" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,16 +66,6 @@
                 <element signature="e#1058#1059#0" expanded="true" />
                 <element signature="e#1090#1091#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameEngineModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/schema/src/main/java/model/GameEngineModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -99,11 +91,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameEngineTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameEngineTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/netty/src/test/java/GameEngineTest.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.66759">
+              <caret line="130" column="31" selection-start-line="130" selection-start-column="31" selection-end-line="130" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameObject.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/schema/src/main/java/model/GameObject.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+              <caret line="85" column="59" selection-start-line="85" selection-start-column="59" selection-end-line="85" selection-end-column="59" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UTMLocation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/schema/src/main/java/model/UTMLocation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameEnginePhysics.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/netty/src/main/java/game/GameEnginePhysics.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -148,26 +170,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CheController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/netty/src/main/java/controller/CheController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/netty/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="75" column="11" selection-start-line="75" selection-start-column="11" selection-end-line="75" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -232,18 +234,18 @@
         <option value="$PROJECT_DIR$/schema/src/main/resources/xml/mini_drone_rules.xml" />
         <option value="$PROJECT_DIR$/netty/src/main/java/game/GameEngineModel.java" />
         <option value="$PROJECT_DIR$/schema/src/main/java/model/GameObject.java" />
-        <option value="$PROJECT_DIR$/netty/src/main/java/game/GameEnginePhysics.java" />
         <option value="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/GameObjectHandler.java" />
         <option value="$PROJECT_DIR$/netty/src/main/java/util/Configuration.java" />
         <option value="$PROJECT_DIR$/schema/src/main/java/util/GameObjectRules.java" />
         <option value="$PROJECT_DIR$/hazelcast/pom.xml" />
         <option value="$PROJECT_DIR$/schema/src/main/java/model/GameEngineModel.java" />
         <option value="$PROJECT_DIR$/netty/src/main/java/util/UTMConvert.java" />
-        <option value="$PROJECT_DIR$/netty/src/test/java/GameEngineTest.java" />
         <option value="$PROJECT_DIR$/hazelcast/src/main/java/server/HazelcastServer.java" />
         <option value="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java" />
         <option value="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManagerInterface.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/game/GameEnginePhysics.java" />
         <option value="$PROJECT_DIR$/netty/src/main/java/game/GameEngine.java" />
+        <option value="$PROJECT_DIR$/netty/src/test/java/GameEngineTest.java" />
       </list>
     </option>
   </component>
@@ -1403,11 +1405,11 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32417062" sideWeight="0.33232477" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2872038" sideWeight="0.31316188" order="7" side_tool="true" content_ui="combo" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2872038" sideWeight="0.31820473" order="7" side_tool="true" content_ui="combo" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11497731" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2872038" sideWeight="0.68683815" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2872038" sideWeight="0.68179524" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25687203" sideWeight="0.49621785" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20474029" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1416,7 +1418,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39905214" sideWeight="0.49016643" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39905214" sideWeight="0.48613212" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1733,8 +1735,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="206" column="60" selection-start-line="206" selection-start-column="60" selection-end-line="206" selection-end-column="60" />
           <folding>
-            <element signature="e#3905#3906#0" expanded="true" />
-            <element signature="e#3934#3935#0" expanded="true" />
+            <element signature="e#3905#3906#0" expanded="false" />
+            <element signature="e#3934#3935#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1751,14 +1753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netty/src/main/java/game/GameEnginePhysics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1784,21 +1778,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
-            <element signature="e#382#383#0" expanded="true" />
-            <element signature="e#429#430#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/schema/src/main/java/model/GameObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="e#2628#2629#0" expanded="true" />
-            <element signature="e#2659#2660#0" expanded="true" />
-            <element signature="e#2706#2707#0" expanded="true" />
-            <element signature="e#2750#2751#0" expanded="true" />
+            <element signature="e#382#383#0" expanded="false" />
+            <element signature="e#429#430#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1823,14 +1804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/schema/src/main/java/model/UTMLocation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1927,21 +1900,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/netty/src/test/java/GameEngineTest.java">
+    <entry file="file://$PROJECT_DIR$/schema/src/main/java/model/UTMLocation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/schema/src/main/java/model/GameObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="85" column="59" selection-start-line="85" selection-start-column="59" selection-end-line="85" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/game/GameEnginePhysics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/netty/src/main/java/game/GameEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23130193">
-          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="84" column="14" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/test/java/GameEngineTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66759">
+          <caret line="130" column="31" selection-start-line="130" selection-start-column="31" selection-end-line="130" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>

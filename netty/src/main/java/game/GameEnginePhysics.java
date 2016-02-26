@@ -14,6 +14,7 @@ public class GameEnginePhysics {
      can be used for missile range / flying range.
      */
     public static double getHaversineDistance(double currentLat, double currentLong, double destLat, double destLong) {
+
         double phi, phi2, deltaPhi, deltaLambda, a, c;
 
         phi = Math.toRadians(currentLat);
@@ -68,17 +69,20 @@ public class GameEnginePhysics {
     public static void process(final GameEngineModel gameEngineModel, final UTMConvert utmConvert, final long milliseconds) {
 
         double displacement;
-        if (gameEngineModel.getGameObject().acceleration != 0) {
-            gameEngineModel.getGameObject().acceleration = gameEngineModel.getGameObjectRules().getForce() / gameEngineModel.getGameObjectRules().getMass();
+        if (gameEngineModel.getGameObject().acceleration == 0) {
+            gameEngineModel.getGameObject().acceleration = (double)gameEngineModel.getGameObjectRules().getForce() / gameEngineModel.getGameObjectRules().getMass();
         }
 
         if (gameEngineModel.getGameObject().velocity < gameEngineModel.getGameObjectRules().getMaxSpeed()) {
-            gameEngineModel.getGameObject().velocity = gameEngineModel.getGameObject().velocity + (gameEngineModel.getGameObject().acceleration * (milliseconds / 1000));
+            gameEngineModel.getGameObject().velocity = (double)gameEngineModel.getGameObject().velocity + (gameEngineModel.getGameObject().acceleration * (milliseconds / 1000));
         }
 
         if (gameEngineModel.getGameObject().velocity > gameEngineModel.getGameObjectRules().getMaxSpeed()) {
-            gameEngineModel.getGameObject().velocity = gameEngineModel.getGameObjectRules().getMaxSpeed();
+            gameEngineModel.getGameObject().velocity = (double)gameEngineModel.getGameObjectRules().getMaxSpeed();
         }
+
+        System.out.println("velocity is "+gameEngineModel.getGameObject().velocity);
+
 
         //so now we just need displacement...which we know is velocity * time....
         displacement = gameEngineModel.getGameObject().velocity * (milliseconds / 1000);
@@ -87,7 +91,9 @@ public class GameEnginePhysics {
             displacement = gameEngineModel.getGameObject().getDistanceBetweenPoints();
         }
 
-        gameEngineModel.getGameObject().setDistanceBetweenPoints(gameEngineModel.getGameObject().getDistanceBetweenPoints() - displacement);
+        System.out.println("displacement is " + displacement+" and full distance is "+gameEngineModel.getGameObject().getDistanceBetweenPoints());
+
+        gameEngineModel.getGameObject().setDistanceBetweenPoints((gameEngineModel.getGameObject().getDistanceBetweenPoints() - displacement));
 
 
         double bearing = calculateBearing(gameEngineModel.getGameObject().utmLocation.latitude,
@@ -107,7 +113,6 @@ public class GameEnginePhysics {
         gameEngineModel.getGameUTMLocation().utm = utmConvert.getUTMGrid(gameEngineModel.getGameUTMLocation().latitude, gameEngineModel.getGameUTMLocation().longitude);
         gameEngineModel.getGameUTMLocation().subUtm = utmConvert.getUTMSubGrid(gameEngineModel.getGameUTMLocation().utm,
                 gameEngineModel.getGameUTMLocation().latitude, gameEngineModel.getGameUTMLocation().longitude);
-
 
     }
 

@@ -79,13 +79,15 @@ public class GameEngine {
                 List<GameEngineModel> models = (List<GameEngineModel>) hazelcastManagerInterface.get(utm, subUtm);
 
                 if (models != null) {
-
                     for (GameEngineModel gameEngineModel : models) {
-
                         GameEnginePhysics.process(gameEngineModel, configuration.getUtmConvert(), configuration.getGameEngineDelta());
+
+                        System.out.println("distance is " + gameEngineModel.getGameObject().getDistanceBetweenPoints());
+
 
                         if (!gameEngineModel.getGameUTMLocation().utm.getUtm().equals(gameEngineModel.getGameObject().utmLocation.utm.getUtm())
                                 || !gameEngineModel.getGameUTMLocation().subUtm.getUtm().equals(gameEngineModel.getGameObject().utmLocation.subUtm.getUtm())) {
+
                             //we have changed....as we only register in sub utms...simply remove from current, add to new...does mean user gets shit from it but heyho.
                             hazelcastManagerInterface.unSubscribe(utm + gameEngineModel.getGameUTMLocation().subUtm.getUtm(), gameEngineModel.getGameObject().getTopicSubscriptions());
                             gameEngineModel.getGameObject().getTopicSubscriptions().addSubscription(gameEngineModel.getGameUTMLocation().utm.getUtm() + gameEngineModel.getGameUTMLocation().subUtm.getUtm(),
@@ -93,7 +95,7 @@ public class GameEngine {
                             removeGameEngineModel(gameEngineModel);
                             gameEngineModel.getGameObject().utmLocation = gameEngineModel.getGameUTMLocation();
                             //to test..
-                            hazelcastManagerInterface.put(GAME_ENGINE_MOVE_MAP,gameEngineModel.getGameObject().getKey(), gameEngineModel);
+                            hazelcastManagerInterface.put(GAME_ENGINE_MOVE_MAP, gameEngineModel.getGameObject().getKey(), gameEngineModel);
                         } else {
                             //can simply update our utm location..we would lose altitude etc but not using that anyway..or speed.
                             gameEngineModel.getGameObject().utmLocation = gameEngineModel.getGameUTMLocation();
