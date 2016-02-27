@@ -56,23 +56,23 @@ public class GameEngineTest {
         gameObject = new GameObject(GAME_OBJECT_KEY);
 
         gameObject.subType = GameObjectTypes.RV;
-        UTM utm = configuration.getUtmConvert().getUTMGrid(50.0686,-5.7161);
-        UTM subUtm = configuration.getUtmConvert().getUTMSubGrid(utm, 50.0686, -5.7161);
 
         UTMLocation utmLocation = new UTMLocation();
         utmLocation.latitude = 50.0686;
         utmLocation.longitude = -5.7161;
+        UTM utm = configuration.getUtmConvert().getUTMGrid(utmLocation.latitude,utmLocation.longitude);
+        UTM subUtm = configuration.getUtmConvert().getUTMSubGrid(utm, utmLocation.latitude, utmLocation.longitude);
         utmLocation.utm = utm;
         utmLocation.subUtm = subUtm;
         gameObject.utmLocation = utmLocation;
 
-         utm = configuration.getUtmConvert().getUTMGrid(58.6400,-3.0700);
-         subUtm = configuration.getUtmConvert().getUTMSubGrid(utm, 58.6400, -3.0700);
 
         UTMLocation utmLocation2 = new UTMLocation();
 
         utmLocation2.latitude = 58.6400;
         utmLocation2.longitude = -3.0700;
+         utm = configuration.getUtmConvert().getUTMGrid(utmLocation2.latitude,utmLocation2.longitude);
+         subUtm = configuration.getUtmConvert().getUTMSubGrid(utm, utmLocation2.latitude, utmLocation2.longitude);
         utmLocation2.utm = utm;
         utmLocation2.subUtm = subUtm;
         gameObject.destinationUTMLocation = utmLocation2;
@@ -93,6 +93,55 @@ public class GameEngineTest {
         configuration.getLogger().debug("the full distance is " + gameEngineModel.getGameObject().getDistanceBetweenPoints());
 
         gameEngine.addGameEngineModel(gameEngineModel);
+
+        /*
+          ideally we want to add lots more objects...
+         */
+    /*    for(double lat=0;lat<1;lat+=0.01){
+
+            for(double lng=3;lng<4;lng+=0.01){
+
+                gameObject = new GameObject(GAME_OBJECT_KEY+lat);
+
+                gameObject.subType = GameObjectTypes.RV;
+
+
+                utmLocation = new UTMLocation();
+                utmLocation.latitude = lat;
+                utmLocation.longitude = lng;
+                 utm = configuration.getUtmConvert().getUTMGrid(utmLocation.latitude,utmLocation.longitude);
+                 subUtm = configuration.getUtmConvert().getUTMSubGrid(utm, utmLocation.latitude, utmLocation.longitude);
+                utmLocation.utm = utm;
+                utmLocation.subUtm = subUtm;
+                gameObject.utmLocation = utmLocation;
+
+
+                 utmLocation2 = new UTMLocation();
+
+                utmLocation2.latitude = lat+1;
+                utmLocation2.longitude =  lng-1;
+                utm = configuration.getUtmConvert().getUTMGrid(utmLocation2.latitude,utmLocation2.longitude);
+                subUtm = configuration.getUtmConvert().getUTMSubGrid(utm, utmLocation2.latitude, utmLocation2.longitude);
+                utmLocation2.utm = utm;
+                utmLocation2.subUtm = subUtm;
+                gameObject.destinationUTMLocation = utmLocation2;
+
+                gameEngineModel = new GameEngineModel(PLAYER_KEY, gameObject, gameObjectRules);
+
+                gameEngineModel.getGameObject().setDistanceBetweenPoints(GameEnginePhysics.getHaversineDistance(gameEngineModel.getGameObject().utmLocation.latitude,
+                        gameEngineModel.getGameObject().utmLocation.longitude,
+                        gameEngineModel.getGameObject().destinationUTMLocation.latitude,
+                        gameEngineModel.getGameObject().destinationUTMLocation.longitude));
+
+
+                gameEngine.addGameEngineModel(gameEngineModel);
+
+            }
+
+        }
+
+        configuration.getLogger().debug("created objects"); */
+
 
 
 
@@ -130,11 +179,11 @@ public class GameEngineTest {
         List<GameEngineModel>  subUtmList = ((List<GameEngineModel>)hazelcastManagerInterface.get(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getUtm()));
 
 
-        subUtmList.forEach(gameEngineModel -> configuration.getLogger().debug("our key is "+gameEngineModel.getPlayerKey()));
+      //  subUtmList.forEach(gameEngineModel -> configuration.getLogger().debug("our key is "+gameEngineModel.getGameObject().getKey()));
 
         configuration.getLogger().debug("sub utm list length is " + subUtmList.size());
 
-        List<GameEngineModel> modelList = subUtmList.stream().filter(gameEngineModel -> gameEngineModel.getPlayerKey().equals(PLAYER_KEY)).collect(Collectors.toList());
+        List<GameEngineModel> modelList = subUtmList.stream().filter(gameEngineModel -> gameEngineModel.getGameObject().getKey().equals(GAME_OBJECT_KEY)).collect(Collectors.toList());
 
         assertEquals(968022.3220386797,modelList.get(0).getGameObject().getDistanceBetweenPoints() , 0);
 

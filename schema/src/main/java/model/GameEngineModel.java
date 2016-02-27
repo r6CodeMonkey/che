@@ -37,11 +37,15 @@ public class GameEngineModel implements Serializable {
         return gameUTMLocation;
     }
 
+    public boolean hasChangedGrid(){
+        return !gameUTMLocation.utm.getUtm().equals(gameObject.utmLocation.utm.getUtm())
+                ||gameUTMLocation.subUtm.getUtm().equals(gameObject.utmLocation.subUtm.getUtm());
+    }
 
     @Override
     public boolean equals(Object object) {
         //do rest later etc..plus hashcode bla bla
-        if (((GameEngineModel) object).getPlayerKey().equals(this.playerKey)) {
+        if (((GameEngineModel) object).getGameObject().getKey().equals(this.gameObject.getKey())) {
             return true;
         }
 

@@ -81,7 +81,7 @@ public class GameEnginePhysics {
             gameEngineModel.getGameObject().velocity = (double)gameEngineModel.getGameObjectRules().getMaxSpeed();
         }
 
-        System.out.println("velocity is "+gameEngineModel.getGameObject().velocity);
+     //   System.out.println("velocity is "+gameEngineModel.getGameObject().velocity);
 
 
         //so now we just need displacement...which we know is velocity * time....
@@ -91,7 +91,7 @@ public class GameEnginePhysics {
             displacement = gameEngineModel.getGameObject().getDistanceBetweenPoints();
         }
 
-        System.out.println("displacement is " + displacement+" and full distance is "+gameEngineModel.getGameObject().getDistanceBetweenPoints());
+      //  System.out.println("displacement is " + displacement+" and full distance is "+gameEngineModel.getGameObject().getDistanceBetweenPoints());
 
         gameEngineModel.getGameObject().setDistanceBetweenPoints((gameEngineModel.getGameObject().getDistanceBetweenPoints() - displacement));
 

@@ -3,12 +3,14 @@ package game;
 import com.hazelcast.core.IMap;
 import core.HazelcastManagerInterface;
 import model.GameEngineModel;
+import model.UTM;
 import util.Configuration;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Created by timmytime on 23/02/16.
@@ -26,16 +28,14 @@ public class GameEngine {
         this.configuration = configuration;
     }
 
-    public void updateGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException{
-        List<GameEngineModel> subUtmList = (List<GameEngineModel>) hazelcastManagerInterface
-                .get(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getUtm());
 
-         subUtmList.remove(gameEngineModel);
-        subUtmList.add(gameEngineModel);
-
-        hazelcastManagerInterface.put(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getUtm(), subUtmList);
-
+    /*
+     need to be able to put full lists back in as well. its more efficient over rmi.
+     */
+    public void updateSubUTM(String utm, String subUtm,  List<GameEngineModel> gameEngineModels) throws RemoteException{
+        hazelcastManagerInterface.put(utm, subUtm, gameEngineModels);
     }
+
 
 
     public void addGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {
@@ -66,7 +66,7 @@ public class GameEngine {
     }
 
     /*
-      next we need our loop....basically we move an object, ue update its current lat, long and then utm and sub utm based on rules.
+    main access
      */
     public void engine() throws RemoteException {
 
@@ -86,37 +86,28 @@ public class GameEngine {
             List<String> subUtmKeys = ( List<String>)hazelcastManagerInterface.getAvailableKeys(utm);
 
             for (String subUtm : subUtmKeys) {
-                configuration.getLogger().debug("subutm is " + subUtm);
                 List<GameEngineModel> models = (List<GameEngineModel>) hazelcastManagerInterface.get(utm, subUtm);
 
                 if (models != null) {
-                    for (GameEngineModel gameEngineModel : models) {
-                        GameEnginePhysics.process(gameEngineModel, configuration.getUtmConvert(), configuration.getGameEngineDelta());
+                    models.parallelStream().forEach(model -> GameEnginePhysics.process(model, configuration.getUtmConvert(), configuration.getGameEngineDelta()));
 
-                        System.out.println("distance is " + gameEngineModel.getGameObject().getDistanceBetweenPoints());
+                    List<GameEngineModel> updatedSubUTM = models.parallelStream().filter(gameEngineModel -> gameEngineModel.hasChangedGrid() == Boolean.TRUE).collect(Collectors.toList());
+                    updatedSubUTM.parallelStream().forEach(model -> model.getGameObject().utmLocation = model.getGameUTMLocation());
+                    updateSubUTM(utm, subUtm, updatedSubUTM);
 
-
-                        if (!gameEngineModel.getGameUTMLocation().utm.getUtm().equals(gameEngineModel.getGameObject().utmLocation.utm.getUtm())
-                                || !gameEngineModel.getGameUTMLocation().subUtm.getUtm().equals(gameEngineModel.getGameObject().utmLocation.subUtm.getUtm())) {
+                    List<GameEngineModel> changedSubUTM = models.parallelStream().filter(gameEngineModel -> gameEngineModel.hasChangedGrid() == Boolean.FALSE).collect(Collectors.toList());
+                    //now handle any of these...see below a few more steps...mainly on topics etc.
 
                             //we have changed....as we only register in sub utms...simply remove from current, add to new...does mean user gets shit from it but heyho.
-                            hazelcastManagerInterface.unSubscribe(utm + gameEngineModel.getGameUTMLocation().subUtm.getUtm(), gameEngineModel.getGameObject().getTopicSubscriptions());
+                 /*           hazelcastManagerInterface.unSubscribe(utm + gameEngineModel.getGameUTMLocation().subUtm.getUtm(), gameEngineModel.getGameObject().getTopicSubscriptions());
                             gameEngineModel.getGameObject().getTopicSubscriptions().addSubscription(gameEngineModel.getGameUTMLocation().utm.getUtm() + gameEngineModel.getGameUTMLocation().subUtm.getUtm(),
                                     hazelcastManagerInterface.subscribe(gameEngineModel.getGameUTMLocation().utm.getUtm() + gameEngineModel.getGameUTMLocation().subUtm.getUtm(), gameEngineModel.getPlayerKey()));
                             removeGameEngineModel(gameEngineModel);
                             gameEngineModel.getGameObject().utmLocation = gameEngineModel.getGameUTMLocation();
                             //to test..
                             hazelcastManagerInterface.put(GAME_ENGINE_MOVE_MAP, gameEngineModel.getGameObject().getKey(), gameEngineModel);
-                            configuration.getLogger().debug("we have changed grids");
-                        } else {
-                            configuration.getLogger().debug("we have not changed grids");
-                            //can simply update our utm location..we would lose altitude etc but not using that anyway..or speed.
-                            gameEngineModel.getGameObject().utmLocation = gameEngineModel.getGameUTMLocation();
-                            //now we really need to add it back with latest information
-                            updateGameEngineModel(gameEngineModel);
-                        }
-
-                    }
+                  //          configuration.getLogger().debug("we have changed grids");
+                 */
                 }
             }
 
