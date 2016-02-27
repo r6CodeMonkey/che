@@ -6,16 +6,15 @@ import game.GameEnginePhysics;
 import model.GameObject;
 import model.UTM;
 import model.UTMLocation;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import util.CheCallbackClient;
-import util.Configuration;
-import util.GameObjectRules;
-import util.GameObjectTypes;
+import util.*;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
@@ -57,8 +56,8 @@ public class GameEngineTest {
         gameObject = new GameObject(GAME_OBJECT_KEY);
 
         gameObject.subType = GameObjectTypes.RV;
-        UTM utm = new UTM("U", "31");
-        UTM subUtm = new UTM("8", "V9");
+        UTM utm = configuration.getUtmConvert().getUTMGrid(50.0686,-5.7161);
+        UTM subUtm = configuration.getUtmConvert().getUTMSubGrid(utm, 50.0686, -5.7161);
 
         UTMLocation utmLocation = new UTMLocation();
         utmLocation.latitude = 50.0686;
@@ -67,8 +66,8 @@ public class GameEngineTest {
         utmLocation.subUtm = subUtm;
         gameObject.utmLocation = utmLocation;
 
-         utm = new UTM("U", "39");
-         subUtm = new UTM("1", "V4");
+         utm = configuration.getUtmConvert().getUTMGrid(58.6400,-3.0700);
+         subUtm = configuration.getUtmConvert().getUTMSubGrid(utm, 58.6400, -3.0700);
 
         UTMLocation utmLocation2 = new UTMLocation();
 
@@ -128,13 +127,28 @@ public class GameEngineTest {
        //we hazelcast is running perse...really need another connection to it.
       gameEngine.processPositions();
 
-// fix test when can be assed..
-//
-// like tomoz.      assertEquals(968022.3220386797, ((List<GameEngineModel>)hazelcastManagerInterface.get(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getKey())).indexOf(GAME_OBJECT_KEY), 0);
+        List<GameEngineModel>  subUtmList = ((List<GameEngineModel>)hazelcastManagerInterface.get(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getUtm()));
 
+
+        subUtmList.forEach(gameEngineModel -> configuration.getLogger().debug("our key is "+gameEngineModel.getPlayerKey()));
+
+        configuration.getLogger().debug("sub utm list length is " + subUtmList.size());
+
+        List<GameEngineModel> modelList = subUtmList.stream().filter(gameEngineModel -> gameEngineModel.getPlayerKey().equals(PLAYER_KEY)).collect(Collectors.toList());
+
+        assertEquals(968022.3220386797,modelList.get(0).getGameObject().getDistanceBetweenPoints() , 0);
+
+        gameEngine.processPositions();
 
 
     }
+
+    @AfterClass
+    public static void removeData() throws RemoteException {
+        gameEngine.removeGameEngineModel(gameEngineModel);
+
+    }
+
 /*
     @Test
     public void testUpdateMaps() throws RemoteException {

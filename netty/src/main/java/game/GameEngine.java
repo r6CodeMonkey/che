@@ -26,6 +26,17 @@ public class GameEngine {
         this.configuration = configuration;
     }
 
+    public void updateGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException{
+        List<GameEngineModel> subUtmList = (List<GameEngineModel>) hazelcastManagerInterface
+                .get(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getUtm());
+
+         subUtmList.remove(gameEngineModel);
+        subUtmList.add(gameEngineModel);
+
+        hazelcastManagerInterface.put(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getUtm(), subUtmList);
+
+    }
+
 
     public void addGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {
         List<GameEngineModel> subUtmList = (List<GameEngineModel>) hazelcastManagerInterface
@@ -96,9 +107,13 @@ public class GameEngine {
                             gameEngineModel.getGameObject().utmLocation = gameEngineModel.getGameUTMLocation();
                             //to test..
                             hazelcastManagerInterface.put(GAME_ENGINE_MOVE_MAP, gameEngineModel.getGameObject().getKey(), gameEngineModel);
+                            configuration.getLogger().debug("we have changed grids");
                         } else {
+                            configuration.getLogger().debug("we have not changed grids");
                             //can simply update our utm location..we would lose altitude etc but not using that anyway..or speed.
                             gameEngineModel.getGameObject().utmLocation = gameEngineModel.getGameUTMLocation();
+                            //now we really need to add it back with latest information
+                            updateGameEngineModel(gameEngineModel);
                         }
 
                     }

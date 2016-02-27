@@ -41,7 +41,7 @@ public class GameEngineModel implements Serializable {
     @Override
     public boolean equals(Object object) {
         //do rest later etc..plus hashcode bla bla
-        if (((GameEngineModel) object).playerKey.equals(this.playerKey)) {
+        if (((GameEngineModel) object).getPlayerKey().equals(this.playerKey)) {
             return true;
         }
 
