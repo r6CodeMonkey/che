@@ -10,6 +10,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
 /**
@@ -91,11 +92,14 @@ public class GameEngine {
                 if (models != null) {
                     models.parallelStream().forEach(model -> GameEnginePhysics.process(model, configuration.getUtmConvert(), configuration.getGameEngineDelta()));
 
-                    List<GameEngineModel> updatedSubUTM = models.parallelStream().filter(gameEngineModel -> gameEngineModel.hasChangedGrid() == Boolean.TRUE).collect(Collectors.toList());
-                    updatedSubUTM.parallelStream().forEach(model -> model.getGameObject().utmLocation = model.getGameUTMLocation());
-                    updateSubUTM(utm, subUtm, updatedSubUTM);
+                    ConcurrentMap<Boolean, List<GameEngineModel>> updated =
+                            models.parallelStream().collect(Collectors.groupingByConcurrent(GameEngineModel::hasChangedGrid));
 
-                    List<GameEngineModel> changedSubUTM = models.parallelStream().filter(gameEngineModel -> gameEngineModel.hasChangedGrid() == Boolean.FALSE).collect(Collectors.toList());
+                    updated.get(Boolean.FALSE).parallelStream().forEach(model -> model.getGameObject().utmLocation = model.getGameUTMLocation());
+                    updateSubUTM(utm, subUtm, updated.get(Boolean.FALSE));
+
+
+                   // List<GameEngineModel> changedSubUTM = models.parallelStream().filter(gameEngineModel -> gameEngineModel.hasChangedGrid() == Boolean.FALSE).collect(Collectors.toList());
                     //now handle any of these...see below a few more steps...mainly on topics etc.
 
                             //we have changed....as we only register in sub utms...simply remove from current, add to new...does mean user gets shit from it but heyho.

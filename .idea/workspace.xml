@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1da809bf-b5cd-41ef-846a-b237902f929e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/game/GameEngine.class" afterPath="$PROJECT_DIR$/netty/target/classes/game/GameEngine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/model/GameEngineModel.class" afterPath="$PROJECT_DIR$/schema/target/classes/model/GameEngineModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/game/GameEnginePhysics.class" afterPath="$PROJECT_DIR$/netty/target/classes/game/GameEnginePhysics.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/test-classes/GameEngineTest.class" afterPath="$PROJECT_DIR$/netty/target/test-classes/GameEngineTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/schema-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/schema/target/schema-1.0-SNAPSHOT.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/game/GameEngine.java" afterPath="$PROJECT_DIR$/netty/src/main/java/game/GameEngine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/model/GameEngineModel.java" afterPath="$PROJECT_DIR$/schema/src/main/java/model/GameEngineModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/game/GameEnginePhysics.java" afterPath="$PROJECT_DIR$/netty/src/main/java/game/GameEnginePhysics.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/test/java/GameEngineTest.java" afterPath="$PROJECT_DIR$/netty/src/test/java/GameEngineTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/surefire-reports/TEST-message.MessageTest.xml" afterPath="$PROJECT_DIR$/schema/target/surefire-reports/TEST-message.MessageTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/surefire-reports/TEST-model.ModelTest.xml" afterPath="$PROJECT_DIR$/schema/target/surefire-reports/TEST-model.ModelTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/surefire-reports/message.MessageTest.txt" afterPath="$PROJECT_DIR$/schema/target/surefire-reports/message.MessageTest.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/surefire-reports/model.ModelTest.txt" afterPath="$PROJECT_DIR$/schema/target/surefire-reports/model.ModelTest.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Che.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,8 +46,8 @@
       <file leaf-file-name="GameEngine.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/netty/src/main/java/game/GameEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4820442">
-              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.4198895">
+              <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1976,8 +1963,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/netty/src/main/java/game/GameEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4820442">
-          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.4198895">
+          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
