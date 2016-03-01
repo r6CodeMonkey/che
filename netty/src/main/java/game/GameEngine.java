@@ -3,15 +3,12 @@ package game;
 import com.hazelcast.core.IMap;
 import core.HazelcastManagerInterface;
 import model.GameEngineModel;
-import model.UTM;
 import util.Configuration;
-import util.MapPair;
 import util.TopicPair;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
@@ -21,91 +18,41 @@ import java.util.stream.Collectors;
 public class GameEngine {
 
 
-    private final HazelcastManagerInterface hazelcastManagerInterface;
+    private final GameEngineUtils gameEngineUtils;
     private final Configuration configuration;
 
 
     public GameEngine(HazelcastManagerInterface hazelcastManagerInterface, Configuration configuration) {
-        this.hazelcastManagerInterface = hazelcastManagerInterface;
+        gameEngineUtils = new GameEngineUtils(hazelcastManagerInterface, configuration);
         this.configuration = configuration;
     }
 
     /*
-     need to be able to put full lists back in as well. its more efficient over rmi.
+    for testing...well for everthing!
      */
-    public void updateSubUTM(String utm, String subUtm,  List<GameEngineModel> gameEngineModels) throws RemoteException{
-        hazelcastManagerInterface.put(utm, subUtm, gameEngineModels);
-    }
-
-    public void addToSubUTM(String utm, String subUtm,List<GameEngineModel> gameEngineModels ) throws RemoteException{
-        List<GameEngineModel> subUtmList = (List<GameEngineModel>) hazelcastManagerInterface
-                .get(utm, subUtm);
-
-        if(subUtmList != null && subUtmList.size() > 0) {
-            subUtmList.addAll(gameEngineModels.stream().collect(Collectors.toList()));
-            hazelcastManagerInterface.put(utm, subUtm, subUtmList);
-        }else{
-            updateSubUTM(utm, subUtm, gameEngineModels);
-        }
-    }
-
-
     public void addGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {
-        List<GameEngineModel> subUtmList = (List<GameEngineModel>) hazelcastManagerInterface
-                .get(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getUtm());
-
-        if (subUtmList == null) {
-            subUtmList = new ArrayList<>();
-            subUtmList.add(gameEngineModel);
-        } else {
-            subUtmList.add(gameEngineModel);
-        }
-
-        hazelcastManagerInterface.put(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getUtm(), subUtmList);
+        gameEngineUtils.addGameEngineModel(gameEngineModel);
     }
 
     public void removeGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {
-        //is an assumption it exists..so maybe dont check?
-        try {
-            List<GameEngineModel> subUtmList = (List<GameEngineModel>) hazelcastManagerInterface.get(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getUtm());
-            subUtmList.remove(gameEngineModel);
-            hazelcastManagerInterface.put(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getUtm(), subUtmList);
-
-        } catch (Exception e) {
-            configuration.getLogger().debug("remove game engine failed as perhaps it was not in the list " + e.getMessage());
-        }
-
+        gameEngineUtils.removeGameEngineModel(gameEngineModel);
     }
 
-    public void bulkRemoveGameEngineModel(String utmKey, String subUtmKey, List<GameEngineModel> gameEngineModels) throws RemoteException{
-        try {
-            List<GameEngineModel> subUtmList = (List<GameEngineModel>) hazelcastManagerInterface.get(utmKey, subUtmKey);
-            gameEngineModels.forEach(subUtmList::remove);
-            hazelcastManagerInterface.put(utmKey, subUtmKey, subUtmList);
 
-        } catch (Exception e) {
-            configuration.getLogger().debug("remove game engine failed as perhaps it was not in the list " + e.getMessage());
-        }
-
-    }
-
-    /*
-    main access
-     */
     public void engine() throws RemoteException {
 
 
         ConcurrentMap<TopicPair, List<GameEngineModel>> movedMap = processPositions();
 
-        for(TopicPair topicPair : movedMap.keySet()){
-            addToSubUTM(topicPair.getKey(), topicPair.getTopicKey(), movedMap.get(topicPair));
+        for (TopicPair topicPair : movedMap.keySet()) {
+            gameEngineUtils.addToSubUTM(topicPair.getKey(), topicPair.getTopicKey(), movedMap.get(topicPair));
         }
 
         processMissiles();
 
     }
 
-    public ConcurrentMap<TopicPair, List<GameEngineModel>> processPositions() throws RemoteException {
+    private ConcurrentMap<TopicPair, List<GameEngineModel>> processPositions() throws RemoteException {
 
 
         List<GameEngineModel> moved = new ArrayList<>();
@@ -115,13 +62,13 @@ public class GameEngine {
         for (String utm : configuration.getUtmConvert().getUtmGrids()) {
 
             //this now flies...until we fill up see AWS config...to do.
-            List<String> subUtmKeys = ( List<String>)hazelcastManagerInterface.getAvailableKeys(utm);
+            List<String> subUtmKeys = gameEngineUtils.getAvailableKeys(utm);
 
             for (String subUtm : subUtmKeys) {
-                List<GameEngineModel> models = (List<GameEngineModel>) hazelcastManagerInterface.get(utm, subUtm);
+                List<GameEngineModel> models = gameEngineUtils.getGameEngineModels(utm, subUtm);
 
 
-                if (models != null  && models.size() > 0) {
+                if (models != null && models.size() > 0) {
 
                     total += models.size();
 
@@ -130,36 +77,18 @@ public class GameEngine {
                     ConcurrentMap<Boolean, List<GameEngineModel>> updated =
                             models.parallelStream().collect(Collectors.groupingByConcurrent(GameEngineModel::hasChangedGrid));
 
-                    if(updated.get(Boolean.FALSE) != null) {
-                        updateSubUTM(utm, subUtm, updated.get(Boolean.FALSE));
+                    if (updated.get(Boolean.FALSE) != null) {
+                        gameEngineUtils.updateSubUTM(utm, subUtm, updated.get(Boolean.FALSE));
                     }
 
-                    if(updated.get(Boolean.TRUE) != null){
+                    if (updated.get(Boolean.TRUE) != null) {
+
+                        gameEngineUtils.bulkUnSubscribe(utm, subUtm, updated.get(Boolean.TRUE));
+                        gameEngineUtils.bulkSubscribe(updated.get(Boolean.TRUE));
 
                         new Thread(() -> {
                             try {
-                                hazelcastManagerInterface.bulkUnSubscribe(updated.get(Boolean.TRUE).stream().map(model -> new TopicPair(model.getPlayerKey(),
-                                        utm + subUtm,
-                                        model.getGameObject().getTopicSubscriptions())).collect(Collectors.toList()));
-                            } catch (RemoteException e) {
-                                e.printStackTrace();
-                            }
-                        }).start();
-
-
-                        new Thread(() -> {
-                            try {
-                                hazelcastManagerInterface.bulkSubscribe(updated.get(Boolean.TRUE).stream().map(model -> new TopicPair(model.getPlayerKey(),
-                                        model.getGameUTMLocation().utm.getUtm() + model.getGameUTMLocation().subUtm.getUtm(),
-                                        model.getGameObject().getTopicSubscriptions())).collect(Collectors.toList()));
-                            } catch (RemoteException e) {
-                                e.printStackTrace();
-                            }
-                        }).start();
-
-                        new Thread(() -> {
-                            try {
-                                bulkRemoveGameEngineModel(utm, subUtm, updated.get(Boolean.TRUE));
+                                gameEngineUtils.bulkRemoveGameEngineModel(utm, subUtm, updated.get(Boolean.TRUE));
                             } catch (RemoteException e) {
                                 e.printStackTrace();
                             }
@@ -178,17 +107,16 @@ public class GameEngine {
 
         }
 
-        configuration.getLogger().debug("total records processed "+total);
+        configuration.getLogger().debug("total records processed " + total);
 
         return moved.parallelStream().collect(Collectors.groupingByConcurrent(gameEngineModel ->
-                new TopicPair(gameEngineModel.getGameObject().utmLocation.utm.getUtm(),gameEngineModel.getGameObject().utmLocation.subUtm.getUtm(),null)));
+                new TopicPair(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getUtm(), null)));
 
 
     }
 
 
-
-    public void processMissiles() throws RemoteException {
+    private void processMissiles() throws RemoteException {
         //all good.  now basically find out collision impacts....again we do this by utm / sub utm....
         for (String utm : configuration.getUtmConvert().getUtmGrids()) {
 
