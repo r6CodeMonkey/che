@@ -4,6 +4,7 @@ import com.hazelcast.core.IMap;
 import core.HazelcastManager;
 import core.HazelcastManagerInterface;
 import util.Configuration;
+import util.TopicPair;
 import util.TopicSubscriptions;
 
 import java.rmi.Naming;
@@ -66,8 +67,18 @@ public class HazelcastServer extends UnicastRemoteObject implements HazelcastMan
     }
 
     @Override
+    public void bulkSubscribe(List<TopicPair> topicPairs) throws RemoteException {
+        hazelcastManager.bulkSubscribe(topicPairs);
+    }
+
+    @Override
     public void unSubscribe(String topic, TopicSubscriptions topicSubscriptions) {
         hazelcastManager.unSubscribe(topic, topicSubscriptions);
+    }
+
+    @Override
+    public void bulkUnSubscribe(List<TopicPair> topicPairs) throws RemoteException {
+        hazelcastManager.bulkUnSubscribe(topicPairs);
     }
 
     @Override

@@ -2,6 +2,7 @@ package core;
 
 import com.hazelcast.core.IMap;
 import server.CheCallbackInterface;
+import util.TopicPair;
 import util.TopicSubscriptions;
 
 import java.rmi.Remote;
@@ -18,7 +19,11 @@ public interface HazelcastManagerInterface extends Remote {
 
     String subscribe(String topic, String key) throws RemoteException;
 
+    void bulkSubscribe(List<TopicPair> topicPairs) throws RemoteException;
+
     void unSubscribe(String topic, TopicSubscriptions topicSubscriptions) throws RemoteException;
+
+    void bulkUnSubscribe(List<TopicPair> topicPairs) throws RemoteException;
 
     void publish(String topic, String message) throws RemoteException;
 

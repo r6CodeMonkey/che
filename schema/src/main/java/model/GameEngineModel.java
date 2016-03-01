@@ -39,7 +39,7 @@ public class GameEngineModel implements Serializable {
 
     public boolean hasChangedGrid(){
         return !gameUTMLocation.utm.getUtm().equals(gameObject.utmLocation.utm.getUtm())
-                ||gameUTMLocation.subUtm.getUtm().equals(gameObject.utmLocation.subUtm.getUtm());
+                ||!gameUTMLocation.subUtm.getUtm().equals(gameObject.utmLocation.subUtm.getUtm());
     }
 
     @Override
