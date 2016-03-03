@@ -33,7 +33,7 @@ public class GridCreator {
         for(model.UTM utm : grids.keySet()){
 
             UTM temp = new UTM(utm.getUtm());
-            for(model.UTM subUTM : grids.get(temp)) {
+            for(model.UTM subUTM : grids.get(utm)) {
                 updateMap(values, temp, new SubUTM(subUTM.getUtmLat(), subUTM.getUtmLong()));
             }
 
@@ -112,7 +112,7 @@ public class GridCreator {
 
     public static void main(String[] args){
         GridCreator gridCreator = new GridCreator(new UTMConvert());
-        Map<model.UTM, List<model.UTM>> test = gridCreator.getGrids(3, 0.0, 0.0);//lol it looks good i chose a stupid lace marker,,perhaps. or not. yeah it works.  ha ha.
+        Map<model.UTM, List<model.UTM>> test = gridCreator.getGrids(3, 51.89120537, 0.92166068 );//lol it looks good i chose a stupid lace marker,,perhaps. or not. yeah it works.  ha ha.
 
         for(model.UTM val : test.keySet()){
             System.out.println("we are utm "+val.getUtm());
@@ -124,6 +124,19 @@ public class GridCreator {
 
 
         }
+         gridCreator = new GridCreator();
+
+        Map<UTM, List<SubUTM>> androidGrids = gridCreator.getAndroidGrids(3, 51.89120537, 0.92166068 );
+
+        for(UTM val : androidGrids.keySet()){
+            System.out.println("we are utm "+val.getUtmLat()+val.getUtmLong());
+
+            for(SubUTM subUTM : androidGrids.get(val)){
+                System.out.println("we are sub "+subUTM.getSubUtmLat()+subUTM.getSubUtmLong());
+            }
+        }
+
+
 
     }
 
