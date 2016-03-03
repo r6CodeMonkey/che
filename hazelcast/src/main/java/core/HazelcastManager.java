@@ -44,8 +44,12 @@ public class HazelcastManager implements HazelcastManagerInterface {
     @Override
     public void bulkSubscribe(List<TopicPair> topicPairs) throws RemoteException {
         topicPairs.parallelStream().forEach(topicPair -> topicPair.getTopicSubscriptions().addSubscription(topicPair.getTopicKey(),
-                hazelcastInstance.getTopic(topicPair.getTopicKey()).addMessageListener(new CheMessageHandler(cheCallbackInterface, topicPair.getKey())))
+                subscribe(topicPair.getTopicKey(), topicPair.getKey()))
         );
+
+        topicPairs.parallelStream().forEach(topicPair -> publish(topicPair.getTopicKey(), topicPair.getMessage().toString())
+        );
+
     }
 
     public void unSubscribe(String topic, TopicSubscriptions topicSubscriptions) {
@@ -56,7 +60,7 @@ public class HazelcastManager implements HazelcastManagerInterface {
     @Override
     public void bulkUnSubscribe(List<TopicPair> topicPairs) throws RemoteException {
         topicPairs.parallelStream().forEach(topicPair ->
-                hazelcastInstance.getTopic(topicPair.getTopicKey()).removeMessageListener(topicPair.getTopicSubscriptions().getSubscription(topicPair.getTopicKey()))
+                        unSubscribe(topicPair.getTopicKey(),topicPair.getTopicSubscriptions())
         );
 
         topicPairs.parallelStream().forEach(topicPair -> topicPair.getTopicSubscriptions().removeSubscription(topicPair.getTopicKey())

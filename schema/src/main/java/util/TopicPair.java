@@ -1,5 +1,7 @@
 package util;
 
+import message.HazelcastMessage;
+
 import java.io.Serializable;
 
 /**
@@ -10,11 +12,20 @@ public class TopicPair implements Serializable {
     private final TopicSubscriptions topicSubscriptions;
     private final String topicKey;
     private final String key;
+    private final HazelcastMessage message;
 
     public TopicPair(String key, String topicKey, TopicSubscriptions topicSubscriptions){
         this.key = key;
         this.topicKey = topicKey;
         this.topicSubscriptions = topicSubscriptions;
+        this.message = null;
+    }
+
+    public TopicPair(String key, String topicKey, TopicSubscriptions topicSubscriptions, HazelcastMessage message){
+        this.key = key;
+        this.topicKey = topicKey;
+        this.topicSubscriptions = topicSubscriptions;
+        this.message = message;
     }
 
     public String getKey(){
@@ -23,6 +34,10 @@ public class TopicPair implements Serializable {
 
     public String getTopicKey(){
         return topicKey;
+    }
+
+    public HazelcastMessage getMessage(){
+        return message;
     }
 
     public TopicSubscriptions getTopicSubscriptions(){

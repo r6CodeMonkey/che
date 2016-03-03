@@ -41,6 +41,8 @@ public class GameEngine {
      increasing timestep may make sense (to process more) but then the accuracy is reduced.
      perhaps the user update interval is greater, whilst server faster.  plus this is all hypothetical as im running it on my PC
      likely can use AWS etc to increase resource allocation and speed, plus better cores etc.
+
+     Update: no missiles are processed here as its real time for them...and i cba to type out comment after a reset as il update later.
      */
     public void engine() throws RemoteException {
 
@@ -51,7 +53,6 @@ public class GameEngine {
             gameEngineUtils.addToSubUTM(topicPair.getKey(), topicPair.getTopicKey(), movedMap.get(topicPair));
         }
 
-        processMissiles();
 
     }
 
@@ -119,17 +120,6 @@ public class GameEngine {
     }
 
 
-    private void processMissiles() throws RemoteException {
-     /*
-        main part now.  we are looking for collisions (missiles only) with other objects in the updated sectors.
-
-        if we hit, we need to update, if we dont (and we land) we also update.  otherwise do nothing.
-
-        we only care about objects that have stopped.  to add to engine as its been missed.
-
-      */
-
-    }
 
 
 }
