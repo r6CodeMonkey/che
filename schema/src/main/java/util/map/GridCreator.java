@@ -17,14 +17,33 @@ public class GridCreator {
 
     //android variant...due to rendering etc.
     public Map<UTM, List<SubUTM>> getAndroidGrids(int gridsX, double latitude, double longitude){
-        return null;
+
+        //performance wise we should fix but,,,
+        Map<model.UTM, List<model.UTM>> grids = getGrids(gridsX, latitude, longitude);
+
+        //now create the fucked up android variant.  or go work out why i did that (because no other).  ok i see.  it needs ints and strings..probably can fix.
+        //ok its because if we only have a subutm, we need to work out what it is.  we cant lose that functionality, and its not stopping a release given
+        //where im at and what else is required.  it will go in backlog as P1.
+        Map<UTM, List<SubUTM>> values = new HashMap<>();
+
+        for(model.UTM utm : grids.keySet()){
+
+            UTM temp = new UTM(utm.getUtm());
+            for(model.UTM subUTM : grids.get(temp)) {
+                updateMap(values, temp, new SubUTM(subUTM.getUtmLat(), subUTM.getUtmLong()));
+            }
+
+
+        }
+
+        return values;
     }
 
 
     /*
       simply returns our string values.  could be direct for server.  not we can only really have 3by3 or 9by9...need to enforce in realitty.
      */
-    public Map<model.UTM, List<model.UTM>> locateGrids(int gridsX, double latitude, double longitude){
+    public Map<model.UTM, List<model.UTM>> getGrids(int gridsX, double latitude, double longitude){
 
 
         Map<model.UTM, List<model.UTM>> values = new HashMap<>();  //we are stuck with java7 so no lambda.  but thats ok its not heavy.
@@ -53,9 +72,30 @@ public class GridCreator {
 
     }
 
+    private void updateMap(Map<UTM, List<SubUTM>> map, UTM utm, SubUTM subUTM){
+       boolean found = false;
+        for(List<SubUTM> subUtmList : map.values()){
+            if(subUtmList != null){
+                subUtmList.add(subUTM);
+                found = true;
+            }
+
+        }
+
+        if(!found){  //cleary quicker way but no lambda...who cares.
+            List<SubUTM> temp = new ArrayList<>();
+            temp.add(subUTM);
+            map.put(utm, temp);
+        }
+    }
+
     private void updateMap(Map<model.UTM, List<model.UTM>> map, model.UTM utm, model.UTM subUTM){
        boolean found = false;
         for(List<model.UTM> subUtmList : map.values()){
+            if(subUtmList != null){
+                subUtmList.add(subUTM);
+                found = true;
+            }
 
         }
 
@@ -68,7 +108,7 @@ public class GridCreator {
 
     public static void main(String[] args){
         GridCreator gridCreator = new GridCreator(new UTMConvert());
-        Map<model.UTM, List<model.UTM>> test = gridCreator.locateGrids(3, 0.0,0.0);//lol it looks good i chose a stupid lace marker,,perhaps. or not. yeah it works.  ha ha.
+        Map<model.UTM, List<model.UTM>> test = gridCreator.getGrids(3, 0.0, 0.0);//lol it looks good i chose a stupid lace marker,,perhaps. or not. yeah it works.  ha ha.
 
         for(model.UTM val : test.keySet()){
             System.out.println("we are utm "+val.getUtm());
