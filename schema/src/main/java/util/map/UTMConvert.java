@@ -38,12 +38,10 @@ public class UTMConvert {
     private static final int LONG_DEG = 6;
     private static final int LAT_OFFSET = 80;
     private static final int LONG_OFFSET = 180;
-    private double LAT_SUB_DEG = 0.05;
-    private double LONG_SUB_DEG = 0.1;
-
     private final List<String> utmGrids = new ArrayList<>();
     private final List<String> subUtmGrids = new ArrayList<>();
-
+    private double LAT_SUB_DEG = 0.05;
+    private double LONG_SUB_DEG = 0.1;
 
 
     public UTMConvert() {
@@ -57,28 +55,40 @@ public class UTMConvert {
         createUTMGrids();
     }
 
-    private void createUTMGrids(){
+    private void createUTMGrids() {
         //it goes letters, 1 - 60. simples. lol i put it wrong way round..oh well too late to change it all now....super bug!!
-        for(String v : latValues){
-            for(int i=1;i<=60;i++){
-                utmGrids.add(v+i);
+        for (String v : latValues) {
+            for (int i = 1; i <= 60; i++) {
+                utmGrids.add(v + i);
             }
         }
 
         //sub utm...runs 1C0 to 8X59....ie 1 to 8. then lat vals 1 . n + 0 - 59. probably could lambda, but this is cleaner really.
-        for(int i=1;i<9;i++){
-            for(String v : latValues){
-                for(int j=0;j<60;j++){
-                    subUtmGrids.add(i+v+j);
+        for (int i = 1; i < 9; i++) {
+            for (String v : latValues) {
+                for (int j = 0; j < 60; j++) {
+                    subUtmGrids.add(i + v + j);
                 }
             }
         }
 
     }
 
-    public List<String> getUtmGrids(){return utmGrids;}
+    public double getLatOffset() {
+        return LAT_SUB_DEG;
+    }
 
-    public List<String> getSubUtmGrids(){return subUtmGrids;}
+    public double getLongOffset() {
+        return LONG_SUB_DEG;
+    }
+
+    public List<String> getUtmGrids() {
+        return utmGrids;
+    }
+
+    public List<String> getSubUtmGrids() {
+        return subUtmGrids;
+    }
 
     public UTM getUTMGrid(double latitude, double longitude) {
         return new UTM(latToUTM(latitude), longToUTM(longitude));

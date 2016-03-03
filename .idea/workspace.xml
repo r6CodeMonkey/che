@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1da809bf-b5cd-41ef-846a-b237902f929e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/schema/src/main/java/util/map/SubUTM.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/schema/src/main/java/util/map/UTM.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/util/UTMConvert$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/util/UTMConvert.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/netty/src/main/java/util/UTMConvert.java" afterPath="$PROJECT_DIR$/schema/src/main/java/util/map/UTMConvert.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/game/GameEngine.class" afterPath="$PROJECT_DIR$/netty/target/classes/game/GameEngine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/schema-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/schema/target/schema-1.0-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/util/Configuration.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/Configuration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/game/GameEngine.java" afterPath="$PROJECT_DIR$/netty/src/main/java/game/GameEngine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/game/GameEnginePhysics.java" afterPath="$PROJECT_DIR$/netty/src/main/java/game/GameEnginePhysics.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/surefire-reports/TEST-message.MessageTest.xml" afterPath="$PROJECT_DIR$/schema/target/surefire-reports/TEST-message.MessageTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/surefire-reports/TEST-model.ModelTest.xml" afterPath="$PROJECT_DIR$/schema/target/surefire-reports/TEST-model.ModelTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/surefire-reports/message.MessageTest.txt" afterPath="$PROJECT_DIR$/schema/target/surefire-reports/message.MessageTest.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/schema/src/main/java/util/map/GridCreator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/util/map/UTM.java" afterPath="$PROJECT_DIR$/schema/src/main/java/util/map/UTM.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/util/map/UTMConvert.java" afterPath="$PROJECT_DIR$/schema/src/main/java/util/map/UTMConvert.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Che.iws" />
@@ -87,17 +77,43 @@
         <entry file="file://$PROJECT_DIR$/schema/src/main/java/util/map/UTMConvert.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="64" column="13" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
-              <folding />
+              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+              <folding>
+                <element signature="e#1060#1061#0" expanded="true" />
+                <element signature="e#1092#1093#0" expanded="true" />
+                <element signature="e#1969#1970#0" expanded="true" />
+                <element signature="e#2003#2004#0" expanded="true" />
+                <element signature="e#2040#2041#0" expanded="true" />
+                <element signature="e#2075#2076#0" expanded="true" />
+                <element signature="e#2116#2117#0" expanded="true" />
+                <element signature="e#2147#2148#0" expanded="true" />
+                <element signature="e#2191#2192#0" expanded="true" />
+                <element signature="e#2225#2226#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UTM.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GridCreator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/schema/src/main/java/util/map/GridCreator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.31629834">
+              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+              <folding>
+                <element signature="e#272#273#0" expanded="true" />
+                <element signature="e#316#317#0" expanded="true" />
+                <element signature="e#461#462#0" expanded="true" />
+                <element signature="e#488#489#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UTM.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/schema/src/main/java/util/map/UTM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58474576">
-              <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -128,16 +144,6 @@
                 <element signature="e#645#646#0" expanded="true" />
                 <element signature="e#686#687#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameEngineModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/schema/src/main/java/model/GameEngineModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="46" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -192,8 +198,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/hazelcast/src/main/java/util/Configuration.java" />
-        <option value="$PROJECT_DIR$/netty/src/main/java/factory/CheChannelFactory.java" />
         <option value="$PROJECT_DIR$/schema/src/main/java/message/Acknowledge.java" />
         <option value="$PROJECT_DIR$/schema/pom.xml" />
         <option value="$PROJECT_DIR$/schema/src/main/java/model/Alliance.java" />
@@ -243,6 +247,8 @@
         <option value="$PROJECT_DIR$/netty/src/main/java/game/GameEngine.java" />
         <option value="$PROJECT_DIR$/schema/src/main/java/util/map/SubUTM.java" />
         <option value="$PROJECT_DIR$/schema/src/main/java/util/map/UTM.java" />
+        <option value="$PROJECT_DIR$/schema/src/main/java/util/map/UTMConvert.java" />
+        <option value="$PROJECT_DIR$/schema/src/main/java/util/map/GridCreator.java" />
       </list>
     </option>
   </component>
@@ -320,10 +326,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
+    <option name="x" value="1505" />
     <option name="y" value="24" />
-    <option name="width" value="1375" />
-    <option name="height" value="876" />
+    <option name="width" value="1983" />
+    <option name="height" value="1128" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -1113,7 +1119,7 @@
       <recent name="util" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GameEngineTest">
+  <component name="RunManager" selected="Application.GridCreator">
     <configuration default="false" name="NettyServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1151,26 +1157,6 @@
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="hazelcast" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="GameObjectRulesFactory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="factory.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="factory.GameObjectRulesFactory" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="schema" />
       <envs />
       <method />
     </configuration>
@@ -1213,6 +1199,26 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="GridCreator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="util.map.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="util.map.GridCreator" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="schema" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -1432,17 +1438,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.NettyServer" />
       <item index="1" class="java.lang.String" itemvalue="Application.HazelcastServer" />
-      <item index="2" class="java.lang.String" itemvalue="Application.GameObjectRulesFactory" />
-      <item index="3" class="java.lang.String" itemvalue="Application.GameEnginePhysics" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.GameEngineTest" />
+      <item index="2" class="java.lang.String" itemvalue="Application.GameEnginePhysics" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.GameEngineTest" />
+      <item index="4" class="java.lang.String" itemvalue="Application.GridCreator" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.GameEngineTest" />
-        <item index="1" class="java.lang.String" itemvalue="Application.HazelcastServer" />
-        <item index="2" class="java.lang.String" itemvalue="Application.NettyServer" />
-        <item index="3" class="java.lang.String" itemvalue="Application.GameEnginePhysics" />
-        <item index="4" class="java.lang.String" itemvalue="Application.GameObjectRulesFactory" />
+        <item index="0" class="java.lang.String" itemvalue="Application.GridCreator" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.GameEngineTest" />
+        <item index="2" class="java.lang.String" itemvalue="Application.HazelcastServer" />
+        <item index="3" class="java.lang.String" itemvalue="Application.NettyServer" />
+        <item index="4" class="java.lang.String" itemvalue="Application.GameEnginePhysics" />
       </list>
     </recent_temporary>
   </component>
@@ -1460,21 +1466,21 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1375" height="876" extended-state="6" />
-    <editor active="false" />
+    <frame x="1505" y="24" width="1983" height="1128" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3237858" sideWeight="0.328" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37484434" sideWeight="0.32581818" order="7" side_tool="true" content_ui="combo" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28530806" sideWeight="0.32476047" order="7" side_tool="true" content_ui="combo" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16581818" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11497731" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37484434" sideWeight="0.6741818" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28530806" sideWeight="0.67523956" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25687203" sideWeight="0.49621785" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29527274" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20474029" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32627645" sideWeight="0.4501818" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1519,14 +1525,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/schema/src/main/java/message/UTM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/schema/src/main/java/message/Missile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1968,19 +1966,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/schema/src/main/java/util/map/UTMConvert.java">
+    <entry file="file://$PROJECT_DIR$/schema/src/main/java/util/map/UTM.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="64" column="13" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/schema/src/main/java/util/map/UTM.java">
+    <entry file="file://$PROJECT_DIR$/schema/src/main/java/util/map/UTMConvert.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58474576">
-          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding>
+            <element signature="e#1060#1061#0" expanded="true" />
+            <element signature="e#1092#1093#0" expanded="true" />
+            <element signature="e#1969#1970#0" expanded="true" />
+            <element signature="e#2003#2004#0" expanded="true" />
+            <element signature="e#2040#2041#0" expanded="true" />
+            <element signature="e#2075#2076#0" expanded="true" />
+            <element signature="e#2116#2117#0" expanded="true" />
+            <element signature="e#2147#2148#0" expanded="true" />
+            <element signature="e#2191#2192#0" expanded="true" />
+            <element signature="e#2225#2226#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/schema/src/main/java/util/map/GridCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31629834">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding>
+            <element signature="e#272#273#0" expanded="true" />
+            <element signature="e#316#317#0" expanded="true" />
+            <element signature="e#461#462#0" expanded="true" />
+            <element signature="e#488#489#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

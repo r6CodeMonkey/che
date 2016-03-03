@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 public class UTM {
 
     /*
-     need some user friendly mappings for UTM by region groups.
+     need some user friendly mappings for UTM by region groups.  maybe useful on server too...or well the html side of it if it ever happens.
      */
     private static final List<String> southAmericaUTMs = new ArrayList<>();
     private static final List<String> centralAmericaUTMs = new ArrayList<>();
