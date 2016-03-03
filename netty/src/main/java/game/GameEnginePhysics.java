@@ -1,7 +1,7 @@
 package game;
 
 import model.GameEngineModel;
-import util.UTMConvert;
+import util.map.UTMConvert;
 
 /**
  * Created by timmytime on 23/02/16.

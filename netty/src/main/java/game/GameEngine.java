@@ -27,9 +27,7 @@ public class GameEngine {
         this.configuration = configuration;
     }
 
-    /*
-    for testing...well for everthing!
-     */
+
     public void addGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {
         gameEngineUtils.addGameEngineModel(gameEngineModel);
     }
@@ -39,6 +37,11 @@ public class GameEngine {
     }
 
 
+    /*
+     increasing timestep may make sense (to process more) but then the accuracy is reduced.
+     perhaps the user update interval is greater, whilst server faster.  plus this is all hypothetical as im running it on my PC
+     likely can use AWS etc to increase resource allocation and speed, plus better cores etc.
+     */
     public void engine() throws RemoteException {
 
 
@@ -117,15 +120,14 @@ public class GameEngine {
 
 
     private void processMissiles() throws RemoteException {
-        //all good.  now basically find out collision impacts....again we do this by utm / sub utm....
-        for (String utm : configuration.getUtmConvert().getUtmGrids()) {
+     /*
+        main part now.  we are looking for collisions (missiles only) with other objects in the updated sectors.
 
-            IMap utmMap = null;//hazelcastManagerInterface.get(utm);
+        if we hit, we need to update, if we dont (and we land) we also update.  otherwise do nothing.
 
-            //actually wrong.
+        we only care about objects that have stopped.  to add to engine as its been missed.
 
-            //see above.  is fixed now.  we can also write some good tests for this (well bar the hazel cast part but can ignore if it runs).
-        }
+      */
 
     }
 
