@@ -15,6 +15,10 @@ public class GridCreator {
         this.utmConvert = utmConvert;
     }
 
+    public GridCreator(){
+        this.utmConvert = new UTMConvert();
+    }
+
     //android variant...due to rendering etc.
     public Map<UTM, List<SubUTM>> getAndroidGrids(int gridsX, double latitude, double longitude){
 
