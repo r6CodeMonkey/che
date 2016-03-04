@@ -1,5 +1,6 @@
 package model;
 
+import message.HazelcastMessage;
 import util.GameObjectRules;
 
 import java.io.Serializable;
@@ -14,6 +15,9 @@ public class GameEngineModel implements Serializable {
     private GameObject gameObject;
     private GameObjectRules gameObjectRules;
     private UTMLocation gameUTMLocation = new UTMLocation();
+    private HazelcastMessage message;
+    private HazelcastMessage message2;  //as in leavae or enter.  message 1 also destroyed etc.
+
 
     public GameEngineModel(String playerKey, GameObject gameObject, GameObjectRules gameObjectRules) {
         this.playerKey = playerKey;
@@ -37,8 +41,21 @@ public class GameEngineModel implements Serializable {
         return gameUTMLocation;
     }
 
+    public HazelcastMessage getMessage(){return message;}
+
+    public HazelcastMessage getMessage2(){return message2;}
+
+    public void setMessage(HazelcastMessage message){
+        this.message = message;
+    }
+
+    public void setMessage2(HazelcastMessage message2){
+        this.message2 = message2;
+    }
+
     public boolean hasChangedGrid(){
-        return !gameUTMLocation.utm.getUtm().equals(gameObject.utmLocation.utm.getUtm())
+
+         return !gameUTMLocation.utm.getUtm().equals(gameObject.utmLocation.utm.getUtm())
                 ||!gameUTMLocation.subUtm.getUtm().equals(gameObject.utmLocation.subUtm.getUtm());
     }
 

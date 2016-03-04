@@ -1,6 +1,11 @@
 package game;
 
+import factory.CheChannelFactory;
+import message.HazelcastMessage;
 import model.GameEngineModel;
+import org.json.JSONException;
+import org.json.JSONObject;
+import util.Tags;
 import util.map.UTMConvert;
 
 /**
@@ -81,8 +86,6 @@ public class GameEnginePhysics {
             gameEngineModel.getGameObject().velocity = (double)gameEngineModel.getGameObjectRules().getMaxSpeed();
         }
 
-     //   System.out.println("velocity is "+gameEngineModel.getGameObject().velocity);
-
 
         //so now we just need displacement...which we know is velocity * time....
         displacement = gameEngineModel.getGameObject().velocity * (milliseconds / 1000);
@@ -91,7 +94,6 @@ public class GameEnginePhysics {
             displacement = gameEngineModel.getGameObject().getDistanceBetweenPoints();
         }
 
-      //  System.out.println("displacement is " + displacement+" and full distance is "+gameEngineModel.getGameObject().getDistanceBetweenPoints());
 
         gameEngineModel.getGameObject().setDistanceBetweenPoints((gameEngineModel.getGameObject().getDistanceBetweenPoints() - displacement));
 
@@ -113,6 +115,26 @@ public class GameEnginePhysics {
         gameEngineModel.getGameUTMLocation().utm = utmConvert.getUTMGrid(gameEngineModel.getGameUTMLocation().latitude, gameEngineModel.getGameUTMLocation().longitude);
         gameEngineModel.getGameUTMLocation().subUtm = utmConvert.getUTMSubGrid(gameEngineModel.getGameUTMLocation().utm,
                 gameEngineModel.getGameUTMLocation().latitude, gameEngineModel.getGameUTMLocation().longitude);
+
+
+        if(gameEngineModel.hasChangedGrid()){
+            gameEngineModel.getGameUTMLocation().state = Tags.MESSAGE;
+            gameEngineModel.getGameUTMLocation().value = Tags.GAME_OBJECT_ENTERED;  //at present we wont send, object has left utm.  but we probably should...if so do it on old
+            gameEngineModel.getGameObject().utmLocation.state = Tags.MESSAGE;
+            gameEngineModel.getGameObject().utmLocation.value = Tags.GAME_OBJECT_LEFT;
+
+            try {
+                gameEngineModel.setMessage(new HazelcastMessage(CheChannelFactory.getCheChannel(gameEngineModel.getPlayerKey()) != null ?
+                        CheChannelFactory.getCheChannel(gameEngineModel.getPlayerKey()).getChannel().remoteAddress().toString() : "fake", //for testing..proves callback works as it fails.
+                        new JSONObject(gameEngineModel.getGameUTMLocation().getMessage())));
+                gameEngineModel.setMessage2(new HazelcastMessage(CheChannelFactory.getCheChannel(gameEngineModel.getPlayerKey()) != null ?
+                        CheChannelFactory.getCheChannel(gameEngineModel.getPlayerKey()).getChannel().remoteAddress().toString() : "fake",
+                        new JSONObject(gameEngineModel.getGameObject().utmLocation.getMessage())));
+            } catch (JSONException e) {
+                //who cares..its not essential should log but its not issue.  just a message to grid.
+            }
+
+        }
 
     }
 

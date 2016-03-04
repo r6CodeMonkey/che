@@ -65,6 +65,9 @@ public class HazelcastManager implements HazelcastManagerInterface {
 
         topicPairs.parallelStream().forEach(topicPair -> topicPair.getTopicSubscriptions().removeSubscription(topicPair.getTopicKey())
         );
+
+        topicPairs.parallelStream().forEach(topicPair -> publish(topicPair.getTopicKey(), topicPair.getMessage().toString())
+        );
     }
 
     public void publish(String topic, String message) {

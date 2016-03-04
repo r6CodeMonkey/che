@@ -94,9 +94,9 @@ public class GameEngineTest {
         /*
           ideally we want to add lots more objects...
          */
-        for (double lat = 0; lat < 1; lat += 0.01) {
+        for (double lat = 0; lat < 1; lat += 0.1) {
 
-            for (double lng = 3; lng < 4; lng += 0.01) {
+            for (double lng = 3; lng < 4; lng += 0.1) {
 
                 gameObject = new GameObject(GAME_OBJECT_KEY + lat);
 
