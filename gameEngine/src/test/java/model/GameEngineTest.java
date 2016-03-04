@@ -1,7 +1,7 @@
+package model;
+
 import core.HazelcastManagerInterface;
 import factory.GameObjectRulesFactory;
-import game.GameEngine;
-import game.GameEnginePhysics;
 import model.GameEngineModel;
 import model.GameObject;
 import model.UTM;
@@ -161,11 +161,11 @@ public class GameEngineTest {
         double longitude = GameEnginePhysics.getLongitude(50.0686, -5.7161, latitude, 200000, bearing);
 
         //lands end to john o groats...
-        assertEquals(968202.3220386797, distance, 0);
-        assertEquals(9.131774011425927, bearing, 0);
+        Assert.assertEquals(968202.3220386797, distance, 0);
+        Assert.assertEquals(9.131774011425927, bearing, 0);
         //stop and get dinner now.
-        assertEquals(51.84355702963163, latitude, 0);
-        assertEquals(-5.254128463003278, longitude, 0);
+        Assert.assertEquals(51.84355702963163, latitude, 0);
+        Assert.assertEquals(-5.254128463003278, longitude, 0);
         //should add more at some point...
 
     }

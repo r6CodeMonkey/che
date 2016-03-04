@@ -1,4 +1,4 @@
-package game;
+package engine;
 
 import com.hazelcast.core.IMap;
 import core.HazelcastManagerInterface;
@@ -52,7 +52,6 @@ public class GameEngine {
         for (TopicPair topicPair : movedMap.keySet()) {
             gameEngineUtils.addToSubUTM(topicPair.getKey(), topicPair.getTopicKey(), movedMap.get(topicPair));
         }
-
 
     }
 

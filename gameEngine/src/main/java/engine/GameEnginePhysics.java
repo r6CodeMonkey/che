@@ -1,4 +1,4 @@
-package game;
+package engine;
 
 import factory.CheChannelFactory;
 import message.HazelcastMessage;
@@ -64,7 +64,7 @@ public class GameEnginePhysics {
         theta = Math.toRadians(bearing);
 
         return Math.toDegrees(lambda + Math.atan2(Math.sin(theta) * Math.sin(distance / EARTH_RADIUS) * Math.cos(phi),
-                Math.cos(distance / EARTH_RADIUS) - Math.sin(phi) * Math.sin(phi2)))/*)+540)%360-180)*/;
+                Math.cos(distance / EARTH_RADIUS) - Math.sin(phi) * Math.sin(phi2)));
 
     }
 
@@ -75,15 +75,15 @@ public class GameEnginePhysics {
 
         double displacement;
         if (gameEngineModel.getGameObject().acceleration == 0) {
-            gameEngineModel.getGameObject().acceleration = (double)gameEngineModel.getGameObjectRules().getForce() / gameEngineModel.getGameObjectRules().getMass();
+            gameEngineModel.getGameObject().acceleration = (double) gameEngineModel.getGameObjectRules().getForce() / gameEngineModel.getGameObjectRules().getMass();
         }
 
         if (gameEngineModel.getGameObject().velocity < gameEngineModel.getGameObjectRules().getMaxSpeed()) {
-            gameEngineModel.getGameObject().velocity = (double)gameEngineModel.getGameObject().velocity + (gameEngineModel.getGameObject().acceleration * (milliseconds / 1000));
+            gameEngineModel.getGameObject().velocity = (double) gameEngineModel.getGameObject().velocity + (gameEngineModel.getGameObject().acceleration * (milliseconds / 1000));
         }
 
         if (gameEngineModel.getGameObject().velocity > gameEngineModel.getGameObjectRules().getMaxSpeed()) {
-            gameEngineModel.getGameObject().velocity = (double)gameEngineModel.getGameObjectRules().getMaxSpeed();
+            gameEngineModel.getGameObject().velocity = (double) gameEngineModel.getGameObjectRules().getMaxSpeed();
         }
 
 
@@ -117,7 +117,7 @@ public class GameEnginePhysics {
                 gameEngineModel.getGameUTMLocation().latitude, gameEngineModel.getGameUTMLocation().longitude);
 
 
-        if(gameEngineModel.hasChangedGrid()){
+        if (gameEngineModel.hasChangedGrid()) {
             gameEngineModel.getGameUTMLocation().state = Tags.MESSAGE;
             gameEngineModel.getGameUTMLocation().value = Tags.GAME_OBJECT_ENTERED;  //at present we wont send, object has left utm.  but we probably should...if so do it on old
             gameEngineModel.getGameObject().utmLocation.state = Tags.MESSAGE;

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/che.iml" filepath="$PROJECT_DIR$/.idea/che.iml" />
       <module fileurl="file://$PROJECT_DIR$/erlang/erlang.iml" filepath="$PROJECT_DIR$/erlang/erlang.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gameEngine/gameEngine.iml" filepath="$PROJECT_DIR$/gameEngine/gameEngine.iml" />
       <module fileurl="file://$PROJECT_DIR$/hazelcast/hazelcast.iml" filepath="$PROJECT_DIR$/hazelcast/hazelcast.iml" />
       <module fileurl="file://$PROJECT_DIR$/netty/netty.iml" filepath="$PROJECT_DIR$/netty/netty.iml" />
       <module fileurl="file://$PROJECT_DIR$/schema/schema.iml" filepath="$PROJECT_DIR$/schema/schema.iml" />

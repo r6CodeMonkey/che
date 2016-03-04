@@ -58,12 +58,20 @@
         <processorPath useClasspath="true" />
         <module name="testing" />
       </profile>
+      <profile default="false" name="Annotation profile for gameEngine" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="gameEngine" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="camel" target="1.5" />
       <module name="Che" target="1.5" />
       <module name="che" target="1.5" />
       <module name="cheController" target="1.8" />
+      <module name="gameEngine" target="1.8" />
       <module name="hazelcast" target="1.8" />
       <module name="netty" target="1.8" />
       <module name="schema" target="1.7" />

@@ -21,7 +21,6 @@ import java.security.NoSuchAlgorithmException;
  */
 public class CheHandler {
 
-    private final HazelcastManagerInterface hazelcastManagerInterface;
     private final Configuration configuration;
 
     //che handlers
@@ -29,8 +28,8 @@ public class CheHandler {
     private final GameObjectHandler gameObjectHandler;
     private final MissileHandler missileHandler;
 
+
     public CheHandler(HazelcastManagerInterface hazelcastManagerInterface, Configuration configuration) {
-        this.hazelcastManagerInterface = hazelcastManagerInterface;
         this.configuration = configuration;
 
         allianceHandler = new AllianceHandler(hazelcastManagerInterface, configuration);
@@ -38,6 +37,7 @@ public class CheHandler {
         missileHandler = new MissileHandler(hazelcastManagerInterface, configuration);
 
     }
+
 
     public void handle(Player player, CheMessage cheMessage) throws RemoteException, NoSuchAlgorithmException, JSONException {
 

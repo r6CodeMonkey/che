@@ -4,7 +4,6 @@ import controller.CheController;
 import controller.handler.UTMHandler;
 import core.HazelcastManagerInterface;
 import factory.CheChannelFactory;
-import game.GameEnginePhysics;
 import message.CheMessage;
 import model.GameObject;
 import model.Player;
@@ -45,7 +44,7 @@ public class GameObjectHandler {
     public GameObjectHandler(HazelcastManagerInterface hazelcastManagerInterface, Configuration configuration) {
         this.hazelcastManagerInterface = hazelcastManagerInterface;
         this.configuration = configuration;
-        this.utmHandler = new UTMHandler(hazelcastManagerInterface, configuration);
+       this.utmHandler = new UTMHandler(hazelcastManagerInterface, configuration);
     }
 
     public void handle(Player player, GameObject gameObject) throws JSONException, NoSuchAlgorithmException, RemoteException {
@@ -155,13 +154,8 @@ public class GameObjectHandler {
 
             GameObject model = (GameObject) hazelcastManagerInterface.get(CheController.OBJECT_MAP, gameObject.getKey());
             model.destinationUTMLocation = gameObject.destinationUTMLocation;
-            model.setDistanceBetweenPoints(GameEnginePhysics.getHaversineDistance(model.utmLocation.latitude,model.utmLocation.longitude,model.destinationUTMLocation.latitude, model.destinationUTMLocation.longitude));
             hazelcastManagerInterface.put(CheController.OBJECT_MAP, model.getKey(), model);
             gameObject.value = Tags.SUCCESS;
-
-            /*
-             also need to add to game engine...to do.
-             */
 
         } else {
             gameObject.value = Tags.ERROR;  //just fail it...simples...
