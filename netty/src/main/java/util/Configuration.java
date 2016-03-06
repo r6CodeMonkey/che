@@ -46,7 +46,7 @@ public class Configuration {
     private boolean epollMode = false;
     private int hazelcastPort = 1099;
     private String hazelcastURL = "//localhost/HazelcastServer";
-    private int enginePort = 1097;
+    private int enginePort = 1099;
     private String engineURL = "//localhost/gameEngineServer";
 
 

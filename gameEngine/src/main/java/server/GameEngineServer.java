@@ -25,6 +25,7 @@ public class GameEngineServer extends UnicastRemoteObject implements GameEngineI
     }
 
     public static void startServer() throws Exception {
+
         configuration = new Configuration();
 
         try {
@@ -63,6 +64,8 @@ public class GameEngineServer extends UnicastRemoteObject implements GameEngineI
     @Override
     public void startEngine(HazelcastManagerInterface hazelcastManagerInterface) throws RemoteException {
 
+        configuration.getLogger().debug("called start");
+
         gameEngine = new GameEngine(hazelcastManagerInterface, configuration);
 
         gameEngineThread = new Thread(() -> {
@@ -77,10 +80,12 @@ public class GameEngineServer extends UnicastRemoteObject implements GameEngineI
 
         while(ENGINE_RUNNING) {
             try {
+                configuration.getLogger().debug("engine loop");
                 gameEngineThread.wait(configuration.getGameEngineDelta()/2);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            configuration.getLogger().debug("engine start");
             gameEngineThread.start();
         }
 

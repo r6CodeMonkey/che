@@ -51,6 +51,7 @@ public class CheController {
     private boolean initGameEngineServer(){
         try {
             gameEngineInterface = (GameEngineInterface) Naming.lookup(configuration.getEngineURL());
+            gameEngineInterface.startEngine(hazelcastManagerInterface);
             return true;
         } catch (NotBoundException e) {
             configuration.getLogger().error("game engine server failed " + e.getMessage());

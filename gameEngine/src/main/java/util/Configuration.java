@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
  */
 public class Configuration {
 
-    private int port = 1097;
+    private int port = 1099;
     private String url = "//localhost/GameEngineServer";
     private int gameEngineDelta = 60000; //1 minute default
     private double SUB_ZONE_LAT = 0.05;
