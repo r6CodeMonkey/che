@@ -1,6 +1,5 @@
 package engine;
 
-import factory.CheChannelFactory;
 import message.HazelcastMessage;
 import model.GameEngineModel;
 import org.json.JSONException;
@@ -124,11 +123,9 @@ public class GameEnginePhysics {
             gameEngineModel.getGameObject().utmLocation.value = Tags.GAME_OBJECT_LEFT;
 
             try {
-                gameEngineModel.setMessage(new HazelcastMessage(CheChannelFactory.getCheChannel(gameEngineModel.getPlayerKey()) != null ?
-                        CheChannelFactory.getCheChannel(gameEngineModel.getPlayerKey()).getChannel().remoteAddress().toString() : "fake", //for testing..proves callback works as it fails.
+                gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),
                         new JSONObject(gameEngineModel.getGameUTMLocation().getMessage())));
-                gameEngineModel.setMessage2(new HazelcastMessage(CheChannelFactory.getCheChannel(gameEngineModel.getPlayerKey()) != null ?
-                        CheChannelFactory.getCheChannel(gameEngineModel.getPlayerKey()).getChannel().remoteAddress().toString() : "fake",
+                gameEngineModel.setMessage2(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),
                         new JSONObject(gameEngineModel.getGameObject().utmLocation.getMessage())));
             } catch (JSONException e) {
                 //who cares..its not essential should log but its not issue.  just a message to grid.

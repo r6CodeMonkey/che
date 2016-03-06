@@ -8,6 +8,7 @@ import io.netty.channel.Channel;
 import message.CheMessage;
 import model.Player;
 import org.json.JSONException;
+import server.GameEngineInterface;
 import util.CheCallbackClient;
 import util.Configuration;
 import util.Tags;
@@ -30,6 +31,7 @@ public class CheController {
 
     //server
     private static HazelcastManagerInterface hazelcastManagerInterface;
+    private static GameEngineInterface gameEngineInterface;
     //utils
     private final Configuration configuration;
     //handlers
@@ -37,10 +39,27 @@ public class CheController {
     private CheHandler cheHandler;
     //server up flag
     private boolean hazelcastServerUp = false;
+    private boolean gameEngineServerUp = false;
+
 
     public CheController(Configuration configuration) throws Exception {
         this.configuration = configuration;
         hazelcastServerUp = initHazelcastServer();
+        gameEngineServerUp = initGameEngineServer();
+    }
+
+    private boolean initGameEngineServer(){
+        try {
+            gameEngineInterface = (GameEngineInterface) Naming.lookup(configuration.getEngineURL());
+            return true;
+        } catch (NotBoundException e) {
+            configuration.getLogger().error("game engine server failed " + e.getMessage());
+        } catch (MalformedURLException e) {
+            configuration.getLogger().error("game engine server failed " + e.getMessage());
+        } catch (RemoteException e) {
+            configuration.getLogger().error("game engine server failed " + e.getMessage());
+        }
+        return false;
     }
 
 
@@ -65,6 +84,10 @@ public class CheController {
 
         if (hazelcastManagerInterface == null) {
             hazelcastServerUp = initHazelcastServer();
+        }
+
+        if(gameEngineInterface == null){
+            gameEngineServerUp = initGameEngineServer();
         }
 
         if (hazelcastServerUp) {

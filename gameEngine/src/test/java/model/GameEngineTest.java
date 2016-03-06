@@ -1,15 +1,17 @@
 package model;
 
 import core.HazelcastManagerInterface;
+import engine.GameEngine;
+import engine.GameEnginePhysics;
 import factory.GameObjectRulesFactory;
 import model.GameEngineModel;
 import model.GameObject;
 import model.UTM;
 import model.UTMLocation;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import util.CheCallbackClient;
 import util.Configuration;
 import util.GameObjectRules;
 import util.GameObjectTypes;
@@ -36,7 +38,7 @@ public class GameEngineTest {
     public static void init() throws Exception {
         configuration = new Configuration();
         hazelcastManagerInterface = (HazelcastManagerInterface) Naming.lookup(configuration.getHazelcastURL());
-        hazelcastManagerInterface.addCallback(new CheCallbackClient(configuration));
+      //  hazelcastManagerInterface.addCallback(new CheCallbackClient(configuration));
 
 
         gameEngine = new GameEngine(hazelcastManagerInterface, configuration);
@@ -79,7 +81,7 @@ public class GameEngineTest {
         //set up the things we need...mainly a current lat long and dest lat long..so set a type here.
         gameObjectRules = gameObjectRulesFactory.getRules(gameObject.subType); //basically its the mass and velocity i think. but prepoulates from loader...
 
-        gameEngineModel = new GameEngineModel(PLAYER_KEY, gameObject, gameObjectRules);
+        gameEngineModel = new GameEngineModel(PLAYER_KEY, "fake", gameObject, gameObjectRules);
 
         gameEngineModel.getGameObject().setDistanceBetweenPoints(GameEnginePhysics.getHaversineDistance(gameEngineModel.getGameObject().utmLocation.latitude,
                 gameEngineModel.getGameObject().utmLocation.longitude,
@@ -123,7 +125,7 @@ public class GameEngineTest {
                 utmLocation2.subUtm = subUtm;
                 gameObject.destinationUTMLocation = utmLocation2;
 
-                gameEngineModel = new GameEngineModel(PLAYER_KEY, gameObject, gameObjectRules);
+                gameEngineModel = new GameEngineModel(PLAYER_KEY, "fake", gameObject, gameObjectRules);
 
                 gameEngineModel.getGameObject().setDistanceBetweenPoints(GameEnginePhysics.getHaversineDistance(gameEngineModel.getGameObject().utmLocation.latitude,
                         gameEngineModel.getGameObject().utmLocation.longitude,

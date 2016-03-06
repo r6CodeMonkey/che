@@ -12,6 +12,7 @@ public class GameEngineModel implements Serializable {
 
 
     private String playerKey;
+    private String playerRemoteAddress;
     private GameObject gameObject;
     private GameObjectRules gameObjectRules;
     private UTMLocation gameUTMLocation = new UTMLocation();
@@ -19,8 +20,9 @@ public class GameEngineModel implements Serializable {
     private HazelcastMessage message2;  //as in leavae or enter.  message 1 also destroyed etc.
 
 
-    public GameEngineModel(String playerKey, GameObject gameObject, GameObjectRules gameObjectRules) {
+    public GameEngineModel(String playerKey, String playerRemoteAddress, GameObject gameObject, GameObjectRules gameObjectRules) {
         this.playerKey = playerKey;
+        this.playerRemoteAddress = playerRemoteAddress;
         this.gameObject = gameObject;
         this.gameObjectRules = gameObjectRules;
     }
@@ -28,6 +30,12 @@ public class GameEngineModel implements Serializable {
     public String getPlayerKey() {
         return playerKey;
     }
+
+    public void setPlayerRemoteAddress(String playerRemoteAddress){
+        this.playerRemoteAddress = playerRemoteAddress;
+    }
+
+    public String getPlayerRemoteAddress(){return  playerRemoteAddress;}
 
     public GameObject getGameObject() {
         return gameObject;

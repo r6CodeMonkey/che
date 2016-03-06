@@ -46,7 +46,8 @@ public class Configuration {
     private boolean epollMode = false;
     private int hazelcastPort = 1099;
     private String hazelcastURL = "//localhost/HazelcastServer";
-    private int gameEngineDelta = 60000; //1 minute default
+    private int enginePort = 1097;
+    private String engineURL = "//localhost/gameEngineServer";
 
 
     public Configuration() {
@@ -88,7 +89,6 @@ public class Configuration {
 
         setEpollMode(Boolean.valueOf(element.getAttribute("epollmode")));
 
-        setGameEngineDelta(Integer.valueOf(element.getAttribute("gameEngineDelta")));
 
         uuidGenerator = new UUIDGenerator(String.valueOf(element.getAttribute("uuidalgo")));
 
@@ -201,13 +201,17 @@ public class Configuration {
         return hazelcastURL;
     }
 
+    public int getEnginePort(){
+        return enginePort;
+    }
+
+    public String getEngineURL(){
+        return engineURL;
+    }
+
     public void setHazelcastURL(String hazelcastURL) {
         this.hazelcastURL = hazelcastURL;
     }
-
-    public int getGameEngineDelta(){return gameEngineDelta;}
-
-    public void setGameEngineDelta(int gameEngineDelta){this.gameEngineDelta = gameEngineDelta;}
 
 
     public int getBossThreads() {

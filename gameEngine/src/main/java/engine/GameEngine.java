@@ -1,6 +1,5 @@
 package engine;
 
-import com.hazelcast.core.IMap;
 import core.HazelcastManagerInterface;
 import model.GameEngineModel;
 import util.Configuration;

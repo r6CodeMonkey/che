@@ -31,5 +31,6 @@
     <orderEntry type="library" name="Maven: org.erlang.otp:jinterface:1.5.6" level="project" />
     <orderEntry type="module" module-name="hazelcast" />
     <orderEntry type="module" module-name="schema" />
+    <orderEntry type="module" module-name="gameEngine" />
   </component>
 </module>
