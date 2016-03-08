@@ -4,14 +4,18 @@ import controller.CheController;
 import controller.handler.UTMHandler;
 import core.HazelcastManagerInterface;
 import factory.CheChannelFactory;
+import factory.GameObjectRulesFactory;
 import message.CheMessage;
+import model.GameEngineModel;
 import model.GameObject;
 import model.Player;
 import model.UTM;
 import org.json.JSONException;
+import server.GameEngineInterface;
 import util.Configuration;
 import util.Tags;
 
+import javax.xml.bind.JAXBException;
 import java.rmi.RemoteException;
 import java.security.NoSuchAlgorithmException;
 
@@ -37,17 +41,21 @@ public class GameObjectHandler {
      */
 
     private final HazelcastManagerInterface hazelcastManagerInterface;
+    private final GameEngineInterface gameEngineInterface;
     private final Configuration configuration;
     private final UTMHandler utmHandler;
+    private final GameObjectRulesFactory gameObjectRulesFactory = new GameObjectRulesFactory();
 
 
-    public GameObjectHandler(HazelcastManagerInterface hazelcastManagerInterface, Configuration configuration) {
+
+    public GameObjectHandler(HazelcastManagerInterface hazelcastManagerInterface, GameEngineInterface gameEngineInterface, Configuration configuration) {
         this.hazelcastManagerInterface = hazelcastManagerInterface;
+        this.gameEngineInterface = gameEngineInterface;
         this.configuration = configuration;
         this.utmHandler = new UTMHandler(hazelcastManagerInterface, configuration);
     }
 
-    public void handle(Player player, GameObject gameObject) throws JSONException, NoSuchAlgorithmException, RemoteException {
+    public void handle(Player player, GameObject gameObject) throws JSONException, NoSuchAlgorithmException, RemoteException, JAXBException {
 
         switch (gameObject.state) {
             case Tags.PURCHASE:
@@ -63,12 +71,6 @@ public class GameObjectHandler {
                 objectHit(player, gameObject);
                 break;
             case Tags.GAME_OBJECT_MOVE:
-
-                /*
-                  needs thought see sub routine
-                 */
-
-
                 objectMove(player, gameObject);
                 break;
             case Tags.MISSILE_ADDED:
@@ -133,7 +135,7 @@ public class GameObjectHandler {
 
     }
 
-    private void objectMove(Player player, GameObject gameObject) throws RemoteException, JSONException, NoSuchAlgorithmException {
+    private void objectMove(Player player, GameObject gameObject) throws RemoteException, JSONException, NoSuchAlgorithmException, JAXBException {
 
 
         //given our current dest cords..
@@ -157,6 +159,10 @@ public class GameObjectHandler {
             hazelcastManagerInterface.put(CheController.OBJECT_MAP, model.getKey(), model);
             gameObject.value = Tags.SUCCESS;
 
+
+            gameEngineInterface.addGameEngineModel(new GameEngineModel(player.getKey(),
+                    CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(),
+                    gameObject, gameObjectRulesFactory.getRules(gameObject.subType)));
         } else {
             gameObject.value = Tags.ERROR;  //just fail it...simples...
         }

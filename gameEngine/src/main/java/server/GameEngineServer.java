@@ -25,7 +25,6 @@ public class GameEngineServer extends UnicastRemoteObject implements GameEngineI
 
     public GameEngineServer() throws RemoteException {
         super(configuration.getPort());
-
         hazelcastServerUp = initHazelcastServer();
     }
 
@@ -36,23 +35,12 @@ public class GameEngineServer extends UnicastRemoteObject implements GameEngineI
         try {
             LocateRegistry.createRegistry(configuration.getPort());
         } catch (Exception e) {
-
             configuration.getLogger().error("create reg error " + e.getMessage());
         }
 
 
         GameEngineServer server = new GameEngineServer();
         Naming.rebind(configuration.getURL(), server);
-
-        configuration.getLogger().debug("testing");
-
-        //add a shut down hook.  mainly for testing / local development.
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-            @Override
-            public void run() {
-
-            }
-        });
     }
 
     public static void main(String[] args) throws Exception {
@@ -75,33 +63,34 @@ public class GameEngineServer extends UnicastRemoteObject implements GameEngineI
 
     @Override
     public void addGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {
-
+        gameEngine.addGameEngineModel(gameEngineModel);
     }
 
     @Override
     public void removeGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {
-
+        gameEngine.removeGameEngineModel(gameEngineModel);
     }
 
     private void engineStartThread() {
         new Thread(() -> {
             try {
+                long startEngineTime = System.currentTimeMillis();
                 configuration.getLogger().debug("game engine started");
                 gameEngine.engine();
-                engineStopThread();
+                engineStopThread(System.currentTimeMillis() - startEngineTime);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
         }).start();
     }
 
-    private void engineStopThread() {
+    private void engineStopThread(long engineRunTime) {
         new Thread(() -> {
             long time = System.currentTimeMillis();
 
             configuration.getLogger().debug("game engine waiting");
 
-            while (System.currentTimeMillis() < time + configuration.getGameEngineDelta() / 2) {
+            while (System.currentTimeMillis() < time + (configuration.getGameEngineDelta()-engineRunTime)) {
                 //do sweet fa..
             }
 
@@ -125,9 +114,4 @@ public class GameEngineServer extends UnicastRemoteObject implements GameEngineI
 
     }
 
-
-    @Override
-    public void stopEngine() throws RemoteException {
-        //disconnect hazlecast to do
-    }
 }

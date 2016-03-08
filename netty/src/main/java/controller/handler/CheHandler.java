@@ -10,9 +10,11 @@ import model.GameObject;
 import model.Missile;
 import model.Player;
 import org.json.JSONException;
+import server.GameEngineInterface;
 import util.Configuration;
 import util.Tags;
 
+import javax.xml.bind.JAXBException;
 import java.rmi.RemoteException;
 import java.security.NoSuchAlgorithmException;
 
@@ -29,17 +31,17 @@ public class CheHandler {
     private final MissileHandler missileHandler;
 
 
-    public CheHandler(HazelcastManagerInterface hazelcastManagerInterface, Configuration configuration) {
+    public CheHandler(HazelcastManagerInterface hazelcastManagerInterface, GameEngineInterface gameEngineInterface,  Configuration configuration) {
         this.configuration = configuration;
 
         allianceHandler = new AllianceHandler(hazelcastManagerInterface, configuration);
-        gameObjectHandler = new GameObjectHandler(hazelcastManagerInterface, configuration);
+        gameObjectHandler = new GameObjectHandler(hazelcastManagerInterface,gameEngineInterface, configuration);
         missileHandler = new MissileHandler(hazelcastManagerInterface, configuration);
 
     }
 
 
-    public void handle(Player player, CheMessage cheMessage) throws RemoteException, NoSuchAlgorithmException, JSONException {
+    public void handle(Player player, CheMessage cheMessage) throws RemoteException, NoSuchAlgorithmException, JSONException, JAXBException {
 
         configuration.getLogger().debug("che handler");
 

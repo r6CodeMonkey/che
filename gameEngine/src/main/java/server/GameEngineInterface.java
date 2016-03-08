@@ -16,7 +16,6 @@ public interface GameEngineInterface extends Remote {
 
     public void startEngine() throws RemoteException;
 
-    public void stopEngine() throws RemoteException;
 
     //also need to add missile actions...no callbacks required for this interface (it uses hazelcast to callback).
 }

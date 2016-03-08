@@ -13,6 +13,7 @@ import util.CheCallbackClient;
 import util.Configuration;
 import util.Tags;
 
+import javax.xml.bind.JAXBException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -46,6 +47,9 @@ public class CheController {
         this.configuration = configuration;
         hazelcastServerUp = initHazelcastServer();
         gameEngineServerUp = initGameEngineServer();
+        //we need this on a restart...
+        cheHandler = new CheHandler(hazelcastManagerInterface, gameEngineInterface, configuration);
+
     }
 
     private boolean initGameEngineServer() { //i really need to run this in a seperate instance (ie not on here).  so next up we (i) need to look at AWS...
@@ -70,7 +74,6 @@ public class CheController {
         try {
             hazelcastManagerInterface = (HazelcastManagerInterface) Naming.lookup(configuration.getHazelcastURL());
             playerHandler = new PlayerHandler(hazelcastManagerInterface, configuration);
-            cheHandler = new CheHandler(hazelcastManagerInterface, configuration);
             hazelcastManagerInterface.addCallback(new CheCallbackClient(configuration));
             return true;
         } catch (NotBoundException e) {
@@ -83,14 +86,18 @@ public class CheController {
         return false;
     }
 
-    public void receive(Channel channel, CheMessage message) throws RemoteException, NotBoundException, MalformedURLException, JSONException, NoSuchAlgorithmException {
+    public void receive(Channel channel, CheMessage message) throws RemoteException, NotBoundException, MalformedURLException, JSONException, NoSuchAlgorithmException, JAXBException {
 
-        if (hazelcastManagerInterface == null) {
+        if (hazelcastManagerInterface == null && gameEngineInterface == null) {
             hazelcastServerUp = initHazelcastServer();
-        }
-
-        if (gameEngineInterface == null) {
             gameEngineServerUp = initGameEngineServer();
+            cheHandler = new CheHandler(hazelcastManagerInterface, gameEngineInterface, configuration);
+        }else if (hazelcastManagerInterface == null) {
+            hazelcastServerUp = initHazelcastServer();
+            cheHandler = new CheHandler(hazelcastManagerInterface, gameEngineInterface, configuration);
+        }else if (gameEngineInterface == null) {
+            gameEngineServerUp = initGameEngineServer();
+            cheHandler = new CheHandler(hazelcastManagerInterface, gameEngineInterface, configuration);
         }
 
         if (hazelcastServerUp) {

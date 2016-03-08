@@ -11,7 +11,7 @@ public class Configuration {
     private static Logger logger = Logger.getLogger("che.engine");
     private int port = 1098;
     private String url = "//127.0.0.1:1098/GameEngineServer";
-    private int gameEngineDelta = 6000; //1 minute default
+    private int gameEngineDelta = 60000; //1 minute default
     private double SUB_ZONE_LAT = 0.05;
     private double SUB_ZONE_LONG = 0.1;
     private UTMConvert utmConvert = new UTMConvert(SUB_ZONE_LAT, SUB_ZONE_LONG);
