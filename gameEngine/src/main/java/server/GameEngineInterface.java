@@ -1,6 +1,5 @@
 package server;
 
-import core.HazelcastManagerInterface;
 import model.GameEngineModel;
 
 import java.rmi.Remote;
@@ -15,7 +14,7 @@ public interface GameEngineInterface extends Remote {
 
     public void removeGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException;
 
-    public void startEngine(HazelcastManagerInterface hazelcastManagerInterface) throws RemoteException;
+    public void startEngine() throws RemoteException;
 
     public void stopEngine() throws RemoteException;
 

@@ -5,7 +5,9 @@ import engine.GameEngine;
 import model.GameEngineModel;
 import util.Configuration;
 
+import java.net.MalformedURLException;
 import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
@@ -13,15 +15,18 @@ import java.rmi.server.UnicastRemoteObject;
 /**
  * Created by timmytime on 04/03/16.
  */
-public class GameEngineServer extends UnicastRemoteObject implements GameEngineInterface{
+public class GameEngineServer extends UnicastRemoteObject implements GameEngineInterface {
 
-    private GameEngine gameEngine = null;
-    private Thread gameEngineThread = null;
     private static Configuration configuration;
-    private boolean ENGINE_RUNNING = false;
+    private static HazelcastManagerInterface hazelcastManagerInterface;
+    private final Object lock = new Object();
+    private GameEngine gameEngine = null;
+    private boolean hazelcastServerUp = false;
 
-    public GameEngineServer() throws RemoteException{
-        super(0);
+    public GameEngineServer() throws RemoteException {
+        super(configuration.getPort());
+
+        hazelcastServerUp = initHazelcastServer();
     }
 
     public static void startServer() throws Exception {
@@ -32,11 +37,14 @@ public class GameEngineServer extends UnicastRemoteObject implements GameEngineI
             LocateRegistry.createRegistry(configuration.getPort());
         } catch (Exception e) {
 
+            configuration.getLogger().error("create reg error " + e.getMessage());
         }
 
 
         GameEngineServer server = new GameEngineServer();
         Naming.rebind(configuration.getURL(), server);
+
+        configuration.getLogger().debug("testing");
 
         //add a shut down hook.  mainly for testing / local development.
         Runtime.getRuntime().addShutdownHook(new Thread() {
@@ -51,6 +59,20 @@ public class GameEngineServer extends UnicastRemoteObject implements GameEngineI
         startServer();
     }
 
+    private boolean initHazelcastServer() {
+        try {
+            hazelcastManagerInterface = (HazelcastManagerInterface) Naming.lookup(configuration.getHazelcastURL());
+            return true;
+        } catch (NotBoundException e) {
+            configuration.getLogger().error("hazelcast server failed " + e.getMessage());
+        } catch (MalformedURLException e) {
+            configuration.getLogger().error("hazelcast server failed " + e.getMessage());
+        } catch (RemoteException e) {
+            configuration.getLogger().error("hazelcast server failed " + e.getMessage());
+        }
+        return false;
+    }
+
     @Override
     public void addGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {
 
@@ -61,39 +83,51 @@ public class GameEngineServer extends UnicastRemoteObject implements GameEngineI
 
     }
 
-    @Override
-    public void startEngine(HazelcastManagerInterface hazelcastManagerInterface) throws RemoteException {
-
-        configuration.getLogger().debug("called start");
-
-        gameEngine = new GameEngine(hazelcastManagerInterface, configuration);
-
-        gameEngineThread = new Thread(() -> {
+    private void engineStartThread() {
+        new Thread(() -> {
             try {
-                    gameEngine.engine();
-                }catch(RemoteException e){
-                    e.printStackTrace();
-            }
-        });
-
-        ENGINE_RUNNING = true;
-
-        while(ENGINE_RUNNING) {
-            try {
-                configuration.getLogger().debug("engine loop");
-                gameEngineThread.wait(configuration.getGameEngineDelta()/2);
-            } catch (InterruptedException e) {
+                configuration.getLogger().debug("game engine started");
+                gameEngine.engine();
+                engineStopThread();
+            } catch (RemoteException e) {
                 e.printStackTrace();
             }
-            configuration.getLogger().debug("engine start");
-            gameEngineThread.start();
-        }
+        }).start();
+    }
 
+    private void engineStopThread() {
+        new Thread(() -> {
+            long time = System.currentTimeMillis();
+
+            configuration.getLogger().debug("game engine waiting");
+
+            while (System.currentTimeMillis() < time + configuration.getGameEngineDelta() / 2) {
+                //do sweet fa..
+            }
+
+            engineStartThread();
+
+        }).start();
     }
 
     @Override
+    public void startEngine() throws RemoteException {
+
+        configuration.getLogger().debug("called start");
+
+        if (hazelcastManagerInterface == null) {
+            hazelcastServerUp = initHazelcastServer();
+        }
+
+        gameEngine = new GameEngine(hazelcastManagerInterface, configuration);
+
+        engineStartThread();
+
+    }
+
+
+    @Override
     public void stopEngine() throws RemoteException {
-        ENGINE_RUNNING = false;
-        gameEngineThread.interrupt();
+        //disconnect hazlecast to do
     }
 }

@@ -1,6 +1,5 @@
 package core;
 
-import com.hazelcast.core.IMap;
 import server.CheCallbackInterface;
 import util.TopicPair;
 import util.TopicSubscriptions;

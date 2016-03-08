@@ -44,7 +44,7 @@ public class GameObjectHandler {
     public GameObjectHandler(HazelcastManagerInterface hazelcastManagerInterface, Configuration configuration) {
         this.hazelcastManagerInterface = hazelcastManagerInterface;
         this.configuration = configuration;
-       this.utmHandler = new UTMHandler(hazelcastManagerInterface, configuration);
+        this.utmHandler = new UTMHandler(hazelcastManagerInterface, configuration);
     }
 
     public void handle(Player player, GameObject gameObject) throws JSONException, NoSuchAlgorithmException, RemoteException {

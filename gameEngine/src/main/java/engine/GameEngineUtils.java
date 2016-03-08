@@ -37,7 +37,7 @@ public class GameEngineUtils {
             try {
                 hazelcastManagerInterface.bulkSubscribe(gameEngineModels.stream().map(model -> new TopicPair(model.getPlayerKey(),
                         model.getGameUTMLocation().utm.getUtm() + model.getGameUTMLocation().subUtm.getUtm(),
-                        model.getGameObject().getTopicSubscriptions(),model.getMessage())).collect(Collectors.toList()));
+                        model.getGameObject().getTopicSubscriptions(), model.getMessage())).collect(Collectors.toList()));
             } catch (RemoteException e) {
                 e.printStackTrace();
             }

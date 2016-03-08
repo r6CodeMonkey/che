@@ -46,8 +46,8 @@ public class Configuration {
     private boolean epollMode = false;
     private int hazelcastPort = 1099;
     private String hazelcastURL = "//localhost/HazelcastServer";
-    private int enginePort = 1099;
-    private String engineURL = "//localhost/gameEngineServer";
+    private int enginePort = 1098;
+    private String engineURL = "//localhost:1098/GameEngineServer";
 
 
     public Configuration() {
@@ -201,18 +201,17 @@ public class Configuration {
         return hazelcastURL;
     }
 
-    public int getEnginePort(){
-        return enginePort;
-    }
-
-    public String getEngineURL(){
-        return engineURL;
-    }
-
     public void setHazelcastURL(String hazelcastURL) {
         this.hazelcastURL = hazelcastURL;
     }
 
+    public int getEnginePort() {
+        return enginePort;
+    }
+
+    public String getEngineURL() {
+        return engineURL;
+    }
 
     public int getBossThreads() {
         return bossThreads;

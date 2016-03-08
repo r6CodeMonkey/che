@@ -4,10 +4,6 @@ import core.HazelcastManagerInterface;
 import engine.GameEngine;
 import engine.GameEnginePhysics;
 import factory.GameObjectRulesFactory;
-import model.GameEngineModel;
-import model.GameObject;
-import model.UTM;
-import model.UTMLocation;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -18,8 +14,6 @@ import util.GameObjectTypes;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * Created by timmytime on 24/02/16.
@@ -38,7 +32,7 @@ public class GameEngineTest {
     public static void init() throws Exception {
         configuration = new Configuration();
         hazelcastManagerInterface = (HazelcastManagerInterface) Naming.lookup(configuration.getHazelcastURL());
-      //  hazelcastManagerInterface.addCallback(new CheCallbackClient(configuration));
+        //  hazelcastManagerInterface.addCallback(new CheCallbackClient(configuration));
 
 
         gameEngine = new GameEngine(hazelcastManagerInterface, configuration);

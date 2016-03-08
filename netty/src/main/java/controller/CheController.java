@@ -48,12 +48,14 @@ public class CheController {
         gameEngineServerUp = initGameEngineServer();
     }
 
-    private boolean initGameEngineServer(){
+    private boolean initGameEngineServer() { //i really need to run this in a seperate instance (ie not on here).  so next up we (i) need to look at AWS...
+        //time to start using that i think.  and deploy to it.  for testing lets add the engine into the source as before (not ideal mind).
         try {
             gameEngineInterface = (GameEngineInterface) Naming.lookup(configuration.getEngineURL());
-            gameEngineInterface.startEngine(hazelcastManagerInterface);
+            gameEngineInterface.startEngine();
             return true;
         } catch (NotBoundException e) {
+            e.printStackTrace();
             configuration.getLogger().error("game engine server failed " + e.getMessage());
         } catch (MalformedURLException e) {
             configuration.getLogger().error("game engine server failed " + e.getMessage());
@@ -87,7 +89,7 @@ public class CheController {
             hazelcastServerUp = initHazelcastServer();
         }
 
-        if(gameEngineInterface == null){
+        if (gameEngineInterface == null) {
             gameEngineServerUp = initGameEngineServer();
         }
 

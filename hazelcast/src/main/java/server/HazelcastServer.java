@@ -1,6 +1,5 @@
 package server;
 
-import com.hazelcast.core.IMap;
 import core.HazelcastManager;
 import core.HazelcastManagerInterface;
 import util.Configuration;
@@ -11,7 +10,6 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
