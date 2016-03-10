@@ -11,7 +11,7 @@
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="idea.launcher.port" value="7538"/>
+    <property name="idea.launcher.port" value="7535"/>
     <property name="user.country" value="GB"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
@@ -63,10 +63,10 @@
     <property name="sun.cpu.isalist" value=""/>
   </properties>
   <testcase classname="model.ModelTest" name="tesUTMLocation" time="0"/>
-  <testcase classname="model.ModelTest" name="testAlliance" time="0.001"/>
+  <testcase classname="model.ModelTest" name="testAlliance" time="0"/>
   <testcase classname="model.ModelTest" name="testUTM" time="0.001"/>
   <testcase classname="model.ModelTest" name="testGameObject" time="0.003"/>
-  <testcase classname="model.ModelTest" name="testAcknowledge" time="0"/>
-  <testcase classname="model.ModelTest" name="testMissile" time="0.001"/>
+  <testcase classname="model.ModelTest" name="testAcknowledge" time="0.001"/>
+  <testcase classname="model.ModelTest" name="testMissile" time="0.002"/>
   <testcase classname="model.ModelTest" name="testPlayer" time="0"/>
 </testsuite>

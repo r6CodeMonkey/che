@@ -61,6 +61,10 @@ public class GameEngineUtils {
 
     }
 
+    public void bulkPublish(String topic, List<GameEngineModel> gameEngineModels) throws RemoteException{
+        hazelcastManagerInterface.bulkPublish(topic, gameEngineModels.stream().map(model -> model.getMessage().toString()).collect(Collectors.toList()) );
+    }
+
     public void updateSubUTM(String utm, String subUtm, List<GameEngineModel> gameEngineModels) throws RemoteException {
         hazelcastManagerInterface.put(utm, subUtm, gameEngineModels);
     }

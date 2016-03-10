@@ -131,6 +131,17 @@ public class GameEnginePhysics {
                 //who cares..its not essential should log but its not issue.  just a message to grid.
             }
 
+        }else{
+            //just do a moved message.
+            gameEngineModel.getGameUTMLocation().state = Tags.MESSAGE;
+            gameEngineModel.getGameUTMLocation().value = Tags.GAME_OBJECT_IS_MOVING;
+
+            try {
+                gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),
+                        new JSONObject(gameEngineModel.getGameUTMLocation().getMessage())));
+             } catch (JSONException e) {
+                //who cares..its not essential should log but its not issue.  just a message to grid.
+            }
         }
 
     }

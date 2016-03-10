@@ -77,6 +77,15 @@ public class HazelcastManager implements HazelcastManagerInterface {
         }).start();
     }
 
+    public void bulkPublish(String topic, List<String> messages) throws RemoteException{
+
+        for(String message : messages){
+            publish(topic, message);
+        }
+
+    }
+
+
     public void createMap(String map) {
         hazelcastInstance.getMap(map);
     }

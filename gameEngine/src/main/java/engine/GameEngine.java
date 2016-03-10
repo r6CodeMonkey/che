@@ -81,6 +81,7 @@ public class GameEngine {
 
                     if (updated.get(Boolean.FALSE) != null) {
                         gameEngineUtils.updateSubUTM(utm, subUtm, updated.get(Boolean.FALSE));
+                        gameEngineUtils.bulkPublish(utm+subUtm,updated.get(Boolean.FALSE));
                     }
 
                     if (updated.get(Boolean.TRUE) != null) {

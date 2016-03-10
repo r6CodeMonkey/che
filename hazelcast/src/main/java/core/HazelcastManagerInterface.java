@@ -26,6 +26,8 @@ public interface HazelcastManagerInterface extends Remote {
 
     void publish(String topic, String message) throws RemoteException;
 
+    void bulkPublish(String topic, List<String> messages) throws RemoteException;
+
     void createMap(String map) throws RemoteException;
 
     void put(String map, String key, Object object) throws RemoteException;

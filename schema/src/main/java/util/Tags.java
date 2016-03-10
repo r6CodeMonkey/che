@@ -39,7 +39,7 @@ public class Tags {
     public final static String PLAYER_ENTERED = "PLAYER_ENTERED";
     public final static String PLAYER_LEFT = "PLAYER_LEFT";
     public final static String GAME_OBJECT_ENTERED = "GAME_OBJECT_ENTERED";
-    public final static String GAME_OBJECT_LEFT = "GAME_OBJECT_ENTERED";
+    public final static String GAME_OBJECT_LEFT = "GAME_OBJECT_LEFT";
 
     //states
     public final static String UUID = "UUID";
