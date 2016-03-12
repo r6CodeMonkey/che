@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gameObjectRules  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:noNamespaceSchemaLocation="game_object.xsd">
+
+    <mass>5000</mass>
+    <maxSpeed>25</maxSpeed>
+    <impactRadius>0</impactRadius>
+    <maxRange>0</maxRange>
+    <force>500</force>
+</gameObjectRules>

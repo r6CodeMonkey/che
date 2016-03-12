@@ -124,9 +124,11 @@ public class GameEnginePhysics {
 
             try {
                 gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),
-                        new JSONObject(gameEngineModel.getGameUTMLocation().getMessage())));
+                        true,
+                        GameEngineUtils.getMoveMessage(gameEngineModel)));
                 gameEngineModel.setMessage2(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),
-                        new JSONObject(gameEngineModel.getGameObject().utmLocation.getMessage())));
+                        false, //dont need to tell ourselves we left...but does need to be a game object..
+                        new JSONObject(gameEngineModel.getGameObject().utmLocation.getMessage())));  //need to fix this at some point...or review.
             } catch (JSONException e) {
                 //who cares..its not essential should log but its not issue.  just a message to grid.
             }
@@ -138,7 +140,8 @@ public class GameEnginePhysics {
 
             try {
                 gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),
-                        new JSONObject(gameEngineModel.getGameUTMLocation().getMessage())));
+                        true,
+                        GameEngineUtils.getMoveMessage(gameEngineModel))); //this needs to be a game object...ok...se update current position simples.
              } catch (JSONException e) {
                 //who cares..its not essential should log but its not issue.  just a message to grid.
             }

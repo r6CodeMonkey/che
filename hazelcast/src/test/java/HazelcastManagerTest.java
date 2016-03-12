@@ -2,6 +2,7 @@ import core.HazelcastManager;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import util.Configuration;
 import util.SimpleHandler;
 import util.TopicSubscriptions;
 
@@ -23,7 +24,7 @@ public class HazelcastManagerTest {
     @BeforeClass
     public static void init() {
         hazelcastManager = new HazelcastManager();
-        HazelcastManager.start();
+        HazelcastManager.start(new Configuration());
         object = new String("tim");
     }
 

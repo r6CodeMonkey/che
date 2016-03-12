@@ -55,7 +55,7 @@ public class PlayerHandler {
             player.utmLocation.state = Tags.MESSAGE;
             player.utmLocation.value = Tags.PLAYER_ENTERED;
             HazelcastMessage hazelcastMessage = new HazelcastMessage(CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(), new JSONObject(player.utmLocation.getMessage()));
-            hazelcastManagerInterface.publish(player.utmLocation.subUtm.getUtm(), hazelcastMessage.toString());
+            hazelcastManagerInterface.publish(player.utmLocation.utm.getUtm()+player.utmLocation.subUtm.getUtm(), hazelcastMessage.toString());
         }
 
         hazelcastManagerInterface.put(CheController.PLAYER_MAP, player.getKey(), player);

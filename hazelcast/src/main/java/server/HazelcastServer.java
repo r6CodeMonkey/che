@@ -20,9 +20,9 @@ public class HazelcastServer extends UnicastRemoteObject implements HazelcastMan
 
     private final HazelcastManager hazelcastManager = new HazelcastManager();
 
-    public HazelcastServer() throws RemoteException {
+    public HazelcastServer(Configuration configuration) throws RemoteException {
         super(0);
-        HazelcastManager.start();
+        HazelcastManager.start(configuration);
     }
 
     public static void stopServer() {
@@ -38,7 +38,7 @@ public class HazelcastServer extends UnicastRemoteObject implements HazelcastMan
 
         }
 
-        HazelcastServer server = new HazelcastServer();
+        HazelcastServer server = new HazelcastServer(configuration);
         Naming.rebind(configuration.getURL(), server);
 
         //add a shut down hook.  mainly for testing / local development.

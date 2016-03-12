@@ -28,6 +28,13 @@ public class GameEngine {
 
 
     public void addGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {
+        gameEngineModel.getGameObject().setDistanceBetweenPoints(
+                GameEnginePhysics.getHaversineDistance(
+                        gameEngineModel.getGameObject().utmLocation.latitude,
+                        gameEngineModel.getGameObject().utmLocation.longitude,
+                        gameEngineModel.getGameObject().destinationUTMLocation.latitude,
+                        gameEngineModel.getGameObject().destinationUTMLocation.longitude));
+
         gameEngineUtils.addGameEngineModel(gameEngineModel);
     }
 

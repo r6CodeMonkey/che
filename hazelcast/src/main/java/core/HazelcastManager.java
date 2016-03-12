@@ -5,6 +5,7 @@ import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import server.CheCallbackInterface;
 import util.CheMessageHandler;
+import util.Configuration;
 import util.TopicPair;
 import util.TopicSubscriptions;
 
@@ -22,11 +23,13 @@ public class HazelcastManager implements HazelcastManagerInterface {
 
     private static HazelcastInstance hazelcastInstance;
     private static CheCallbackInterface cheCallbackInterface;
+    private static Configuration configuration;
 
-    public static void start() {
+    public static void start(Configuration config) {
 
         //need to consider config....but the test is stupid.  ie 10,000 topics published in 1 second.  lol
         hazelcastInstance = Hazelcast.newHazelcastInstance();
+        configuration = config;
     }
 
     public static void stop() {
@@ -71,7 +74,7 @@ public class HazelcastManager implements HazelcastManagerInterface {
     }
 
     public void publish(String topic, String message) {
-
+        configuration.getLogger().debug("publish "+message+" topic is "+topic);
         new Thread(() -> {
             hazelcastInstance.getTopic(topic).publish(message);
         }).start();

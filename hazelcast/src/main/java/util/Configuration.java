@@ -1,6 +1,7 @@
 package util;
 
 import com.hazelcast.config.Config;
+import org.apache.log4j.Logger;
 
 /**
  * Created by timmytime on 13/12/15.
@@ -8,6 +9,8 @@ import com.hazelcast.config.Config;
 public class Configuration {
 
     private static Config config;
+    private static Logger logger = Logger.getLogger("che.hazelcast");
+
     private int port = 1099;
     private String url = "//localhost/HazelcastServer";
 
@@ -34,4 +37,6 @@ public class Configuration {
     public String getURL() {
         return url;
     }
+
+    public Logger getLogger(){return logger;}
 }

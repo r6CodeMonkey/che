@@ -23,7 +23,7 @@ public class CheCallbackClient extends UnicastRemoteObject implements CheCallbac
     public void handleCallback(String message, String key) {
         try {
 
-            configuration.getLogger().debug("call back");
+            configuration.getLogger().debug("call back "+message+" key is "+key);
 
             CheChannelFactory.write(key, new HazelcastMessage(message));
         } catch (Exception e) {

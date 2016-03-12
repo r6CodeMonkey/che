@@ -2,6 +2,8 @@ package engine;
 
 import core.HazelcastManagerInterface;
 import model.GameEngineModel;
+import org.json.JSONException;
+import org.json.JSONObject;
 import util.Configuration;
 import util.TopicPair;
 
@@ -62,7 +64,8 @@ public class GameEngineUtils {
     }
 
     public void bulkPublish(String topic, List<GameEngineModel> gameEngineModels) throws RemoteException{
-        hazelcastManagerInterface.bulkPublish(topic, gameEngineModels.stream().map(model -> model.getMessage().toString()).collect(Collectors.toList()) );
+        configuration.getLogger().debug("bulk publish");
+        hazelcastManagerInterface.bulkPublish(topic, gameEngineModels.stream().map(model -> model.getMessage().toString()).collect(Collectors.toList()));
     }
 
     public void updateSubUTM(String utm, String subUtm, List<GameEngineModel> gameEngineModels) throws RemoteException {
@@ -118,6 +121,14 @@ public class GameEngineUtils {
             configuration.getLogger().debug("remove game engine failed as perhaps it was not in the list " + e.getMessage());
         }
 
+    }
+
+    public static JSONObject getMoveMessage(GameEngineModel gameEngineModel) throws JSONException {
+        GameEngineModel temp = gameEngineModel;
+
+        temp.getGameObject().utmLocation = gameEngineModel.getGameUTMLocation();
+
+        return new JSONObject(gameEngineModel.getGameObject().getMessage());
     }
 
 }
