@@ -5,42 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1da809bf-b5cd-41ef-846a-b237902f929e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameEngine/src/test/java/GameEngineTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/schema/src/main/resources/xml/tank_rules.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gameEngine/target/test-classes/model/GameEngineTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/maven-archiver/pom.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/schema-1.0-SNAPSHOT.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/surefire-reports/TEST-message.MessageTest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/surefire-reports/TEST-model.ModelTest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/surefire-reports/message.MessageTest.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/schema/target/surefire-reports/model.ModelTest.txt" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/gameEngine/src/test/java/model/GameEngineTest.java" afterPath="$PROJECT_DIR$/gameEngine/src/test/java/model/GameEngineIT.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/util/CheCallbackClient.class" afterPath="$PROJECT_DIR$/netty/target/classes/util/CheCallbackClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/target/classes/util/CheMessageHandler.class" afterPath="$PROJECT_DIR$/hazelcast/target/classes/util/CheMessageHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/target/classes/util/Configuration.class" afterPath="$PROJECT_DIR$/hazelcast/target/classes/util/Configuration.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/target/classes/engine/GameEngine.class" afterPath="$PROJECT_DIR$/gameEngine/target/classes/engine/GameEngine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/target/classes/engine/GameEnginePhysics.class" afterPath="$PROJECT_DIR$/gameEngine/target/classes/engine/GameEnginePhysics.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/target/classes/engine/GameEngineUtils.class" afterPath="$PROJECT_DIR$/gameEngine/target/classes/engine/GameEngineUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/factory/GameObjectRulesFactory.class" afterPath="$PROJECT_DIR$/schema/target/classes/factory/GameObjectRulesFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/target/classes/core/HazelcastManager.class" afterPath="$PROJECT_DIR$/hazelcast/target/classes/core/HazelcastManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/target/test-classes/HazelcastManagerTest.class" afterPath="$PROJECT_DIR$/hazelcast/target/test-classes/HazelcastManagerTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/target/classes/server/HazelcastServer.class" afterPath="$PROJECT_DIR$/hazelcast/target/classes/server/HazelcastServer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/controller/handler/PlayerHandler.class" afterPath="$PROJECT_DIR$/netty/target/classes/controller/handler/PlayerHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/controller/handler/UTMHandler.class" afterPath="$PROJECT_DIR$/netty/target/classes/controller/handler/UTMHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/util/CheCallbackClient.java" afterPath="$PROJECT_DIR$/netty/src/main/java/util/CheCallbackClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/src/main/java/util/Configuration.java" afterPath="$PROJECT_DIR$/hazelcast/src/main/java/util/Configuration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngine.java" afterPath="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngine.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEnginePhysics.java" afterPath="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEnginePhysics.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngineUtils.java" afterPath="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngineUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/factory/GameObjectRulesFactory.java" afterPath="$PROJECT_DIR$/schema/src/main/java/factory/GameObjectRulesFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java" afterPath="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/src/test/java/HazelcastManagerTest.java" afterPath="$PROJECT_DIR$/hazelcast/src/test/java/HazelcastManagerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/src/main/java/server/HazelcastServer.java" afterPath="$PROJECT_DIR$/hazelcast/src/main/java/server/HazelcastServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/controller/handler/PlayerHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/PlayerHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/controller/handler/UTMHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/UTMHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/hazelcast.iml" afterPath="$PROJECT_DIR$/hazelcast/hazelcast.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/pom.xml" afterPath="$PROJECT_DIR$/hazelcast/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Che.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -132,21 +97,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameEnginePhysics.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameEnginePhysics.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEnginePhysics.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.75510204">
-              <caret line="132" column="36" selection-start-line="132" selection-start-column="36" selection-end-line="132" selection-end-column="36" />
+            <state vertical-scroll-proportion="-11.225806">
+              <caret line="139" column="44" selection-start-line="139" selection-start-column="44" selection-end-line="139" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HazelcastManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java">
+      <file leaf-file-name="Tags.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/schema/src/main/java/util/Tags.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="77" column="26" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
+            <state vertical-scroll-proportion="1.0952381">
+              <caret line="120" column="52" selection-start-line="120" selection-start-column="31" selection-end-line="120" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -1727,7 +1692,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1375" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1737,7 +1702,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16581818" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37484434" sideWeight="0.64363635" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37484434" sideWeight="0.64363635" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25687203" sideWeight="0.49621785" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29527274" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -2057,14 +2022,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/schema/src/main/java/util/Tags.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/schema/src/main/resources/xml/tank_rules.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2223,8 +2180,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEnginePhysics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75510204">
-          <caret line="132" column="36" selection-start-line="132" selection-start-column="36" selection-end-line="132" selection-end-column="36" />
+        <state vertical-scroll-proportion="-11.225806">
+          <caret line="139" column="44" selection-start-line="139" selection-start-column="44" selection-end-line="139" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/schema/src/main/java/util/Tags.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0952381">
+          <caret line="120" column="52" selection-start-line="120" selection-start-column="31" selection-end-line="120" selection-end-column="52" />
           <folding />
         </state>
       </provider>
