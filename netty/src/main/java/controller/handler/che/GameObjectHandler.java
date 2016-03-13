@@ -140,6 +140,7 @@ public class GameObjectHandler {
 
     private void objectStop(Player player, GameObject gameObject) throws RemoteException, JAXBException, JSONException, NoSuchAlgorithmException {
         //update our game object
+        configuration.getLogger().debug("game object stop");
         hazelcastManagerInterface.put(CheController.OBJECT_MAP, gameObject.getKey(), gameObject);
         //and remove it from engine.
         gameEngineInterface.removeGameEngineModel(new GameEngineModel(player.getKey(),

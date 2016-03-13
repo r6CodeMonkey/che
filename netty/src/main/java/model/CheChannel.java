@@ -39,7 +39,9 @@ public class CheChannel {
         //we are simply going to send then first message...and then let queue take over.
         synchronized (lock){
             if(buffer.size() > 0){
-                writeToChannel(buffer.get(buffer.keySet().iterator().next()).toString());
+                String nextKey = buffer.keySet().iterator().next();
+                lastSentKey = nextKey;
+                writeToChannel(nextKey);
             }
         }
     }
@@ -66,10 +68,10 @@ public class CheChannel {
 
             System.out.println("buffer again "+lastSentKey+" "+nextKey);
 
-            if (!lastSentKey.equals(nextKey)) {
+        //    if (!lastSentKey.equals(nextKey)) {
                 lastSentKey = nextKey;
                 writeToChannel(buffer.get(lastSentKey).toString());
-            }
+        //    }
         }
 
     }
@@ -78,10 +80,10 @@ public class CheChannel {
 
         if (channel != null) {
             System.out.println("attempt to write to channel");
-            if (channel.isActive()) {
+      //      if (channel.isActive()) {
                 System.out.println("writing as channel active");
                 channel.writeAndFlush(message);
-            }
+       //     }
         }
     }
 
