@@ -76,6 +76,7 @@ public class Tags {
     public final static String GAME_OBJECT_ADD = "OBJECT_ADD";
     public final static String GAME_OBJECT_MOVE = "OBJECT_MOVE";
     public final static String GAME_OBJECT_HIT = "OBJECT_HIT";
+    public final static String GAME_OBJECT_STOP = "OBJECT_STOP";
     public final static String GAME_OBJECT_DESTROYED = "OBJECT_DESTROYED";
     public final static String MISSILE_ADDED = "MISSILE_ADDED";
     public final static String MISSILE_REMOVED = "MISSILE_REMOVED";

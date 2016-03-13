@@ -44,6 +44,8 @@ public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
             cheMessage.setMessage(Tags.PLAYER, player);
 
             ctx.channel().writeAndFlush(ack.getMessage());
+
+            CheChannelFactory.updateCheChannel(player.getKey(), ctx.channel());
         }
 
 
@@ -67,6 +69,9 @@ public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
             ack.value = Tags.RECEIVED;
 
             ctx.channel().writeAndFlush(ack.getMessage());
+
+            CheChannelFactory.force(cheMessage.getMessage(Tags.PLAYER).getKey(), ctx.channel());
+
             //fire up pipeline...
             ctx.fireChannelRead(cheMessage);
         }

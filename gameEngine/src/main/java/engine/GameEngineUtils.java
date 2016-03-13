@@ -5,6 +5,7 @@ import model.GameEngineModel;
 import org.json.JSONException;
 import org.json.JSONObject;
 import util.Configuration;
+import util.Tags;
 import util.TopicPair;
 
 import java.rmi.RemoteException;
@@ -128,7 +129,7 @@ public class GameEngineUtils {
 
         temp.getGameObject().utmLocation = gameEngineModel.getGameUTMLocation();
 
-        return new JSONObject(gameEngineModel.getGameObject().getMessage());
+        return new JSONObject().put(Tags.GAME_OBJECT, new message.GameObject(temp.getGameObject().getMessage()));
     }
 
 }

@@ -1,11 +1,13 @@
 package channel;
 
 import controller.CheController;
+import factory.CheChannelFactory;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import message.CheMessage;
 import util.Configuration;
+import util.Tags;
 
 /**
  * Created by timmytime on 25/01/16.
@@ -25,9 +27,10 @@ public class CheControllerHandler extends SimpleChannelInboundHandler<CheMessage
     @Override
     protected void messageReceived(ChannelHandlerContext ctx, CheMessage cheMessage) throws Exception {
 
+
         new Thread(() -> {
             try {
-                cheController.receive(ctx.channel(), cheMessage);
+                cheController.receive(cheMessage);
             } catch (Exception e) {
                 configuration.getLogger().error("failed to call che controller " + e.getMessage());
             }

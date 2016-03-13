@@ -79,6 +79,9 @@ public class GameObjectHandler {
             case Tags.MISSILE_REMOVED:
                 missileRemoved(player, gameObject);
                 break;
+            case Tags.GAME_OBJECT_STOP:
+                objectStop(player, gameObject);
+                break;
         }
     }
 
@@ -132,6 +135,18 @@ public class GameObjectHandler {
 
         CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
 
+
+    }
+
+    private void objectStop(Player player, GameObject gameObject) throws RemoteException, JAXBException, JSONException, NoSuchAlgorithmException {
+        //update our game object
+        hazelcastManagerInterface.put(CheController.OBJECT_MAP, gameObject.getKey(), gameObject);
+        //and remove it from engine.
+        gameEngineInterface.removeGameEngineModel(new GameEngineModel(player.getKey(),
+                CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(),
+                gameObject, gameObjectRulesFactory.getRules(gameObject.subType)));
+        //need to confirm to client it has been done.
+        CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
 
     }
 

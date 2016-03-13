@@ -39,6 +39,7 @@ public class GameEngine {
     }
 
     public void removeGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {
+        configuration.getLogger().debug("removing game object");
         gameEngineUtils.removeGameEngineModel(gameEngineModel);
     }
 
@@ -51,7 +52,6 @@ public class GameEngine {
      Update: no missiles are processed here as its real time for them...and i cba to type out comment after a reset as il update later.
      */
     public void engine() throws RemoteException {
-
 
         ConcurrentMap<TopicPair, List<GameEngineModel>> movedMap = processPositions();
 

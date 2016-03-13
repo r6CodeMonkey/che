@@ -35,6 +35,15 @@ public class CheChannel {
         return channel;
     }
 
+    public synchronized void force(){
+        //we are simply going to send then first message...and then let queue take over.
+        synchronized (lock){
+            if(buffer.size() > 0){
+                writeToChannel(buffer.get(buffer.keySet().iterator().next()).toString());
+            }
+        }
+    }
+
     public synchronized void receive(Acknowledge acknowledge) throws JSONException {
         synchronized (lock) {
             buffer.remove(acknowledge.getCheAckId());
@@ -49,8 +58,14 @@ public class CheChannel {
 
     private synchronized void send(JSONObject message) throws JSONException {
         synchronized (lock) {
+
+            System.out.println("message is "+message);
+
             buffer.put(message.getJSONObject(Tags.CHE).getJSONObject(Tags.CHE_ACKNOWLEDGE).getString(Tags.CHE_ACK_ID), message);
             String nextKey = buffer.keySet().iterator().next();
+
+            System.out.println("buffer again "+lastSentKey+" "+nextKey);
+
             if (!lastSentKey.equals(nextKey)) {
                 lastSentKey = nextKey;
                 writeToChannel(buffer.get(lastSentKey).toString());
@@ -62,7 +77,9 @@ public class CheChannel {
     private void writeToChannel(String message) {
 
         if (channel != null) {
+            System.out.println("attempt to write to channel");
             if (channel.isActive()) {
+                System.out.println("writing as channel active");
                 channel.writeAndFlush(message);
             }
         }

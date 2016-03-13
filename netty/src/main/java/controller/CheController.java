@@ -86,7 +86,7 @@ public class CheController {
         return false;
     }
 
-    public void receive(Channel channel, CheMessage message) throws RemoteException, NotBoundException, MalformedURLException, JSONException, NoSuchAlgorithmException, JAXBException {
+    public void receive(CheMessage message) throws RemoteException, NotBoundException, MalformedURLException, JSONException, NoSuchAlgorithmException, JAXBException {
 
         if (hazelcastManagerInterface == null && gameEngineInterface == null) {
             hazelcastServerUp = initHazelcastServer();
@@ -102,12 +102,8 @@ public class CheController {
 
         if (hazelcastServerUp) {
 
-            //do the needful ;) trademarked.  needs testing under force ie should be thread safe as static, and we never access same shit form multiple threads.
-            CheChannelFactory.updateCheChannel(message.getMessage(Tags.PLAYER).getKey(), channel);
-
             Player player = playerHandler.handlePlayer(message);
             cheHandler.handle(player, message);
-
             //need to put updated player back.  also check its been updated as not re assigned etc...probably ok.
             hazelcastManagerInterface.put(CheController.PLAYER_MAP, player.getKey(), player);
         }

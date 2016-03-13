@@ -31,7 +31,9 @@ public class CheChannelFactory {
 
     public static void updateCheChannel(String key, Channel channel) {
         if (cheChannelMap.containsKey(key)) {
-            cheChannelMap.get(key).updateChannel(channel);
+            if(!cheChannelMap.get(key).getChannel().isActive() || !cheChannelMap.get(key).getChannel().isOpen()) {
+                cheChannelMap.get(key).updateChannel(channel);
+            }
         } else {
             addCheChannel(key, channel);
         }
@@ -43,6 +45,12 @@ public class CheChannelFactory {
 
     public static void write(String key, CheMessage cheMessage) throws JSONException, NoSuchAlgorithmException {
         cheChannelMap.get(key).write(cheMessage);
+    }
+
+    public static void force(String key, Channel channel){
+         updateCheChannel(key, channel);
+        //and now we force the next messages waiting.
+        cheChannelMap.get(key).force();
     }
 
 }
