@@ -23,6 +23,8 @@ public class Player extends CoreMessage {
         inner.put(Tags.PLAYER_KEY, "");
         inner.put(Tags.PLAYER_NAME, "");
         inner.put(Tags.PLAYER_IMAGE, "");
+        inner.put(Tags.VALUE, "");
+        inner.put(Tags.STATE, "");
         UTMLocation utmLocation = new UTMLocation();
         utmLocation.create();
         inner.put(Tags.UTM_LOCATION, utmLocation);
@@ -40,6 +42,24 @@ public class Player extends CoreMessage {
     public void setKey(String key) {
         this.getJSONObject(Tags.PLAYER).put(Tags.PLAYER_KEY, key);
     }
+
+
+    public String getState() {
+        return this.getJSONObject(Tags.PLAYER).get(Tags.STATE).toString();
+    }
+
+    public void setState(String state) {
+        this.getJSONObject(Tags.PLAYER).put(Tags.STATE, state);
+    }
+
+    public String getValue() {
+        return this.getJSONObject(Tags.PLAYER).get(Tags.VALUE).toString();
+    }
+
+    public void setValue(String value) {
+        this.getJSONObject(Tags.PLAYER).put(Tags.VALUE, value);
+    }
+
 
     public String getName() {
         return this.getJSONObject(Tags.PLAYER).get(Tags.PLAYER_NAME).toString();

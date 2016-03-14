@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class Player extends CoreModel {
 
-    public String name;
+    public String name, value, state;
     public Image image;
     public UTMLocation utmLocation;
     private List<String> alliances = new ArrayList<>();  //just hold the keys.
@@ -29,6 +29,9 @@ public class Player extends CoreModel {
     public Player(message.Player player) {
         super(player.getKey());
         name = player.getName();
+        value = player.getValue();
+        state = player.getState();
+
         //image = player.getImage().toString();
         utmLocation = new UTMLocation(player.getUTMLocation());
     }
@@ -66,6 +69,8 @@ public class Player extends CoreModel {
 
         player.setKey(key);
         player.setName(name);
+        player.setValue(value);
+        player.setState(state);
         player.setImage("");   //to fix
         player.setUTMLocation(new message.UTMLocation(utmLocation.getMessage()));
 

@@ -122,7 +122,7 @@ public class GameEnginePhysics {
           send our basic move message.
          */
         gameEngineModel.getGameObject().state = Tags.MESSAGE;
-        gameEngineModel.getGameObject().value =  displacement == gameEngineModel.getGameObject().getDistanceBetweenPoints() ? Tags.GAME_OBJECT_IS_FIXED : Tags.GAME_OBJECT_IS_MOVING;
+        gameEngineModel.getGameObject().value =  0 == gameEngineModel.getGameObject().getDistanceBetweenPoints() ? Tags.GAME_OBJECT_IS_FIXED : Tags.GAME_OBJECT_IS_MOVING;
 
         try {
             gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),

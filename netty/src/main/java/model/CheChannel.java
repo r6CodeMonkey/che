@@ -68,10 +68,10 @@ public class CheChannel {
 
             System.out.println("buffer again "+lastSentKey+" "+nextKey);
 
-        //    if (!lastSentKey.equals(nextKey)) {
+            if (!lastSentKey.equals(nextKey)) {
                 lastSentKey = nextKey;
                 writeToChannel(buffer.get(lastSentKey).toString());
-        //    }
+            }
         }
 
     }
@@ -80,10 +80,10 @@ public class CheChannel {
 
         if (channel != null) {
             System.out.println("attempt to write to channel");
-      //      if (channel.isActive()) {
+            if (channel.isActive()) {
                 System.out.println("writing as channel active");
                 channel.writeAndFlush(message);
-       //     }
+            }
         }
     }
 
