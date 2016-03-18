@@ -65,11 +65,7 @@ public class GameEngineServer extends UnicastRemoteObject implements GameEngineI
     public void addGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {
         gameEngine.addGameEngineModel(gameEngineModel);
     }
-
-    @Override
-    public void removeGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {
-        gameEngine.removeGameEngineModel(gameEngineModel);
-    }
+    
 
     private void engineStartThread() {
         new Thread(() -> {

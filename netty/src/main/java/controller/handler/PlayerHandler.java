@@ -58,14 +58,14 @@ public class PlayerHandler {
             hazelcastManagerInterface.publish(player.utmLocation.utm.getUtm()+player.utmLocation.subUtm.getUtm(), hazelcastMessage.toString());
         }
 
-        hazelcastManagerInterface.put(CheController.PLAYER_MAP, player.getKey(), player);
+        hazelcastManagerInterface.put(Tags.PLAYER_MAP, player.getKey(), player);
 
         return player;
     }
 
     public Player getPlayer(message.Player message) throws RemoteException {
 
-        Player player = (Player) hazelcastManagerInterface.get(CheController.PLAYER_MAP, message.getKey());
+        Player player = (Player) hazelcastManagerInterface.get(Tags.PLAYER_MAP, message.getKey());
 
         if (player == null) {
             configuration.getLogger().debug("created a new player");

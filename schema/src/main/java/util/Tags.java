@@ -30,6 +30,10 @@ public class Tags {
     public static final String CHE_RECEIVED = "cheReceived";
 
 
+    //hazelcast maps
+    public static final String PLAYER_MAP = "PLAYER_MAP";
+    public static final String ALLIANCE_MAP = "ALLIANCE_MAP";
+
 
     //state values
     public final static String ERROR = "ERROR";

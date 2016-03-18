@@ -25,11 +25,6 @@ import java.security.NoSuchAlgorithmException;
  */
 public class CheController {
 
-    public static final String PLAYER_MAP = "PLAYER_MAP";
-    public static final String ALLIANCE_MAP = "ALLIANCE_MAP";
-    public static final String OBJECT_MAP = "OBJECT_MAP";
-    public static final String MISSILE_MAP = "MISSILE_MAP";
-
     //server
     private static HazelcastManagerInterface hazelcastManagerInterface;
     private static GameEngineInterface gameEngineInterface;
@@ -105,7 +100,7 @@ public class CheController {
             Player player = playerHandler.handlePlayer(message);
             cheHandler.handle(player, message);
             //need to put updated player back.  also check its been updated as not re assigned etc...probably ok.
-            hazelcastManagerInterface.put(CheController.PLAYER_MAP, player.getKey(), player);
+            hazelcastManagerInterface.put(Tags.PLAYER_MAP, player.getKey(), player);
         }
     }
 

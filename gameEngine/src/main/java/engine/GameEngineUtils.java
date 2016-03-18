@@ -2,6 +2,7 @@ package engine;
 
 import core.HazelcastManagerInterface;
 import model.GameEngineModel;
+import model.Player;
 import org.json.JSONException;
 import org.json.JSONObject;
 import util.Configuration;
@@ -31,7 +32,10 @@ public class GameEngineUtils {
     }
 
     public List<GameEngineModel> getGameEngineModels(String utm, String subUtm) throws RemoteException {
-        return (List<GameEngineModel>) hazelcastManagerInterface.get(utm, subUtm);
+
+        List<GameEngineModel> temp = (List<GameEngineModel>) hazelcastManagerInterface.get(utm, subUtm);
+
+       return temp.parallelStream().filter(gameEngineModel -> gameEngineModel.getGameObject().getDistanceBetweenPoints() != 0).collect(Collectors.toList());
     }
 
     public void bulkSubscribe(List<GameEngineModel> gameEngineModels) {
@@ -130,6 +134,14 @@ public class GameEngineUtils {
         temp.getGameObject().utmLocation = gameEngineModel.getGameUTMLocation();
 
         return new JSONObject().put(Tags.GAME_OBJECT, new message.GameObject(temp.getGameObject().getMessage()));
+    }
+
+    public void updatePlayer(GameEngineModel gameEngineModel) throws RemoteException{
+
+        Player player =  (Player)hazelcastManagerInterface.get(Tags.PLAYER_MAP, gameEngineModel.getPlayerKey());
+        player.getGameObjects().put(gameEngineModel.getGameObject().getKey(), gameEngineModel.getGameObject());
+        hazelcastManagerInterface.put(Tags.PLAYER_MAP, player.getKey(), player);
+
     }
 
 }

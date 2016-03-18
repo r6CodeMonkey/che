@@ -35,7 +35,8 @@ public class CheChannel {
         return channel;
     }
 
-    public synchronized void force(){
+    public synchronized void force(Channel channel){
+        this.channel = channel;
         //we are simply going to send then first message...and then let queue take over.
         synchronized (lock){
             if(buffer.size() > 0){

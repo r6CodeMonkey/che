@@ -49,9 +49,17 @@ public class CheChannelFactory {
     }
 
     public static void force(String key, Channel channel){
-         updateCheChannel(key, channel);
-        //and now we force the next messages waiting.
-        cheChannelMap.get(key).force();
+
+        System.out.println("force executed - testing we even hit this!");
+
+        //need to manipulate this. ie only
+        new Thread(()
+            -> {
+            //and now we force the next messages waiting.
+            cheChannelMap.get(key).force(channel);
+            updateCheChannel(key, channel); //update it after.,..
+        }).start();
+
     }
 
 }

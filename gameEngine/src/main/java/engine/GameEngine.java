@@ -3,6 +3,7 @@ package engine;
 import core.HazelcastManagerInterface;
 import model.GameEngineModel;
 import util.Configuration;
+import util.Tags;
 import util.TopicPair;
 
 import java.rmi.RemoteException;
@@ -36,11 +37,6 @@ public class GameEngine {
                         gameEngineModel.getGameObject().destinationUTMLocation.longitude));
 
         gameEngineUtils.addGameEngineModel(gameEngineModel);
-    }
-
-    public void removeGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {
-        configuration.getLogger().debug("removing game object");
-        gameEngineUtils.removeGameEngineModel(gameEngineModel);
     }
 
 
@@ -81,7 +77,8 @@ public class GameEngine {
 
                     total += models.size();
 
-                    models.parallelStream().forEach(model -> GameEnginePhysics.process(model, configuration.getUtmConvert(), configuration.getGameEngineDelta()));
+                    //really need to return a value to tell us its a fix and then collect that into something...but can test this.  that shit for week off.
+                    models.parallelStream().forEach(model -> GameEnginePhysics.process(gameEngineUtils, model, configuration.getUtmConvert(), configuration.getGameEngineDelta()));
 
                     ConcurrentMap<Boolean, List<GameEngineModel>> updated =
                             models.parallelStream().collect(Collectors.groupingByConcurrent(GameEngineModel::hasChangedGrid));

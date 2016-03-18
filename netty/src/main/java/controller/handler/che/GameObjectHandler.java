@@ -102,10 +102,7 @@ public class GameObjectHandler {
 
     private void missileAdded(Player player, GameObject gameObject) throws RemoteException, JSONException, NoSuchAlgorithmException {
 
-        GameObject model = (GameObject) hazelcastManagerInterface.get(CheController.OBJECT_MAP, gameObject.getKey());
-        model.getMissiles().add(gameObject.getMissiles().get(0));
-        hazelcastManagerInterface.put(CheController.OBJECT_MAP, model.getKey(), model);
-        player.getGameObjects().put(model.getKey(), model);
+        player.getGameObjects().get(gameObject.getKey()).getMissiles().add(gameObject.getMissiles().get(0));
 
         gameObject.value = Tags.SUCCESS;
         CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
@@ -118,7 +115,6 @@ public class GameObjectHandler {
 
     private void objectAdd(Player player, GameObject gameObject) throws RemoteException, JSONException, NoSuchAlgorithmException {
 
-        hazelcastManagerInterface.put(CheController.OBJECT_MAP, gameObject.getKey(), gameObject);
 
         player.getGameObjects().put(gameObject.getKey(), gameObject);
 
@@ -141,13 +137,8 @@ public class GameObjectHandler {
     private void objectStop(Player player, GameObject gameObject) throws RemoteException, JAXBException, JSONException, NoSuchAlgorithmException {
         //update our game object
         configuration.getLogger().debug("game object stop");
-        hazelcastManagerInterface.put(CheController.OBJECT_MAP, gameObject.getKey(), gameObject);
-        //and remove it from engine.
-        gameEngineInterface.removeGameEngineModel(new GameEngineModel(player.getKey(),
-                CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(),
-                gameObject, gameObjectRulesFactory.getRules(gameObject.subType)));
-        //need to confirm to client it has been done.
-        CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
+        //and set our distance to zero.
+       //no engine will do this..with latest information CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
 
     }
 
@@ -170,11 +161,8 @@ public class GameObjectHandler {
 
         if (valid) {
 
-            GameObject model = (GameObject) hazelcastManagerInterface.get(CheController.OBJECT_MAP, gameObject.getKey());
-            model.destinationUTMLocation = gameObject.destinationUTMLocation;
-            hazelcastManagerInterface.put(CheController.OBJECT_MAP, model.getKey(), model);
+            player.getGameObjects().get(gameObject.getKey()).destinationUTMLocation = gameObject.destinationUTMLocation;
             gameObject.value = Tags.SUCCESS;
-
 
             gameEngineInterface.addGameEngineModel(new GameEngineModel(player.getKey(),
                     CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(),

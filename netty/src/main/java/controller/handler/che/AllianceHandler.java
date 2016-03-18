@@ -57,7 +57,7 @@ public class AllianceHandler {
         alliance.getMembers().add(player);
         player.getAlliances().add(alliance.getKey());
 
-        hazelcastManagerInterface.put(CheController.ALLIANCE_MAP, alliance.getKey(), alliance);
+        hazelcastManagerInterface.put(Tags.ALLIANCE_MAP, alliance.getKey(), alliance);
 
         player.getTopicSubscriptions().addSubscription(alliance.getKey(), hazelcastManagerInterface.subscribe(alliance.getKey(), player.getKey()));
         alliance.value = Tags.SUCCESS;
@@ -78,7 +78,7 @@ public class AllianceHandler {
     //note testing wise, you can post withouth joining.  not a major issue presumably.
     private void allianceJoin(Player player, Alliance alliance) throws RemoteException, NoSuchAlgorithmException, JSONException {
 
-        Object object = hazelcastManagerInterface.get(CheController.ALLIANCE_MAP, alliance.getKey());
+        Object object = hazelcastManagerInterface.get(Tags.ALLIANCE_MAP, alliance.getKey());
 
         if (object != null) {
             Alliance serverAlliance = (Alliance) object;
@@ -86,7 +86,7 @@ public class AllianceHandler {
             serverAlliance.getMembers().add(player);
             player.getAlliances().add(serverAlliance.getKey());
 
-            hazelcastManagerInterface.put(CheController.ALLIANCE_MAP, serverAlliance.getKey(), serverAlliance);
+            hazelcastManagerInterface.put(Tags.ALLIANCE_MAP, serverAlliance.getKey(), serverAlliance);
 
             player.getTopicSubscriptions().addSubscription(serverAlliance.getKey(), hazelcastManagerInterface.subscribe(serverAlliance.getKey(), player.getKey()));
             serverAlliance.value = Tags.SUCCESS;
@@ -99,7 +99,7 @@ public class AllianceHandler {
 
     private void allianceLeave(Player player, Alliance alliance) throws RemoteException, NoSuchAlgorithmException, JSONException {
 
-        Object object = hazelcastManagerInterface.get(CheController.ALLIANCE_MAP, alliance.getKey());
+        Object object = hazelcastManagerInterface.get(Tags.ALLIANCE_MAP, alliance.getKey());
 
         if (object != null) {
             Alliance serverAlliance = (Alliance) object;
@@ -108,7 +108,7 @@ public class AllianceHandler {
             player.getAlliances().remove(serverAlliance.getKey());
             hazelcastManagerInterface.unSubscribe(serverAlliance.getKey(), player.getTopicSubscriptions());
 
-            hazelcastManagerInterface.put(CheController.ALLIANCE_MAP, serverAlliance.getKey(), serverAlliance);
+            hazelcastManagerInterface.put(Tags.ALLIANCE_MAP, serverAlliance.getKey(), serverAlliance);
             serverAlliance.value = Tags.SUCCESS;
             serverAlliance.state = Tags.ALLIANCE_LEAVE;
 
