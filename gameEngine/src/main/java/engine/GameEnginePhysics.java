@@ -72,7 +72,7 @@ public class GameEnginePhysics {
     /*
       process a model by its rules.  also pass in our timestep, as we may want to configure it faster or slower once we see how it runs.
      */
-    public static void process(final GameEngineUtils gameEngineUtils, final GameEngineModel gameEngineModel, final UTMConvert utmConvert, final long milliseconds) {
+    public static void process(final GameEngineModel gameEngineModel, final UTMConvert utmConvert, final long milliseconds) {
 
         double displacement;
         if (gameEngineModel.getGameObject().acceleration == 0) {
@@ -126,16 +126,6 @@ public class GameEnginePhysics {
         gameEngineModel.getGameObject().state = Tags.MESSAGE;
         gameEngineModel.getGameObject().value =  0 == gameEngineModel.getGameObject().getDistanceBetweenPoints() ? Tags.GAME_OBJECT_IS_FIXED : Tags.GAME_OBJECT_IS_MOVING;
 
-        //we also need to update hazecast (seperate thread) to update the players game object.  need to review cost of this.
-        if(gameEngineModel.getGameObject().value.equals(Tags.GAME_OBJECT_IS_FIXED)){
-            new Thread(()-> {
-                try {
-                    gameEngineUtils.updatePlayer(gameEngineModel);
-                } catch (RemoteException e) {
-                  //ignore..well dont but wont be issue
-                }
-            }).start();
-        }
 
         try {
             gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),

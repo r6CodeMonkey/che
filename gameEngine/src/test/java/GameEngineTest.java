@@ -65,7 +65,7 @@ public class GameEngineTest {
         GameEngineModel gameEngineModel = new GameEngineModel(PLAYER_KEY, "fake", gameObject, gameObjectRules);
 
 
-        GameEnginePhysics.process(null, gameEngineModel, configuration.getUtmConvert(), configuration.getGameEngineDelta());
+        GameEnginePhysics.process(gameEngineModel, configuration.getUtmConvert(), configuration.getGameEngineDelta());
 
         configuration.getLogger().debug(gameEngineModel.getMessage().toString());
 

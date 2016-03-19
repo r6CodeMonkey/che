@@ -78,7 +78,18 @@ public class GameEngine {
                     total += models.size();
 
                     //really need to return a value to tell us its a fix and then collect that into something...but can test this.  that shit for week off.
-                    models.parallelStream().forEach(model -> GameEnginePhysics.process(gameEngineUtils, model, configuration.getUtmConvert(), configuration.getGameEngineDelta()));
+                    models.parallelStream().forEach(model -> GameEnginePhysics.process(model, configuration.getUtmConvert(), configuration.getGameEngineDelta()));
+
+                    //ok we reall need to collect all the objects that are fixed now....not this will be slow
+                    new Thread(() -> {
+                     models.parallelStream().filter(gameEngineModel -> gameEngineModel.getGameObject().getDistanceBetweenPoints() == 0).forEach((gameEngineModel1) -> {
+                        try {
+                            //need a bulk version
+                            gameEngineUtils.updatePlayer(gameEngineModel1);
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                        }
+                    });}).start();
 
                     ConcurrentMap<Boolean, List<GameEngineModel>> updated =
                             models.parallelStream().collect(Collectors.groupingByConcurrent(GameEngineModel::hasChangedGrid));
