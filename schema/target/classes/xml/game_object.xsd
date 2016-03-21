@@ -8,6 +8,7 @@
     <xs:element name="impactRadius" type="xs:integer"/>
     <xs:element name="maxRange" type="xs:integer"/>
             <xs:element name="force" type="xs:integer"/>
+            <xs:element name="strength" type="xs:integer"/>
         </xs:sequence>
 </xs:complexType>
     </xs:element>

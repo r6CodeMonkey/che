@@ -17,7 +17,7 @@ public class GameObject extends CoreModel {
     public UTMLocation utmLocation, destinationUTMLocation;
 
     //general physics variables.
-    public double mass, acceleration, velocity;
+    public double mass, acceleration, velocity, range, maxSpeed, strength, impactRadius, force;
     //is it fixed / hit / destroyed / located
     public boolean fixed, hit, destroyed, located;
     //contains a list of missiles.  perhaps supports holding all sorts. (no all missiles are same, just different settings).
@@ -37,6 +37,11 @@ public class GameObject extends CoreModel {
         this.mass = gameObject.getMass();
         this.velocity = gameObject.getVelocity();
         this.acceleration = gameObject.getAcceleration();
+        this.force = gameObject.getForce();
+        this.strength = gameObject.getStrength();
+        this.range = gameObject.getRange();
+        this.impactRadius = gameObject.getImpactRadius();
+        this.maxSpeed = gameObject.getMaxSpeed();
         this.fixed = gameObject.isFixed();
         this.hit = gameObject.isHit();
         this.located = gameObject.isLocated();
@@ -65,6 +70,11 @@ public class GameObject extends CoreModel {
         this.mass = 0;
         this.velocity = 0;
         this.acceleration = 0;
+        this.strength = 0;
+        this.maxSpeed = 0;
+        this.range = 0;
+        this.impactRadius = 0;
+        this.force = 0;
         this.fixed = false;
         this.hit = false;
         this.located = false;
@@ -105,6 +115,11 @@ public class GameObject extends CoreModel {
         gameObject.setAcceleration(acceleration);
         gameObject.setVelocity(velocity);
         gameObject.setMass(mass);
+        gameObject.setForce(force);
+        gameObject.setMaxSpeed(maxSpeed);
+        gameObject.setRange(range);
+        gameObject.setImpactRadius(impactRadius);
+        gameObject.setStrength(strength);
         gameObject.setHit(hit);
         gameObject.setDestroyed(destroyed);
         gameObject.setLocated(located);

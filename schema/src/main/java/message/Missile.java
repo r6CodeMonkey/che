@@ -23,10 +23,6 @@ public class Missile extends CoreMessage {
         inner.put(Tags.MISSILE_KEY, "");
         inner.put(Tags.STATE, "");
         inner.put(Tags.VALUE, "");
-        inner.put(Tags.MISSILE_RANGE, 0);
-        inner.put(Tags.MISSILE_RADIUS, 0);
-        inner.put(Tags.MISSILE_RADIUS_IMPACT_SCALAR, 0);
-        inner.put(Tags.MISSILE_PAYLOAD, 0);
         inner.put(Tags.MISSILE_DESTROYED, false);
         inner.put(Tags.MISSILE_LAUNCHED, false);
         UTMLocation utmLocation = new UTMLocation();
@@ -105,38 +101,5 @@ public class Missile extends CoreMessage {
     public void setStartUTMLocation(UTMLocation utmLocation) {
         this.getJSONObject(Tags.MISSILE).put(Tags.MISSILE_START_UTM_LOCATION, utmLocation);
     }
-
-    public double getImpactRadius() {
-        return this.getJSONObject(Tags.MISSILE).getDouble(Tags.MISSILE_RADIUS);
-    }
-
-    public void setImpactRadius(double radius) {
-        this.getJSONObject(Tags.MISSILE).put(Tags.MISSILE_RADIUS, radius);
-    }
-
-    public double getImpactRadiusScalar() {
-        return this.getJSONObject(Tags.MISSILE).getDouble(Tags.MISSILE_RADIUS_IMPACT_SCALAR);
-    }
-
-    public void setImpactRadiusScalar(double scalar) {
-        this.getJSONObject(Tags.MISSILE).put(Tags.MISSILE_RADIUS_IMPACT_SCALAR, scalar);
-    }
-
-    public double getPayLoad() {
-        return this.getJSONObject(Tags.MISSILE).getDouble(Tags.MISSILE_PAYLOAD);
-    }
-
-    public void setPayLoad(double payLoad) {
-        this.getJSONObject(Tags.MISSILE).put(Tags.MISSILE_PAYLOAD, payLoad);
-    }
-
-    public double getRange() {
-        return this.getJSONObject(Tags.MISSILE).getDouble(Tags.MISSILE_RANGE);
-    }
-
-    public void setRange(double range) {
-        this.getJSONObject(Tags.MISSILE).put(Tags.MISSILE_RANGE, range);
-    }
-
 
 }

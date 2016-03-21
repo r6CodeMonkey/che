@@ -28,6 +28,11 @@ public class GameObject extends CoreMessage {
         inner.put(Tags.GAME_OBJECT_MASS, 0);
         inner.put(Tags.GAME_OBJECT_VELOCITY, 0);
         inner.put(Tags.GAME_OBJECT_ACCELERATION, 0);
+        inner.put(Tags.GAME_OBJECT_STRENGTH, 0);
+        inner.put(Tags.GAME_OBJECT_FORCE, 0);
+        inner.put(Tags.MISSILE_RANGE, 0);
+        inner.put(Tags.MISSILE_IMPACT_RADIUS, 0);
+        inner.put(Tags.GAME_OBJECT_MAX_SPEED, 0);
         inner.put(Tags.GAME_OBJECT_IS_FIXED, false);
         inner.put(Tags.GAME_OBJECT_IS_LOCATED, false);
         inner.put(Tags.GAME_OBJECT_IS_DESTROYED, false);
@@ -171,6 +176,46 @@ public class GameObject extends CoreMessage {
 
     public void setLocated(boolean located) {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_IS_LOCATED, located);
+    }
+
+    public double getImpactRadius() {
+        return this.getJSONObject(Tags.GAME_OBJECT).getDouble(Tags.MISSILE_IMPACT_RADIUS);
+    }
+
+    public void setImpactRadius(double scalar) {
+        this.getJSONObject(Tags.GAME_OBJECT).put(Tags.MISSILE_IMPACT_RADIUS, scalar);
+    }
+
+    public double getStrength() {
+        return this.getJSONObject(Tags.GAME_OBJECT).getDouble(Tags.GAME_OBJECT_STRENGTH);
+    }
+
+    public void setStrength(double strength) {
+        this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_STRENGTH, strength);
+    }
+
+    public double getRange() {
+        return this.getJSONObject(Tags.GAME_OBJECT).getDouble(Tags.MISSILE_RANGE);
+    }
+
+    public void setRange(double range) {
+        this.getJSONObject(Tags.GAME_OBJECT).put(Tags.MISSILE_RANGE, range);
+    }
+
+    public double getForce(){
+        return this.getJSONObject(Tags.GAME_OBJECT).getDouble(Tags.GAME_OBJECT_FORCE);
+    }
+
+    public void setForce(double force){
+        this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_FORCE, force);
+    }
+
+    public double getMaxSpeed(){
+        return this.getJSONObject(Tags.GAME_OBJECT).getDouble(Tags.GAME_OBJECT_MAX_SPEED);
+    }
+
+    public void setMaxSpeed(double force){
+        this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_MAX_SPEED, force);
     }
 
     public List<Missile> getMissiles() {

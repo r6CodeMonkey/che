@@ -101,10 +101,6 @@ public class Tags {
 
 
     public final static String MISSILE_KEY = "missileKey";
-    public final static String MISSILE_PAYLOAD = "missilePayLoad";
-    public final static String MISSILE_RADIUS = "missileRadius";
-    public final static String MISSILE_RANGE = "missileRange";
-    public final static String MISSILE_RADIUS_IMPACT_SCALAR = "missileRadiusImpactScalar";
     public final static String MISSILE_UTM_LOCATION = "missileUtmLocation";
     public final static String MISSILE_TARGET_UTM_LOCATION = "missileTargetUtmLocation";
     public final static String MISSILE_START_UTM_LOCATION = "missileStartUtmLocation";
@@ -117,6 +113,13 @@ public class Tags {
     public final static String GAME_OBJECT_UTM_LOCATION = "gameObjectUtmLocation";
     public final static String GAME_OBJECT_DEST_UTM_LOCATION = "gameObjectDestUtmLocation";
     public final static String GAME_OBJECT_MASS = "gameObjectMass";
+    public final static String GAME_OBJECT_STRENGTH = "gameObjectStrength";
+    public final static String GAME_OBJECT_FORCE = "gameObjectForce";
+    public final static String MISSILE_RANGE = "missileRange";
+    public final static String MISSILE_IMPACT_RADIUS = "missileImpactRadius";
+    public final static String GAME_OBJECT_MAX_SPEED = "gameObjectMaxSpeed";
+
+
     public final static String GAME_OBJECT_ACCELERATION = "gameObjectAcceleration";
     public final static String GAME_OBJECT_VELOCITY = "gameObjectVelocity";
     public final static String GAME_OBJECT_IS_FIXED = "gameObjectFixed";

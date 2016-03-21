@@ -64,10 +64,6 @@ public class ModelTest {
         message.Missile missile = new Missile(MessageTest.MISSILE);
         model.Missile missile1 = new model.Missile(missile);
 
-        assertEquals(5000, missile1.range, 0);
-        assertEquals(5, missile1.impactRadius, 0);
-        assertEquals(6, missile1.radiusImpactScalar, 0);
-        assertEquals(100, missile1.payLoad, 0);
 
         assertEquals(true, missile1.launched);
         assertEquals(false, missile1.destroyed);

@@ -8,8 +8,6 @@ public class Missile extends CoreModel {
     public String state, value;
     //this contains speed and altitude for trajectory / timing so all good....can make up the current part.
     public UTMLocation currentUTMLocation, startUTMLocation, targetUTMLocation;
-    //probably need pay loads and type of strikes.   on basis you can buy missiles for game objects.
-    public double impactRadius, radiusImpactScalar, payLoad, range;
     //ie is it active or destroyed.  or stastic.  ie !launched
     public boolean launched, destroyed;
 
@@ -21,10 +19,6 @@ public class Missile extends CoreModel {
         this.currentUTMLocation = new UTMLocation(missile.getCurrentUTMLocation());
         this.startUTMLocation = new UTMLocation(missile.getStartUTMLocation());
         this.targetUTMLocation = new UTMLocation(missile.getTargetUTMLocation());
-        this.impactRadius = missile.getImpactRadius();
-        this.radiusImpactScalar = missile.getImpactRadiusScalar();
-        this.payLoad = missile.getPayLoad();
-        this.range = missile.getRange();
         this.launched = missile.isLaunched();
         this.destroyed = missile.isDestroyed();
 
@@ -39,10 +33,6 @@ public class Missile extends CoreModel {
         destroyed = false;
         state = "";
         value = "";
-        impactRadius = 0;
-        radiusImpactScalar = 0;
-        payLoad = 0;
-        range = 0;
 
     }
 
@@ -59,10 +49,6 @@ public class Missile extends CoreModel {
         missile.setTargetUTMLocation(new message.UTMLocation(targetUTMLocation.getMessage()));
         missile.setLaunched(launched);
         missile.setDestroyed(destroyed);
-        missile.setPayLoad(payLoad);
-        missile.setRange(range);
-        missile.setImpactRadius(impactRadius);
-        missile.setImpactRadiusScalar(radiusImpactScalar);
 
         return missile.toString();
     }

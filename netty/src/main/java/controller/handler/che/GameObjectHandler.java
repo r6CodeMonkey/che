@@ -13,6 +13,7 @@ import model.UTM;
 import org.json.JSONException;
 import server.GameEngineInterface;
 import util.Configuration;
+import util.GameObjectRules;
 import util.Tags;
 
 import javax.xml.bind.JAXBException;
@@ -85,11 +86,23 @@ public class GameObjectHandler {
         }
     }
 
-    private void purchaseGameObject(Player player, GameObject gameObject) throws NoSuchAlgorithmException, JSONException {
+    private void purchaseGameObject(Player player, GameObject gameObject) throws NoSuchAlgorithmException, JSONException, JAXBException {
+
+        GameObjectRules gameObjectRules = gameObjectRulesFactory.getRules(gameObject.subType);  //reading files, but object is same on purchase.
+
         while (gameObject.quantity-- > 0) {
 
             //we add the object to db and tell user....
             gameObject.setKey(configuration.getUuidGenerator().generateKey("game object " + gameObject.type + "-" + gameObject.subType + "-" + gameObject.quantity + "-" + player.getKey()));
+
+            //set the game object rules as we need them on server..
+            gameObject.maxSpeed = gameObjectRules.getMaxSpeed();
+            gameObject.mass = gameObjectRules.getMass();
+            gameObject.impactRadius = gameObjectRules.getImpactRadius();
+            gameObject.range = gameObjectRules.getMaxRange();
+            gameObject.strength = gameObjectRules.getStrength();
+            gameObject.force = gameObjectRules.getForce();
+
 
             configuration.getLogger().debug("creating a purchase game object " + gameObject.getKey());
 
@@ -137,6 +150,7 @@ public class GameObjectHandler {
     private void objectStop(Player player, GameObject gameObject) throws RemoteException, JAXBException, JSONException, NoSuchAlgorithmException {
         //update our game object
         configuration.getLogger().debug("game object stop");
+        //need to set the object current distance to zero.  which
         //and set our distance to zero.
        //no engine will do this..with latest information CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
 

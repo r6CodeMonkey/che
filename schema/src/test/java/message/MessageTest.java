@@ -23,9 +23,10 @@ public class MessageTest {
     public static final String HAZELCAST = "{" + Tags.HAZELCAST + " :{" + HazelcastMessage.REMOTE_ADDRESS + ":'remote2'," + Tags.CHE + ":{testing:'that'}}}";
     public static final String CHE = "{" + Tags.CHE + ":{" + Tags.UTM + ":" + UTM + "}}";
     //add these later i havent thought about what it needs.
-    public static final String MISSILE = "{" + Tags.MISSILE + " :{" + Tags.MISSILE_KEY + ":'99'," + Tags.STATE + ":" + Tags.MISSILE_TARGET + "," + Tags.VALUE + ":'fire'," + Tags.MISSILE_RADIUS + ":5," + Tags.MISSILE_RADIUS_IMPACT_SCALAR + ":6," + Tags.MISSILE_PAYLOAD + ":100," +
-            Tags.MISSILE_RANGE + ":5000," + Tags.MISSILE_DESTROYED + ":false," + Tags.MISSILE_LAUNCHED + ":true," + Tags.MISSILE_UTM_LOCATION + ":" + UTM_LOCATION + ", " + Tags.MISSILE_START_UTM_LOCATION + ":" + UTM_LOCATION + "," + Tags.MISSILE_TARGET_UTM_LOCATION + ":" + UTM_LOCATION + "}}";
-    public static final String GAME_OBJECT = "{" + Tags.GAME_OBJECT + " :{" + Tags.GAME_OBJECT_KEY + ":'58'," + Tags.GAME_OBJECT_TYPE + ":1, " + Tags.GAME_OBJECT_QUANTITY + ":1, " + Tags.GAME_OBJECT_SUBTYPE + ":1," + Tags.STATE + ":" + Tags.GAME_OBJECT_HIT + "," + Tags.VALUE + ":'true'," + Tags.GAME_OBJECT_MASS + ":2098," + Tags.GAME_OBJECT_ACCELERATION + ":9.99," +
+    public static final String MISSILE = "{" + Tags.MISSILE + " :{" + Tags.MISSILE_KEY + ":'99'," + Tags.STATE + ":" + Tags.MISSILE_TARGET + "," + Tags.VALUE + ":'fire'," +
+           Tags.MISSILE_DESTROYED + ":false," + Tags.MISSILE_LAUNCHED + ":true," + Tags.MISSILE_UTM_LOCATION + ":" + UTM_LOCATION + ", " + Tags.MISSILE_START_UTM_LOCATION + ":" + UTM_LOCATION + "," + Tags.MISSILE_TARGET_UTM_LOCATION + ":" + UTM_LOCATION + "}}";
+    public static final String GAME_OBJECT = "{" + Tags.GAME_OBJECT + " :{" + Tags.GAME_OBJECT_KEY + ":'58'," + Tags.GAME_OBJECT_TYPE + ":1, " + Tags.GAME_OBJECT_QUANTITY + ":1, " + Tags.GAME_OBJECT_SUBTYPE + ":1," + Tags.STATE + ":" + Tags.GAME_OBJECT_HIT + "," + Tags.VALUE + ":'true'," + Tags.GAME_OBJECT_MASS + ":2098,"
+            +Tags.GAME_OBJECT_FORCE+":100,"+Tags.MISSILE_RANGE+":1000,"+Tags.MISSILE_IMPACT_RADIUS+":50,"+Tags.GAME_OBJECT_STRENGTH+":350,"+Tags.GAME_OBJECT_MAX_SPEED+":55,"+ Tags.GAME_OBJECT_ACCELERATION + ":9.99," +
             Tags.GAME_OBJECT_VELOCITY + ":123.2356," + Tags.GAME_OBJECT_IS_DESTROYED + ":'false'," + Tags.GAME_OBJECT_IS_FIXED + ":'false'," + Tags.GAME_OBJECT_IS_HIT + ":'true'," + Tags.GAME_OBJECT_IS_LOCATED + ":'true'," + Tags.GAME_OBJECT_UTM_LOCATION + ":" + UTM_LOCATION + "," +Tags.GAME_OBJECT_DEST_UTM_LOCATION+":"+UTM_LOCATION+","+
             Tags.GAME_OBJECT_MISSILES + ":[" + MISSILE + "],"+Tags.GAME_OBJECT_DEST_VALIDATOR+":["+UTM+"]}}";
 
@@ -97,11 +98,6 @@ public class MessageTest {
 
         Missile missile = new Missile(MISSILE);
 
-        assertEquals(5000, missile.getRange(), 0);
-        assertEquals(5, missile.getImpactRadius(), 0);
-        assertEquals(6, missile.getImpactRadiusScalar(), 0);
-        assertEquals(100, missile.getPayLoad(), 0);
-
         assertEquals(true, missile.isLaunched());
         assertEquals(false, missile.isDestroyed());
 
@@ -125,20 +121,12 @@ public class MessageTest {
         missile.setValue("something");
         missile.setDestroyed(true);
         missile.setLaunched(false);
-        missile.setRange(3000);
-        missile.setImpactRadius(15);
-        missile.setImpactRadiusScalar(2);
-        missile.setPayLoad(98);
 
         missile.setCurrentUTMLocation(new UTMLocation(UTM_LOCATION));
         missile.setStartUTMLocation(new UTMLocation(UTM_LOCATION));
         missile.setTargetUTMLocation(new UTMLocation(UTM_LOCATION));
 
 
-        assertEquals(3000, missile.getRange(), 0);
-        assertEquals(15, missile.getImpactRadius(), 0);
-        assertEquals(2, missile.getImpactRadiusScalar(), 0);
-        assertEquals(98, missile.getPayLoad(), 0);
 
         assertEquals(false, missile.isLaunched());
         assertEquals(true, missile.isDestroyed());
@@ -231,6 +219,15 @@ public class MessageTest {
         assertEquals(Boolean.FALSE, gameObject.isFixed());
         assertEquals(Boolean.TRUE, gameObject.isHit());
         assertEquals(Boolean.TRUE, gameObject.isLocated());
+        //should really add the other tests lol.  ok lets.
+        assertEquals(100, gameObject.getForce(), 0);
+        assertEquals(1000, gameObject.getRange(), 0);
+        assertEquals(50, gameObject.getImpactRadius(), 0);
+        assertEquals(350, gameObject.getStrength(), 0);
+        assertEquals(55, gameObject.getMaxSpeed(), 0);
+
+
+
         assertEquals("99", gameObject.getMissiles().get(0).getKey());
         assertEquals("E1", gameObject.getUtmLocation().getUTM().getUTMLatGrid());
         assertEquals("3W", gameObject.getUtmLocation().getUTM().getUTMLongGrid());
@@ -244,6 +241,14 @@ public class MessageTest {
         gameObject.setMass(2098);
         gameObject.setVelocity(123.2356);
         gameObject.setAcceleration(9.99);
+        gameObject.setStrength(99);
+        gameObject.setForce(7);
+        gameObject.setRange(25);
+        gameObject.setImpactRadius(15);
+        gameObject.setMaxSpeed(123);
+
+
+
         gameObject.setHit(true);
         gameObject.setDestroyed(false);
         gameObject.setFixed(false);
@@ -271,6 +276,11 @@ public class MessageTest {
         assertEquals("99", gameObject.getMissiles().get(0).getKey());
         assertEquals("E1", gameObject.getUtmLocation().getUTM().getUTMLatGrid());
         assertEquals("3W", gameObject.getUtmLocation().getUTM().getUTMLongGrid());
+        assertEquals(7, gameObject.getForce(), 0);
+        assertEquals(25, gameObject.getRange(), 0);
+        assertEquals(15, gameObject.getImpactRadius(), 0);
+        assertEquals(99, gameObject.getStrength(), 0);
+        assertEquals(123, gameObject.getMaxSpeed(), 0);
 
 
     }

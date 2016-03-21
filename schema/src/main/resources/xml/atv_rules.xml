@@ -7,4 +7,5 @@
 <impactRadius>0</impactRadius>
 <maxRange>0</maxRange>
     <force>50</force>
+    <strength>100</strength>
     </gameObjectRules>

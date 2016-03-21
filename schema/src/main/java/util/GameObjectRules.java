@@ -10,7 +10,7 @@ import java.io.Serializable;
 @XmlRootElement
 public class GameObjectRules implements Serializable {
 
-    int mass, impactRadius, maxSpeed, maxRange, force;
+    int mass, impactRadius, maxSpeed, maxRange, force, strength;
 
 
     public int getMass(){
@@ -31,6 +31,8 @@ public class GameObjectRules implements Serializable {
 
     public int getForce(){ return force;}
 
+    public int getStrength(){return strength;}
+
     @XmlElement
     public void setMass(int mass){
         this.mass = mass;
@@ -50,6 +52,10 @@ public class GameObjectRules implements Serializable {
     @XmlElement
     public void setForce(int force){
         this.force = force;
+    }
+    @XmlElement
+    public void setStrength(int strength){
+        this.strength = strength;
     }
 
 
