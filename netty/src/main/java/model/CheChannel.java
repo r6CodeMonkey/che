@@ -42,7 +42,7 @@ public class CheChannel {
             if(buffer.size() > 0){
                 String nextKey = buffer.keySet().iterator().next();
                 lastSentKey = nextKey;
-                writeToChannel(nextKey);
+                writeToChannel(buffer.get(nextKey).toString());
             }
         }
     }
@@ -82,7 +82,7 @@ public class CheChannel {
         if (channel != null) {
             System.out.println("attempt to write to channel");
             if (channel.isActive()) {
-                System.out.println("writing as channel active");
+                System.out.println("writing as channel active "+message);
                 channel.writeAndFlush(message);
             }
         }

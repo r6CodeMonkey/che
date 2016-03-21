@@ -144,4 +144,7 @@ public class GameEngineUtils {
 
     }
 
+    //need a bulk variant ideally....
+    //public void bulkUpdatePlayer(List<Gam>)
+
 }
