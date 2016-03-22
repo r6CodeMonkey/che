@@ -2,6 +2,7 @@ package engine;
 
 import core.HazelcastManagerInterface;
 import model.GameEngineModel;
+import model.GameObject;
 import model.Player;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -129,8 +130,8 @@ public class GameEngineUtils {
     }
 
     public static JSONObject getMoveMessage(GameEngineModel gameEngineModel) throws JSONException {
-        GameEngineModel temp = gameEngineModel;
 
+        GameEngineModel temp = gameEngineModel;
         temp.getGameObject().utmLocation = gameEngineModel.getGameUTMLocation();
 
         return new JSONObject().put(Tags.GAME_OBJECT, new message.GameObject(temp.getGameObject().getMessage()));

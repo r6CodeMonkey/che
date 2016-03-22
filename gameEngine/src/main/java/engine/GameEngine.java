@@ -95,11 +95,19 @@ public class GameEngine {
                             models.parallelStream().collect(Collectors.groupingByConcurrent(GameEngineModel::hasChangedGrid));
 
                     if (updated.get(Boolean.FALSE) != null) {
+                        new Thread(() -> {
+                            updated.get(Boolean.FALSE).stream().forEach(model -> model.getGameObject().utmLocation = model.getGameUTMLocation());
+                        }).start();
+
                         gameEngineUtils.updateSubUTM(utm, subUtm, updated.get(Boolean.FALSE));
-                        gameEngineUtils.bulkPublish(utm+subUtm,updated.get(Boolean.FALSE));
+                        gameEngineUtils.bulkPublish(utm + subUtm, updated.get(Boolean.FALSE));
+
+                        configuration.getLogger().debug("object has not moved grids");
                     }
 
                     if (updated.get(Boolean.TRUE) != null) {
+
+                        configuration.getLogger().debug("object has moved grids");
 
                         gameEngineUtils.bulkUnSubscribe(utm, subUtm, updated.get(Boolean.TRUE));
                         gameEngineUtils.bulkSubscribe(updated.get(Boolean.TRUE));
@@ -127,6 +135,7 @@ public class GameEngine {
 
         configuration.getLogger().debug("total records processed " + total);
 
+        //probably doesnt need concurrent as not filtering...its simply a collect all.  anyway.
         return moved.parallelStream().collect(Collectors.groupingByConcurrent(gameEngineModel ->
                 new TopicPair(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getUtm(), null)));
 

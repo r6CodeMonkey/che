@@ -67,7 +67,7 @@ public class GameEngineTest {
 
         GameEnginePhysics.process(gameEngineModel, configuration.getUtmConvert(), configuration.getGameEngineDelta());
 
-        configuration.getLogger().debug(gameEngineModel.getMessage().toString());
+      //  configuration.getLogger().debug(gameEngineModel.getMessage().toString());
 
 
 

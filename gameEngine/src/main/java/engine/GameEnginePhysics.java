@@ -91,9 +91,12 @@ public class GameEnginePhysics {
         //so now we just need displacement...which we know is velocity * time....
         displacement = gameEngineModel.getGameObject().velocity * (milliseconds / 1000);
 
+        System.out.println("distance to target is "+gameEngineModel.getGameObject().getDistanceBetweenPoints()+" and the displacement is "+displacement);
+
         if (displacement > gameEngineModel.getGameObject().getDistanceBetweenPoints()) {
             displacement = gameEngineModel.getGameObject().getDistanceBetweenPoints();
             //we have also reached our target..
+            System.out.println("we have reached target!");
         }
 
 
@@ -110,14 +113,12 @@ public class GameEnginePhysics {
                 gameEngineModel.getGameObject().utmLocation.longitude, gameEngineModel.getGameUTMLocation().latitude, displacement, bearing);
 
 
-
         /*
           finally we also need to work out its new UTM / SubUTM...
          */
         gameEngineModel.getGameUTMLocation().utm = utmConvert.getUTMGrid(gameEngineModel.getGameUTMLocation().latitude, gameEngineModel.getGameUTMLocation().longitude);
         gameEngineModel.getGameUTMLocation().subUtm = utmConvert.getUTMSubGrid(gameEngineModel.getGameUTMLocation().utm,
                 gameEngineModel.getGameUTMLocation().latitude, gameEngineModel.getGameUTMLocation().longitude);
-
 
 
         /*
@@ -127,11 +128,13 @@ public class GameEnginePhysics {
         gameEngineModel.getGameObject().value =  0 == gameEngineModel.getGameObject().getDistanceBetweenPoints() ? Tags.GAME_OBJECT_IS_FIXED : Tags.GAME_OBJECT_IS_MOVING;
 
 
+        //possibly this is the place
         try {
             gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),
                     true,
                     GameEngineUtils.getMoveMessage(gameEngineModel))); //this needs to be a game object...ok...se update current position simples.
-        } catch (JSONException e) {
+        } catch (JSONException e) {//well its now erroring!  so yes we should
+            e.printStackTrace();
             //who cares..its not essential should log but its not issue.  just a message to grid.
         }
 
