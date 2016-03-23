@@ -3,6 +3,7 @@ package util;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by timmytime on 15/01/16.
@@ -16,6 +17,13 @@ public class TopicSubscriptions implements Serializable {
         subscriptions = new HashMap<>();
     }
 
+    public TopicSubscriptions(TopicSubscriptions topicSubscriptions){
+        subscriptions = new HashMap<>();
+        for(String key : topicSubscriptions.getKeySet()){
+            subscriptions.put(key, topicSubscriptions.getSubscription(key));
+        }
+    }
+
     public String getSubscription(String topic) {
         return subscriptions.get(topic);
     }
@@ -26,5 +34,9 @@ public class TopicSubscriptions implements Serializable {
 
     public void removeSubscription(String topic) {
         subscriptions.remove(topic);
+    }
+
+    public Set<String> getKeySet(){
+        return subscriptions.keySet();
     }
 }

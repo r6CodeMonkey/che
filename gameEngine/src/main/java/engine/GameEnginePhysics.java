@@ -87,7 +87,6 @@ public class GameEnginePhysics {
             gameEngineModel.getGameObject().velocity = (double) gameEngineModel.getGameObjectRules().getMaxSpeed();
         }
 
-
         //so now we just need displacement...which we know is velocity * time....
         displacement = gameEngineModel.getGameObject().velocity * (milliseconds / 1000);
 
@@ -120,42 +119,6 @@ public class GameEnginePhysics {
         gameEngineModel.getGameUTMLocation().subUtm = utmConvert.getUTMSubGrid(gameEngineModel.getGameUTMLocation().utm,
                 gameEngineModel.getGameUTMLocation().latitude, gameEngineModel.getGameUTMLocation().longitude);
 
-
-        /*
-          send our basic move message.
-         */
-        gameEngineModel.getGameObject().state = Tags.MESSAGE;
-        gameEngineModel.getGameObject().value =  0 == gameEngineModel.getGameObject().getDistanceBetweenPoints() ? Tags.GAME_OBJECT_IS_FIXED : Tags.GAME_OBJECT_IS_MOVING;
-
-
-        //possibly this is the place
-        try {
-            gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),
-                    true,
-                    GameEngineUtils.getMoveMessage(gameEngineModel))); //this needs to be a game object...ok...se update current position simples.
-        } catch (JSONException e) {//well its now erroring!  so yes we should
-            e.printStackTrace();
-            //who cares..its not essential should log but its not issue.  just a message to grid.
-        }
-
-        if (gameEngineModel.hasChangedGrid()) {
-            gameEngineModel.getGameObject().state = Tags.MESSAGE;
-            gameEngineModel.getGameObject().value = Tags.GAME_OBJECT_ENTERED;  //at present we wont send, object has left utm.  but we probably should...if so do it on old
-            gameEngineModel.getGameObject().utmLocation.state = Tags.MESSAGE;
-            gameEngineModel.getGameObject().utmLocation.value = Tags.GAME_OBJECT_LEFT;
-
-            //fix this up its wrong at present.  need to review it
-
-            try {
-                gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),
-                        GameEngineUtils.getMoveMessage(gameEngineModel)));
-                gameEngineModel.setMessage2(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),
-                        new JSONObject(gameEngineModel.getGameObject().utmLocation.getMessage())));  //need to fix this at some point...or review.
-            } catch (JSONException e) {
-                //who cares..its not essential should log but its not issue.  just a message to grid.
-            }
-
-        }
 
     }
 

@@ -84,6 +84,36 @@ public class GameObject extends CoreModel {
         this.quantity = 1;
     }
 
+    public GameObject(GameObject gameObject){
+        super(gameObject.getKey());
+        utmLocation = new UTMLocation(gameObject.utmLocation);
+        destinationUTMLocation = new UTMLocation(gameObject.destinationUTMLocation);
+        this.state = gameObject.state;
+        this.value = gameObject.value;
+        this.mass = gameObject.mass;
+        this.velocity = gameObject.velocity;
+        this.acceleration = gameObject.acceleration;
+        this.strength = gameObject.strength;
+        this.maxSpeed = gameObject.maxSpeed;
+        this.range = gameObject.range;
+        this.impactRadius = gameObject.impactRadius;
+        this.force = gameObject.force;
+        this.fixed = gameObject.fixed;
+        this.hit = gameObject.hit;
+        this.located = gameObject.located;
+        this.destroyed = gameObject.destroyed;
+        this.type = gameObject.type;
+        this.subType = gameObject.subType;
+        this.quantity = gameObject.quantity;
+        this.missiles = new ArrayList<>();
+        for(Missile missile : gameObject.missiles){
+            this.missiles.add(missile);
+        }
+        this.distanceBetweenPoints = gameObject.distanceBetweenPoints;
+        //this too needs proper cloning.
+        this.topicSubscriptions = new TopicSubscriptions(gameObject.topicSubscriptions);
+    }
+
     public List<Missile> getMissiles() {
         return missiles;
     }

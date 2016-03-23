@@ -1,9 +1,11 @@
 package engine;
 
 import core.HazelcastManagerInterface;
+import message.HazelcastMessage;
 import model.GameEngineModel;
 import model.GameObject;
 import model.Player;
+import model.UTMLocation;
 import org.json.JSONException;
 import org.json.JSONObject;
 import util.Configuration;
@@ -129,13 +131,43 @@ public class GameEngineUtils {
 
     }
 
-    public static JSONObject getMoveMessage(GameEngineModel gameEngineModel) throws JSONException {
+    public void processMoveMessage(GameEngineModel gameEngineModel) throws JSONException {
+        gameEngineModel.getGameObject().state = Tags.MESSAGE;
+        gameEngineModel.getGameObject().value =  0 == gameEngineModel.getGameObject().getDistanceBetweenPoints() ? Tags.GAME_OBJECT_IS_FIXED : Tags.GAME_OBJECT_IS_MOVING;
 
-        GameEngineModel temp = gameEngineModel;
-        temp.getGameObject().utmLocation = gameEngineModel.getGameUTMLocation();
+        GameObject temp;
 
-        return new JSONObject().put(Tags.GAME_OBJECT, new message.GameObject(temp.getGameObject().getMessage()));
+        if(gameEngineModel.hasChangedGrid()) {
+            gameEngineModel.getGameObject().state = Tags.MESSAGE;
+
+            gameEngineModel.getGameObject().value = Tags.GAME_OBJECT_ENTERED;
+            gameEngineModel.getGameObject().utmLocation.state = Tags.MESSAGE;
+            gameEngineModel.getGameObject().utmLocation.value = Tags.GAME_OBJECT_LEFT;
+
+            temp = new GameObject(gameEngineModel.getGameObject());
+            temp.utmLocation = new UTMLocation(gameEngineModel.getGameUTMLocation());
+
+            gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),
+                    new JSONObject().put(Tags.GAME_OBJECT, new message.GameObject(temp.getMessage()))));
+                gameEngineModel.setMessage2(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),
+                        new JSONObject(temp.utmLocation.getMessage())));
+
+        }else{
+            //and now we update our location.
+            temp = new GameObject(gameEngineModel.getGameObject());
+            temp.utmLocation = new UTMLocation(gameEngineModel.getGameUTMLocation());
+
+            gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),
+                    true,
+                    new JSONObject().put(Tags.GAME_OBJECT, new message.GameObject(temp.getMessage()))));
+
+        }
+
+        //finally update our model.  still not working
+        gameEngineModel.setGameObject(temp);
+
     }
+
 
     public void updatePlayer(GameEngineModel gameEngineModel) throws RemoteException{
 

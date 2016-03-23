@@ -2,6 +2,7 @@ package engine;
 
 import core.HazelcastManagerInterface;
 import model.GameEngineModel;
+import org.json.JSONException;
 import util.Configuration;
 import util.Tags;
 import util.TopicPair;
@@ -77,7 +78,6 @@ public class GameEngine {
 
                     total += models.size();
 
-                    //really need to return a value to tell us its a fix and then collect that into something...but can test this.  that shit for week off.
                     models.parallelStream().forEach(model -> GameEnginePhysics.process(model, configuration.getUtmConvert(), configuration.getGameEngineDelta()));
 
                     //ok we reall need to collect all the objects that are fixed now....not this will be slow
@@ -91,13 +91,21 @@ public class GameEngine {
                         }
                     });}).start();
 
+                    models.stream().forEach(gameEngineModel -> configuration.getLogger().debug("game location "+gameEngineModel.getGameUTMLocation().latitude+"/"+gameEngineModel.getGameUTMLocation().longitude+
+                    " \nversus game object "+gameEngineModel.getGameObject().utmLocation.latitude+"/"+gameEngineModel.getGameObject().utmLocation.longitude));
+
                     ConcurrentMap<Boolean, List<GameEngineModel>> updated =
                             models.parallelStream().collect(Collectors.groupingByConcurrent(GameEngineModel::hasChangedGrid));
 
                     if (updated.get(Boolean.FALSE) != null) {
-                        new Thread(() -> {
-                            updated.get(Boolean.FALSE).stream().forEach(model -> model.getGameObject().utmLocation = model.getGameUTMLocation());
-                        }).start();
+
+                            updated.get(Boolean.FALSE).stream().forEach(model -> {
+                                try {
+                                    gameEngineUtils.processMoveMessage(model);
+                                } catch (JSONException e) {
+                                   configuration.getLogger().error("json exception "+e.getMessage());
+                                }
+                            });
 
                         gameEngineUtils.updateSubUTM(utm, subUtm, updated.get(Boolean.FALSE));
                         gameEngineUtils.bulkPublish(utm + subUtm, updated.get(Boolean.FALSE));
@@ -120,9 +128,13 @@ public class GameEngine {
                             }
                         }).start();
 
-                        new Thread(() -> {
-                            updated.get(Boolean.TRUE).stream().forEach(model -> model.getGameObject().utmLocation = model.getGameUTMLocation());
-                        }).start();
+                            updated.get(Boolean.TRUE).stream().forEach(model -> {
+                                try {
+                                    gameEngineUtils.processMoveMessage(model);
+                                } catch (JSONException e) {
+                                    configuration.getLogger().error("json exception "+e.getMessage());
+                                }
+                            });
 
                         moved.addAll(updated.get(Boolean.TRUE).stream().collect(Collectors.toList()));
 
