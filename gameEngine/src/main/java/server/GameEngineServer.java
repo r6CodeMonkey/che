@@ -65,7 +65,7 @@ public class GameEngineServer extends UnicastRemoteObject implements GameEngineI
     public void addGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {
         gameEngine.addGameEngineModel(gameEngineModel);
     }
-    
+
 
     private void engineStartThread() {
         new Thread(() -> {
@@ -86,7 +86,7 @@ public class GameEngineServer extends UnicastRemoteObject implements GameEngineI
 
             configuration.getLogger().debug("game engine waiting");
 
-            while (System.currentTimeMillis() < time + (configuration.getGameEngineDelta()-engineRunTime)) {
+            while (System.currentTimeMillis() < time + (configuration.getGameEngineDelta() - engineRunTime)) {
                 //do sweet fa..
             }
 

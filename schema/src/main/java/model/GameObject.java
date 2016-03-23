@@ -1,6 +1,5 @@
 package model;
 
-import message.*;
 import util.TopicSubscriptions;
 
 import java.util.ArrayList;
@@ -26,7 +25,6 @@ public class GameObject extends CoreModel {
 
     private TopicSubscriptions topicSubscriptions = new TopicSubscriptions();
     private double distanceBetweenPoints; //our total distance to move.
-
 
 
     public GameObject(message.GameObject gameObject) {
@@ -84,7 +82,7 @@ public class GameObject extends CoreModel {
         this.quantity = 1;
     }
 
-    public GameObject(GameObject gameObject){
+    public GameObject(GameObject gameObject) {
         super(gameObject.getKey());
         utmLocation = new UTMLocation(gameObject.utmLocation);
         destinationUTMLocation = new UTMLocation(gameObject.destinationUTMLocation);
@@ -106,7 +104,7 @@ public class GameObject extends CoreModel {
         this.subType = gameObject.subType;
         this.quantity = gameObject.quantity;
         this.missiles = new ArrayList<>();
-        for(Missile missile : gameObject.missiles){
+        for (Missile missile : gameObject.missiles) {
             this.missiles.add(missile);
         }
         this.distanceBetweenPoints = gameObject.distanceBetweenPoints;
@@ -118,15 +116,17 @@ public class GameObject extends CoreModel {
         return missiles;
     }
 
-    public double getDistanceBetweenPoints(){
+    public double getDistanceBetweenPoints() {
         return distanceBetweenPoints;
     }
 
-    public void setDistanceBetweenPoints(double distanceBetweenPoints){
+    public void setDistanceBetweenPoints(double distanceBetweenPoints) {
         this.distanceBetweenPoints = distanceBetweenPoints;
     }
 
-    public List<UTM> getDestinationValidator(){return destinationValidator;}
+    public List<UTM> getDestinationValidator() {
+        return destinationValidator;
+    }
 
     public TopicSubscriptions getTopicSubscriptions() {
         return topicSubscriptions;

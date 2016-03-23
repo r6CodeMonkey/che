@@ -9,7 +9,6 @@ import org.junit.Test;
 import util.Configuration;
 import util.GameObjectRules;
 import util.GameObjectTypes;
-import util.map.UTMConvert;
 
 import javax.xml.bind.JAXBException;
 
@@ -55,7 +54,7 @@ public class GameEngineTest {
         utmLocation2.subUtm = subUtm;
         gameObject.destinationUTMLocation = utmLocation2;
 
-        gameObject.setDistanceBetweenPoints(GameEnginePhysics.getHaversineDistance(utmLocation.latitude ,utmLocation.longitude , utmLocation2.latitude,utmLocation2.longitude));
+        gameObject.setDistanceBetweenPoints(GameEnginePhysics.getHaversineDistance(utmLocation.latitude, utmLocation.longitude, utmLocation2.latitude, utmLocation2.longitude));
 
 
         GameObjectRulesFactory gameObjectRulesFactory = new GameObjectRulesFactory();
@@ -67,18 +66,17 @@ public class GameEngineTest {
 
         GameEnginePhysics.process(gameEngineModel, configuration.getUtmConvert(), configuration.getGameEngineDelta());
 
-      //  configuration.getLogger().debug(gameEngineModel.getMessage().toString());
+        //  configuration.getLogger().debug(gameEngineModel.getMessage().toString());
 
 
-
-        }
+    }
 
     @Test
     public void testHaversine() {
 
         double distance = GameEnginePhysics.getHaversineDistance(50.0686, -5.7161, 58.6400, -3.0700);
 
-       // configuration.getLogger().debug("the full haversine distance is " + distance);
+        // configuration.getLogger().debug("the full haversine distance is " + distance);
 
 
         double bearing = GameEnginePhysics.calculateBearing(50.0686, -5.7161, 58.6400, -3.0700);

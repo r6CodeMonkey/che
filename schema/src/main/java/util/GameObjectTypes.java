@@ -49,7 +49,6 @@ public class GameObjectTypes {
     public static final int G2W = 30;
 
 
-
     public static String getTypeName(int type) {
 
         switch (type) {

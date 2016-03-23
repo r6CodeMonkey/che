@@ -18,17 +18,17 @@ public class MessageTest {
     public static final String UTM = "{" + Tags.UTM + " :{" + Tags.UTM_LAT_GRID + ":'E1', " + Tags.UTM_LONG_GRID + ":'3W'}}";
     public static final String SUB_UTM = "{" + Tags.UTM + " :{" + Tags.UTM_LAT_GRID + ":'TT', " + Tags.UTM_LONG_GRID + ":'JJ'}}";
     public static final String UTM_LOCATION = "{" + Tags.UTM_LOCATION + " :{" + Tags.STATE + ":''," + Tags.VALUE + ":''," + Tags.LATITUTDE + ":1.0, " + Tags.LONGITUDE + ":2.0," + Tags.ALTITUDE + ":10," + Tags.SPEED + ": 12.2," + Tags.UTM + ":" + UTM + "," + Tags.SUB_UTM + ":" + SUB_UTM + "}}";
-    public static final String PLAYER = "{" + Tags.PLAYER + " :{" +Tags.STATE+":'',"+Tags.VALUE+":''," + Tags.PLAYER_KEY + ":'2'," + Tags.PLAYER_NAME + ":'Tim'," + Tags.PLAYER_IMAGE + ":'image'," + Tags.UTM_LOCATION + ":" + UTM_LOCATION + "}}";
+    public static final String PLAYER = "{" + Tags.PLAYER + " :{" + Tags.STATE + ":''," + Tags.VALUE + ":''," + Tags.PLAYER_KEY + ":'2'," + Tags.PLAYER_NAME + ":'Tim'," + Tags.PLAYER_IMAGE + ":'image'," + Tags.UTM_LOCATION + ":" + UTM_LOCATION + "}}";
     public static final String ALLIANCE = "{" + Tags.ALLIANCE + " :{" + Tags.ALLIANCE_KEY + ":'15'," + Tags.ALLIANCE_NAME + ":'team'," + Tags.STATE + ":" + Tags.ALLIANCE_POST + "," + Tags.VALUE + ":'hello'," + Tags.ALLIANCE_MEMBERS + ":[" + PLAYER + "]}}";
     public static final String HAZELCAST = "{" + Tags.HAZELCAST + " :{" + HazelcastMessage.REMOTE_ADDRESS + ":'remote2'," + Tags.CHE + ":{testing:'that'}}}";
     public static final String CHE = "{" + Tags.CHE + ":{" + Tags.UTM + ":" + UTM + "}}";
     //add these later i havent thought about what it needs.
     public static final String MISSILE = "{" + Tags.MISSILE + " :{" + Tags.MISSILE_KEY + ":'99'," + Tags.STATE + ":" + Tags.MISSILE_TARGET + "," + Tags.VALUE + ":'fire'," +
-           Tags.MISSILE_DESTROYED + ":false," + Tags.MISSILE_LAUNCHED + ":true," + Tags.MISSILE_UTM_LOCATION + ":" + UTM_LOCATION + ", " + Tags.MISSILE_START_UTM_LOCATION + ":" + UTM_LOCATION + "," + Tags.MISSILE_TARGET_UTM_LOCATION + ":" + UTM_LOCATION + "}}";
+            Tags.MISSILE_DESTROYED + ":false," + Tags.MISSILE_LAUNCHED + ":true," + Tags.MISSILE_UTM_LOCATION + ":" + UTM_LOCATION + ", " + Tags.MISSILE_START_UTM_LOCATION + ":" + UTM_LOCATION + "," + Tags.MISSILE_TARGET_UTM_LOCATION + ":" + UTM_LOCATION + "}}";
     public static final String GAME_OBJECT = "{" + Tags.GAME_OBJECT + " :{" + Tags.GAME_OBJECT_KEY + ":'58'," + Tags.GAME_OBJECT_TYPE + ":1, " + Tags.GAME_OBJECT_QUANTITY + ":1, " + Tags.GAME_OBJECT_SUBTYPE + ":1," + Tags.STATE + ":" + Tags.GAME_OBJECT_HIT + "," + Tags.VALUE + ":'true'," + Tags.GAME_OBJECT_MASS + ":2098,"
-            +Tags.GAME_OBJECT_FORCE+":100,"+Tags.MISSILE_RANGE+":1000,"+Tags.MISSILE_IMPACT_RADIUS+":50,"+Tags.GAME_OBJECT_STRENGTH+":350,"+Tags.GAME_OBJECT_MAX_SPEED+":55,"+ Tags.GAME_OBJECT_ACCELERATION + ":9.99," +
-            Tags.GAME_OBJECT_VELOCITY + ":123.2356," + Tags.GAME_OBJECT_IS_DESTROYED + ":'false'," + Tags.GAME_OBJECT_IS_FIXED + ":'false'," + Tags.GAME_OBJECT_IS_HIT + ":'true'," + Tags.GAME_OBJECT_IS_LOCATED + ":'true'," + Tags.GAME_OBJECT_UTM_LOCATION + ":" + UTM_LOCATION + "," +Tags.GAME_OBJECT_DEST_UTM_LOCATION+":"+UTM_LOCATION+","+
-            Tags.GAME_OBJECT_MISSILES + ":[" + MISSILE + "],"+Tags.GAME_OBJECT_DEST_VALIDATOR+":["+UTM+"]}}";
+            + Tags.GAME_OBJECT_FORCE + ":100," + Tags.MISSILE_RANGE + ":1000," + Tags.MISSILE_IMPACT_RADIUS + ":50," + Tags.GAME_OBJECT_STRENGTH + ":350," + Tags.GAME_OBJECT_MAX_SPEED + ":55," + Tags.GAME_OBJECT_ACCELERATION + ":9.99," +
+            Tags.GAME_OBJECT_VELOCITY + ":123.2356," + Tags.GAME_OBJECT_IS_DESTROYED + ":'false'," + Tags.GAME_OBJECT_IS_FIXED + ":'false'," + Tags.GAME_OBJECT_IS_HIT + ":'true'," + Tags.GAME_OBJECT_IS_LOCATED + ":'true'," + Tags.GAME_OBJECT_UTM_LOCATION + ":" + UTM_LOCATION + "," + Tags.GAME_OBJECT_DEST_UTM_LOCATION + ":" + UTM_LOCATION + "," +
+            Tags.GAME_OBJECT_MISSILES + ":[" + MISSILE + "]," + Tags.GAME_OBJECT_DEST_VALIDATOR + ":[" + UTM + "]}}";
 
 
     @Test
@@ -125,7 +125,6 @@ public class MessageTest {
         missile.setCurrentUTMLocation(new UTMLocation(UTM_LOCATION));
         missile.setStartUTMLocation(new UTMLocation(UTM_LOCATION));
         missile.setTargetUTMLocation(new UTMLocation(UTM_LOCATION));
-
 
 
         assertEquals(false, missile.isLaunched());
@@ -227,7 +226,6 @@ public class MessageTest {
         assertEquals(55, gameObject.getMaxSpeed(), 0);
 
 
-
         assertEquals("99", gameObject.getMissiles().get(0).getKey());
         assertEquals("E1", gameObject.getUtmLocation().getUTM().getUTMLatGrid());
         assertEquals("3W", gameObject.getUtmLocation().getUTM().getUTMLongGrid());
@@ -246,7 +244,6 @@ public class MessageTest {
         gameObject.setRange(25);
         gameObject.setImpactRadius(15);
         gameObject.setMaxSpeed(123);
-
 
 
         gameObject.setHit(true);

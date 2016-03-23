@@ -46,11 +46,14 @@ public class HazelcastManager implements HazelcastManagerInterface {
 
     @Override
     public void bulkSubscribe(List<TopicPair> topicPairs) throws RemoteException {
+
+        configuration.getLogger().debug("bulk subscribe");
+
         topicPairs.parallelStream().forEach(topicPair -> topicPair.getTopicSubscriptions().addSubscription(topicPair.getTopicKey(),
                         subscribe(topicPair.getTopicKey(), topicPair.getKey()))
         );
 
-        topicPairs.parallelStream().forEach(topicPair -> publish(topicPair.getTopicKey(), topicPair.getMessage().toString())
+        topicPairs.parallelStream().forEach(topicPair -> publish(topicPair.getTopicKey(), topicPair.getMessage())
         );
 
     }
@@ -62,27 +65,30 @@ public class HazelcastManager implements HazelcastManagerInterface {
 
     @Override
     public void bulkUnSubscribe(List<TopicPair> topicPairs) throws RemoteException {
+
+        configuration.getLogger().debug("bulk unsubscribe");
+
+        topicPairs.parallelStream().forEach(topicPair -> publish(topicPair.getTopicKey(), topicPair.getMessage())
+        );
+
         topicPairs.parallelStream().forEach(topicPair ->
                         unSubscribe(topicPair.getTopicKey(), topicPair.getTopicSubscriptions())
         );
 
         topicPairs.parallelStream().forEach(topicPair -> topicPair.getTopicSubscriptions().removeSubscription(topicPair.getTopicKey())
         );
-
-        topicPairs.parallelStream().forEach(topicPair -> publish(topicPair.getTopicKey(), topicPair.getMessage().toString())
-        );
     }
 
     public void publish(String topic, String message) {
-        configuration.getLogger().debug("publish "+message+" topic is "+topic);
+        configuration.getLogger().debug("publish " + message + " topic is " + topic);
         new Thread(() -> {
             hazelcastInstance.getTopic(topic).publish(message);
         }).start();
     }
 
-    public void bulkPublish(String topic, List<String> messages) throws RemoteException{
+    public void bulkPublish(String topic, List<String> messages) throws RemoteException {
 
-        for(String message : messages){
+        for (String message : messages) {
             publish(topic, message);
         }
 

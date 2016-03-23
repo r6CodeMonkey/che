@@ -31,7 +31,7 @@ public class UTMLocation extends CoreModel {
         super(key);
     }
 
-    public UTMLocation(UTMLocation utmLocation){
+    public UTMLocation(UTMLocation utmLocation) {
         super(utmLocation.getKey());
         this.latitude = utmLocation.latitude;
         this.longitude = utmLocation.longitude;

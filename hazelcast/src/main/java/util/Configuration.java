@@ -38,5 +38,7 @@ public class Configuration {
         return url;
     }
 
-    public Logger getLogger(){return logger;}
+    public Logger getLogger() {
+        return logger;
+    }
 }

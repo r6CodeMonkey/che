@@ -17,9 +17,9 @@ public class TopicSubscriptions implements Serializable {
         subscriptions = new HashMap<>();
     }
 
-    public TopicSubscriptions(TopicSubscriptions topicSubscriptions){
+    public TopicSubscriptions(TopicSubscriptions topicSubscriptions) {
         subscriptions = new HashMap<>();
-        for(String key : topicSubscriptions.getKeySet()){
+        for (String key : topicSubscriptions.getKeySet()) {
             subscriptions.put(key, topicSubscriptions.getSubscription(key));
         }
     }
@@ -36,7 +36,7 @@ public class TopicSubscriptions implements Serializable {
         subscriptions.remove(topic);
     }
 
-    public Set<String> getKeySet(){
+    public Set<String> getKeySet() {
         return subscriptions.keySet();
     }
 }

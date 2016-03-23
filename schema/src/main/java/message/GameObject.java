@@ -87,17 +87,18 @@ public class GameObject extends CoreMessage {
         return new UTMLocation(this.getJSONObject(Tags.GAME_OBJECT).getJSONObject(Tags.GAME_OBJECT_UTM_LOCATION).toString());
     }
 
-    public UTMLocation getDestinationUtmLocation() {
-        return new UTMLocation(this.getJSONObject(Tags.GAME_OBJECT).getJSONObject(Tags.GAME_OBJECT_DEST_UTM_LOCATION).toString());
-    }
-
     public void setUtmLocation(UTMLocation utmLocation) {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_UTM_LOCATION, utmLocation);
+    }
+
+    public UTMLocation getDestinationUtmLocation() {
+        return new UTMLocation(this.getJSONObject(Tags.GAME_OBJECT).getJSONObject(Tags.GAME_OBJECT_DEST_UTM_LOCATION).toString());
     }
 
     public void setDestinationUtmLocation(UTMLocation utmLocation) {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_DEST_UTM_LOCATION, utmLocation);
     }
+
     public double getMass() {
         return this.getJSONObject(Tags.GAME_OBJECT).getDouble(Tags.GAME_OBJECT_MASS);
     }
@@ -202,19 +203,19 @@ public class GameObject extends CoreMessage {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.MISSILE_RANGE, range);
     }
 
-    public double getForce(){
+    public double getForce() {
         return this.getJSONObject(Tags.GAME_OBJECT).getDouble(Tags.GAME_OBJECT_FORCE);
     }
 
-    public void setForce(double force){
+    public void setForce(double force) {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_FORCE, force);
     }
 
-    public double getMaxSpeed(){
+    public double getMaxSpeed() {
         return this.getJSONObject(Tags.GAME_OBJECT).getDouble(Tags.GAME_OBJECT_MAX_SPEED);
     }
 
-    public void setMaxSpeed(double force){
+    public void setMaxSpeed(double force) {
         this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_MAX_SPEED, force);
     }
 
@@ -230,6 +231,10 @@ public class GameObject extends CoreMessage {
         return missiles;
     }
 
+    public void setMissiles(List<Missile> missiles) {
+        this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_MISSILES, new JSONArray(missiles));
+    }
+
     public List<UTM> getDestinationValidator() {
         JSONArray array = this.getJSONObject(Tags.GAME_OBJECT).getJSONArray(Tags.GAME_OBJECT_DEST_VALIDATOR);
 
@@ -240,10 +245,6 @@ public class GameObject extends CoreMessage {
         }
 
         return utms;
-    }
-
-    public void setMissiles(List<Missile> missiles) {
-        this.getJSONObject(Tags.GAME_OBJECT).put(Tags.GAME_OBJECT_MISSILES, new JSONArray(missiles));
     }
 
     public void setDestinationValidator(List<UTM> utms) {

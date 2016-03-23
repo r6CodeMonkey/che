@@ -85,7 +85,9 @@ public class HazelcastServer extends UnicastRemoteObject implements HazelcastMan
     }
 
     @Override
-    public void bulkPublish(String topic, List<String> messages) throws RemoteException{ hazelcastManager.bulkPublish(topic,messages);}
+    public void bulkPublish(String topic, List<String> messages) throws RemoteException {
+        hazelcastManager.bulkPublish(topic, messages);
+    }
 
     @Override
     public void createMap(String map) {

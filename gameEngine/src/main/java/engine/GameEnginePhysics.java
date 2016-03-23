@@ -1,13 +1,7 @@
 package engine;
 
-import message.HazelcastMessage;
 import model.GameEngineModel;
-import org.json.JSONException;
-import org.json.JSONObject;
-import util.Tags;
 import util.map.UTMConvert;
-
-import java.rmi.RemoteException;
 
 /**
  * Created by timmytime on 23/02/16.
@@ -90,7 +84,7 @@ public class GameEnginePhysics {
         //so now we just need displacement...which we know is velocity * time....
         displacement = gameEngineModel.getGameObject().velocity * (milliseconds / 1000);
 
-        System.out.println("distance to target is "+gameEngineModel.getGameObject().getDistanceBetweenPoints()+" and the displacement is "+displacement);
+        System.out.println("distance to target is " + gameEngineModel.getGameObject().getDistanceBetweenPoints() + " and the displacement is " + displacement);
 
         if (displacement > gameEngineModel.getGameObject().getDistanceBetweenPoints()) {
             displacement = gameEngineModel.getGameObject().getDistanceBetweenPoints();

@@ -26,7 +26,7 @@ public class UTM extends CoreModel {
         utmLong = utm.getUTMLongGrid();
     }
 
-    public UTM(UTM utm){
+    public UTM(UTM utm) {
         super(utm.getKey());
         this.utmLat = utm.getUtmLat();
         this.utmLong = utm.getUtmLong();

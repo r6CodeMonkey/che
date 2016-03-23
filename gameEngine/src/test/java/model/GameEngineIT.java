@@ -5,7 +5,6 @@ import engine.GameEngine;
 import engine.GameEnginePhysics;
 import factory.GameObjectRulesFactory;
 import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import util.Configuration;
@@ -143,7 +142,6 @@ public class GameEngineIT {
 
 //also bust
     }
-
 
 
     @Test

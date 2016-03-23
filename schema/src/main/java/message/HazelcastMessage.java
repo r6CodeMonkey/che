@@ -14,10 +14,6 @@ public class HazelcastMessage extends JSONObject implements Serializable {
     public static final String REMOTE_ADDRESS = "remoteAddress";
     public static final String SEND_TO_SELF = "sendToSelf";
 
-    public HazelcastMessage() {
-        this.put(Tags.HAZELCAST, new JSONObject());
-    }
-
     public HazelcastMessage(String cheMessage) throws JSONException {
         super(cheMessage);
     }

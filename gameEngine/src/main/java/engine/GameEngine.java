@@ -4,7 +4,6 @@ import core.HazelcastManagerInterface;
 import model.GameEngineModel;
 import org.json.JSONException;
 import util.Configuration;
-import util.Tags;
 import util.TopicPair;
 
 import java.rmi.RemoteException;
@@ -82,30 +81,29 @@ public class GameEngine {
 
                     //ok we reall need to collect all the objects that are fixed now....not this will be slow
                     new Thread(() -> {
-                     models.parallelStream().filter(gameEngineModel -> gameEngineModel.getGameObject().getDistanceBetweenPoints() == 0).forEach((gameEngineModel1) -> {
-                        try {
-                            //need a bulk version
-                            gameEngineUtils.updatePlayer(gameEngineModel1);
-                        } catch (RemoteException e) {
-                            e.printStackTrace();
-                        }
-                    });}).start();
+                        models.parallelStream().filter(gameEngineModel -> gameEngineModel.getGameObject().getDistanceBetweenPoints() == 0).forEach((gameEngineModel1) -> {
+                            try {
+                                //need a bulk version
+                                gameEngineUtils.updatePlayer(gameEngineModel1);
+                            } catch (RemoteException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                    }).start();
 
-                    models.stream().forEach(gameEngineModel -> configuration.getLogger().debug("game location "+gameEngineModel.getGameUTMLocation().latitude+"/"+gameEngineModel.getGameUTMLocation().longitude+
-                    " \nversus game object "+gameEngineModel.getGameObject().utmLocation.latitude+"/"+gameEngineModel.getGameObject().utmLocation.longitude));
 
                     ConcurrentMap<Boolean, List<GameEngineModel>> updated =
                             models.parallelStream().collect(Collectors.groupingByConcurrent(GameEngineModel::hasChangedGrid));
 
                     if (updated.get(Boolean.FALSE) != null) {
 
-                            updated.get(Boolean.FALSE).stream().forEach(model -> {
-                                try {
-                                    gameEngineUtils.processMoveMessage(model);
-                                } catch (JSONException e) {
-                                   configuration.getLogger().error("json exception "+e.getMessage());
-                                }
-                            });
+                        updated.get(Boolean.FALSE).stream().forEach(model -> {
+                            try {
+                                gameEngineUtils.processMoveMessage(model);
+                            } catch (JSONException e) {
+                                configuration.getLogger().error("json exception " + e.getMessage());
+                            }
+                        });
 
                         gameEngineUtils.updateSubUTM(utm, subUtm, updated.get(Boolean.FALSE));
                         gameEngineUtils.bulkPublish(utm + subUtm, updated.get(Boolean.FALSE));
@@ -116,6 +114,14 @@ public class GameEngine {
                     if (updated.get(Boolean.TRUE) != null) {
 
                         configuration.getLogger().debug("object has moved grids");
+
+                        updated.get(Boolean.TRUE).stream().forEach(model -> {
+                            try {
+                                gameEngineUtils.processMoveMessage(model);
+                            } catch (JSONException e) {
+                                configuration.getLogger().error("json exception " + e.getMessage());
+                            }
+                        });
 
                         gameEngineUtils.bulkUnSubscribe(utm, subUtm, updated.get(Boolean.TRUE));
                         gameEngineUtils.bulkSubscribe(updated.get(Boolean.TRUE));
@@ -128,13 +134,6 @@ public class GameEngine {
                             }
                         }).start();
 
-                            updated.get(Boolean.TRUE).stream().forEach(model -> {
-                                try {
-                                    gameEngineUtils.processMoveMessage(model);
-                                } catch (JSONException e) {
-                                    configuration.getLogger().error("json exception "+e.getMessage());
-                                }
-                            });
 
                         moved.addAll(updated.get(Boolean.TRUE).stream().collect(Collectors.toList()));
 

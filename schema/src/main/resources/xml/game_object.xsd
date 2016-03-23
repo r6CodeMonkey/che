@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="gameObjectRules">
-    <xs:complexType>
-        <xs:sequence>
-<xs:element name="mass" type="xs:integer"/>
-    <xs:element name="maxSpeed" type="xs:integer"/>
-    <xs:element name="impactRadius" type="xs:integer"/>
-    <xs:element name="maxRange" type="xs:integer"/>
-            <xs:element name="force" type="xs:integer"/>
-            <xs:element name="strength" type="xs:integer"/>
-        </xs:sequence>
-</xs:complexType>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mass" type="xs:integer"/>
+                <xs:element name="maxSpeed" type="xs:integer"/>
+                <xs:element name="impactRadius" type="xs:integer"/>
+                <xs:element name="maxRange" type="xs:integer"/>
+                <xs:element name="force" type="xs:integer"/>
+                <xs:element name="strength" type="xs:integer"/>
+            </xs:sequence>
+        </xs:complexType>
     </xs:element>
 </xs:schema>

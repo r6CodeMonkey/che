@@ -38,16 +38,19 @@ public class GameEngineUtils {
 
         List<GameEngineModel> temp = (List<GameEngineModel>) hazelcastManagerInterface.get(utm, subUtm);
 
-       return temp.parallelStream().filter(gameEngineModel -> gameEngineModel.getGameObject().getDistanceBetweenPoints() != 0).collect(Collectors.toList());
+        return temp.parallelStream().filter(gameEngineModel -> gameEngineModel.getGameObject().getDistanceBetweenPoints() != 0).collect(Collectors.toList());
     }
 
-    public void bulkSubscribe(List<GameEngineModel> gameEngineModels) {
+    public void bulkSubscribe(List<GameEngineModel> gameEngineModels) throws RemoteException {
+
+        List<TopicPair> topicPairs = gameEngineModels.stream().map(model -> new TopicPair(model.getPlayerKey(),
+                model.getGameUTMLocation().utm.getUtm() + model.getGameUTMLocation().subUtm.getUtm(),
+                model.getGameObject().getTopicSubscriptions(), model.getMessage())).collect(Collectors.toList());
+
 
         new Thread(() -> {
             try {
-                hazelcastManagerInterface.bulkSubscribe(gameEngineModels.stream().map(model -> new TopicPair(model.getPlayerKey(),
-                        model.getGameUTMLocation().utm.getUtm() + model.getGameUTMLocation().subUtm.getUtm(),
-                        model.getGameObject().getTopicSubscriptions(), model.getMessage())).collect(Collectors.toList()));
+                hazelcastManagerInterface.bulkSubscribe(topicPairs);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -56,13 +59,17 @@ public class GameEngineUtils {
     }
 
 
-    public void bulkUnSubscribe(String utm, String subUtm, List<GameEngineModel> gameEngineModels) {
+    public void bulkUnSubscribe(String utm, String subUtm, List<GameEngineModel> gameEngineModels) throws RemoteException {
+
+
+        List<TopicPair> topicPairs = gameEngineModels.stream().map(model -> new TopicPair(model.getPlayerKey(),
+                utm + subUtm,
+                model.getGameObject().getTopicSubscriptions(), model.getMessage2())).collect(Collectors.toList());
+
 
         new Thread(() -> {
             try {
-                hazelcastManagerInterface.bulkUnSubscribe(gameEngineModels.stream().map(model -> new TopicPair(model.getPlayerKey(),
-                        utm + subUtm,
-                        model.getGameObject().getTopicSubscriptions(), model.getMessage2())).collect(Collectors.toList()));
+                hazelcastManagerInterface.bulkUnSubscribe(topicPairs);
 
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -71,7 +78,7 @@ public class GameEngineUtils {
 
     }
 
-    public void bulkPublish(String topic, List<GameEngineModel> gameEngineModels) throws RemoteException{
+    public void bulkPublish(String topic, List<GameEngineModel> gameEngineModels) throws RemoteException {
         configuration.getLogger().debug("bulk publish");
         hazelcastManagerInterface.bulkPublish(topic, gameEngineModels.stream().map(model -> model.getMessage().toString()).collect(Collectors.toList()));
     }
@@ -133,26 +140,25 @@ public class GameEngineUtils {
 
     public void processMoveMessage(GameEngineModel gameEngineModel) throws JSONException {
         gameEngineModel.getGameObject().state = Tags.MESSAGE;
-        gameEngineModel.getGameObject().value =  0 == gameEngineModel.getGameObject().getDistanceBetweenPoints() ? Tags.GAME_OBJECT_IS_FIXED : Tags.GAME_OBJECT_IS_MOVING;
+        gameEngineModel.getGameObject().value = 0 == gameEngineModel.getGameObject().getDistanceBetweenPoints() ? Tags.GAME_OBJECT_IS_FIXED : Tags.GAME_OBJECT_IS_MOVING;
 
         GameObject temp;
 
-        if(gameEngineModel.hasChangedGrid()) {
-            gameEngineModel.getGameObject().state = Tags.MESSAGE;
-
-            gameEngineModel.getGameObject().value = Tags.GAME_OBJECT_ENTERED;
+        if (gameEngineModel.hasChangedGrid()) {
             gameEngineModel.getGameObject().utmLocation.state = Tags.MESSAGE;
             gameEngineModel.getGameObject().utmLocation.value = Tags.GAME_OBJECT_LEFT;
 
             temp = new GameObject(gameEngineModel.getGameObject());
+            gameEngineModel.setMessage2(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),
+                    new JSONObject(temp.utmLocation.getMessage())));
+
             temp.utmLocation = new UTMLocation(gameEngineModel.getGameUTMLocation());
 
             gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),
+                    true,
                     new JSONObject().put(Tags.GAME_OBJECT, new message.GameObject(temp.getMessage()))));
-                gameEngineModel.setMessage2(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(),
-                        new JSONObject(temp.utmLocation.getMessage())));
 
-        }else{
+        } else {
             //and now we update our location.
             temp = new GameObject(gameEngineModel.getGameObject());
             temp.utmLocation = new UTMLocation(gameEngineModel.getGameUTMLocation());
@@ -169,9 +175,9 @@ public class GameEngineUtils {
     }
 
 
-    public void updatePlayer(GameEngineModel gameEngineModel) throws RemoteException{
+    public void updatePlayer(GameEngineModel gameEngineModel) throws RemoteException {
 
-        Player player =  (Player)hazelcastManagerInterface.get(Tags.PLAYER_MAP, gameEngineModel.getPlayerKey());
+        Player player = (Player) hazelcastManagerInterface.get(Tags.PLAYER_MAP, gameEngineModel.getPlayerKey());
         player.getGameObjects().put(gameEngineModel.getGameObject().getKey(), gameEngineModel.getGameObject());
         hazelcastManagerInterface.put(Tags.PLAYER_MAP, player.getKey(), player);
 

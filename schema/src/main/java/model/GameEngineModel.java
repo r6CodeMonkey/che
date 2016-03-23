@@ -31,14 +31,20 @@ public class GameEngineModel implements Serializable {
         return playerKey;
     }
 
-    public void setPlayerRemoteAddress(String playerRemoteAddress){
+    public String getPlayerRemoteAddress() {
+        return playerRemoteAddress;
+    }
+
+    public void setPlayerRemoteAddress(String playerRemoteAddress) {
         this.playerRemoteAddress = playerRemoteAddress;
     }
 
-    public String getPlayerRemoteAddress(){return  playerRemoteAddress;}
-
     public GameObject getGameObject() {
         return gameObject;
+    }
+
+    public void setGameObject(GameObject gameObject) {
+        this.gameObject = gameObject;
     }
 
     public GameObjectRules getGameObjectRules() {
@@ -49,26 +55,25 @@ public class GameEngineModel implements Serializable {
         return gameUTMLocation;
     }
 
-    public void setGameObject(GameObject gameObject){
-        this.gameObject = gameObject;
+    public HazelcastMessage getMessage() {
+        return message;
     }
 
-
-    public HazelcastMessage getMessage(){return message;}
-
-    public HazelcastMessage getMessage2(){return message2;}
-
-    public void setMessage(HazelcastMessage message){
+    public void setMessage(HazelcastMessage message) {
         this.message = message;
     }
 
-    public void setMessage2(HazelcastMessage message2){
+    public HazelcastMessage getMessage2() {
+        return message2;
+    }
+
+    public void setMessage2(HazelcastMessage message2) {
         this.message2 = message2;
     }
 
-    public boolean hasChangedGrid(){
-     return !gameUTMLocation.utm.getUtm().equals(gameObject.utmLocation.utm.getUtm())
-                ||!gameUTMLocation.subUtm.getUtm().equals(gameObject.utmLocation.subUtm.getUtm());
+    public boolean hasChangedGrid() {
+        return !gameUTMLocation.utm.getUtm().equals(gameObject.utmLocation.utm.getUtm())
+                || !gameUTMLocation.subUtm.getUtm().equals(gameObject.utmLocation.subUtm.getUtm());
     }
 
     @Override

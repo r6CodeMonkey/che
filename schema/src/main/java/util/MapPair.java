@@ -10,16 +10,16 @@ public class MapPair implements Serializable {
     private final String key;
     private final Object object;
 
-    public MapPair(String key, Object object){
+    public MapPair(String key, Object object) {
         this.key = key;
         this.object = object;
     }
 
-    public String getKey(){
+    public String getKey() {
         return key;
     }
 
-    public Object getObject(){
+    public Object getObject() {
         return object;
     }
 }
