@@ -158,6 +158,8 @@ public class GameObjectHandler {
 
         configuration.getLogger().debug("missile fired " + gameObject.getKey());
 
+        hazelcastManagerInterface.subscribe(gameObject.utmLocation.utm.getUtm()+gameObject.utmLocation.subUtm.getUtm(),
+                gameObject.getKey(), player.getKey());
 
         gameEngineInterface.addGameEngineModel(new GameEngineModel(player.getKey(),
                 CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(),
@@ -218,6 +220,9 @@ public class GameObjectHandler {
 
             player.getGameObjects().get(gameObject.getKey()).destinationUTMLocation = gameObject.destinationUTMLocation;
             gameObject.value = Tags.SUCCESS;
+
+            //attempt to subscribe to topic
+            hazelcastManagerInterface.subscribe(gameObject.utmLocation.utm.getUtm()+gameObject.utmLocation.subUtm.getUtm(), gameObject.getKey(), player.getKey());
 
             gameEngineInterface.addGameEngineModel(new GameEngineModel(player.getKey(),
                     CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(),

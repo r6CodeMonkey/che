@@ -5,44 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1da809bf-b5cd-41ef-846a-b237902f929e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/MissileHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/netty/target/classes/controller/handler/che/MissileHandler.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/controller/handler/CheHandler.class" afterPath="$PROJECT_DIR$/netty/target/classes/controller/handler/CheHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/target/classes/util/Configuration.class" afterPath="$PROJECT_DIR$/hazelcast/target/classes/util/Configuration.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/target/classes/engine/GameEngine.class" afterPath="$PROJECT_DIR$/gameEngine/target/classes/engine/GameEngine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/target/test-classes/model/GameEngineIT.class" afterPath="$PROJECT_DIR$/gameEngine/target/test-classes/model/GameEngineIT.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/model/GameEngineModel.class" afterPath="$PROJECT_DIR$/schema/target/classes/model/GameEngineModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/target/classes/engine/GameEnginePhysics.class" afterPath="$PROJECT_DIR$/gameEngine/target/classes/engine/GameEnginePhysics.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/target/test-classes/GameEngineTest.class" afterPath="$PROJECT_DIR$/gameEngine/target/test-classes/GameEngineTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/target/classes/engine/GameEngineUtils.class" afterPath="$PROJECT_DIR$/gameEngine/target/classes/engine/GameEngineUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/message/GameObject.class" afterPath="$PROJECT_DIR$/schema/target/classes/message/GameObject.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/model/GameObject.class" afterPath="$PROJECT_DIR$/schema/target/classes/model/GameObject.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/target/classes/controller/handler/che/GameObjectHandler.class" afterPath="$PROJECT_DIR$/netty/target/classes/controller/handler/che/GameObjectHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/util/GameObjectRules.class" afterPath="$PROJECT_DIR$/schema/target/classes/util/GameObjectRules.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/factory/GameObjectRulesFactory.class" afterPath="$PROJECT_DIR$/schema/target/classes/factory/GameObjectRulesFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/util/GameObjectTypes.class" afterPath="$PROJECT_DIR$/schema/target/classes/util/GameObjectTypes.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/classes/util/map/GridCreator.class" afterPath="$PROJECT_DIR$/schema/target/classes/util/map/GridCreator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/target/classes/server/HazelcastServer.class" afterPath="$PROJECT_DIR$/hazelcast/target/classes/server/HazelcastServer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/target/test-classes/message/MessageTest.class" afterPath="$PROJECT_DIR$/schema/target/test-classes/message/MessageTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/AllianceHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/AllianceHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/controller/CheController.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/CheController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/channel/CheControllerHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/channel/CheControllerHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/controller/handler/CheHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/CheHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngine.java" afterPath="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/src/main/java/server/GameEngineInterface.java" afterPath="$PROJECT_DIR$/gameEngine/src/main/java/server/GameEngineInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/model/GameEngineModel.java" afterPath="$PROJECT_DIR$/schema/src/main/java/model/GameEngineModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngineUtils.java" afterPath="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngineUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/model/GameObject.java" afterPath="$PROJECT_DIR$/schema/src/main/java/model/GameObject.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/GameObjectHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/GameObjectHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java" afterPath="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManagerInterface.java" afterPath="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManagerInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/src/test/java/HazelcastManagerTest.java" afterPath="$PROJECT_DIR$/hazelcast/src/test/java/HazelcastManagerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hazelcast/src/main/java/server/HazelcastServer.java" afterPath="$PROJECT_DIR$/hazelcast/src/main/java/server/HazelcastServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/controller/handler/PlayerHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/PlayerHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/util/TopicPair.java" afterPath="$PROJECT_DIR$/schema/src/main/java/util/TopicPair.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema/src/main/java/util/TopicSubscriptions.java" afterPath="$PROJECT_DIR$/schema/src/main/java/util/TopicSubscriptions.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/controller/handler/UTMHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/UTMHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Che.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -87,13 +50,25 @@
       <file leaf-file-name="HazelcastManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.032258">
-              <caret line="69" column="42" selection-start-line="69" selection-start-column="42" selection-end-line="69" selection-end-column="42" />
+            <state vertical-scroll-proportion="-4.774194">
+              <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
               <folding>
                 <element signature="e#831#832#0" expanded="true" />
                 <element signature="e#875#876#0" expanded="true" />
                 <element signature="e#920#921#0" expanded="true" />
                 <element signature="e#969#970#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameObjectHandler.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/netty/src/main/java/controller/handler/che/GameObjectHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.12295082">
+              <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -109,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlayerHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/netty/src/main/java/controller/handler/PlayerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.56557375">
-              <caret line="36" column="46" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -179,21 +154,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TopicPair.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/schema/src/main/java/util/TopicPair.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-              <folding>
-                <element signature="e#771#772#0" expanded="true" />
-                <element signature="e#797#798#0" expanded="true" />
-                <element signature="e#948#949#0" expanded="true" />
-                <element signature="e#978#979#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -250,7 +210,6 @@
         <option value="$PROJECT_DIR$/gameEngine/src/main/java/server/GameEngineInterface.java" />
         <option value="$PROJECT_DIR$/gameEngine/src/main/java/server/GameEngineServer.java" />
         <option value="$PROJECT_DIR$/schema/src/main/java/model/GameEngineModel.java" />
-        <option value="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/GameObjectHandler.java" />
         <option value="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngine.java" />
         <option value="$PROJECT_DIR$/schema/src/main/java/model/GameObject.java" />
         <option value="$PROJECT_DIR$/schema/src/main/java/util/TopicSubscriptions.java" />
@@ -265,6 +224,7 @@
         <option value="$PROJECT_DIR$/netty/src/main/java/channel/CheControllerHandler.java" />
         <option value="$PROJECT_DIR$/netty/src/main/java/controller/handler/PlayerHandler.java" />
         <option value="$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java" />
+        <option value="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/GameObjectHandler.java" />
       </list>
     </option>
   </component>
@@ -2010,16 +1970,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/netty/src/main/java/controller/handler/che/GameObjectHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.225806">
-          <caret line="178" column="26" selection-start-line="178" selection-start-column="22" selection-end-line="178" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/schema/src/main/java/model/GameEngineModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2056,10 +2006,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="159" column="37" selection-start-line="159" selection-start-column="37" selection-end-line="159" selection-end-column="37" />
           <folding>
-            <element signature="e#4216#4217#0" expanded="true" />
-            <element signature="e#4260#4261#0" expanded="true" />
-            <element signature="e#4450#4451#0" expanded="true" />
-            <element signature="e#4493#4494#0" expanded="true" />
+            <element signature="e#4216#4217#0" expanded="false" />
+            <element signature="e#4260#4261#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2077,12 +2025,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
           <folding>
-            <element signature="e#319#320#0" expanded="true" />
-            <element signature="e#366#367#0" expanded="true" />
-            <element signature="e#700#701#0" expanded="true" />
-            <element signature="e#747#748#0" expanded="true" />
-            <element signature="e#1199#1200#0" expanded="true" />
-            <element signature="e#1253#1254#0" expanded="true" />
+            <element signature="e#319#320#0" expanded="false" />
+            <element signature="e#366#367#0" expanded="false" />
+            <element signature="e#700#701#0" expanded="false" />
+            <element signature="e#747#748#0" expanded="false" />
+            <element signature="e#1101#1102#0" expanded="false" />
+            <element signature="e#1146#1147#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2156,19 +2104,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.032258">
-          <caret line="69" column="42" selection-start-line="69" selection-start-column="42" selection-end-line="69" selection-end-column="42" />
-          <folding>
-            <element signature="e#831#832#0" expanded="true" />
-            <element signature="e#875#876#0" expanded="true" />
-            <element signature="e#920#921#0" expanded="true" />
-            <element signature="e#969#970#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/netty/src/main/java/controller/handler/UTMHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2179,9 +2114,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/netty/src/main/java/controller/handler/PlayerHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56557375">
-          <caret line="36" column="46" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hazelcast/src/main/java/core/HazelcastManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.774194">
+          <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
+          <folding>
+            <element signature="e#831#832#0" expanded="true" />
+            <element signature="e#875#876#0" expanded="true" />
+            <element signature="e#920#921#0" expanded="true" />
+            <element signature="e#969#970#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netty/src/main/java/controller/handler/che/GameObjectHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.12295082">
+          <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
