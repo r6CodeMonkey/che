@@ -23,7 +23,6 @@ public class GameObject extends CoreModel {
     private List<Missile> missiles = new ArrayList<>();
     private List<UTM> destinationValidator = new ArrayList<>();
 
-    private TopicSubscriptions topicSubscriptions = new TopicSubscriptions();
     private double distanceBetweenPoints; //our total distance to move.
 
 
@@ -108,8 +107,6 @@ public class GameObject extends CoreModel {
             this.missiles.add(missile);
         }
         this.distanceBetweenPoints = gameObject.distanceBetweenPoints;
-        //this too needs proper cloning.
-        this.topicSubscriptions = new TopicSubscriptions(gameObject.topicSubscriptions);
     }
 
     public List<Missile> getMissiles() {
@@ -128,9 +125,6 @@ public class GameObject extends CoreModel {
         return destinationValidator;
     }
 
-    public TopicSubscriptions getTopicSubscriptions() {
-        return topicSubscriptions;
-    }
 
 
     @Override

@@ -33,6 +33,7 @@ public class CheControllerHandler extends SimpleChannelInboundHandler<CheMessage
                 cheController.receive(cheMessage);
             } catch (Exception e) {
                 configuration.getLogger().error("failed to call che controller " + e.getMessage());
+                e.printStackTrace();
             }
         }).start();
     }

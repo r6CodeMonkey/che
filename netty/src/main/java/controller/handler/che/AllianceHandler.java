@@ -59,7 +59,8 @@ public class AllianceHandler {
 
         hazelcastManagerInterface.put(Tags.ALLIANCE_MAP, alliance.getKey(), alliance);
 
-        player.getTopicSubscriptions().addSubscription(alliance.getKey(), hazelcastManagerInterface.subscribe(alliance.getKey(), player.getKey()));
+        player.getTopicSubscriptions().addSubscription(alliance.getKey(), player.getKey(),
+                hazelcastManagerInterface.subscribe(alliance.getKey(), player.getKey(), player.getKey()));
         alliance.value = Tags.SUCCESS;
 
         configuration.getLogger().debug("created alliance");
@@ -88,7 +89,7 @@ public class AllianceHandler {
 
             hazelcastManagerInterface.put(Tags.ALLIANCE_MAP, serverAlliance.getKey(), serverAlliance);
 
-            player.getTopicSubscriptions().addSubscription(serverAlliance.getKey(), hazelcastManagerInterface.subscribe(serverAlliance.getKey(), player.getKey()));
+            player.getTopicSubscriptions().addSubscription(serverAlliance.getKey(), player.getKey(), hazelcastManagerInterface.subscribe(serverAlliance.getKey(), player.getKey(), player.getKey()));
             serverAlliance.value = Tags.SUCCESS;
             serverAlliance.state = Tags.ALLIANCE_JOIN;
 
@@ -106,7 +107,8 @@ public class AllianceHandler {
 
             serverAlliance.getMembers().remove(player); //need to ensure the correct player is removed..  ie hashcode wont be same. (actually it will be as it came from server).  to test
             player.getAlliances().remove(serverAlliance.getKey());
-            hazelcastManagerInterface.unSubscribe(serverAlliance.getKey(), player.getTopicSubscriptions());
+            hazelcastManagerInterface.unSubscribe(serverAlliance.getKey(), player.getKey(), player.getKey());
+            player.getTopicSubscriptions().removeSubscription(serverAlliance.getKey());
 
             hazelcastManagerInterface.put(Tags.ALLIANCE_MAP, serverAlliance.getKey(), serverAlliance);
             serverAlliance.value = Tags.SUCCESS;

@@ -21,6 +21,8 @@ public class GameEngine {
     private final GameEngineUtils gameEngineUtils;
     private final Configuration configuration;
 
+    private List<GameEngineModel> missiles = new ArrayList<>();
+
 
     public GameEngine(HazelcastManagerInterface hazelcastManagerInterface, Configuration configuration) {
         gameEngineUtils = new GameEngineUtils(hazelcastManagerInterface, configuration);
@@ -49,11 +51,19 @@ public class GameEngine {
      */
     public void engine() throws RemoteException {
 
+        missiles.clear();
+
         ConcurrentMap<TopicPair, List<GameEngineModel>> movedMap = processPositions();
 
         for (TopicPair topicPair : movedMap.keySet()) {
             gameEngineUtils.addToSubUTM(topicPair.getKey(), topicPair.getTopicKey(), movedMap.get(topicPair));
         }
+
+        //we have a stream of missiles to work with.  we now need to filter them by their utm / subutm.
+        //then need to find out whats in those topics (and the neighbouring ones).
+        //then workout if in blast radius.  and either remove / destroy them and send response to client.
+
+        //anyway, do this last.  get missile moving.
 
     }
 
@@ -85,6 +95,10 @@ public class GameEngine {
                             try {
                                 //need a bulk version
                                 gameEngineUtils.updatePlayer(gameEngineModel1);
+                                //capture our missiles that have reached target.
+                                if(gameEngineModel1.isMissile()){
+                                    missiles.add(gameEngineModel1);
+                                }
                             } catch (RemoteException e) {
                                 e.printStackTrace();
                             }

@@ -13,7 +13,4 @@ public interface GameEngineInterface extends Remote {
     void addGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException;
 
     void startEngine() throws RemoteException;
-
-
-    //also need to add missile actions...no callbacks required for this interface (it uses hazelcast to callback).
 }

@@ -11,7 +11,7 @@ import java.util.Set;
 public class TopicSubscriptions implements Serializable {
 
 
-    private final Map<String, String> subscriptions;
+    private final Map<String, Map<String, String>> subscriptions;
 
     public TopicSubscriptions() {
         subscriptions = new HashMap<>();
@@ -20,16 +20,18 @@ public class TopicSubscriptions implements Serializable {
     public TopicSubscriptions(TopicSubscriptions topicSubscriptions) {
         subscriptions = new HashMap<>();
         for (String key : topicSubscriptions.getKeySet()) {
-            subscriptions.put(key, topicSubscriptions.getSubscription(key));
+                subscriptions.put(key, topicSubscriptions.getSubscription(key));
         }
     }
 
-    public String getSubscription(String topic) {
+    public Map<String, String> getSubscription(String topic) {
         return subscriptions.get(topic);
     }
 
-    public void addSubscription(String topic, String subscription) {
-        subscriptions.put(topic, subscription);
+    public void addSubscription(String topic, String owner, String subscription) {
+        Map<String, String> temp = new HashMap<>();
+        temp.put(owner, subscription);
+        subscriptions.put(topic, temp);
     }
 
     public void removeSubscription(String topic) {
@@ -38,5 +40,9 @@ public class TopicSubscriptions implements Serializable {
 
     public Set<String> getKeySet() {
         return subscriptions.keySet();
+    }
+
+    public Set<String> getOwnerKeySet(String key) {
+        return subscriptions.get(key).keySet();
     }
 }

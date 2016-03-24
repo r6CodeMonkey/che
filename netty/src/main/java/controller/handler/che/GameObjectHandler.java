@@ -6,10 +6,7 @@ import core.HazelcastManagerInterface;
 import factory.CheChannelFactory;
 import factory.GameObjectRulesFactory;
 import message.CheMessage;
-import model.GameEngineModel;
-import model.GameObject;
-import model.Player;
-import model.UTM;
+import model.*;
 import org.json.JSONException;
 import server.GameEngineInterface;
 import util.Configuration;
@@ -19,6 +16,8 @@ import util.Tags;
 import javax.xml.bind.JAXBException;
 import java.rmi.RemoteException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by timmytime on 13/01/16.
@@ -83,6 +82,14 @@ public class GameObjectHandler {
             case Tags.GAME_OBJECT_STOP:
                 objectStop(player, gameObject);
                 break;
+            case Tags.MISSILE_TARGET:
+                missileTarget(player, gameObject);
+                break;
+            case Tags.MISSILE_CANCEL:
+                missileCancelTarget(player, gameObject);
+            case Tags.MISSILE_FIRE:
+                missileFire(player, gameObject);
+                break;
         }
     }
 
@@ -121,10 +128,44 @@ public class GameObjectHandler {
         CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
     }
 
+    private void missileTarget(Player player, GameObject gameObject) throws JSONException, NoSuchAlgorithmException {
+
+        configuration.getLogger().debug("missile target set " + gameObject.getKey());
+
+        for(Missile missile : player.getGameObjects().get(gameObject.getKey()).getMissiles()){
+            if(gameObject.getMissiles().get(0).getKey().equals(missile.getKey())){
+                missile.targetUTMLocation = gameObject.getMissiles().get(0).targetUTMLocation;
+                missile.state = Tags.MISSILE_TARGET;
+            }
+        }
+
+        CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
+    }
+
+    private void missileCancelTarget(Player player, GameObject gameObject){
+
+    }
+
+
     private void missileRemoved(Player player, GameObject gameObject) {
         //remove missile from the game object...ie its been transferred elsewhere.
 
     }
+
+
+    private void missileFire(Player player, GameObject gameObject) throws JSONException, NoSuchAlgorithmException, RemoteException, JAXBException {
+
+
+        configuration.getLogger().debug("missile fired " + gameObject.getKey());
+
+
+        gameEngineInterface.addGameEngineModel(new GameEngineModel(player.getKey(),
+                CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(),
+                gameObject, gameObjectRulesFactory.getRules(gameObject.subType), true));
+
+        CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
+    }
+
 
     private void objectAdd(Player player, GameObject gameObject) throws RemoteException, JSONException, NoSuchAlgorithmException {
 

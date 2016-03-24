@@ -60,8 +60,8 @@ public class HazelcastServer extends UnicastRemoteObject implements HazelcastMan
     }
 
     @Override
-    public String subscribe(String topic, String key) {
-        return hazelcastManager.subscribe(topic, key);
+    public String subscribe(String topic, String ownerKey, String key) {
+        return hazelcastManager.subscribe(topic, ownerKey, key);
     }
 
     @Override
@@ -70,8 +70,8 @@ public class HazelcastServer extends UnicastRemoteObject implements HazelcastMan
     }
 
     @Override
-    public void unSubscribe(String topic, TopicSubscriptions topicSubscriptions) {
-        hazelcastManager.unSubscribe(topic, topicSubscriptions);
+    public void unSubscribe(String topic, String ownerKey, String key) {
+        hazelcastManager.unSubscribe(topic,ownerKey, key);
     }
 
     @Override

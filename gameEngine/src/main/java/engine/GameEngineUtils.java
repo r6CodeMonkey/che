@@ -43,9 +43,8 @@ public class GameEngineUtils {
 
     public void bulkSubscribe(List<GameEngineModel> gameEngineModels) throws RemoteException {
 
-        List<TopicPair> topicPairs = gameEngineModels.stream().map(model -> new TopicPair(model.getPlayerKey(),
-                model.getGameUTMLocation().utm.getUtm() + model.getGameUTMLocation().subUtm.getUtm(),
-                model.getGameObject().getTopicSubscriptions(), model.getMessage())).collect(Collectors.toList());
+        List<TopicPair> topicPairs = gameEngineModels.stream().map(model -> new TopicPair(model.getPlayerKey(), model.getGameObject().getKey(),
+                model.getGameUTMLocation().utm.getUtm() + model.getGameUTMLocation().subUtm.getUtm(),model.getMessage())).collect(Collectors.toList());
 
 
         new Thread(() -> {
@@ -62,9 +61,8 @@ public class GameEngineUtils {
     public void bulkUnSubscribe(String utm, String subUtm, List<GameEngineModel> gameEngineModels) throws RemoteException {
 
 
-        List<TopicPair> topicPairs = gameEngineModels.stream().map(model -> new TopicPair(model.getPlayerKey(),
-                utm + subUtm,
-                model.getGameObject().getTopicSubscriptions(), model.getMessage2())).collect(Collectors.toList());
+        List<TopicPair> topicPairs = gameEngineModels.stream().map(model -> new TopicPair(model.getPlayerKey(),model.getGameObject().getKey(),
+                utm + subUtm, model.getMessage2())).collect(Collectors.toList());
 
 
         new Thread(() -> {
@@ -140,7 +138,11 @@ public class GameEngineUtils {
 
     public void processMoveMessage(GameEngineModel gameEngineModel) throws JSONException {
         gameEngineModel.getGameObject().state = Tags.MESSAGE;
-        gameEngineModel.getGameObject().value = 0 == gameEngineModel.getGameObject().getDistanceBetweenPoints() ? Tags.GAME_OBJECT_IS_FIXED : Tags.GAME_OBJECT_IS_MOVING;
+        if(gameEngineModel.isMissile()){
+            gameEngineModel.getGameObject().value = 0 == gameEngineModel.getGameObject().getDistanceBetweenPoints() ? Tags.MISSILE_DESTROYED : Tags.MISSILE_LAUNCHED;
+        }else {
+            gameEngineModel.getGameObject().value = 0 == gameEngineModel.getGameObject().getDistanceBetweenPoints() ? Tags.GAME_OBJECT_IS_FIXED : Tags.GAME_OBJECT_IS_MOVING;
+        }
 
         GameObject temp;
 

@@ -37,10 +37,28 @@ public class UTMHandler {
     }
 
     public void handleSubUTMChange(UTMLocation currentLocation, Player player) throws RemoteException {
-        hazelcastManagerInterface.unSubscribe(player.utmLocation.utm.getUtm()+player.utmLocation.subUtm.getUtm(), player.getTopicSubscriptions());
-        player.getTopicSubscriptions().addSubscription(currentLocation.subUtm.getUtm(),
-                hazelcastManagerInterface.subscribe(
-                        currentLocation.utm.getUtm()+currentLocation.subUtm.getUtm(), player.getKey()));
+
+        configuration.getLogger().debug("subscription checks fails now!");
+
+        hazelcastManagerInterface.unSubscribe(player.utmLocation.utm.getUtm() + player.utmLocation.subUtm.getUtm(), player.getKey(), player.getKey());
+
+        configuration.getLogger().debug("subscription checks");
+
+        //can we actually remove it.
+        if(player.getTopicSubscriptions().getSubscription(player.utmLocation.utm.getUtm() + player.utmLocation.subUtm.getUtm()) != null) {
+            if (player.getTopicSubscriptions().getSubscription(player.utmLocation.utm.getUtm() + player.utmLocation.subUtm.getUtm()).containsKey(player.getKey())) {
+                player.getTopicSubscriptions().removeSubscription(player.utmLocation.utm.getUtm() + player.utmLocation.subUtm.getUtm());
+            }
+        }
+
+
+        if(player.getTopicSubscriptions().getSubscription(player.utmLocation.utm.getUtm() + player.utmLocation.subUtm.getUtm()) != null
+        || !player.getTopicSubscriptions().getKeySet().contains(currentLocation.utm.getUtm()+currentLocation.subUtm.getUtm())) {
+            configuration.getLogger().debug("sub utm changed so subscribing again");
+            player.getTopicSubscriptions().addSubscription(currentLocation.utm.getUtm() + currentLocation.subUtm.getUtm(), player.getKey(),
+                    hazelcastManagerInterface.subscribe(
+                            currentLocation.utm.getUtm() + currentLocation.subUtm.getUtm(), player.getKey(), player.getKey()));
+        }
     }
 
 }

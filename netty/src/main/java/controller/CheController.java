@@ -97,8 +97,12 @@ public class CheController {
 
         if (hazelcastServerUp) {
 
+            configuration.getLogger().debug("server up");
             Player player = playerHandler.handlePlayer(message);
+            configuration.getLogger().debug("got our player");
             cheHandler.handle(player, message);
+            configuration.getLogger().debug("handled message");
+
             //need to put updated player back.  also check its been updated as not re assigned etc...probably ok.
             hazelcastManagerInterface.put(Tags.PLAYER_MAP, player.getKey(), player);
         }

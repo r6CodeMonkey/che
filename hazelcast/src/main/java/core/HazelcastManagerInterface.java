@@ -16,11 +16,11 @@ public interface HazelcastManagerInterface extends Remote {
 
     void createTopic(String topic) throws RemoteException;
 
-    String subscribe(String topic, String key) throws RemoteException;
+    String subscribe(String topic, String ownerKey, String key) throws RemoteException;
 
     void bulkSubscribe(List<TopicPair> topicPairs) throws RemoteException;
 
-    void unSubscribe(String topic, TopicSubscriptions topicSubscriptions) throws RemoteException;
+    void unSubscribe(String topic, String ownerKey, String key) throws RemoteException;
 
     void bulkUnSubscribe(List<TopicPair> topicPairs) throws RemoteException;
 

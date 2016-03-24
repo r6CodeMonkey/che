@@ -2,7 +2,6 @@ package controller.handler;
 
 import controller.handler.che.AllianceHandler;
 import controller.handler.che.GameObjectHandler;
-import controller.handler.che.MissileHandler;
 import core.HazelcastManagerInterface;
 import message.CheMessage;
 import model.Alliance;
@@ -28,7 +27,6 @@ public class CheHandler {
     //che handlers
     private final AllianceHandler allianceHandler;
     private final GameObjectHandler gameObjectHandler;
-    private final MissileHandler missileHandler;
 
 
     public CheHandler(HazelcastManagerInterface hazelcastManagerInterface, GameEngineInterface gameEngineInterface,  Configuration configuration) {
@@ -36,7 +34,6 @@ public class CheHandler {
 
         allianceHandler = new AllianceHandler(hazelcastManagerInterface, configuration);
         gameObjectHandler = new GameObjectHandler(hazelcastManagerInterface,gameEngineInterface, configuration);
-        missileHandler = new MissileHandler(hazelcastManagerInterface, configuration);
 
     }
 
@@ -50,10 +47,6 @@ public class CheHandler {
             allianceHandler.handle(player, new Alliance((message.Alliance) cheMessage.getMessage(Tags.ALLIANCE)));
         }
 
-        if (cheMessage.containsMessage(Tags.MISSILE)) {
-            configuration.getLogger().debug("have missle");
-            missileHandler.handle(player, new Missile((message.Missile) cheMessage.getMessage(Tags.MISSILE)));
-        }
 
         if (cheMessage.containsMessage(Tags.GAME_OBJECT)) {
             configuration.getLogger().debug("have game object " + cheMessage.toString());

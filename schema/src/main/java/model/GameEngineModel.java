@@ -18,6 +18,7 @@ public class GameEngineModel implements Serializable {
     private UTMLocation gameUTMLocation = new UTMLocation();
     private HazelcastMessage message;
     private HazelcastMessage message2;  //as in leavae or enter.  message 1 also destroyed etc.
+    private boolean isMissile = false;
 
 
     public GameEngineModel(String playerKey, String playerRemoteAddress, GameObject gameObject, GameObjectRules gameObjectRules) {
@@ -26,6 +27,16 @@ public class GameEngineModel implements Serializable {
         this.gameObject = gameObject;
         this.gameObjectRules = gameObjectRules;
     }
+
+    public GameEngineModel(String playerKey, String playerRemoteAddress, GameObject gameObject, GameObjectRules gameObjectRules, boolean isMissile) {
+        this.playerKey = playerKey;
+        this.playerRemoteAddress = playerRemoteAddress;
+        this.gameObject = gameObject;
+        this.gameObjectRules = gameObjectRules;
+        this.isMissile = isMissile;
+    }
+
+
 
     public String getPlayerKey() {
         return playerKey;
@@ -42,6 +53,11 @@ public class GameEngineModel implements Serializable {
     public GameObject getGameObject() {
         return gameObject;
     }
+
+    public boolean isMissile(){
+        return isMissile;
+    }
+
 
     public void setGameObject(GameObject gameObject) {
         this.gameObject = gameObject;
@@ -72,16 +88,18 @@ public class GameEngineModel implements Serializable {
     }
 
     public boolean hasChangedGrid() {
-        return !gameUTMLocation.utm.getUtm().equals(gameObject.utmLocation.utm.getUtm())
+
+
+     return !gameUTMLocation.utm.getUtm().equals(gameObject.utmLocation.utm.getUtm())
                 || !gameUTMLocation.subUtm.getUtm().equals(gameObject.utmLocation.subUtm.getUtm());
     }
 
     @Override
     public boolean equals(Object object) {
-        //do rest later etc..plus hashcode bla bla
-        if (((GameEngineModel) object).getGameObject().getKey().equals(this.gameObject.getKey())) {
-            return true;
-        }
+           //do rest later etc..plus hashcode bla bla
+           if (((GameEngineModel) object).getGameObject().getKey().equals(this.gameObject.getKey())) {
+               return true;
+           }
 
         return false;
     }

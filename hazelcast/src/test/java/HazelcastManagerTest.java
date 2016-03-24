@@ -51,7 +51,7 @@ public class HazelcastManagerTest {
         }
 
         //now unsubscribe.
-        hazelcastManager.unSubscribe("topic", topicSubscriptions);
+        hazelcastManager.unSubscribe("topic", "owner", "test");
         assertNull(topicSubscriptions.getSubscription("topic"));
 
         hazelcastManager.publish("test", "test message 2");

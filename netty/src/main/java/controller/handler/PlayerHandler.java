@@ -39,6 +39,10 @@ public class PlayerHandler {
         boolean hasUTMChanged = player.hasUTMChanged(utmLocation);
         boolean hasSubUTMChanged = player.hasSubUTMChanged(utmLocation);
 
+
+        configuration.getLogger().debug("got our utms");
+
+
         if (hasUTMChanged) {
             utmHandler.handleUTMChange(utmLocation, player);
             configuration.getLogger().debug("UTM has changed");
@@ -71,6 +75,7 @@ public class PlayerHandler {
             configuration.getLogger().debug("created a new player");
             player = new Player(message.getKey());
             player.name = message.getName();
+            hazelcastManagerInterface.put(Tags.PLAYER_MAP, player.getKey(), player);
             //image to sort out.
         }
 

@@ -3,17 +3,12 @@ package core;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
+import model.Player;
 import server.CheCallbackInterface;
-import util.CheMessageHandler;
-import util.Configuration;
-import util.TopicPair;
-import util.TopicSubscriptions;
+import util.*;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 /**
@@ -40,8 +35,16 @@ public class HazelcastManager implements HazelcastManagerInterface {
         hazelcastInstance.getTopic(topic);
     }
 
-    public String subscribe(String topic, String key) {
-        return hazelcastInstance.getTopic(topic).addMessageListener(new CheMessageHandler(cheCallbackInterface, key));
+    public String subscribe(String topic, String ownerKey, String key) {
+
+        Player player = (Player)this.get(Tags.PLAYER_MAP, key);
+
+        if(player.getTopicSubscriptions().getKeySet() == null || !player.getTopicSubscriptions().getKeySet().contains(topic)) {
+            configuration.getLogger().debug("subscribing too " + topic + " with key " + key);
+            return hazelcastInstance.getTopic(topic).addMessageListener(new CheMessageHandler(cheCallbackInterface, key));
+        }
+
+        return ""; //we dont add blanks.
     }
 
     @Override
@@ -49,8 +52,8 @@ public class HazelcastManager implements HazelcastManagerInterface {
 
         configuration.getLogger().debug("bulk subscribe");
 
-        topicPairs.parallelStream().forEach(topicPair -> topicPair.getTopicSubscriptions().addSubscription(topicPair.getTopicKey(),
-                        subscribe(topicPair.getTopicKey(), topicPair.getKey()))
+        topicPairs.parallelStream().forEach(topicPair ->
+                        subscribe(topicPair.getTopicKey(),topicPair.getOwnerKey(),  topicPair.getKey())
         );
 
         topicPairs.parallelStream().forEach(topicPair -> publish(topicPair.getTopicKey(), topicPair.getMessage())
@@ -58,9 +61,20 @@ public class HazelcastManager implements HazelcastManagerInterface {
 
     }
 
-    public void unSubscribe(String topic, TopicSubscriptions topicSubscriptions) {
-        hazelcastInstance.getTopic(topic).removeMessageListener(topicSubscriptions.getSubscription(topic));
-        topicSubscriptions.removeSubscription(topic);
+    public void unSubscribe(String topic,String ownerKey, String key) {
+        Player player = (Player)this.get(Tags.PLAYER_MAP, key);
+
+            configuration.getLogger().debug("unsubscribing from " + topic + " with key " + key);
+
+            if (player.getTopicSubscriptions().getKeySet() != null) {
+                if (player.getTopicSubscriptions().getSubscription(topic) != null && player.getTopicSubscriptions().getSubscription(topic).containsKey(ownerKey)) {
+
+                    hazelcastInstance.getTopic(topic).removeMessageListener(player.getTopicSubscriptions().getSubscription(topic).get(ownerKey));
+                    player.getTopicSubscriptions().removeSubscription(topic);
+
+                    put(Tags.PLAYER_MAP, player.getKey(), player);
+                }
+            }
     }
 
     @Override
@@ -72,11 +86,9 @@ public class HazelcastManager implements HazelcastManagerInterface {
         );
 
         topicPairs.parallelStream().forEach(topicPair ->
-                        unSubscribe(topicPair.getTopicKey(), topicPair.getTopicSubscriptions())
+                        unSubscribe(topicPair.getTopicKey(), topicPair.getOwnerKey(), topicPair.getKey())
         );
 
-        topicPairs.parallelStream().forEach(topicPair -> topicPair.getTopicSubscriptions().removeSubscription(topicPair.getTopicKey())
-        );
     }
 
     public void publish(String topic, String message) {
