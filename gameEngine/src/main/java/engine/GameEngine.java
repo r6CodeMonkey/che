@@ -9,6 +9,7 @@ import util.TopicPair;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
@@ -53,11 +54,15 @@ public class GameEngine {
 
         missiles.clear();
 
-        ConcurrentMap<TopicPair, List<GameEngineModel>> movedMap = processPositions();
+         Map<String,List<GameEngineModel>> movedMap = processPositions();
 
-        for (TopicPair topicPair : movedMap.keySet()) {
-            gameEngineUtils.addToSubUTM(topicPair.getKey(), topicPair.getTopicKey(), movedMap.get(topicPair));
-        }
+         for(List<GameEngineModel> gameEngineModels : movedMap.values()){
+             if(gameEngineModels.size() > 0) {
+                 gameEngineUtils.addToSubUTM(gameEngineModels.get(0).getGameObject().utmLocation.utm.getUtm(),
+                         gameEngineModels.get(0).getGameObject().utmLocation.subUtm.getUtm(), gameEngineModels);
+             }
+
+         }
 
         //we have a stream of missiles to work with.  we now need to filter them by their utm / subutm.
         //then need to find out whats in those topics (and the neighbouring ones).
@@ -67,7 +72,7 @@ public class GameEngine {
 
     }
 
-    private ConcurrentMap<TopicPair, List<GameEngineModel>> processPositions() throws RemoteException {
+    private Map<String,List<GameEngineModel>>processPositions() throws RemoteException {
 
 
         List<GameEngineModel> moved = new ArrayList<>();
@@ -160,10 +165,7 @@ public class GameEngine {
 
         configuration.getLogger().debug("total records processed " + total);
 
-        //probably doesnt need concurrent as not filtering...its simply a collect all.  anyway.
-        return moved.parallelStream().collect(Collectors.groupingByConcurrent(gameEngineModel ->
-                new TopicPair(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getUtm(), null)));
-
+        return moved.parallelStream().collect(Collectors.groupingBy(GameEngineModel::getUTMKey));
 
     }
 

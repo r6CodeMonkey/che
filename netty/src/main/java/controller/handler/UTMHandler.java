@@ -30,9 +30,7 @@ public class UTMHandler {
     }
 
     public void handleUTMChange(UTMLocation currentLocation, Player player) throws RemoteException {
-        //review.  we really do not want utm wide topics...
-        //hazelcastManagerInterface.unSubscribe(player.utmLocation.utm.getUtm(), player.getTopicSubscriptions());
-       // player.getTopicSubscriptions().addSubscription(currentLocation.utm.getUtm(), hazelcastManagerInterface.subscribe(currentLocation.utm.getUtm(), player.getKey()));
+        //we dont want to register at UTM level anymore. may change....but means too many messages.
         handleSubUTMChange(currentLocation, player);
     }
 
@@ -52,7 +50,7 @@ public class UTMHandler {
         }
 
 
-        if(player.getTopicSubscriptions().getSubscription(player.utmLocation.utm.getUtm() + player.utmLocation.subUtm.getUtm()) != null
+        if(player.getTopicSubscriptions().getSubscription(player.utmLocation.utm.getUtm() + player.utmLocation.subUtm.getUtm()) == null
         || !player.getTopicSubscriptions().getKeySet().contains(currentLocation.utm.getUtm()+currentLocation.subUtm.getUtm())) {
             configuration.getLogger().debug("sub utm changed so subscribing again");
             player.getTopicSubscriptions().addSubscription(currentLocation.utm.getUtm() + currentLocation.subUtm.getUtm(), player.getKey(),

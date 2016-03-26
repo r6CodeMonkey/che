@@ -87,6 +87,11 @@ public class GameEngineModel implements Serializable {
         this.message2 = message2;
     }
 
+
+    public String getUTMKey(){
+        return gameObject.utmLocation.utm.getUtm()+gameObject.utmLocation.subUtm.getUtm();
+    }
+
     public boolean hasChangedGrid() {
 
 

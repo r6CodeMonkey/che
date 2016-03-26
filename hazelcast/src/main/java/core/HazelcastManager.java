@@ -37,6 +37,10 @@ public class HazelcastManager implements HazelcastManagerInterface {
 
     public String subscribe(String topic, String ownerKey, String key) {
 
+        if(topic.trim().isEmpty()){
+            return "";
+        }
+
         Player player = (Player)this.get(Tags.PLAYER_MAP, key);
 
         if(player.getTopicSubscriptions().getKeySet() == null || !player.getTopicSubscriptions().getKeySet().contains(topic)) {
@@ -116,6 +120,7 @@ public class HazelcastManager implements HazelcastManagerInterface {
     }
 
     public Object get(String map, String key) {
+        configuration.getLogger().debug("get map "+map+" get key "+ key);
         return hazelcastInstance.getMap(map).get(key);
     }
 

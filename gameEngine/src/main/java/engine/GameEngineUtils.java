@@ -86,6 +86,8 @@ public class GameEngineUtils {
     }
 
     public void addToSubUTM(String utm, String subUtm, List<GameEngineModel> gameEngineModels) throws RemoteException {
+
+        configuration.getLogger().debug("adding to "+utm+" / "+subUtm);
         List<GameEngineModel> subUtmList = (List<GameEngineModel>) hazelcastManagerInterface
                 .get(utm, subUtm);
 
