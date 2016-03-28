@@ -170,7 +170,8 @@ public class GameEngineUtils {
 
         gameEngineModel.getGameObject().value = gameEngineModel.getGameObject().strength > 0 ?  Tags.GAME_OBJECT_HIT : Tags.GAME_OBJECT_DESTROYED;
 
-        gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(), true, new message.GameObject(gameEngineModel.getGameObject().getMessage())));
+        gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(), true,
+                new JSONObject().put(Tags.GAME_OBJECT, new message.GameObject(gameEngineModel.getGameObject().getMessage()))));
 
     }
 

@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1da809bf-b5cd-41ef-846a-b237902f929e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngine.java" afterPath="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/src/main/java/server/GameEngineInterface.java" afterPath="$PROJECT_DIR$/gameEngine/src/main/java/server/GameEngineInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/src/main/java/server/GameEngineServer.java" afterPath="$PROJECT_DIR$/gameEngine/src/main/java/server/GameEngineServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngineUtils.java" afterPath="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngineUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/GameObjectHandler.java" afterPath="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/GameObjectHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameEngine/src/main/java/engine/MissileUtils.java" afterPath="$PROJECT_DIR$/gameEngine/src/main/java/engine/MissileUtils.java" />
     </list>
     <ignored path="Che.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,8 +62,8 @@
       <file leaf-file-name="GameEngineUtils.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngineUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43696028">
-              <caret line="188" column="85" selection-start-line="188" selection-start-column="69" selection-end-line="188" selection-end-column="85" />
+            <state vertical-scroll-proportion="0.5664939">
+              <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -207,8 +202,8 @@
         <option value="$PROJECT_DIR$/gameEngine/src/main/java/server/GameEngineInterface.java" />
         <option value="$PROJECT_DIR$/gameEngine/src/main/java/server/GameEngineServer.java" />
         <option value="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngine.java" />
-        <option value="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngineUtils.java" />
         <option value="$PROJECT_DIR$/netty/src/main/java/controller/handler/che/GameObjectHandler.java" />
+        <option value="$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngineUtils.java" />
       </list>
     </option>
   </component>
@@ -2109,8 +2104,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gameEngine/src/main/java/engine/GameEngineUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43696028">
-          <caret line="188" column="85" selection-start-line="188" selection-start-column="69" selection-end-line="188" selection-end-column="85" />
+        <state vertical-scroll-proportion="0.5664939">
+          <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
