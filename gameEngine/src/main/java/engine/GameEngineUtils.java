@@ -36,7 +36,14 @@ public class GameEngineUtils {
 
     public List<GameEngineModel> getGameEngineModels(String utm, String subUtm) throws RemoteException {
 
+        return(List<GameEngineModel>) hazelcastManagerInterface.get(utm, subUtm);
+    }
+
+    public List<GameEngineModel> getMovingGameEngineModels(String utm, String subUtm) throws RemoteException {
+
         List<GameEngineModel> temp = (List<GameEngineModel>) hazelcastManagerInterface.get(utm, subUtm);
+
+        configuration.getLogger().debug("temp count pre moving filter is "+temp.size());
 
         return temp.parallelStream().filter(gameEngineModel -> gameEngineModel.getGameObject().getDistanceBetweenPoints() != 0).collect(Collectors.toList());
     }
@@ -44,7 +51,7 @@ public class GameEngineUtils {
     public void bulkSubscribe(List<GameEngineModel> gameEngineModels) throws RemoteException {
 
         List<TopicPair> topicPairs = gameEngineModels.stream().map(model -> new TopicPair(model.getPlayerKey(), model.getGameObject().getKey(),
-                model.getGameUTMLocation().utm.getUtm() + model.getGameUTMLocation().subUtm.getUtm(),model.getMessage())).collect(Collectors.toList());
+                model.getGameUTMLocation().utm.getUtm() + model.getGameUTMLocation().subUtm.getUtm(), model.getMessage())).collect(Collectors.toList());
 
 
         new Thread(() -> {
@@ -61,7 +68,7 @@ public class GameEngineUtils {
     public void bulkUnSubscribe(String utm, String subUtm, List<GameEngineModel> gameEngineModels) throws RemoteException {
 
 
-        List<TopicPair> topicPairs = gameEngineModels.stream().map(model -> new TopicPair(model.getPlayerKey(),model.getGameObject().getKey(),
+        List<TopicPair> topicPairs = gameEngineModels.stream().map(model -> new TopicPair(model.getPlayerKey(), model.getGameObject().getKey(),
                 utm + subUtm, model.getMessage2())).collect(Collectors.toList());
 
 
@@ -82,12 +89,22 @@ public class GameEngineUtils {
     }
 
     public void updateSubUTM(String utm, String subUtm, List<GameEngineModel> gameEngineModels) throws RemoteException {
-        hazelcastManagerInterface.put(utm, subUtm, gameEngineModels);
+        List<GameEngineModel> temp = (List<GameEngineModel>)hazelcastManagerInterface.get(utm, subUtm);
+
+        for(GameEngineModel model : gameEngineModels){
+            if(temp.contains(model)){
+                temp.set(temp.indexOf(model), model);
+            }else{
+                temp.add(model);
+            }
+        }
+
+        hazelcastManagerInterface.put(utm, subUtm, temp);
     }
 
     public void addToSubUTM(String utm, String subUtm, List<GameEngineModel> gameEngineModels) throws RemoteException {
 
-        configuration.getLogger().debug("adding to "+utm+" / "+subUtm);
+        configuration.getLogger().debug("adding to " + utm + " / " + subUtm);
         List<GameEngineModel> subUtmList = (List<GameEngineModel>) hazelcastManagerInterface
                 .get(utm, subUtm);
 
@@ -120,7 +137,16 @@ public class GameEngineUtils {
             subUtmList = new ArrayList<>();
             subUtmList.add(gameEngineModel);
         } else {
-            subUtmList.add(gameEngineModel);
+            //
+            int index = subUtmList.indexOf(gameEngineModel);
+
+            if (index != -1) {
+                subUtmList.set(index, gameEngineModel);
+                configuration.getLogger().debug("we are updating existing object");
+            } else {
+                subUtmList.add(gameEngineModel);
+                configuration.getLogger().debug("we are adding new object");
+            }
         }
 
         hazelcastManagerInterface.put(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getUtm(), subUtmList);
@@ -140,9 +166,9 @@ public class GameEngineUtils {
 
     public void processMoveMessage(GameEngineModel gameEngineModel) throws JSONException {
         gameEngineModel.getGameObject().state = Tags.MESSAGE;
-        if(gameEngineModel.isMissile()){
+        if (gameEngineModel.isMissile()) {
             gameEngineModel.getGameObject().value = 0 == gameEngineModel.getGameObject().getDistanceBetweenPoints() ? Tags.MISSILE_DESTROYED : Tags.MISSILE_LAUNCHED;
-        }else {
+        } else {
             gameEngineModel.getGameObject().value = 0 == gameEngineModel.getGameObject().getDistanceBetweenPoints() ? Tags.GAME_OBJECT_IS_FIXED : Tags.GAME_OBJECT_IS_MOVING;
         }
 

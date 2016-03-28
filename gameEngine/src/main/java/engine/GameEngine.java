@@ -2,12 +2,14 @@ package engine;
 
 import core.HazelcastManagerInterface;
 import model.GameEngineModel;
+import model.UTM;
 import org.json.JSONException;
 import util.Configuration;
 import util.TopicPair;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentMap;
@@ -20,6 +22,7 @@ public class GameEngine {
 
 
     private final GameEngineUtils gameEngineUtils;
+    private final MissileUtils missileUtils;
     private final Configuration configuration;
 
     private List<GameEngineModel> missiles = new ArrayList<>();
@@ -27,6 +30,7 @@ public class GameEngine {
 
     public GameEngine(HazelcastManagerInterface hazelcastManagerInterface, Configuration configuration) {
         gameEngineUtils = new GameEngineUtils(hazelcastManagerInterface, configuration);
+        missileUtils = new MissileUtils(gameEngineUtils, configuration);
         this.configuration = configuration;
     }
 
@@ -39,8 +43,12 @@ public class GameEngine {
                         gameEngineModel.getGameObject().destinationUTMLocation.latitude,
                         gameEngineModel.getGameObject().destinationUTMLocation.longitude));
 
+        gameEngineModel.setGameUTMLocation(gameEngineModel.getGameObject().utmLocation); //its always defaulted to this in case it doesnt move.
+
         gameEngineUtils.addGameEngineModel(gameEngineModel);
     }
+
+
 
 
     /*
@@ -63,16 +71,49 @@ public class GameEngine {
              }
 
          }
+        //no.  we want to get our utm / sub utms...and keep simply remove duplicates.
+        missiles.stream().forEach(missile -> missileUtils.setMissileImpactGrids(missile));
+        //each missile now has a map....so need to now establish, can we group by UTMs / subUTMs.  need to reduce over processing the same grids.  to reduce rmi calls.
+        Map<model.UTM, List<model.UTM>> uniqueGrids = new HashMap<>();
 
-        //we have a stream of missiles to work with.  we now need to filter them by their utm / subutm.
-        //then need to find out whats in those topics (and the neighbouring ones).
-        //then workout if in blast radius.  and either remove / destroy them and send response to client.
+        //sod lambda for this well the outer part.
+        for(GameEngineModel missile : missiles){
+            for(UTM key : missile.getMissileTargetGrids().keySet()){
+                if(uniqueGrids.containsKey(key)){
+                    missile.getMissileTargetGrids().get(key).stream().filter(subUtm -> !uniqueGrids.get(key).contains(subUtm)).forEach(subUtm -> {
+                        uniqueGrids.get(key).add(subUtm);
+                    });
+                }else{
+                    uniqueGrids.put(key, missile.getMissileTargetGrids().get(key));
+                }
+            }
 
-        //anyway, do this last.  get missile moving.
+        }
+
+        configuration.getLogger().debug("unique grids count is "+uniqueGrids.size());
+
+        //can now process based on what we have.  note the missile maybe the only thing in the grid (and will actually be in the grid by now) but should test keys.
+        for(UTM utm : uniqueGrids.keySet()){
+            List<String> subUtmKeys = gameEngineUtils.getAvailableKeys(utm.getUtm());
+
+            for(UTM subUtm : uniqueGrids.get(utm)){
+
+                configuration.getLogger().debug("processing "+utm.getUtm()+" / "+subUtm.getUtm());
+
+                if(subUtmKeys.contains(subUtm.getUtm())){
+                    //we can process our missile (s).
+                    missileUtils.processMissileImpact(
+                            missiles.stream().filter(gameEngineModel ->
+                                    gameEngineModel.getMissileTargetGrids().containsKey(utm) && gameEngineModel.getMissileTargetGrids().get(utm).contains(subUtm))
+                                    .collect(Collectors.toList()),
+                            utm.getUtm(), subUtm.getUtm());
+                }
+            }
+        }
 
     }
 
-    private Map<String,List<GameEngineModel>>processPositions() throws RemoteException {
+    private Map<String,List<GameEngineModel>> processPositions() throws RemoteException {
 
 
         List<GameEngineModel> moved = new ArrayList<>();
@@ -85,7 +126,7 @@ public class GameEngine {
             List<String> subUtmKeys = gameEngineUtils.getAvailableKeys(utm);
 
             for (String subUtm : subUtmKeys) {
-                List<GameEngineModel> models = gameEngineUtils.getGameEngineModels(utm, subUtm);
+                List<GameEngineModel> models = gameEngineUtils.getMovingGameEngineModels(utm, subUtm);
 
 
                 if (models != null && models.size() > 0) {

@@ -169,21 +169,20 @@ public class GameObjectHandler {
     }
 
 
-    private void objectAdd(Player player, GameObject gameObject) throws RemoteException, JSONException, NoSuchAlgorithmException {
+    private void objectAdd(Player player, GameObject gameObject) throws RemoteException, JSONException, NoSuchAlgorithmException, JAXBException {
 
 
         player.getGameObjects().put(gameObject.getKey(), gameObject);
 
-        /*
-         soln.  added topic subscriptions to models as well so seperate from player subscriptions..simples.
-         */
+        //always assign the same values...we dont want to add values more than once.
+        gameObject.destinationUTMLocation = gameObject.utmLocation;
 
-        //how do we unsubscribe?  i guess if we move out of zone, but then...
-        //we may still be in zone as player and object not....regardless its ok to listen to sectors.
-        //perhaps add something to player handler to remove pointless subscribes.
         utmHandler.handleUTMChange(gameObject.utmLocation, player);
-        //need to consider do we put it in a UTM / SubUTM....probably should register our item to that topic.  makes sense.
-        //and remove when we get move it out of zone.
+
+        //it wont be moving so should be ok at present.  need to test this further!.
+        gameEngineInterface.addGameEngineModel(new GameEngineModel(player.getKey(),
+                CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(),
+                gameObject, gameObjectRulesFactory.getRules(gameObject.subType)));
 
         CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
 

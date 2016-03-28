@@ -9,6 +9,7 @@ import util.*;
 
 import java.rmi.RemoteException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 /**
@@ -137,9 +138,7 @@ public class HazelcastManager implements HazelcastManagerInterface {
 
         Set<String> subUtmKeys = iMap.keySet();
 
-        for (String key : subUtmKeys) {
-            keys.add(key);
-        }
+        keys.addAll(subUtmKeys.stream().collect(Collectors.toList()));
 
         return keys;
     }

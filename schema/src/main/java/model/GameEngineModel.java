@@ -4,6 +4,8 @@ import message.HazelcastMessage;
 import util.GameObjectRules;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by timmytime on 23/02/16.
@@ -19,6 +21,8 @@ public class GameEngineModel implements Serializable {
     private HazelcastMessage message;
     private HazelcastMessage message2;  //as in leavae or enter.  message 1 also destroyed etc.
     private boolean isMissile = false;
+
+    private Map<UTM, List<UTM>> missileTargetGrids;
 
 
     public GameEngineModel(String playerKey, String playerRemoteAddress, GameObject gameObject, GameObjectRules gameObjectRules) {
@@ -42,6 +46,8 @@ public class GameEngineModel implements Serializable {
         return playerKey;
     }
 
+    public Map<UTM, List<UTM>> getMissileTargetGrids(){return missileTargetGrids;};
+
     public String getPlayerRemoteAddress() {
         return playerRemoteAddress;
     }
@@ -58,6 +64,9 @@ public class GameEngineModel implements Serializable {
         return isMissile;
     }
 
+    public void setMissileTargetGrids(Map<UTM, List<UTM>> missileTargetGrids){
+        this.missileTargetGrids = missileTargetGrids;
+    }
 
     public void setGameObject(GameObject gameObject) {
         this.gameObject = gameObject;
@@ -69,6 +78,10 @@ public class GameEngineModel implements Serializable {
 
     public UTMLocation getGameUTMLocation() {
         return gameUTMLocation;
+    }
+
+    public void setGameUTMLocation(UTMLocation utmLocation){
+        this.gameUTMLocation = utmLocation;
     }
 
     public HazelcastMessage getMessage() {
