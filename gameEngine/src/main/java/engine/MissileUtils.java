@@ -1,6 +1,7 @@
 package engine;
 
 import model.GameEngineModel;
+import org.json.JSONException;
 import util.Configuration;
 import util.map.GridCreator;
 
@@ -41,8 +42,27 @@ public class MissileUtils {
                             missile.getGameUTMLocation().latitude, missile.getGameUTMLocation().longitude) < missile.getGameObjectRules().getImpactRadius()
                             && !gameEngineModel.isMissile()).collect(Collectors.toList());
 
-             hitTargets.stream().forEach(gameEngineModel -> configuration.getLogger().debug("we have a hit target " + gameEngineModel.getGameObject().getKey()));
 
+             hitTargets.stream().forEach(gameEngineModel1 ->
+              gameEngineModel1.getGameObject().strength -= gameEngineModel1.getGameObjectRules().getStrength() -
+                      (missile.getGameObjectRules().getStrength() - (missile.getGameObjectRules().getStrength() *
+                              ((GameEnginePhysics.getHaversineDistance(
+                                      gameEngineModel1.getGameUTMLocation().latitude, gameEngineModel1.getGameUTMLocation().longitude,
+                                      missile.getGameUTMLocation().latitude, missile.getGameUTMLocation().longitude)) / missile.getGameObjectRules().getImpactRadius()) * 100 )));
+
+             hitTargets.stream().forEach(gameEngineModel -> configuration.getLogger().debug("we have a hit target " + gameEngineModel.getGameObject().getKey()+" and the strength is now "+gameEngineModel.getGameObject().strength));
+
+
+            hitTargets.stream().forEach(gameEngineModel -> {
+                try {
+                    gameEngineUtils.processHitMessage(gameEngineModel);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            });
+
+            gameEngineUtils.bulkPublish(utm+subUtm, hitTargets); //we dont have a points system yet.  and do we even need one?  yes most likely.
+            //but add this at end.
         }
 
     }

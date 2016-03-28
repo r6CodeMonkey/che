@@ -35,6 +35,10 @@ public class GameEngine {
     }
 
 
+    public void removeGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException{
+        gameEngineUtils.removeGameEngineModel(gameEngineModel);
+    }
+
     public void addGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {
         gameEngineModel.getGameObject().setDistanceBetweenPoints(
                 GameEnginePhysics.getHaversineDistance(

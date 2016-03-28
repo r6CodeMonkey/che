@@ -13,4 +13,6 @@ public interface GameEngineInterface extends Remote {
     void addGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException;
 
     void startEngine() throws RemoteException;
+
+    void removeGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException;
 }

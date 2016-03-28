@@ -153,6 +153,7 @@ public class GameEngineUtils {
     }
 
     public void removeGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {      //is an assumption it exists..so maybe dont check?
+        configuration.getLogger().debug("removing game object "+gameEngineModel.getGameObject().getKey());
         try {
             List<GameEngineModel> subUtmList = (List<GameEngineModel>) hazelcastManagerInterface.get(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getUtm());
             subUtmList.remove(gameEngineModel);
@@ -161,6 +162,15 @@ public class GameEngineUtils {
         } catch (Exception e) {
             configuration.getLogger().debug("remove game engine failed as perhaps it was not in the list " + e.getMessage());
         }
+
+    }
+
+    public void processHitMessage(GameEngineModel gameEngineModel) throws JSONException{
+        gameEngineModel.getGameObject().state = Tags.MESSAGE;
+
+        gameEngineModel.getGameObject().value = gameEngineModel.getGameObject().strength > 0 ?  Tags.GAME_OBJECT_HIT : Tags.GAME_OBJECT_DESTROYED;
+
+        gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(), true, new message.GameObject(gameEngineModel.getGameObject().getMessage())));
 
     }
 

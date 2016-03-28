@@ -3,6 +3,7 @@ package controller.handler.che;
 import controller.CheController;
 import controller.handler.UTMHandler;
 import core.HazelcastManagerInterface;
+import engine.GameEngine;
 import factory.CheChannelFactory;
 import factory.GameObjectRulesFactory;
 import message.CheMessage;
@@ -90,6 +91,9 @@ public class GameObjectHandler {
             case Tags.MISSILE_FIRE:
                 missileFire(player, gameObject);
                 break;
+            case Tags.MISSILE_DESTROYED:
+                missileDestroyed(player, gameObject);
+                break;
         }
     }
 
@@ -132,12 +136,10 @@ public class GameObjectHandler {
 
         configuration.getLogger().debug("missile target set " + gameObject.getKey());
 
-        for(Missile missile : player.getGameObjects().get(gameObject.getKey()).getMissiles()){
-            if(gameObject.getMissiles().get(0).getKey().equals(missile.getKey())){
-                missile.targetUTMLocation = gameObject.getMissiles().get(0).targetUTMLocation;
-                missile.state = Tags.MISSILE_TARGET;
-            }
-        }
+        player.getGameObjects().get(gameObject.getKey()).getMissiles().stream().filter(missile -> gameObject.getMissiles().get(0).getKey().equals(missile.getKey())).forEach(missile -> {
+            missile.targetUTMLocation = gameObject.getMissiles().get(0).targetUTMLocation;
+            missile.state = Tags.MISSILE_TARGET;
+        });
 
         CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
     }
@@ -158,7 +160,7 @@ public class GameObjectHandler {
 
         configuration.getLogger().debug("missile fired " + gameObject.getKey());
 
-        hazelcastManagerInterface.subscribe(gameObject.utmLocation.utm.getUtm()+gameObject.utmLocation.subUtm.getUtm(),
+        hazelcastManagerInterface.subscribe(gameObject.utmLocation.utm.getUtm() + gameObject.utmLocation.subUtm.getUtm(),
                 gameObject.getKey(), player.getKey());
 
         gameEngineInterface.addGameEngineModel(new GameEngineModel(player.getKey(),
@@ -234,17 +236,31 @@ public class GameObjectHandler {
 
     }
 
-    private void objectHit(Player player, GameObject gameObject) {
 
+    private void objectDestroyed(Player player, GameObject gameObject) throws JAXBException, RemoteException {
 
-        // publish to utm/ subutm grid a hit has occured
+        player.getGameObjects().remove(gameObject.getKey());
 
+        gameEngineInterface.removeGameEngineModel(new GameEngineModel(player.getKey(),
+                CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(),
+                gameObject, gameObjectRulesFactory.getRules(gameObject.subType)));
 
     }
 
-    private void objectDestroyed(Player player, GameObject gameObject) {
+    private void missileDestroyed(Player player, GameObject gameObject) throws JAXBException, RemoteException {
 
+        player.getGameObjects().get(gameObject.getKey()).getMissiles().stream().filter(missile -> gameObject.getMissiles().get(0).getKey().equals(missile.getKey())).forEach(missile -> {
+            missile.state = Tags.MISSILE_DESTROYED;
+        });  //dont delete them...may want reference in future etc.
+        gameEngineInterface.removeGameEngineModel(new GameEngineModel(player.getKey(),
+                CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(),
+                gameObject, gameObjectRulesFactory.getRules(gameObject.subType)));
 
-        //   publish to utm / sub utm object destroyed and remove object
     }
+
+    private void objectHit(Player player, GameObject gameObject) throws RemoteException{
+
+        player.getGameObjects().get(gameObject.getKey()).strength = gameObject.strength;
+    }
+
 }
