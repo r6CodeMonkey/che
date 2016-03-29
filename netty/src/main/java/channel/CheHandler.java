@@ -70,11 +70,11 @@ public class CheHandler extends SimpleChannelInboundHandler<CheMessage> {
 
             ctx.channel().writeAndFlush(ack.getMessage());
 
-            if(((message.Player)cheMessage.getMessage(Tags.PLAYER)).getState().equals(Tags.CONNECT)){
+            if (((message.Player) cheMessage.getMessage(Tags.PLAYER)).getState().equals(Tags.CONNECT)) {
                 //are we a reconnect player message
                 CheChannelFactory.force(cheMessage.getMessage(Tags.PLAYER).getKey(), ctx.channel());
 
-            }else{
+            } else {
                 //fire up pipeline...
                 ctx.fireChannelRead(cheMessage);
             }

@@ -6,7 +6,6 @@ import message.HazelcastMessage;
 import model.CheChannel;
 import org.json.JSONException;
 
-import java.net.InetSocketAddress;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +31,7 @@ public class CheChannelFactory {
 
     public static void updateCheChannel(String key, Channel channel) {
         if (cheChannelMap.containsKey(key)) {
-            if(!cheChannelMap.get(key).getChannel().isActive() || !cheChannelMap.get(key).getChannel().isOpen()) {
+            if (!cheChannelMap.get(key).getChannel().isActive() || !cheChannelMap.get(key).getChannel().isOpen()) {
                 cheChannelMap.get(key).updateChannel(channel);
             }
         } else {
@@ -48,13 +47,13 @@ public class CheChannelFactory {
         cheChannelMap.get(key).write(cheMessage);
     }
 
-    public static void force(String key, Channel channel){
+    public static void force(String key, Channel channel) {
 
         System.out.println("force executed - testing we even hit this!");
 
         //need to manipulate this. ie only
         new Thread(()
-            -> {
+                -> {
             //and now we force the next messages waiting.
             cheChannelMap.get(key).force(channel);
             updateCheChannel(key, channel); //update it after.,..

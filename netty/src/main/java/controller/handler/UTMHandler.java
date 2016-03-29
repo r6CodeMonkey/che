@@ -43,15 +43,15 @@ public class UTMHandler {
         configuration.getLogger().debug("subscription checks");
 
         //can we actually remove it.
-        if(player.getTopicSubscriptions().getSubscription(player.utmLocation.utm.getUtm() + player.utmLocation.subUtm.getUtm()) != null) {
+        if (player.getTopicSubscriptions().getSubscription(player.utmLocation.utm.getUtm() + player.utmLocation.subUtm.getUtm()) != null) {
             if (player.getTopicSubscriptions().getSubscription(player.utmLocation.utm.getUtm() + player.utmLocation.subUtm.getUtm()).containsKey(player.getKey())) {
                 player.getTopicSubscriptions().removeSubscription(player.utmLocation.utm.getUtm() + player.utmLocation.subUtm.getUtm());
             }
         }
 
 
-        if(player.getTopicSubscriptions().getSubscription(player.utmLocation.utm.getUtm() + player.utmLocation.subUtm.getUtm()) == null
-        || !player.getTopicSubscriptions().getKeySet().contains(currentLocation.utm.getUtm()+currentLocation.subUtm.getUtm())) {
+        if (player.getTopicSubscriptions().getSubscription(player.utmLocation.utm.getUtm() + player.utmLocation.subUtm.getUtm()) == null
+                || !player.getTopicSubscriptions().getKeySet().contains(currentLocation.utm.getUtm() + currentLocation.subUtm.getUtm())) {
             configuration.getLogger().debug("sub utm changed so subscribing again");
             player.getTopicSubscriptions().addSubscription(currentLocation.utm.getUtm() + currentLocation.subUtm.getUtm(), player.getKey(),
                     hazelcastManagerInterface.subscribe(

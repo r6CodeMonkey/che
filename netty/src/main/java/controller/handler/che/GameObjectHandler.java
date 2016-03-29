@@ -1,13 +1,14 @@
 package controller.handler.che;
 
-import controller.CheController;
 import controller.handler.UTMHandler;
 import core.HazelcastManagerInterface;
-import engine.GameEngine;
 import factory.CheChannelFactory;
 import factory.GameObjectRulesFactory;
 import message.CheMessage;
-import model.*;
+import model.GameEngineModel;
+import model.GameObject;
+import model.Player;
+import model.UTM;
 import org.json.JSONException;
 import server.GameEngineInterface;
 import util.Configuration;
@@ -17,8 +18,6 @@ import util.Tags;
 import javax.xml.bind.JAXBException;
 import java.rmi.RemoteException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by timmytime on 13/01/16.
@@ -46,7 +45,6 @@ public class GameObjectHandler {
     private final Configuration configuration;
     private final UTMHandler utmHandler;
     private final GameObjectRulesFactory gameObjectRulesFactory = new GameObjectRulesFactory();
-
 
 
     public GameObjectHandler(HazelcastManagerInterface hazelcastManagerInterface, GameEngineInterface gameEngineInterface, Configuration configuration) {
@@ -150,7 +148,7 @@ public class GameObjectHandler {
         CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
     }
 
-    private void missileCancelTarget(Player player, GameObject gameObject){
+    private void missileCancelTarget(Player player, GameObject gameObject) {
 
     }
 
@@ -171,8 +169,8 @@ public class GameObjectHandler {
 
     }
 
-    public void objectReinforce(Player player, GameObject gameObject){
-     //this is a purchase only event.  once purchased we update the model with new strength value and confirm to client to do the same.
+    public void objectReinforce(Player player, GameObject gameObject) {
+        //this is a purchase only event.  once purchased we update the model with new strength value and confirm to client to do the same.
     }
 
 
@@ -220,7 +218,7 @@ public class GameObjectHandler {
         configuration.getLogger().debug("game object stop");
         //need to set the object current distance to zero.  which
         //and set our distance to zero.
-       //no engine will do this..with latest information CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
+        //no engine will do this..with latest information CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
 
     }
 
@@ -247,7 +245,7 @@ public class GameObjectHandler {
             gameObject.value = Tags.SUCCESS;
 
             //attempt to subscribe to topic
-            hazelcastManagerInterface.subscribe(gameObject.utmLocation.utm.getUtm()+gameObject.utmLocation.subUtm.getUtm(), gameObject.getKey(), player.getKey());
+            hazelcastManagerInterface.subscribe(gameObject.utmLocation.utm.getUtm() + gameObject.utmLocation.subUtm.getUtm(), gameObject.getKey(), player.getKey());
 
             gameEngineInterface.addGameEngineModel(new GameEngineModel(player.getKey(),
                     CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(),
@@ -282,7 +280,7 @@ public class GameObjectHandler {
 
     }
 
-    private void objectHit(Player player, GameObject gameObject) throws RemoteException{
+    private void objectHit(Player player, GameObject gameObject) throws RemoteException {
 
         player.getGameObjects().get(gameObject.getKey()).strength = gameObject.strength;
     }

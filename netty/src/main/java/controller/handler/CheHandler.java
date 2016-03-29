@@ -6,7 +6,6 @@ import core.HazelcastManagerInterface;
 import message.CheMessage;
 import model.Alliance;
 import model.GameObject;
-import model.Missile;
 import model.Player;
 import org.json.JSONException;
 import server.GameEngineInterface;
@@ -29,11 +28,11 @@ public class CheHandler {
     private final GameObjectHandler gameObjectHandler;
 
 
-    public CheHandler(HazelcastManagerInterface hazelcastManagerInterface, GameEngineInterface gameEngineInterface,  Configuration configuration) {
+    public CheHandler(HazelcastManagerInterface hazelcastManagerInterface, GameEngineInterface gameEngineInterface, Configuration configuration) {
         this.configuration = configuration;
 
         allianceHandler = new AllianceHandler(hazelcastManagerInterface, configuration);
-        gameObjectHandler = new GameObjectHandler(hazelcastManagerInterface,gameEngineInterface, configuration);
+        gameObjectHandler = new GameObjectHandler(hazelcastManagerInterface, gameEngineInterface, configuration);
 
     }
 

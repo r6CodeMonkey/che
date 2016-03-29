@@ -35,11 +35,11 @@ public class CheChannel {
         return channel;
     }
 
-    public synchronized void force(Channel channel){
+    public synchronized void force(Channel channel) {
         this.channel = channel;
         //we are simply going to send then first message...and then let queue take over.
-        synchronized (lock){
-            if(buffer.size() > 0){
+        synchronized (lock) {
+            if (buffer.size() > 0) {
                 String nextKey = buffer.keySet().iterator().next();
                 lastSentKey = nextKey;
                 writeToChannel(buffer.get(nextKey).toString());
@@ -62,12 +62,12 @@ public class CheChannel {
     private synchronized void send(JSONObject message) throws JSONException {
         synchronized (lock) {
 
-            System.out.println("message is "+message);
+            System.out.println("message is " + message);
 
             buffer.put(message.getJSONObject(Tags.CHE).getJSONObject(Tags.CHE_ACKNOWLEDGE).getString(Tags.CHE_ACK_ID), message);
             String nextKey = buffer.keySet().iterator().next();
 
-            System.out.println("buffer again "+lastSentKey+" "+nextKey);
+            System.out.println("buffer again " + lastSentKey + " " + nextKey);
 
             if (!lastSentKey.equals(nextKey)) {
                 lastSentKey = nextKey;
@@ -82,7 +82,7 @@ public class CheChannel {
         if (channel != null) {
             System.out.println("attempt to write to channel");
             if (channel.isActive()) {
-                System.out.println("writing as channel active "+message);
+                System.out.println("writing as channel active " + message);
                 channel.writeAndFlush(message);
             }
         }

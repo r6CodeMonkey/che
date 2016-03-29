@@ -36,14 +36,14 @@ public class GameEngineUtils {
 
     public List<GameEngineModel> getGameEngineModels(String utm, String subUtm) throws RemoteException {
 
-        return(List<GameEngineModel>) hazelcastManagerInterface.get(utm, subUtm);
+        return (List<GameEngineModel>) hazelcastManagerInterface.get(utm, subUtm);
     }
 
     public List<GameEngineModel> getMovingGameEngineModels(String utm, String subUtm) throws RemoteException {
 
         List<GameEngineModel> temp = (List<GameEngineModel>) hazelcastManagerInterface.get(utm, subUtm);
 
-        configuration.getLogger().debug("temp count pre moving filter is "+temp.size());
+        configuration.getLogger().debug("temp count pre moving filter is " + temp.size());
 
         return temp.parallelStream().filter(gameEngineModel -> gameEngineModel.getGameObject().getDistanceBetweenPoints() != 0).collect(Collectors.toList());
     }
@@ -52,7 +52,7 @@ public class GameEngineUtils {
 
         List<GameEngineModel> temp = (List<GameEngineModel>) hazelcastManagerInterface.get(utm, subUtm);
 
-        configuration.getLogger().debug("temp count pre repair filter is "+temp.size());
+        configuration.getLogger().debug("temp count pre repair filter is " + temp.size());
 
         return temp.parallelStream().filter(gameEngineModel -> gameEngineModel.getGameObject().state.equals(Tags.GAME_OBJECT_REPAIR)
                 && gameEngineModel.getGameObject().value.trim().isEmpty()).collect(Collectors.toList());
@@ -100,12 +100,12 @@ public class GameEngineUtils {
     }
 
     public void updateSubUTM(String utm, String subUtm, List<GameEngineModel> gameEngineModels) throws RemoteException {
-        List<GameEngineModel> temp = (List<GameEngineModel>)hazelcastManagerInterface.get(utm, subUtm);
+        List<GameEngineModel> temp = (List<GameEngineModel>) hazelcastManagerInterface.get(utm, subUtm);
 
-        for(GameEngineModel model : gameEngineModels){
-            if(temp.contains(model)){
+        for (GameEngineModel model : gameEngineModels) {
+            if (temp.contains(model)) {
                 temp.set(temp.indexOf(model), model);
-            }else{
+            } else {
                 temp.add(model);
             }
         }
@@ -176,17 +176,17 @@ public class GameEngineUtils {
 
     }
 
-    public void processHitMessage(GameEngineModel gameEngineModel) throws JSONException{
+    public void processHitMessage(GameEngineModel gameEngineModel) throws JSONException {
         gameEngineModel.getGameObject().state = Tags.MESSAGE;
 
-        gameEngineModel.getGameObject().value = gameEngineModel.getGameObject().strength > 0 ?  Tags.GAME_OBJECT_HIT : Tags.GAME_OBJECT_DESTROYED;
+        gameEngineModel.getGameObject().value = gameEngineModel.getGameObject().strength > 0 ? Tags.GAME_OBJECT_HIT : Tags.GAME_OBJECT_DESTROYED;
 
         gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(), true,
                 new JSONObject().put(Tags.GAME_OBJECT, new message.GameObject(gameEngineModel.getGameObject().getMessage()))));
 
     }
 
-    public void processRepairMessage(GameEngineModel gameEngineModel) throws JSONException{
+    public void processRepairMessage(GameEngineModel gameEngineModel) throws JSONException {
         gameEngineModel.getGameObject().state = Tags.MESSAGE;
 
         gameEngineModel.getGameObject().value = Tags.GAME_OBJECT_REPAIR;

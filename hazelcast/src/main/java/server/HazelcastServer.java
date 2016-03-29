@@ -4,7 +4,6 @@ import core.HazelcastManager;
 import core.HazelcastManagerInterface;
 import util.Configuration;
 import util.TopicPair;
-import util.TopicSubscriptions;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
@@ -71,7 +70,7 @@ public class HazelcastServer extends UnicastRemoteObject implements HazelcastMan
 
     @Override
     public void unSubscribe(String topic, String ownerKey, String key) {
-        hazelcastManager.unSubscribe(topic,ownerKey, key);
+        hazelcastManager.unSubscribe(topic, ownerKey, key);
     }
 
     @Override

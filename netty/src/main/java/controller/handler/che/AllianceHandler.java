@@ -1,6 +1,5 @@
 package controller.handler.che;
 
-import controller.CheController;
 import core.HazelcastManagerInterface;
 import factory.CheChannelFactory;
 import message.CheMessage;

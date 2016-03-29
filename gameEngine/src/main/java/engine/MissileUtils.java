@@ -1,13 +1,11 @@
 package engine;
 
 import model.GameEngineModel;
-import model.GameObject;
 import org.json.JSONException;
 import util.Configuration;
 import util.map.GridCreator;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,16 +43,15 @@ public class MissileUtils {
                             && !gameEngineModel.isMissile()).collect(Collectors.toList());
 
 
-
             hitTargets.stream().forEach(gameEngineModel1 ->
-              gameEngineModel1.getGameObject().strength -= (missile.getGameObjectRules().getStrength() *
-                      ((missile.getGameObjectRules().getImpactRadius() -
-                      GameEnginePhysics.getHaversineDistance(
-                              gameEngineModel1.getGameUTMLocation().latitude, gameEngineModel1.getGameUTMLocation().longitude,
-                              missile.getGameUTMLocation().latitude, missile.getGameUTMLocation().longitude))
-                              / missile.getGameObjectRules().getImpactRadius())));
+                    gameEngineModel1.getGameObject().strength -= (missile.getGameObjectRules().getStrength() *
+                            ((missile.getGameObjectRules().getImpactRadius() -
+                                    GameEnginePhysics.getHaversineDistance(
+                                            gameEngineModel1.getGameUTMLocation().latitude, gameEngineModel1.getGameUTMLocation().longitude,
+                                            missile.getGameUTMLocation().latitude, missile.getGameUTMLocation().longitude))
+                                    / missile.getGameObjectRules().getImpactRadius())));
 
-             hitTargets.stream().forEach(gameEngineModel -> configuration.getLogger().debug("we have a hit target " + gameEngineModel.getGameObject().getKey()+" and the strength is now "+gameEngineModel.getGameObject().strength));
+            hitTargets.stream().forEach(gameEngineModel -> configuration.getLogger().debug("we have a hit target " + gameEngineModel.getGameObject().getKey() + " and the strength is now " + gameEngineModel.getGameObject().strength));
 
 
             hitTargets.stream().forEach(gameEngineModel -> {
@@ -65,12 +62,11 @@ public class MissileUtils {
                 }
             });
 
-            gameEngineUtils.bulkPublish(utm+subUtm, hitTargets); //we dont have a points system yet.  and do we even need one?  yes most likely.
+            gameEngineUtils.bulkPublish(utm + subUtm, hitTargets); //we dont have a points system yet.  and do we even need one?  yes most likely.
             //but add this at end.
         }
 
     }
-
 
 
 }

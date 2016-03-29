@@ -1,6 +1,5 @@
 package channel;
 
-import factory.CheChannelFactory;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import message.Acknowledge;

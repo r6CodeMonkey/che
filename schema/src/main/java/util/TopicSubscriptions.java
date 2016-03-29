@@ -20,7 +20,7 @@ public class TopicSubscriptions implements Serializable {
     public TopicSubscriptions(TopicSubscriptions topicSubscriptions) {
         subscriptions = new HashMap<>();
         for (String key : topicSubscriptions.getKeySet()) {
-                subscriptions.put(key, topicSubscriptions.getSubscription(key));
+            subscriptions.put(key, topicSubscriptions.getSubscription(key));
         }
     }
 

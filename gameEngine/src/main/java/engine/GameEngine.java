@@ -5,7 +5,6 @@ import model.GameEngineModel;
 import model.UTM;
 import org.json.JSONException;
 import util.Configuration;
-import util.TopicPair;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -35,7 +34,7 @@ public class GameEngine {
     }
 
 
-    public void removeGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException{
+    public void removeGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {
         gameEngineUtils.removeGameEngineModel(gameEngineModel);
     }
 
@@ -56,8 +55,6 @@ public class GameEngine {
     }
 
 
-
-
     /*
      increasing timestep may make sense (to process more) but then the accuracy is reduced.
      perhaps the user update interval is greater, whilst server faster.  plus this is all hypothetical as im running it on my PC
@@ -69,45 +66,45 @@ public class GameEngine {
 
         missiles.clear();
 
-        Map<String,List<GameEngineModel>> movedMap = processPositions();
+        Map<String, List<GameEngineModel>> movedMap = processPositions();
 
-         for(List<GameEngineModel> gameEngineModels : movedMap.values()){
-             if(gameEngineModels.size() > 0) {
-                 gameEngineUtils.addToSubUTM(gameEngineModels.get(0).getGameObject().utmLocation.utm.getUtm(),
-                         gameEngineModels.get(0).getGameObject().utmLocation.subUtm.getUtm(), gameEngineModels);
-             }
+        for (List<GameEngineModel> gameEngineModels : movedMap.values()) {
+            if (gameEngineModels.size() > 0) {
+                gameEngineUtils.addToSubUTM(gameEngineModels.get(0).getGameObject().utmLocation.utm.getUtm(),
+                        gameEngineModels.get(0).getGameObject().utmLocation.subUtm.getUtm(), gameEngineModels);
+            }
 
-         }
+        }
         //no.  we want to get our utm / sub utms...and keep simply remove duplicates.
         missiles.stream().forEach(missile -> missileUtils.setMissileImpactGrids(missile));
         //each missile now has a map....so need to now establish, can we group by UTMs / subUTMs.  need to reduce over processing the same grids.  to reduce rmi calls.
         Map<model.UTM, List<model.UTM>> uniqueGrids = new HashMap<>();
 
         //sod lambda for this well the outer part.
-        for(GameEngineModel missile : missiles){
-            for(UTM key : missile.getMissileTargetGrids().keySet()){
-                if(uniqueGrids.containsKey(key)){
+        for (GameEngineModel missile : missiles) {
+            for (UTM key : missile.getMissileTargetGrids().keySet()) {
+                if (uniqueGrids.containsKey(key)) {
                     missile.getMissileTargetGrids().get(key).stream().filter(subUtm -> !uniqueGrids.get(key).contains(subUtm)).forEach(subUtm -> {
                         uniqueGrids.get(key).add(subUtm);
                     });
-                }else{
+                } else {
                     uniqueGrids.put(key, missile.getMissileTargetGrids().get(key));
                 }
             }
 
         }
 
-        configuration.getLogger().debug("unique grids count is "+uniqueGrids.size());
+        configuration.getLogger().debug("unique grids count is " + uniqueGrids.size());
 
         //can now process based on what we have.  note the missile maybe the only thing in the grid (and will actually be in the grid by now) but should test keys.
-        for(UTM utm : uniqueGrids.keySet()){
+        for (UTM utm : uniqueGrids.keySet()) {
             List<String> subUtmKeys = gameEngineUtils.getAvailableKeys(utm.getUtm());
 
-            for(UTM subUtm : uniqueGrids.get(utm)){
+            for (UTM subUtm : uniqueGrids.get(utm)) {
 
-                configuration.getLogger().debug("processing "+utm.getUtm()+" / "+subUtm.getUtm());
+                configuration.getLogger().debug("processing " + utm.getUtm() + " / " + subUtm.getUtm());
 
-                if(subUtmKeys.contains(subUtm.getUtm())){
+                if (subUtmKeys.contains(subUtm.getUtm())) {
                     //we can process our missile (s).
                     missileUtils.processMissileImpact(
                             missiles.stream().filter(gameEngineModel ->
@@ -121,7 +118,7 @@ public class GameEngine {
     }
 
 
-    private Map<String,List<GameEngineModel>> processPositions() throws RemoteException {
+    private Map<String, List<GameEngineModel>> processPositions() throws RemoteException {
 
 
         List<GameEngineModel> moved = new ArrayList<>();
@@ -138,25 +135,25 @@ public class GameEngine {
                 List<GameEngineModel> repairs = gameEngineUtils.getRepairableGameEngineModels(utm, subUtm);
 
                 //do these seperately is fine.
-                if(repairs != null && repairs.size() > 0){
-                   new Thread(() -> {
-                       repairs.stream().forEach(GameEngineModel::repair);
-                       try {
-                           gameEngineUtils.updateSubUTM(utm, subUtm, repairs);
-                           repairs.stream().forEach(gameEngineModel -> {
-                               try {
-                                   gameEngineUtils.processRepairMessage(gameEngineModel);
-                               } catch (JSONException e) {
-                                   e.printStackTrace();
-                               }
-                           });
-                           //now need to send our messages to topics.
-                           gameEngineUtils.bulkPublish(utm + subUtm, repairs);
+                if (repairs != null && repairs.size() > 0) {
+                    new Thread(() -> {
+                        repairs.stream().forEach(GameEngineModel::repair);
+                        try {
+                            gameEngineUtils.updateSubUTM(utm, subUtm, repairs);
+                            repairs.stream().forEach(gameEngineModel -> {
+                                try {
+                                    gameEngineUtils.processRepairMessage(gameEngineModel);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            });
+                            //now need to send our messages to topics.
+                            gameEngineUtils.bulkPublish(utm + subUtm, repairs);
 
-                       } catch (RemoteException e) {
-                           e.printStackTrace();
-                       }
-                   }).start();
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                        }
+                    }).start();
                 }
 
                 if (models != null && models.size() > 0) {
@@ -172,7 +169,7 @@ public class GameEngine {
                                 //need a bulk version
                                 gameEngineUtils.updatePlayer(gameEngineModel1);
                                 //capture our missiles that have reached target.
-                                if(gameEngineModel1.isMissile()){
+                                if (gameEngineModel1.isMissile()) {
                                     missiles.add(gameEngineModel1);
                                 }
                             } catch (RemoteException e) {

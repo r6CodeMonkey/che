@@ -3,8 +3,6 @@ package controller;
 import controller.handler.CheHandler;
 import controller.handler.PlayerHandler;
 import core.HazelcastManagerInterface;
-import factory.CheChannelFactory;
-import io.netty.channel.Channel;
 import message.CheMessage;
 import model.Player;
 import org.json.JSONException;
@@ -87,10 +85,10 @@ public class CheController {
             hazelcastServerUp = initHazelcastServer();
             gameEngineServerUp = initGameEngineServer();
             cheHandler = new CheHandler(hazelcastManagerInterface, gameEngineInterface, configuration);
-        }else if (hazelcastManagerInterface == null) {
+        } else if (hazelcastManagerInterface == null) {
             hazelcastServerUp = initHazelcastServer();
             cheHandler = new CheHandler(hazelcastManagerInterface, gameEngineInterface, configuration);
-        }else if (gameEngineInterface == null) {
+        } else if (gameEngineInterface == null) {
             gameEngineServerUp = initGameEngineServer();
             cheHandler = new CheHandler(hazelcastManagerInterface, gameEngineInterface, configuration);
         }

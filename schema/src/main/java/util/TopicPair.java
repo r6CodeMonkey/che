@@ -21,7 +21,7 @@ public class TopicPair implements Serializable {
         this.message = null;
     }
 
-    public TopicPair(String key, String ownerKey,  String topicKey, HazelcastMessage message) {
+    public TopicPair(String key, String ownerKey, String topicKey, HazelcastMessage message) {
         this.key = key;
         this.ownerKey = ownerKey;
         this.topicKey = topicKey;
@@ -36,7 +36,9 @@ public class TopicPair implements Serializable {
         return topicKey;
     }
 
-    public String getOwnerKey(){return ownerKey;}
+    public String getOwnerKey() {
+        return ownerKey;
+    }
 
     public String getMessage() {
         return message;

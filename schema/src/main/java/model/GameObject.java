@@ -1,7 +1,5 @@
 package model;
 
-import util.TopicSubscriptions;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -124,7 +122,6 @@ public class GameObject extends CoreModel {
     public List<UTM> getDestinationValidator() {
         return destinationValidator;
     }
-
 
 
     @Override

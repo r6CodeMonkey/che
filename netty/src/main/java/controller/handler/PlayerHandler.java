@@ -1,6 +1,5 @@
 package controller.handler;
 
-import controller.CheController;
 import core.HazelcastManagerInterface;
 import factory.CheChannelFactory;
 import message.CheMessage;
@@ -59,7 +58,7 @@ public class PlayerHandler {
             player.utmLocation.state = Tags.MESSAGE;
             player.utmLocation.value = Tags.PLAYER_ENTERED;
             HazelcastMessage hazelcastMessage = new HazelcastMessage(CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(), new JSONObject(player.utmLocation.getMessage()));
-            hazelcastManagerInterface.publish(player.utmLocation.utm.getUtm()+player.utmLocation.subUtm.getUtm(), hazelcastMessage.toString());
+            hazelcastManagerInterface.publish(player.utmLocation.utm.getUtm() + player.utmLocation.subUtm.getUtm(), hazelcastMessage.toString());
         }
 
         hazelcastManagerInterface.put(Tags.PLAYER_MAP, player.getKey(), player);

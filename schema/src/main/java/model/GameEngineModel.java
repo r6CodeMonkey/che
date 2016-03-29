@@ -42,12 +42,19 @@ public class GameEngineModel implements Serializable {
     }
 
 
-
     public String getPlayerKey() {
         return playerKey;
     }
 
-    public Map<UTM, List<UTM>> getMissileTargetGrids(){return missileTargetGrids;};
+    public Map<UTM, List<UTM>> getMissileTargetGrids() {
+        return missileTargetGrids;
+    }
+
+    ;
+
+    public void setMissileTargetGrids(Map<UTM, List<UTM>> missileTargetGrids) {
+        this.missileTargetGrids = missileTargetGrids;
+    }
 
     public String getPlayerRemoteAddress() {
         return playerRemoteAddress;
@@ -61,16 +68,12 @@ public class GameEngineModel implements Serializable {
         return gameObject;
     }
 
-    public boolean isMissile(){
-        return isMissile;
-    }
-
-    public void setMissileTargetGrids(Map<UTM, List<UTM>> missileTargetGrids){
-        this.missileTargetGrids = missileTargetGrids;
-    }
-
     public void setGameObject(GameObject gameObject) {
         this.gameObject = gameObject;
+    }
+
+    public boolean isMissile() {
+        return isMissile;
     }
 
     public GameObjectRules getGameObjectRules() {
@@ -81,7 +84,7 @@ public class GameEngineModel implements Serializable {
         return gameUTMLocation;
     }
 
-    public void setGameUTMLocation(UTMLocation utmLocation){
+    public void setGameUTMLocation(UTMLocation utmLocation) {
         this.gameUTMLocation = utmLocation;
     }
 
@@ -102,14 +105,14 @@ public class GameEngineModel implements Serializable {
     }
 
 
-    public String getUTMKey(){
-        return gameObject.utmLocation.utm.getUtm()+gameObject.utmLocation.subUtm.getUtm();
+    public String getUTMKey() {
+        return gameObject.utmLocation.utm.getUtm() + gameObject.utmLocation.subUtm.getUtm();
     }
 
-    public void repair(){
-        if(gameObject.strength + gameObjectRules.getForce() >= gameObjectRules.getStrength()){
+    public void repair() {
+        if (gameObject.strength + gameObjectRules.getForce() >= gameObjectRules.getStrength()) {
             gameObject.strength = gameObjectRules.getStrength();
-        }else{
+        } else {
             gameObject.strength += gameObjectRules.getForce();
         }
 
@@ -119,16 +122,16 @@ public class GameEngineModel implements Serializable {
     public boolean hasChangedGrid() {
 
 
-     return !gameUTMLocation.utm.getUtm().equals(gameObject.utmLocation.utm.getUtm())
+        return !gameUTMLocation.utm.getUtm().equals(gameObject.utmLocation.utm.getUtm())
                 || !gameUTMLocation.subUtm.getUtm().equals(gameObject.utmLocation.subUtm.getUtm());
     }
 
     @Override
     public boolean equals(Object object) {
-           //do rest later etc..plus hashcode bla bla
-           if (((GameEngineModel) object).getGameObject().getKey().equals(this.gameObject.getKey())) {
-               return true;
-           }
+        //do rest later etc..plus hashcode bla bla
+        if (((GameEngineModel) object).getGameObject().getKey().equals(this.gameObject.getKey())) {
+            return true;
+        }
 
         return false;
     }
