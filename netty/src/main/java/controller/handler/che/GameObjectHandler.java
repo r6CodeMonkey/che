@@ -162,6 +162,10 @@ public class GameObjectHandler {
         //add to engine and repair on iteration.  so basically.
         gameObject.value = "";
         gameObject.state = Tags.GAME_OBJECT_REPAIR; //its already set but do it again.
+
+        //stops it moving!.
+        gameObject.destinationUTMLocation = gameObject.utmLocation;
+
         gameEngineInterface.addGameEngineModel(new GameEngineModel(player.getKey(),
                 CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(),
                 gameObject, gameObjectRulesFactory.getRules(gameObject.subType)));

@@ -102,12 +102,17 @@ public class GameEngineUtils {
     public void updateSubUTM(String utm, String subUtm, List<GameEngineModel> gameEngineModels) throws RemoteException {
         List<GameEngineModel> temp = (List<GameEngineModel>) hazelcastManagerInterface.get(utm, subUtm);
 
-        for (GameEngineModel model : gameEngineModels) {
-            if (temp.contains(model)) {
-                temp.set(temp.indexOf(model), model);
-            } else {
-                temp.add(model);
+        if(temp != null) {
+
+            for (GameEngineModel model : gameEngineModels) {
+                if (temp.contains(model)) {
+                    temp.set(temp.indexOf(model), model);
+                } else {
+                    temp.add(model);
+                }
             }
+        }else{
+            temp = gameEngineModels;
         }
 
         hazelcastManagerInterface.put(utm, subUtm, temp);
