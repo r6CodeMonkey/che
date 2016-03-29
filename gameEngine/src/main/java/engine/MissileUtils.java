@@ -45,6 +45,7 @@ public class MissileUtils {
                             && !gameEngineModel.isMissile()).collect(Collectors.toList());
 
 
+
             hitTargets.stream().forEach(gameEngineModel1 ->
               gameEngineModel1.getGameObject().strength -= (missile.getGameObjectRules().getStrength() *
                       ((missile.getGameObjectRules().getImpactRadius() -
