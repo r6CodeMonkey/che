@@ -2,6 +2,7 @@ package model;
 
 import message.HazelcastMessage;
 import util.GameObjectRules;
+import util.Tags;
 
 import java.io.Serializable;
 import java.util.List;
@@ -103,6 +104,16 @@ public class GameEngineModel implements Serializable {
 
     public String getUTMKey(){
         return gameObject.utmLocation.utm.getUtm()+gameObject.utmLocation.subUtm.getUtm();
+    }
+
+    public void repair(){
+        if(gameObject.strength + gameObjectRules.getForce() >= gameObjectRules.getStrength()){
+            gameObject.strength = gameObjectRules.getStrength();
+        }else{
+            gameObject.strength += gameObjectRules.getForce();
+        }
+
+        gameObject.value = Tags.SUCCESS;
     }
 
     public boolean hasChangedGrid() {

@@ -69,7 +69,7 @@ public class GameEngine {
 
         missiles.clear();
 
-         Map<String,List<GameEngineModel>> movedMap = processPositions();
+        Map<String,List<GameEngineModel>> movedMap = processPositions();
 
          for(List<GameEngineModel> gameEngineModels : movedMap.values()){
              if(gameEngineModels.size() > 0) {
@@ -120,6 +120,7 @@ public class GameEngine {
 
     }
 
+
     private Map<String,List<GameEngineModel>> processPositions() throws RemoteException {
 
 
@@ -134,7 +135,29 @@ public class GameEngine {
 
             for (String subUtm : subUtmKeys) {
                 List<GameEngineModel> models = gameEngineUtils.getMovingGameEngineModels(utm, subUtm);
+                List<GameEngineModel> repairs = gameEngineUtils.getRepairableGameEngineModels(utm, subUtm);
 
+                //do these seperately is fine.
+                if(repairs != null && repairs.size() > 0){
+                   new Thread(() -> {
+                       repairs.stream().forEach(GameEngineModel::repair);
+                       try {
+                           gameEngineUtils.updateSubUTM(utm, subUtm, repairs);
+                           repairs.stream().forEach(gameEngineModel -> {
+                               try {
+                                   gameEngineUtils.processRepairMessage(gameEngineModel);
+                               } catch (JSONException e) {
+                                   e.printStackTrace();
+                               }
+                           });
+                           //now need to send our messages to topics.
+                           gameEngineUtils.bulkPublish(utm + subUtm, repairs);
+
+                       } catch (RemoteException e) {
+                           e.printStackTrace();
+                       }
+                   }).start();
+                }
 
                 if (models != null && models.size() > 0) {
 

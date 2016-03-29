@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="10" failures="0" name="message.MessageTest" time="0.066" errors="0" skipped="0">
+<testsuite tests="10" failures="0" name="message.MessageTest" time="0.053" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="14.1.4"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -66,10 +66,10 @@
   <testcase classname="message.MessageTest" name="testUTM" time="0"/>
   <testcase classname="message.MessageTest" name="testCheAcknowedge" time="0"/>
   <testcase classname="message.MessageTest" name="testHazelcastMessage" time="0"/>
-  <testcase classname="message.MessageTest" name="testGameObject" time="0.006"/>
+  <testcase classname="message.MessageTest" name="testGameObject" time="0.002"/>
   <testcase classname="message.MessageTest" name="testAcknowledge" time="0.001"/>
-  <testcase classname="message.MessageTest" name="testUTMLocation" time="0.001"/>
+  <testcase classname="message.MessageTest" name="testUTMLocation" time="0"/>
   <testcase classname="message.MessageTest" name="testCheMessage" time="0.003"/>
-  <testcase classname="message.MessageTest" name="testMissile" time="0.002"/>
+  <testcase classname="message.MessageTest" name="testMissile" time="0.003"/>
   <testcase classname="message.MessageTest" name="testPlayer" time="0.001"/>
 </testsuite>

@@ -48,6 +48,17 @@ public class GameEngineUtils {
         return temp.parallelStream().filter(gameEngineModel -> gameEngineModel.getGameObject().getDistanceBetweenPoints() != 0).collect(Collectors.toList());
     }
 
+    public List<GameEngineModel> getRepairableGameEngineModels(String utm, String subUtm) throws RemoteException {
+
+        List<GameEngineModel> temp = (List<GameEngineModel>) hazelcastManagerInterface.get(utm, subUtm);
+
+        configuration.getLogger().debug("temp count pre repair filter is "+temp.size());
+
+        return temp.parallelStream().filter(gameEngineModel -> gameEngineModel.getGameObject().state.equals(Tags.GAME_OBJECT_REPAIR)
+                && gameEngineModel.getGameObject().value.trim().isEmpty()).collect(Collectors.toList());
+    }
+
+
     public void bulkSubscribe(List<GameEngineModel> gameEngineModels) throws RemoteException {
 
         List<TopicPair> topicPairs = gameEngineModels.stream().map(model -> new TopicPair(model.getPlayerKey(), model.getGameObject().getKey(),
@@ -153,7 +164,7 @@ public class GameEngineUtils {
     }
 
     public void removeGameEngineModel(GameEngineModel gameEngineModel) throws RemoteException {      //is an assumption it exists..so maybe dont check?
-        configuration.getLogger().debug("removing game object "+gameEngineModel.getGameObject().getKey());
+        configuration.getLogger().debug("removing game object " + gameEngineModel.getGameObject().getKey());
         try {
             List<GameEngineModel> subUtmList = (List<GameEngineModel>) hazelcastManagerInterface.get(gameEngineModel.getGameObject().utmLocation.utm.getUtm(), gameEngineModel.getGameObject().utmLocation.subUtm.getUtm());
             subUtmList.remove(gameEngineModel);
@@ -169,6 +180,16 @@ public class GameEngineUtils {
         gameEngineModel.getGameObject().state = Tags.MESSAGE;
 
         gameEngineModel.getGameObject().value = gameEngineModel.getGameObject().strength > 0 ?  Tags.GAME_OBJECT_HIT : Tags.GAME_OBJECT_DESTROYED;
+
+        gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(), true,
+                new JSONObject().put(Tags.GAME_OBJECT, new message.GameObject(gameEngineModel.getGameObject().getMessage()))));
+
+    }
+
+    public void processRepairMessage(GameEngineModel gameEngineModel) throws JSONException{
+        gameEngineModel.getGameObject().state = Tags.MESSAGE;
+
+        gameEngineModel.getGameObject().value = Tags.GAME_OBJECT_REPAIR;
 
         gameEngineModel.setMessage(new HazelcastMessage(gameEngineModel.getPlayerRemoteAddress(), true,
                 new JSONObject().put(Tags.GAME_OBJECT, new message.GameObject(gameEngineModel.getGameObject().getMessage()))));

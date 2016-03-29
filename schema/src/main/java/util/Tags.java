@@ -68,6 +68,10 @@ public class Tags {
     public static final String UTM_LAT_GRID = "utmLat";
     public static final String UTM_LONG_GRID = "utmLong";
 
+    //repair  (reinforce sort of breaks rules)
+    public final static String GAME_OBJECT_REPAIR = "OBJECT_REPAIR";
+    public final static String GAME_OBJECT_REINFORCE = "OBJECT_REINFORCE";  //may not use till have points.  or can purchase it only. (yes).
+
 
     //alliance
     public final static String ALLIANCE_CREATE = "ALLIANCE_CREATE";

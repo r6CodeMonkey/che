@@ -94,6 +94,12 @@ public class GameObjectHandler {
             case Tags.MISSILE_DESTROYED:
                 missileDestroyed(player, gameObject);
                 break;
+            case Tags.GAME_OBJECT_REPAIR:
+                objectRepair(player, gameObject);
+                break;
+            case Tags.GAME_OBJECT_REINFORCE:
+                objectReinforce(player, gameObject);
+                break;
         }
     }
 
@@ -154,6 +160,21 @@ public class GameObjectHandler {
 
     }
 
+    public void objectRepair(Player player, GameObject gameObject) throws JAXBException, RemoteException {
+        //add to engine and repair on iteration.  so basically.
+        gameObject.value = "";
+        gameObject.state = Tags.GAME_OBJECT_REPAIR; //its already set but do it again.
+        gameEngineInterface.addGameEngineModel(new GameEngineModel(player.getKey(),
+                CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(),
+                gameObject, gameObjectRulesFactory.getRules(gameObject.subType)));
+
+
+    }
+
+    public void objectReinforce(Player player, GameObject gameObject){
+     //this is a purchase only event.  once purchased we update the model with new strength value and confirm to client to do the same.
+    }
+
 
     private void missileFire(Player player, GameObject gameObject) throws JSONException, NoSuchAlgorithmException, RemoteException, JAXBException {
 
@@ -180,6 +201,9 @@ public class GameObjectHandler {
         gameObject.destinationUTMLocation = gameObject.utmLocation;
 
         utmHandler.handleUTMChange(gameObject.utmLocation, player);
+
+        //attempt to subscribe.  mainly for buildings and anything deployed and not moved.
+        hazelcastManagerInterface.subscribe(gameObject.utmLocation.utm.getUtm() + gameObject.utmLocation.subUtm.getUtm(), gameObject.getKey(), player.getKey());
 
         //it wont be moving so should be ok at present.  need to test this further!.
         gameEngineInterface.addGameEngineModel(new GameEngineModel(player.getKey(),
