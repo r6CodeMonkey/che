@@ -49,6 +49,9 @@ public class GameEngine {
 
         gameEngineModel.setGameUTMLocation(gameEngineModel.getGameObject().utmLocation); //its always defaulted to this in case it doesnt move.
 
+        //set the rules across that we need (mainly strength).
+        gameEngineModel.getGameObject().strength = gameEngineModel.getGameObjectRules().getStrength();
+
         gameEngineUtils.addGameEngineModel(gameEngineModel);
     }
 
