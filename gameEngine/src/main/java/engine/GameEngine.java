@@ -24,7 +24,7 @@ public class GameEngine {
     private final MissileUtils missileUtils;
     private final Configuration configuration;
 
-    private List<GameEngineModel> missiles = new ArrayList<>();
+    private final List<GameEngineModel> missiles = new ArrayList<>();
 
 
     public GameEngine(HazelcastManagerInterface hazelcastManagerInterface, Configuration configuration) {
