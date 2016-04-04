@@ -98,6 +98,12 @@ public class GameObjectHandler {
             case Tags.GAME_OBJECT_REINFORCE:
                 objectReinforce(player, gameObject);
                 break;
+            case Tags.SATELLITE_START_LISTEN:
+                satelliteStartListen(player, gameObject);
+                break;
+            case Tags.SATELLITE_STOP_LISTEN:
+                satelliteStopListen(player, gameObject);
+                break;
         }
     }
 
@@ -126,6 +132,26 @@ public class GameObjectHandler {
 
             CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
         }
+    }
+
+    private void satelliteStartListen(Player player, GameObject gameObject) throws RemoteException, JSONException, NoSuchAlgorithmException {
+       //register to the grid topics.  simples.  they are in our validator grids.
+        for (UTM validator : gameObject.getDestinationValidator()) {
+            hazelcastManagerInterface.subscribe(gameObject.utmLocation.utm.getUtm()+validator.getUtm(), gameObject.getKey(), player.getKey());
+            configuration.getLogger().debug("trying to subscribe to "+gameObject.utmLocation.utm.getUtm()+validator.getUtm());
+        }
+        gameObject.value = Tags.SUCCESS;
+        CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
+    }
+
+    private void satelliteStopListen(Player player, GameObject gameObject) throws RemoteException, JSONException, NoSuchAlgorithmException {
+     //just try and deregister from the grids topics
+        for (UTM validator : gameObject.getDestinationValidator()) {
+          hazelcastManagerInterface.unSubscribe(gameObject.utmLocation.utm.getUtm() + validator.getUtm(), gameObject.getKey(), player.getKey());
+            configuration.getLogger().debug("trying to unsubscribe from "+gameObject.utmLocation.utm.getUtm()+validator.getUtm());
+        }
+        gameObject.value = Tags.SUCCESS;
+        CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
     }
 
     private void missileAdded(Player player, GameObject gameObject) throws RemoteException, JSONException, NoSuchAlgorithmException {
