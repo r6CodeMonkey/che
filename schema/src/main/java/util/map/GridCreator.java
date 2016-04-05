@@ -1,5 +1,7 @@
 package util.map;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,10 +26,14 @@ public class GridCreator {
     }
 
     public static void main(String[] args) {
+
+        //test data 51.89222264490244 0.603324696421598 works
+        //test data 2 51.89119652 0.92197262 doesnt work
+
         GridCreator gridCreator = new GridCreator(new UTMConvert());
         Map<model.UTM, List<model.UTM>> test = gridCreator.getGrids(3, 51.89120537, 0.92166068);//lol it looks good i chose a stupid lace marker,,perhaps. or not. yeah it works.  ha ha.
 
-        for (model.UTM val : test.keySet()) {
+     /*   for (model.UTM val : test.keySet()) {
             System.out.println("we are utm " + val.getUtm());
 
             for (model.UTM sub : test.get(val)) {
@@ -37,9 +43,10 @@ public class GridCreator {
 
 
         }
-        gridCreator = new GridCreator();
+       */ gridCreator = new GridCreator();
 
-        Map<UTM, List<SubUTM>> androidGrids = gridCreator.getAndroidGrids(3, 51.89120537, 0.92166068);
+        Map<UTM, List<SubUTM>> androidGrids = gridCreator.getAndroidGrids(5, 51.89119652, 0.92197262 );
+       //    Map<UTM, List<SubUTM>> androidGrids = gridCreator.getAndroidGrids(5, 51.89222264490244, 0.603324696421598 );
 
         for (UTM val : androidGrids.keySet()) {
             System.out.println("we are utm " + val.getUtmLat() + val.getUtmLong());
@@ -85,24 +92,47 @@ public class GridCreator {
         Map<model.UTM, List<model.UTM>> values = new HashMap<>();  //we are stuck with java7 so no lambda.  but thats ok its not heavy.
 
 
-        int gridOffset = (gridsX - 1) / 2;
+        double gridOffset = (gridsX - 1) / 2;
 
         //we know our offset (i hope)
         double latOffset = utmConvert.getLatOffset();
         double longOffset = utmConvert.getLongOffset();
 
-        for (double lat = latitude - (latOffset * gridOffset); lat <= latitude + (latOffset * gridOffset); lat += latOffset) {
+        DecimalFormat df = new DecimalFormat("#.########");
 
-            for (double lng = longitude - (longOffset * gridOffset); lng <= longitude + (longOffset * gridOffset); lng += longOffset) {
+        System.out.println("latoffset "+latOffset+", long offset "+longOffset+", grid offset "+gridOffset);
 
-                model.UTM curentUTM = utmConvert.getUTMGrid(lat, lng);
-                model.UTM currentSubUTM = utmConvert.getUTMSubGrid(curentUTM, lat, lng);
+        //for fuck sake.  need to go BigDecmial.  java is gay and cant use java8.
+        BigDecimal latLimit = new BigDecimal(latitude + (latOffset * gridOffset));
+        BigDecimal longLimit = new BigDecimal(longitude + (longOffset * gridOffset));
+
+        BigDecimal lat = new BigDecimal(latitude - ( latOffset * gridOffset));
+        BigDecimal lng = new BigDecimal(longitude - (longOffset * gridOffset));
+
+
+        //fuck this.  will have to do it manually based on the fucking grids.  had enough tonight.  stupid stupid bug in java.
+
+        /*
+         so dumbass code is
+         1: get our start point....we know that.  then simply loop + grids across and down.  yes/
+         */
+
+        for(int stepX = 0; stepX < gridsX; stepX++) {
+            for (int stepY = 0; stepY < gridsX; stepY++) {
+                model.UTM curentUTM = utmConvert.getUTMGrid(lat.doubleValue(), lng.doubleValue());
+                model.UTM currentSubUTM = utmConvert.getUTMSubGrid(curentUTM, lat.doubleValue(), lng.doubleValue());
 
                 updateMap(values, curentUTM, currentSubUTM);
 
+               lat = lat.add(new BigDecimal(latOffset));
             }
 
+            lat = new BigDecimal(latitude - ( latOffset * gridOffset));
+
+            lng = lng.add(new BigDecimal(longOffset));
         }
+
+
 
         return values;
 
