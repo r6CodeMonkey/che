@@ -30,10 +30,13 @@ public class GridCreator {
         //test data 51.89222264490244 0.603324696421598 works
         //test data 2 51.89119652 0.92197262 doesnt work
 
-        GridCreator gridCreator = new GridCreator(new UTMConvert());
-        Map<model.UTM, List<model.UTM>> test = gridCreator.getGrids(3, 51.89120537, 0.92166068);//lol it looks good i chose a stupid lace marker,,perhaps. or not. yeah it works.  ha ha.
+        //UTM Grid creator is 51.89342644983688 0.11085636912030772 test this too...
+        //my fault really.  missing a utm
 
-     /*   for (model.UTM val : test.keySet()) {
+        GridCreator gridCreator = new GridCreator(new UTMConvert());
+     /*   Map<model.UTM, List<model.UTM>> test = gridCreator.getGrids(5, 51.89342644983688, 0.11085636912030772);//lol it looks good i chose a stupid lace marker,,perhaps. or not. yeah it works.  ha ha.
+
+        for (model.UTM val : test.keySet()) {
             System.out.println("we are utm " + val.getUtm());
 
             for (model.UTM sub : test.get(val)) {
@@ -43,9 +46,9 @@ public class GridCreator {
 
 
         }
-       */ gridCreator = new GridCreator();
+    */    gridCreator = new GridCreator();
 
-        Map<UTM, List<SubUTM>> androidGrids = gridCreator.getAndroidGrids(5, 51.89119652, 0.92197262 );
+        Map<UTM, List<SubUTM>> androidGrids = gridCreator.getAndroidGrids(5,51.89342644983688, 0.11085636912030772);//lol it looks good i chose a stupid lace marker,,perhaps. or not. yeah it works.  ha ha.
        //    Map<UTM, List<SubUTM>> androidGrids = gridCreator.getAndroidGrids(5, 51.89222264490244, 0.603324696421598 );
 
         for (UTM val : androidGrids.keySet()) {
@@ -98,24 +101,9 @@ public class GridCreator {
         double latOffset = utmConvert.getLatOffset();
         double longOffset = utmConvert.getLongOffset();
 
-        DecimalFormat df = new DecimalFormat("#.########");
-
-        System.out.println("latoffset "+latOffset+", long offset "+longOffset+", grid offset "+gridOffset);
-
-        //for fuck sake.  need to go BigDecmial.  java is gay and cant use java8.
-        BigDecimal latLimit = new BigDecimal(latitude + (latOffset * gridOffset));
-        BigDecimal longLimit = new BigDecimal(longitude + (longOffset * gridOffset));
-
         BigDecimal lat = new BigDecimal(latitude - ( latOffset * gridOffset));
         BigDecimal lng = new BigDecimal(longitude - (longOffset * gridOffset));
 
-
-        //fuck this.  will have to do it manually based on the fucking grids.  had enough tonight.  stupid stupid bug in java.
-
-        /*
-         so dumbass code is
-         1: get our start point....we know that.  then simply loop + grids across and down.  yes/
-         */
 
         for(int stepX = 0; stepX < gridsX; stepX++) {
             for (int stepY = 0; stepY < gridsX; stepY++) {
@@ -132,20 +120,25 @@ public class GridCreator {
             lng = lng.add(new BigDecimal(longOffset));
         }
 
-
-
         return values;
 
     }
 
+
     private void updateMap(Map<UTM, List<SubUTM>> map, UTM utm, SubUTM subUTM) {
         boolean found = false;
-        for (List<SubUTM> subUtmList : map.values()) {
-            if (subUtmList != null) {
-                subUtmList.add(subUTM);
-                found = true;
-            }
 
+        if(map.containsKey(utm)) {
+
+            for (List<SubUTM> subUtmList : map.values()) {
+                if (subUtmList != null) {
+                    subUtmList.add(subUTM);
+                    found = true;
+                }
+
+            }
+        }else{
+            found = false;
         }
 
         if (!found) {  //cleary quicker way but no lambda...who cares.
@@ -155,14 +148,22 @@ public class GridCreator {
         }
     }
 
-    private void updateMap(Map<model.UTM, List<model.UTM>> map, model.UTM utm, model.UTM subUTM) {
-        boolean found = false;
-        for (List<model.UTM> subUtmList : map.values()) {
-            if (subUtmList != null) {
-                subUtmList.add(subUTM);
-                found = true;
-            }
 
+    private void updateMap(Map<model.UTM, List<model.UTM>> map, model.UTM utm, model.UTM subUTM) {
+
+        boolean found = false;
+
+        if(map.containsKey(utm)) {
+
+            for (List<model.UTM> subUtmList : map.values()) {
+                if (subUtmList != null) {
+                    subUtmList.add(subUTM);
+                    found = true;
+                }
+
+            }
+        }else{
+            found = false;
         }
 
         if (!found) {  //cleary quicker way but no lambda...who cares.
