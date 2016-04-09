@@ -60,7 +60,7 @@ public class GameObjectTypes {
                 return "ATV";
             case MINI_DRONE:
                 return "Mini Drone";
-            case LONGRANGE_DRONE:
+            case LONGRANGE_DRONE: // removed
                 return "Longrange\nDrone";
             case ARMED_DRONE:
                 return "Armed Drone";
@@ -68,7 +68,7 @@ public class GameObjectTypes {
                 return "Bomber";
             case FIGHTER:
                 return "Fighter";
-            case HELICOPTER:
+            case HELICOPTER:  //removed
                 return "Helicopter";
             case SUB:
                 return "Submarine";

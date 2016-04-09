@@ -80,8 +80,28 @@ public class GameObjectRulesFactory {
                 return (GameObjectRules) jaxbUnmarshaller.unmarshal(new File(classLoader.getResource("xml/water_to_ground_rules.xml").getFile()));
             case GameObjectTypes.W2W:
                 return (GameObjectRules) jaxbUnmarshaller.unmarshal(new File(classLoader.getResource("xml/water_to_water_rules.xml").getFile()));
+            case GameObjectTypes.AIRPORT:
+                return (GameObjectRules) jaxbUnmarshaller.unmarshal(new File(classLoader.getResource("xml/airport_rules.xml").getFile()));
+            case GameObjectTypes.CARRIER:
+                return (GameObjectRules) jaxbUnmarshaller.unmarshal(new File(classLoader.getResource("xml/carrier_rules.xml").getFile()));
+            case GameObjectTypes.BOMBER:
+                return (GameObjectRules) jaxbUnmarshaller.unmarshal(new File(classLoader.getResource("xml/bomber_rules.xml").getFile()));
+            case GameObjectTypes.ARMED_DRONE:
+                return (GameObjectRules) jaxbUnmarshaller.unmarshal(new File(classLoader.getResource("xml/armed_drone_rules.xml").getFile()));
+            case GameObjectTypes.FIGHTER:
+                return (GameObjectRules) jaxbUnmarshaller.unmarshal(new File(classLoader.getResource("xml/fighter_rules.xml").getFile()));
+            case GameObjectTypes.FAC:
+                return (GameObjectRules) jaxbUnmarshaller.unmarshal(new File(classLoader.getResource("xml/fac_rules.xml").getFile()));
+            case GameObjectTypes.DESTROYER:
+                return (GameObjectRules) jaxbUnmarshaller.unmarshal(new File(classLoader.getResource("xml/destroyer_rules.xml").getFile()));
+            case GameObjectTypes.SUB:
+                return (GameObjectRules) jaxbUnmarshaller.unmarshal(new File(classLoader.getResource("xml/sub_rules.xml").getFile()));
+            case GameObjectTypes.MISSILE_LAUNCHER:
+                return (GameObjectRules) jaxbUnmarshaller.unmarshal(new File(classLoader.getResource("xml/missile_launcher_rules.xml").getFile()));
+            case GameObjectTypes.PORT:
+                return (GameObjectRules) jaxbUnmarshaller.unmarshal(new File(classLoader.getResource("xml/port_rules.xml").getFile()));
             default:
-                return null;
+                throw new RuntimeException("Rules not defined for "+subType); //testing...not really for production.
         }
     }
 
