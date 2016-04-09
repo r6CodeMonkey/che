@@ -90,6 +90,8 @@ public class Tags {
     public final static String MISSILE_REMOVED = "MISSILE_REMOVED";
     public final static String SATELLITE_START_LISTEN = "START_LISTEN";
     public final static String SATELLITE_STOP_LISTEN = "STOP_LISTEN";
+    public final static String GAME_OBJECT_DEPLOYED_TO_BASE = "DEPLOY_TO_BASE";
+
 
 
     //launch commands
