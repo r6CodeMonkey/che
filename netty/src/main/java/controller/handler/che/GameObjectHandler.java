@@ -5,10 +5,7 @@ import core.HazelcastManagerInterface;
 import factory.CheChannelFactory;
 import factory.GameObjectRulesFactory;
 import message.CheMessage;
-import model.GameEngineModel;
-import model.GameObject;
-import model.Player;
-import model.UTM;
+import model.*;
 import org.json.JSONException;
 import server.GameEngineInterface;
 import util.Configuration;
@@ -71,6 +68,9 @@ public class GameObjectHandler {
                 break;
             case Tags.GAME_OBJECT_MOVE:
                 objectMove(player, gameObject);
+                break;
+            case Tags.GAME_OBJECT_MOVE_ROUNDTRIP:
+                objectRoundTripMove(player, gameObject);
                 break;
             case Tags.MISSILE_ADDED:
                 missileAdded(player, gameObject);
@@ -240,7 +240,6 @@ public class GameObjectHandler {
 
         CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
 
-
     }
 
     private void objectStop(Player player, GameObject gameObject) throws RemoteException, JAXBException, JSONException, NoSuchAlgorithmException {
@@ -249,6 +248,22 @@ public class GameObjectHandler {
         //need to set the object current distance to zero.  which
         //and set our distance to zero.
         //no engine will do this..with latest information CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
+
+    }
+
+    private void objectRoundTripMove(Player player, GameObject gameObject) throws RemoteException, JAXBException, JSONException, NoSuchAlgorithmException {
+        player.getGameObjects().get(gameObject.getKey()).destinationUTMLocation = gameObject.destinationUTMLocation;
+        gameObject.value = Tags.SUCCESS;
+
+        configuration.getLogger().debug("round trip move "+gameObject.utmLocation.latitude+" "+gameObject.utmLocation.longitude);
+        //attempt to subscribe to topic
+        hazelcastManagerInterface.subscribe(gameObject.utmLocation.utm.getUtm() + gameObject.utmLocation.subUtm.getUtm(), gameObject.getKey(), player.getKey());
+
+        gameEngineInterface.addGameEngineModel(new GameEngineModel(player.getKey(),
+                CheChannelFactory.getCheChannel(player.getKey()).getChannel().remoteAddress().toString(),
+                gameObject, gameObjectRulesFactory.getRules(gameObject.subType), new UTMLocation(gameObject.utmLocation)));
+
+        CheChannelFactory.write(player.getKey(), new CheMessage(Tags.GAME_OBJECT, new message.GameObject(gameObject.getMessage())));
 
     }
 
@@ -268,6 +283,7 @@ public class GameObjectHandler {
                 valid = true;
             }
         }
+
 
         if (valid) {
 

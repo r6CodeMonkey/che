@@ -9,6 +9,7 @@ import model.UTMLocation;
 import org.json.JSONException;
 import org.json.JSONObject;
 import util.Configuration;
+import util.GameObjectTypes;
 import util.Tags;
 import util.TopicPair;
 
@@ -205,7 +206,9 @@ public class GameEngineUtils {
         gameEngineModel.getGameObject().state = Tags.MESSAGE;
         if (gameEngineModel.isMissile()) {
             gameEngineModel.getGameObject().value = 0 == gameEngineModel.getGameObject().getDistanceBetweenPoints() ? Tags.MISSILE_DESTROYED : Tags.MISSILE_LAUNCHED;
-        } else {
+        } else if(gameEngineModel.getGameObject().subType == GameObjectTypes.FIGHTER || gameEngineModel.getGameObject().subType == GameObjectTypes.BOMBER) {
+            gameEngineModel.getGameObject().value = 0 == gameEngineModel.getGameObject().getDistanceBetweenPoints() ? Tags.GAME_OBJECT_DEPLOYED_TO_BASE : Tags.GAME_OBJECT_IS_MOVING;
+        } else{
             gameEngineModel.getGameObject().value = 0 == gameEngineModel.getGameObject().getDistanceBetweenPoints() ? Tags.GAME_OBJECT_IS_FIXED : Tags.GAME_OBJECT_IS_MOVING;
         }
 

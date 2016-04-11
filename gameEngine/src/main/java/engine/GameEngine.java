@@ -52,6 +52,11 @@ public class GameEngine {
         gameEngineModel.getGameObject().strength = gameEngineModel.getGameObjectRules().getStrength();
 
         gameEngineUtils.addGameEngineModel(gameEngineModel);
+
+        if(gameEngineModel.isRoundTrip()){
+            System.out.println("round trip lat and long "+gameEngineModel.getRoundTripDestination().latitude+" "+ gameEngineModel.getRoundTripDestination().longitude);
+
+        }
     }
 
 

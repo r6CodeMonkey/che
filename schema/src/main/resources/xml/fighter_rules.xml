@@ -2,10 +2,10 @@
 <gameObjectRules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xsi:noNamespaceSchemaLocation="game_object.xsd">
 
-    <mass>1000</mass>
-    <maxSpeed>45</maxSpeed>
-    <impactRadius>0</impactRadius>
-    <maxRange>0</maxRange>
-    <force>50</force>
+    <mass>1500</mass>
+    <maxSpeed>2000</maxSpeed>
+    <impactRadius>1000</impactRadius>
+    <maxRange>500000</maxRange>
+    <force>1000</force>
     <strength>100</strength>
 </gameObjectRules>

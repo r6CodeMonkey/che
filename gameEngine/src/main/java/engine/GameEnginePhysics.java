@@ -1,6 +1,8 @@
 package engine;
 
 import model.GameEngineModel;
+import model.UTMLocation;
+import util.Tags;
 import util.map.UTMConvert;
 
 /**
@@ -93,6 +95,10 @@ public class GameEnginePhysics {
         }
 
 
+        if(gameEngineModel.isRoundTrip()){
+        System.out.println("values are "+gameEngineModel.getRoundTripDestination().latitude+" "+gameEngineModel.getRoundTripDestination().longitude);
+        }
+
         gameEngineModel.getGameObject().setDistanceBetweenPoints((gameEngineModel.getGameObject().getDistanceBetweenPoints() - displacement));
 
 
@@ -113,6 +119,19 @@ public class GameEnginePhysics {
         gameEngineModel.getGameUTMLocation().subUtm = utmConvert.getUTMSubGrid(gameEngineModel.getGameUTMLocation().utm,
                 gameEngineModel.getGameUTMLocation().latitude, gameEngineModel.getGameUTMLocation().longitude);
 
+        if(gameEngineModel.isRoundTrip() && gameEngineModel.getGameObject().getDistanceBetweenPoints() == 0){
+
+            System.out.println("we are reversing round trip - something wrong here.  value changed with no interference!  fucked up");
+
+            //update everything...
+            gameEngineModel.getGameObject().setDistanceBetweenPoints(GameEnginePhysics.getHaversineDistance(gameEngineModel.getGameUTMLocation().latitude,
+                    gameEngineModel.getGameUTMLocation().longitude, gameEngineModel.getRoundTripDestination().latitude, gameEngineModel.getRoundTripDestination().longitude));
+
+
+            gameEngineModel.getGameObject().destinationUTMLocation = new UTMLocation(gameEngineModel.getRoundTripDestination());
+
+            gameEngineModel.setRoundTripDestination(null); //stops it from doing this again.
+        }
 
     }
 

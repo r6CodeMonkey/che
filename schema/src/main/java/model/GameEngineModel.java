@@ -22,6 +22,7 @@ public class GameEngineModel implements Serializable {
     private HazelcastMessage message;
     private HazelcastMessage message2;  //as in leavae or enter.  message 1 also destroyed etc.
     private boolean isMissile = false;
+    private UTMLocation roundTripDestination;
 
     private Map<UTM, List<UTM>> missileTargetGrids;
 
@@ -39,6 +40,14 @@ public class GameEngineModel implements Serializable {
         this.gameObject = gameObject;
         this.gameObjectRules = gameObjectRules;
         this.isMissile = isMissile;
+    }
+
+    public GameEngineModel(String playerKey, String playerRemoteAddress, GameObject gameObject, GameObjectRules gameObjectRules, UTMLocation roundTripDestination) {
+        this.playerKey = playerKey;
+        this.playerRemoteAddress = playerRemoteAddress;
+        this.gameObject = gameObject;
+        this.gameObjectRules = gameObjectRules;
+        this.roundTripDestination = roundTripDestination;
     }
 
 
@@ -76,6 +85,9 @@ public class GameEngineModel implements Serializable {
         return isMissile;
     }
 
+    public boolean isRoundTrip(){return roundTripDestination != null;}
+
+
     public GameObjectRules getGameObjectRules() {
         return gameObjectRules;
     }
@@ -84,8 +96,14 @@ public class GameEngineModel implements Serializable {
         return gameUTMLocation;
     }
 
+    public UTMLocation getRoundTripDestination(){return roundTripDestination;}
+
     public void setGameUTMLocation(UTMLocation utmLocation) {
         this.gameUTMLocation = utmLocation;
+    }
+
+    public void setRoundTripDestination(UTMLocation roundTripDestination){
+        this.roundTripDestination = roundTripDestination;
     }
 
     public HazelcastMessage getMessage() {

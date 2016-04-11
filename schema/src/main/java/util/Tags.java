@@ -83,6 +83,7 @@ public class Tags {
     //objects ie weapons etc
     public final static String GAME_OBJECT_ADD = "OBJECT_ADD";
     public final static String GAME_OBJECT_MOVE = "OBJECT_MOVE";
+    public final static String GAME_OBJECT_MOVE_ROUNDTRIP = "OBJECT_MOVE_ROUNDTRIP";
     public final static String GAME_OBJECT_HIT = "OBJECT_HIT";
     public final static String GAME_OBJECT_STOP = "OBJECT_STOP";
     public final static String GAME_OBJECT_DESTROYED = "OBJECT_DESTROYED";
@@ -91,8 +92,6 @@ public class Tags {
     public final static String SATELLITE_START_LISTEN = "START_LISTEN";
     public final static String SATELLITE_STOP_LISTEN = "STOP_LISTEN";
     public final static String GAME_OBJECT_DEPLOYED_TO_BASE = "DEPLOY_TO_BASE";
-
-
 
     //launch commands
     public final static String MISSILE_TARGET = "MISSILE_TARGET";
